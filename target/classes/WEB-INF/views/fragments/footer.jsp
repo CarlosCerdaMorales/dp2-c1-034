@@ -34,7 +34,7 @@
 		<acme:footer-option icon="fa fa-language" code="master.footer.label.spanish" action="/?locale=es"/>
 	</acme:footer-subpanel>
 
-	<acme:footer-logo logo="images/logo.png" alt="master.company.name">
+	<acme:footer-logo logo="images/AcmeANSLogo.png" alt="master.company.name">
 		<acme:footer-copyright code="master.company.name"/>
 	</acme:footer-logo>
 </acme:footer-panel>

@@ -10,11 +10,11 @@
 
 master.company.title = The company
 master.company.text = \
-	Hello World, Inc. is a fictitious company that provides a starter \
-	project for the students of the Design and Testing subject of the \
-	Software Engineering Curriculum of the University of Seville.
+	Welcome to the Workforce Integration System (WIS) project by Acme AirNav Solutions, Inc.. \
+	This project is designed to help airports manage logistics for charter flights, including scheduling, \
+	booking, crew management, incident reporting, and aircraft maintenance.\ 
 master.company.name = Acme, Inc.
 master.company.address = 01 Acme Drive, Wondercity, Wonderland
-master.company.phone = +1 000 111 222
+master.company.phone = +1 924 516 449
 master.company.email = contact@acme.com
 

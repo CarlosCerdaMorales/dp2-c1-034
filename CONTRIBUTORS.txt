@@ -8,4 +8,8 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
-- Rafael Corchuelo (corchu@us.es)
+- Student #1: Sergio Cantillo Blanco (sercanbla@alum.us.es)
+- Student #2: Carlos Cerdá Morales (carcermor@alum.us.es)
+- Student #3: Loubna Founoun El Aoud (loufouela@alum.us.es)
+- Student #4: José Luis Moraza Vergara (josmorver@alum.us.es)
+- Student #5: Claudia Oviedo Govantes (claovigov@alum.us.es)
