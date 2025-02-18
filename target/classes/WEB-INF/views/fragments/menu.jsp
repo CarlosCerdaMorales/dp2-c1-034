@@ -23,7 +23,11 @@
 		</acme:menu-option>
 		
 		<acme:menu-option code="master.menu.carlos" access="isAnonymous()">
-			<acme:menu-suboption code="master.menu.carlos.favourite-link" action="https://zoomquilt.org/"/>
+			<acme:menu-suboption code="master.menu.anonymous.favourite-link" action="https://zoomquilt.org/"/>
+		</acme:menu-option>
+		
+		<acme:menu-option code="master.menu.sergio" access="isAnonymous()">
+			<acme:menu-suboption code="master.menu.anonymous.favourite-link" action="https://theuselessweb.site/ducksarethebest.com/"/>
 		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.administrator" access="hasRealm('Administrator')">
