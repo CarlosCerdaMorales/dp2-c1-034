@@ -1,0 +1,136 @@
+2025-02-18 20:06:48.879309200 INFO  acme.Launcher@main Starting Launcher using Java 21.0.4 on PcDeJoselu with PID 40120 (C:\Users\jlmv1\OneDrive\Escritorio\ProyectoDP2\Workspace-25\Frameworks\Acme-Framework-25.1.0\target\classes started by jlmv1 in C:\Users\jlmv1\OneDrive\Escritorio\ProyectoDP2\Workspace-25\Projects\Acme-ANS-D01) 
+2025-02-18 20:06:48.881353500 DEBUG acme.Launcher@main Running with Spring Boot v2.7.18, Spring v5.3.31 
+2025-02-18 20:06:48.882364200 INFO  acme.Launcher@main The following 3 profiles are active: "development", "populator", "populator#initial" 
+2025-02-18 20:06:53.935358200 DEBUG acme.client.controllers.AbstractController@main Registering handler for {[GET, POST] [/authenticated/consumer/create], produces [text/html]} 
+2025-02-18 20:06:53.935358200 DEBUG acme.client.controllers.AbstractController@main Registering handler for {[GET, POST] [/authenticated/consumer/update], produces [text/html]} 
+2025-02-18 20:06:53.968009900 DEBUG acme.client.controllers.AbstractController@main Registering handler for {[GET, POST] [/authenticated/provider/create], produces [text/html]} 
+2025-02-18 20:06:53.969022900 DEBUG acme.client.controllers.AbstractController@main Registering handler for {[GET, POST] [/authenticated/provider/update], produces [text/html]} 
+2025-02-18 20:06:53.995513500 DEBUG acme.client.controllers.AbstractController@main Registering handler for {[GET, POST] [/administrator/user-account/list], produces [text/html]} 
+2025-02-18 20:06:53.996526600 DEBUG acme.client.controllers.AbstractController@main Registering handler for {[GET, POST] [/administrator/user-account/show], produces [text/html]} 
+2025-02-18 20:06:53.996526600 DEBUG acme.client.controllers.AbstractController@main Registering handler for {[GET, POST] [/administrator/user-account/update], produces [text/html]} 
+2025-02-18 20:06:54.017338800 DEBUG acme.client.controllers.AbstractController@main Registering handler for {[GET, POST] [/anonymous/user-account/create], produces [text/html]} 
+2025-02-18 20:06:54.040854500 DEBUG acme.client.controllers.AbstractController@main Registering handler for {[GET, POST] [/authenticated/user-account/update], produces [text/html]} 
+2025-02-18 20:06:54.997422100 INFO  acme.Launcher@main Started Launcher in 6.821 seconds (JVM running for 7.391) 
+2025-02-18 20:06:55.000456400 INFO  acme.Launcher@main Starting the Spring Framework up took 6.96 seconds. 
+2025-02-18 20:06:55.079044500 DEBUG acme.internals.components.clocks.AbstractClock@main Changing base moment to 'Tue Feb 18 20:06:55 CET 2025'. 
+2025-02-18 20:06:55.079044500 DEBUG acme.internals.components.clocks.AbstractClock@main Changing base moment to 'Sat Jul 30 00:00:00 CEST 2022'. 
+2025-02-18 20:06:55.080086200 DEBUG acme.internals.components.clocks.SimulatedClock@main Changing current moment to 'Sat Jul 30 00:00:00 CEST 2022'. 
+2025-02-18 20:06:55.080086200 INFO  acme.Launcher@main Launching populator#initial in your development platform. Please, wait. 
+2025-02-18 20:06:55.081148400 INFO  acme.Launcher@main Resetting application (create schema, populate initial data, reset clock, reset random generator). 
+2025-02-18 20:06:55.081148400 DEBUG acme.Launcher@main Initialising clock. 
+2025-02-18 20:06:55.081148400 DEBUG acme.internals.components.clocks.SimulatedClock@main Changing current moment to 'Sat Jul 30 00:00:00 CEST 2022'. 
+2025-02-18 20:06:55.081148400 DEBUG acme.Launcher@main Initialising random generator. 
+2025-02-18 20:06:55.081148400 DEBUG acme.Launcher@main Populating database. 
+2025-02-18 20:06:55.084178700 DEBUG acme.internals.components.database.DatabaseManager@main Starting transaction 3482b7ef-5c60-4b24-bc31-e6c6c8ef7a6a. 
+2025-02-18 20:06:55.088697500 DEBUG acme.internals.components.database.DatabaseManager@main Executing command 'set transaction isolation level read uncommitted;'. 
+2025-02-18 20:06:55.092788700 DEBUG acme.internals.components.database.DatabasePopulator@main Reading entities from 'classpath:/WEB-INF/data/initial'. 
+2025-02-18 20:06:55.115414 DEBUG acme.internals.components.database.EntityTable@main Reading entities from 'C:\Users\jlmv1\OneDrive\Escritorio\ProyectoDP2\Workspace-25\Projects\Acme-ANS-D01\target\classes\WEB-INF\data\initial\administrator.csv'. 
+2025-02-18 20:06:55.207397900 DEBUG acme.internals.components.database.EntityTable@main Reading mapping '{key=administrator-01, key:userAccount=user-account-administrator-01}' from 'C:\Users\jlmv1\OneDrive\Escritorio\ProyectoDP2\Workspace-25\Projects\Acme-ANS-D01\target\classes\WEB-INF\data\initial\administrator.csv'. 
+2025-02-18 20:06:55.208512700 DEBUG acme.internals.components.database.EntityTable@main Reading entities from 'C:\Users\jlmv1\OneDrive\Escritorio\ProyectoDP2\Workspace-25\Projects\Acme-ANS-D01\target\classes\WEB-INF\data\initial\anonymous.csv'. 
+2025-02-18 20:06:55.210993100 DEBUG acme.internals.components.database.EntityTable@main Reading mapping '{key=anonymous-01, key:userAccount=user-account-anonymous-01}' from 'C:\Users\jlmv1\OneDrive\Escritorio\ProyectoDP2\Workspace-25\Projects\Acme-ANS-D01\target\classes\WEB-INF\data\initial\anonymous.csv'. 
+2025-02-18 20:06:55.210993100 DEBUG acme.internals.components.database.EntityTable@main Reading entities from 'C:\Users\jlmv1\OneDrive\Escritorio\ProyectoDP2\Workspace-25\Projects\Acme-ANS-D01\target\classes\WEB-INF\data\initial\user-account.csv'. 
+2025-02-18 20:06:55.213030400 DEBUG acme.internals.components.database.EntityTable@main Reading mapping '{password=HIDDEN-PASSWORD, identity=UserIdentity{name: 'John', surname: 'Doe', email: 'john.doe@acme.com'}, key=user-account-anonymous-01, enabled=false, username=anonymous}' from 'C:\Users\jlmv1\OneDrive\Escritorio\ProyectoDP2\Workspace-25\Projects\Acme-ANS-D01\target\classes\WEB-INF\data\initial\user-account.csv'. 
+2025-02-18 20:06:55.213030400 DEBUG acme.internals.components.database.EntityTable@main Reading mapping '{password=administrator, identity=UserIdentity{name: 'Administrator', surname: 'Acme', email: 'administrator@acme.com'}, key=user-account-administrator-01, enabled=true, username=administrator}' from 'C:\Users\jlmv1\OneDrive\Escritorio\ProyectoDP2\Workspace-25\Projects\Acme-ANS-D01\target\classes\WEB-INF\data\initial\user-account.csv'. 
+2025-02-18 20:06:55.213030400 DEBUG acme.internals.components.database.EntityWeb@main Setting attributes of entities of class acme.client.components.principals.Administrator. 
+2025-02-18 20:06:55.213030400 DEBUG acme.internals.components.database.EntityWeb@main Setting attributes of entities of class acme.client.components.principals.Anonymous. 
+2025-02-18 20:06:55.213030400 DEBUG acme.internals.components.database.EntityWeb@main Setting attributes of entities of class acme.client.components.principals.UserAccount. 
+2025-02-18 20:06:55.369254500 DEBUG acme.internals.components.database.EntityWeb@main Linking entities of class acme.client.components.principals.Administrator. 
+2025-02-18 20:06:55.376100400 DEBUG acme.internals.components.database.EntityWeb@main Linking entities of class acme.client.components.principals.Anonymous. 
+2025-02-18 20:06:55.379200 DEBUG acme.internals.components.database.EntityWeb@main Linking entities of class acme.client.components.principals.UserAccount. 
+2025-02-18 20:06:55.389375800 DEBUG acme.internals.components.database.DatabaseManager@main Dropping existing database schema, if any. 
+2025-02-18 20:06:55.407721600 DEBUG acme.internals.components.database.DatabaseManager@main Creating batch for transaction 3482b7ef-5c60-4b24-bc31-e6c6c8ef7a6a. 
+2025-02-18 20:06:55.407721600 DEBUG acme.internals.components.database.DatabaseManager@main Adding 'set foreign_key_checks=0;\n' to batch in transaction 3482b7ef-5c60-4b24-bc31-e6c6c8ef7a6a. 
+2025-02-18 20:06:55.408734500 DEBUG acme.internals.components.database.DatabaseManager@main Adding 'drop table if exists abstract_squad' to batch in transaction 3482b7ef-5c60-4b24-bc31-e6c6c8ef7a6a. 
+2025-02-18 20:06:55.408802200 DEBUG acme.internals.components.database.DatabaseManager@main Adding 'drop table if exists administrator' to batch in transaction 3482b7ef-5c60-4b24-bc31-e6c6c8ef7a6a. 
+2025-02-18 20:06:55.408802200 DEBUG acme.internals.components.database.DatabaseManager@main Adding 'drop table if exists anonymous' to batch in transaction 3482b7ef-5c60-4b24-bc31-e6c6c8ef7a6a. 
+2025-02-18 20:06:55.408802200 DEBUG acme.internals.components.database.DatabaseManager@main Adding 'drop table if exists any' to batch in transaction 3482b7ef-5c60-4b24-bc31-e6c6c8ef7a6a. 
+2025-02-18 20:06:55.408802200 DEBUG acme.internals.components.database.DatabaseManager@main Adding 'drop table if exists authenticated' to batch in transaction 3482b7ef-5c60-4b24-bc31-e6c6c8ef7a6a. 
+2025-02-18 20:06:55.409305600 DEBUG acme.internals.components.database.DatabaseManager@main Adding 'drop table if exists consumer' to batch in transaction 3482b7ef-5c60-4b24-bc31-e6c6c8ef7a6a. 
+2025-02-18 20:06:55.409305600 DEBUG acme.internals.components.database.DatabaseManager@main Adding 'drop table if exists hibernate_sequences' to batch in transaction 3482b7ef-5c60-4b24-bc31-e6c6c8ef7a6a. 
+2025-02-18 20:06:55.409305600 DEBUG acme.internals.components.database.DatabaseManager@main Adding 'drop table if exists provider' to batch in transaction 3482b7ef-5c60-4b24-bc31-e6c6c8ef7a6a. 
+2025-02-18 20:06:55.409305600 DEBUG acme.internals.components.database.DatabaseManager@main Adding 'drop table if exists user_account' to batch in transaction 3482b7ef-5c60-4b24-bc31-e6c6c8ef7a6a. 
+2025-02-18 20:06:55.409305600 DEBUG acme.internals.components.database.DatabaseManager@main Adding 'set foreign_key_checks=1;\n' to batch in transaction 3482b7ef-5c60-4b24-bc31-e6c6c8ef7a6a. 
+2025-02-18 20:06:55.409305600 DEBUG acme.internals.components.database.DatabaseManager@main Submitting batch in transaction 3482b7ef-5c60-4b24-bc31-e6c6c8ef7a6a. 
+2025-02-18 20:06:55.449386800 DEBUG acme.internals.components.database.DatabaseManager@main Creating database schema. 
+2025-02-18 20:06:55.454477600 DEBUG acme.internals.components.database.DatabaseManager@main Creating batch for transaction 3482b7ef-5c60-4b24-bc31-e6c6c8ef7a6a. 
+2025-02-18 20:06:55.454477600 DEBUG acme.internals.components.database.DatabaseManager@main Adding 'set foreign_key_checks=0;\n' to batch in transaction 3482b7ef-5c60-4b24-bc31-e6c6c8ef7a6a. 
+2025-02-18 20:06:55.454477600 DEBUG acme.internals.components.database.DatabaseManager@main Adding 'create table abstract_squad (id integer not null, version integer not null, user_account_id integer not null, primary key (id)) engine=InnoDB' to batch in transaction 3482b7ef-5c60-4b24-bc31-e6c6c8ef7a6a. 
+2025-02-18 20:06:55.454477600 DEBUG acme.internals.components.database.DatabaseManager@main Adding 'create table administrator (id integer not null, version integer not null, user_account_id integer not null, primary key (id)) engine=InnoDB' to batch in transaction 3482b7ef-5c60-4b24-bc31-e6c6c8ef7a6a. 
+2025-02-18 20:06:55.454477600 DEBUG acme.internals.components.database.DatabaseManager@main Adding 'create table anonymous (id integer not null, version integer not null, user_account_id integer not null, primary key (id)) engine=InnoDB' to batch in transaction 3482b7ef-5c60-4b24-bc31-e6c6c8ef7a6a. 
+2025-02-18 20:06:55.454477600 DEBUG acme.internals.components.database.DatabaseManager@main Adding 'create table any (id integer not null, version integer not null, user_account_id integer not null, primary key (id)) engine=InnoDB' to batch in transaction 3482b7ef-5c60-4b24-bc31-e6c6c8ef7a6a. 
+2025-02-18 20:06:55.454477600 DEBUG acme.internals.components.database.DatabaseManager@main Adding 'create table authenticated (id integer not null, version integer not null, user_account_id integer not null, primary key (id)) engine=InnoDB' to batch in transaction 3482b7ef-5c60-4b24-bc31-e6c6c8ef7a6a. 
+2025-02-18 20:06:55.455486400 DEBUG acme.internals.components.database.DatabaseManager@main Adding 'create table consumer (id integer not null, version integer not null, user_account_id integer not null, company varchar(255), sector varchar(255), primary key (id)) engine=InnoDB' to batch in transaction 3482b7ef-5c60-4b24-bc31-e6c6c8ef7a6a. 
+2025-02-18 20:06:55.455486400 DEBUG acme.internals.components.database.DatabaseManager@main Adding 'create table hibernate_sequences (sequence_name varchar(255) not null, next_val bigint, primary key (sequence_name)) engine=InnoDB' to batch in transaction 3482b7ef-5c60-4b24-bc31-e6c6c8ef7a6a. 
+2025-02-18 20:06:55.455486400 DEBUG acme.internals.components.database.DatabaseManager@main Adding 'insert into hibernate_sequences(sequence_name, next_val) values ('default',0)' to batch in transaction 3482b7ef-5c60-4b24-bc31-e6c6c8ef7a6a. 
+2025-02-18 20:06:55.455486400 DEBUG acme.internals.components.database.DatabaseManager@main Adding 'create table provider (id integer not null, version integer not null, user_account_id integer not null, company varchar(255), sector varchar(255), primary key (id)) engine=InnoDB' to batch in transaction 3482b7ef-5c60-4b24-bc31-e6c6c8ef7a6a. 
+2025-02-18 20:06:55.455486400 DEBUG acme.internals.components.database.DatabaseManager@main Adding 'create table user_account (id integer not null, version integer not null, enabled bit not null, identity blob, password varchar(255) not null, username varchar(255) not null, primary key (id)) engine=InnoDB' to batch in transaction 3482b7ef-5c60-4b24-bc31-e6c6c8ef7a6a. 
+2025-02-18 20:06:55.455486400 DEBUG acme.internals.components.database.DatabaseManager@main Adding 'alter table user_account add constraint UK_castjbvpeeus0r8lbpehiu0e4 unique (username)' to batch in transaction 3482b7ef-5c60-4b24-bc31-e6c6c8ef7a6a. 
+2025-02-18 20:06:55.455486400 DEBUG acme.internals.components.database.DatabaseManager@main Adding 'alter table abstract_squad add constraint FK_6r336s2qobvtlhcicaspgws6s foreign key (user_account_id) references user_account (id)' to batch in transaction 3482b7ef-5c60-4b24-bc31-e6c6c8ef7a6a. 
+2025-02-18 20:06:55.455486400 DEBUG acme.internals.components.database.DatabaseManager@main Adding 'alter table administrator add constraint FK_2a5vcjo3stlfcwadosjfq49l1 foreign key (user_account_id) references user_account (id)' to batch in transaction 3482b7ef-5c60-4b24-bc31-e6c6c8ef7a6a. 
+2025-02-18 20:06:55.455486400 DEBUG acme.internals.components.database.DatabaseManager@main Adding 'alter table anonymous add constraint FK_6lnbc6fo3om54vugoh8icg78m foreign key (user_account_id) references user_account (id)' to batch in transaction 3482b7ef-5c60-4b24-bc31-e6c6c8ef7a6a. 
+2025-02-18 20:06:55.455486400 DEBUG acme.internals.components.database.DatabaseManager@main Adding 'alter table any add constraint FK_26yflnlk4xrrxtkiwkag1l7lf foreign key (user_account_id) references user_account (id)' to batch in transaction 3482b7ef-5c60-4b24-bc31-e6c6c8ef7a6a. 
+2025-02-18 20:06:55.455486400 DEBUG acme.internals.components.database.DatabaseManager@main Adding 'alter table authenticated add constraint FK_h52w0f3wjoi68b63wv9vwon57 foreign key (user_account_id) references user_account (id)' to batch in transaction 3482b7ef-5c60-4b24-bc31-e6c6c8ef7a6a. 
+2025-02-18 20:06:55.456528200 DEBUG acme.internals.components.database.DatabaseManager@main Adding 'alter table consumer add constraint FK_6cyha9f1wpj0dpbxrrjddrqed foreign key (user_account_id) references user_account (id)' to batch in transaction 3482b7ef-5c60-4b24-bc31-e6c6c8ef7a6a. 
+2025-02-18 20:06:55.456528200 DEBUG acme.internals.components.database.DatabaseManager@main Adding 'alter table provider add constraint FK_b1gwnjqm6ggy9yuiqm0o4rlmd foreign key (user_account_id) references user_account (id)' to batch in transaction 3482b7ef-5c60-4b24-bc31-e6c6c8ef7a6a. 
+2025-02-18 20:06:55.456528200 DEBUG acme.internals.components.database.DatabaseManager@main Adding 'set foreign_key_checks=1;\n' to batch in transaction 3482b7ef-5c60-4b24-bc31-e6c6c8ef7a6a. 
+2025-02-18 20:06:55.456528200 DEBUG acme.internals.components.database.DatabaseManager@main Submitting batch in transaction 3482b7ef-5c60-4b24-bc31-e6c6c8ef7a6a. 
+2025-02-18 20:06:55.584362400 DEBUG acme.internals.components.database.DatabasePopulator@main Sorting your entity clazzes topologically. 
+2025-02-18 20:06:55.584362400 DEBUG acme.internals.components.database.DatabasePopulator@main Best topological order for your entity clazzes: 
+2025-02-18 20:06:55.584362400 DEBUG acme.internals.components.database.DatabasePopulator@main - acme.client.components.principals.UserAccount 
+2025-02-18 20:06:55.584362400 DEBUG acme.internals.components.database.DatabasePopulator@main - acme.client.components.principals.Administrator 
+2025-02-18 20:06:55.584362400 DEBUG acme.internals.components.database.DatabasePopulator@main - acme.client.components.principals.Anonymous 
+2025-02-18 20:06:55.584362400 DEBUG acme.internals.components.database.DatabasePopulator@main Persisting your entities. 
+2025-02-18 20:06:55.584362400 DEBUG acme.internals.components.database.DatabasePopulator@main Persisting entities of clazz 'acme.client.components.principals.UserAccount'. 
+2025-02-18 20:06:55.588457 DEBUG acme.internals.components.database.DatabaseManager@main Persisting entity 'UserAccount{id = 0, version = 0, username = "anonymous", password = "$2a$05$nTQAYYt5R57g97WH1fqH/.4GdwzryyH3JjTvqFpTKuwy.fF83DRnC", enabled = false, identity = DefaultUserIdentity(name=John, surname=Doe, email=john.doe@acme.com), $assertionsDisabled = false}'. 
+2025-02-18 20:06:55.596718200 DEBUG org.hibernate.SQL@main select tbl.next_val from hibernate_sequences tbl where tbl.sequence_name=? for update 
+2025-02-18 20:06:55.604094900 DEBUG org.hibernate.SQL@main update hibernate_sequences set next_val=?  where next_val=? and sequence_name=? 
+2025-02-18 20:06:55.629492 DEBUG acme.internals.components.database.DatabaseManager@main Persisting entity 'UserAccount{id = 0, version = 0, username = "administrator", password = "$2a$05$ZEn42YgzTBDX4rIHtuIZheXWMr/iWoHqtvQyjepUawhuYLaKWLwZi", enabled = true, identity = DefaultUserIdentity(name=Administrator, surname=Acme, email=administrator@acme.com), $assertionsDisabled = false}'. 
+2025-02-18 20:06:55.629492 DEBUG org.hibernate.SQL@main select tbl.next_val from hibernate_sequences tbl where tbl.sequence_name=? for update 
+2025-02-18 20:06:55.630506700 DEBUG org.hibernate.SQL@main update hibernate_sequences set next_val=?  where next_val=? and sequence_name=? 
+2025-02-18 20:06:55.631548600 DEBUG acme.internals.components.database.DatabaseManager@main Flushing transaction 3482b7ef-5c60-4b24-bc31-e6c6c8ef7a6a. 
+2025-02-18 20:06:55.640803900 DEBUG org.hibernate.SQL@main insert into user_account (version, enabled, identity, password, username, id) values (?, ?, ?, ?, ?, ?) 
+2025-02-18 20:06:55.641884600 TRACE org.hibernate.type.descriptor.sql.BasicBinder@main binding parameter [1] as [INTEGER] - [0] 
+2025-02-18 20:06:55.642888500 TRACE org.hibernate.type.descriptor.sql.BasicBinder@main binding parameter [2] as [BOOLEAN] - [false] 
+2025-02-18 20:06:55.642888500 TRACE org.hibernate.type.descriptor.sql.BasicBinder@main binding parameter [3] as [BLOB] - [DefaultUserIdentity(name=John, surname=Doe, email=john.doe@acme.com)] 
+2025-02-18 20:06:55.643909400 TRACE org.hibernate.type.descriptor.sql.BasicBinder@main binding parameter [4] as [VARCHAR] - [$2a$05$nTQAYYt5R57g97WH1fqH/.4GdwzryyH3JjTvqFpTKuwy.fF83DRnC] 
+2025-02-18 20:06:55.643909400 TRACE org.hibernate.type.descriptor.sql.BasicBinder@main binding parameter [5] as [VARCHAR] - [anonymous] 
+2025-02-18 20:06:55.643909400 TRACE org.hibernate.type.descriptor.sql.BasicBinder@main binding parameter [6] as [INTEGER] - [1] 
+2025-02-18 20:06:55.646971700 DEBUG org.hibernate.SQL@main insert into user_account (version, enabled, identity, password, username, id) values (?, ?, ?, ?, ?, ?) 
+2025-02-18 20:06:55.646971700 TRACE org.hibernate.type.descriptor.sql.BasicBinder@main binding parameter [1] as [INTEGER] - [0] 
+2025-02-18 20:06:55.646971700 TRACE org.hibernate.type.descriptor.sql.BasicBinder@main binding parameter [2] as [BOOLEAN] - [true] 
+2025-02-18 20:06:55.646971700 TRACE org.hibernate.type.descriptor.sql.BasicBinder@main binding parameter [3] as [BLOB] - [DefaultUserIdentity(name=Administrator, surname=Acme, email=administrator@acme.com)] 
+2025-02-18 20:06:55.646971700 TRACE org.hibernate.type.descriptor.sql.BasicBinder@main binding parameter [4] as [VARCHAR] - [$2a$05$ZEn42YgzTBDX4rIHtuIZheXWMr/iWoHqtvQyjepUawhuYLaKWLwZi] 
+2025-02-18 20:06:55.646971700 TRACE org.hibernate.type.descriptor.sql.BasicBinder@main binding parameter [5] as [VARCHAR] - [administrator] 
+2025-02-18 20:06:55.647993800 TRACE org.hibernate.type.descriptor.sql.BasicBinder@main binding parameter [6] as [INTEGER] - [2] 
+2025-02-18 20:06:55.649014300 DEBUG acme.internals.components.database.DatabasePopulator@main Persisting entities of clazz 'acme.client.components.principals.Administrator'. 
+2025-02-18 20:06:55.649014300 DEBUG acme.internals.components.database.DatabaseManager@main Persisting entity 'Administrator{id = 0, version = 0, userAccount = acme.client.components.principals.UserAccount{id=2, version=0}, $assertionsDisabled = false}'. 
+2025-02-18 20:06:55.649014300 DEBUG org.hibernate.SQL@main select tbl.next_val from hibernate_sequences tbl where tbl.sequence_name=? for update 
+2025-02-18 20:06:55.650028200 DEBUG org.hibernate.SQL@main update hibernate_sequences set next_val=?  where next_val=? and sequence_name=? 
+2025-02-18 20:06:55.651069900 DEBUG acme.internals.components.database.DatabaseManager@main Flushing transaction 3482b7ef-5c60-4b24-bc31-e6c6c8ef7a6a. 
+2025-02-18 20:06:55.652082900 DEBUG org.hibernate.SQL@main insert into administrator (version, user_account_id, id) values (?, ?, ?) 
+2025-02-18 20:06:55.652082900 TRACE org.hibernate.type.descriptor.sql.BasicBinder@main binding parameter [1] as [INTEGER] - [0] 
+2025-02-18 20:06:55.652082900 TRACE org.hibernate.type.descriptor.sql.BasicBinder@main binding parameter [2] as [INTEGER] - [2] 
+2025-02-18 20:06:55.652082900 TRACE org.hibernate.type.descriptor.sql.BasicBinder@main binding parameter [3] as [INTEGER] - [3] 
+2025-02-18 20:06:55.653107300 DEBUG acme.internals.components.database.DatabasePopulator@main Persisting entities of clazz 'acme.client.components.principals.Anonymous'. 
+2025-02-18 20:06:55.653107300 DEBUG acme.internals.components.database.DatabaseManager@main Persisting entity 'Anonymous{id = 0, version = 0, userAccount = acme.client.components.principals.UserAccount{id=1, version=0}, $assertionsDisabled = false}'. 
+2025-02-18 20:06:55.654125900 DEBUG org.hibernate.SQL@main select tbl.next_val from hibernate_sequences tbl where tbl.sequence_name=? for update 
+2025-02-18 20:06:55.654125900 DEBUG org.hibernate.SQL@main update hibernate_sequences set next_val=?  where next_val=? and sequence_name=? 
+2025-02-18 20:06:55.655138500 DEBUG acme.internals.components.database.DatabaseManager@main Flushing transaction 3482b7ef-5c60-4b24-bc31-e6c6c8ef7a6a. 
+2025-02-18 20:06:55.656149600 DEBUG org.hibernate.SQL@main insert into anonymous (version, user_account_id, id) values (?, ?, ?) 
+2025-02-18 20:06:55.656149600 TRACE org.hibernate.type.descriptor.sql.BasicBinder@main binding parameter [1] as [INTEGER] - [0] 
+2025-02-18 20:06:55.656149600 TRACE org.hibernate.type.descriptor.sql.BasicBinder@main binding parameter [2] as [INTEGER] - [1] 
+2025-02-18 20:06:55.656149600 TRACE org.hibernate.type.descriptor.sql.BasicBinder@main binding parameter [3] as [INTEGER] - [4] 
+2025-02-18 20:06:55.658258100 DEBUG acme.internals.components.database.DatabaseManager@main Committing transaction 3482b7ef-5c60-4b24-bc31-e6c6c8ef7a6a. 
+2025-02-18 20:06:55.659272900 DEBUG acme.internals.components.database.DatabaseManager@main Starting transaction a51210a4-faae-4a75-aa63-ffc5f037a58f. 
+2025-02-18 20:06:55.660290800 DEBUG acme.internals.components.database.DatabasePopulator@main Validating your entities. 
+2025-02-18 20:06:55.763974100 DEBUG acme.internals.components.database.DatabasePopulator@main Validating 'administrator-01' ... PASS. 
+2025-02-18 20:06:55.767105500 DEBUG acme.internals.components.database.DatabasePopulator@main Validating 'anonymous-01' ... PASS. 
+2025-02-18 20:06:55.768119300 DEBUG acme.internals.components.database.DatabasePopulator@main Validating 'user-account-anonymous-01' ... PASS. 
+2025-02-18 20:06:55.769130900 DEBUG acme.internals.components.database.DatabasePopulator@main Validating 'user-account-administrator-01' ... PASS. 
+2025-02-18 20:06:55.770201400 DEBUG acme.internals.components.database.DatabaseManager@main Committing transaction a51210a4-faae-4a75-aa63-ffc5f037a58f. 
+2025-02-18 20:06:55.770201400 DEBUG acme.Launcher@main Resetting clock. 
+2025-02-18 20:06:55.771207500 DEBUG acme.internals.components.clocks.SimulatedClock@main Changing current moment to 'Sat Jul 30 00:00:00 CEST 2022'. 
+2025-02-18 20:06:55.771207500 DEBUG acme.Launcher@main Resetting random generator. 
+2025-02-18 20:06:55.771207500 INFO  acme.Launcher@main Launching populator#initial took 0.691 seconds. Ready. 
+2025-02-18 20:06:55.786662 INFO  acme.internals.configuration.ShutdownConfiguration@main The system is shutting down... 
+2025-02-18 20:06:55.793627800 INFO  acme.Launcher@main Exiting application with status 0. 

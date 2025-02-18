@@ -29,6 +29,9 @@
 		<acme:menu-option code="master.menu.sergio" access="isAnonymous()">
 			<acme:menu-suboption code="master.menu.anonymous.favourite-link" action="https://theuselessweb.site/ducksarethebest.com/"/>
 		</acme:menu-option>
+		<acme:menu-option code="master.menu.joseluis" access="isAnonymous()">
+			<acme:menu-suboption code="master.menu.anonymous.favourite-link" action="https://papertoilet.com/"/>
+		</acme:menu-option>
 
 		<acme:menu-option code="master.menu.administrator" access="hasRealm('Administrator')">
 			<acme:menu-suboption code="master.menu.administrator.list-user-accounts" action="/administrator/user-account/list"/>
