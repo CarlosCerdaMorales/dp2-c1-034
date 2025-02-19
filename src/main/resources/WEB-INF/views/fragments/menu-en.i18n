@@ -9,16 +9,15 @@
 # they accept any liabilities with respect to them.
 
 
-master.menu.carlos = 77020024:CerdáMorales,Carlos
-
 
 # master.menu.anonymous #######################################################
 
 master.menu.anonymous = Anonymous
 master.menu.anonymous.favourite-link = Favourite link
-master.menu.anonymous.favourite-link-student1 = 49622742N:CantilloBlanco,Sergio
-master.menu.anonymous.favourite-link-student3 = 49525042:Founoun ElAoud, Loubna
-master.menu.anonymous.favourite-link-student4 = 77869249N:MorazaVergara, JoseLuis
+master.menu.anonymous.favourite-link-student1 = 49622742N:Cantillo Blanco,Sergio
+master.menu.anonymous.favourite-link-student2 = 77020024Q:Cerdá Morales, Carlos
+master.menu.anonymous.favourite-link-student3 = 49525042Q:Founoun ElAoud, Loubna
+master.menu.anonymous.favourite-link-student4 = 77869249N:Moraza Vergara, Jose Luis
 master.menu.anonymous.favourite-link-student5 = 49168304P:Oviedo Govantes, Claudia
 
 
