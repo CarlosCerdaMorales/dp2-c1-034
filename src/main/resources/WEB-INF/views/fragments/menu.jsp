@@ -21,13 +21,10 @@
 		<acme:menu-option code="master.menu.anonymous" access="isAnonymous()">
 			<acme:menu-suboption code="master.menu.anonymous.favourite-link" action="http://www.example.com/"/>
 			<acme:menu-suboption code="master.menu.anonymous.favourite-link-student1" action="https://theuselessweb.site/ducksarethebest.com/"/>
+			<acme:menu-suboption code="master.menu.anonymous.favourite-link-student2" action="https://zoomquilt.org/"/>
 			<acme:menu-suboption code="master.menu.anonymous.favourite-link-student3" action="https://lapalabradeldia.com"/>
 			<acme:menu-suboption code="master.menu.anonymous.favourite-link-student4" action="https://papertoilet.com/"/>
 			<acme:menu-suboption code="master.menu.anonymous.favourite-link-student5" action="https://random.dog/"/>
-		</acme:menu-option>
-		
-		<acme:menu-option code="master.menu.carlos" access="isAnonymous()">
-			<acme:menu-suboption code="master.menu.anonymous.favourite-link" action="https://zoomquilt.org/"/>
 		</acme:menu-option>
 		
 		<acme:menu-option code="master.menu.administrator" access="hasRealm('Administrator')">
