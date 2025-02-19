@@ -10,7 +10,6 @@
 
 
 master.menu.carlos = 77020024:CerdáMorales,Carlos
-master.menu.sergio = 49622742:CantilloBlanco,Sergio
 master.menu.loubna = 49525042:Founoun ElAoud, Loubna
 
 # master.menu.anonymous #######################################################
@@ -18,6 +17,7 @@ master.menu.loubna = 49525042:Founoun ElAoud, Loubna
 master.menu.anonymous = Anonymous
 master.menu.anonymous.favourite-link = Favourite link
 master.menu.anonymous.favourite-link-student5 = 49168304P:Oviedo Govantes, Claudia
+master.menu.anonymous.favourite-link-student1 = 49622742N:CantilloBlanco,Sergio
 
 # master.menu.administrator ###################################################
 
