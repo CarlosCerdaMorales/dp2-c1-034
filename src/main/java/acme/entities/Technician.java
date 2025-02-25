@@ -1,14 +1,14 @@
 
 package acme.entities;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.Pattern;
 
 import acme.client.components.basis.AbstractRole;
+import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
+import acme.client.components.validation.ValidScore;
 import acme.client.components.validation.ValidString;
 import lombok.Getter;
 import lombok.Setter;
@@ -25,34 +25,32 @@ public class Technician extends AbstractRole {
 	// Attributes -----------------------------------------------
 
 	@Mandatory
-	@Column(name = "license_number", unique = true)
+	@Automapped
 	@Pattern(regexp = "^[A-Z]{2,3}\\d{6}$")
 	private String				licenseNumber;
 
 	@Mandatory
-	@Column(name = "phone_number")
+	@Automapped
 	@Pattern(regexp = "^\\+?\\d{6,15}$")
 	private String				phoneNumber;
 
 	@Mandatory
-	@Column(name = "specialisation")
-	//@Size(max = 50)
+	@Automapped
 	@ValidString(max = 50)
 	private String				specialisation;
 
 	@Mandatory
-	@Column(name = "annual_health_test_passed")
+	@Automapped
 	private boolean				annualHealthTestPassed;
 
 	@Mandatory
-	@Column(name = "years_experience")
-	@Min(value = 0)
+	@Automapped
+	@ValidScore
 	private int					yearsExperience;
 
 	@Optional
-	@Column(name = "certifications")
-	//@Size(max = 255)
 	@ValidString
+	@Automapped
 	private String				certifications;
 
 }
