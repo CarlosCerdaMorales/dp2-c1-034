@@ -8,13 +8,13 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
 
 import acme.client.components.basis.AbstractEntity;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidEmail;
 import acme.client.components.validation.ValidMoment;
+import acme.client.components.validation.ValidString;
 import acme.client.components.validation.ValidUrl;
 import lombok.Getter;
 import lombok.Setter;
@@ -31,7 +31,7 @@ public class Airline extends AbstractEntity {
 	// Attributes
 
 	@Mandatory
-	@Size(max = 50)
+	@ValidString(max = 50)
 	@Column(name = "name")
 	private String				name;
 
