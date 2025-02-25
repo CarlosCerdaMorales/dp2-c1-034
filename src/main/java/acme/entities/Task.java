@@ -3,15 +3,13 @@ package acme.entities;
 
 import java.util.List;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.validation.Valid;
 
 import acme.client.components.basis.AbstractEntity;
+import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.ValidNumber;
 import acme.client.components.validation.ValidScore;
@@ -31,25 +29,21 @@ public class Task extends AbstractEntity {
 	// Attributes -----------------------------------------------
 
 	@Mandatory
-	@Column(name = "type")
-	@Enumerated(EnumType.STRING)
+	@Automapped
 	private TaskType			type;
 
 	@Mandatory
-	@Column(name = "description")
-	//@Size(max = 255)
+	@Automapped
 	@ValidString
 	private String				description;
 
 	@Mandatory
-	@Column(name = "priority")
-	//@Min(0)
-	//@Max(10)
+	@Automapped
 	@ValidNumber(min = 0, max = 10, integer = 2, fraction = 0)
 	private int					priority;
 
 	@Mandatory
-	@Column(name = "estimated_duration")
+	@Automapped
 	@ValidScore
 	private double				estimatedDuration;
 
