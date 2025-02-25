@@ -32,7 +32,7 @@ public class Manager extends AbstractRole {
 	@Mandatory
 	@NotBlank
 	@Column(unique = true)
-	@Pattern(regexp = "^[A-Z]{2-3}-\\d{6}$", message = "{validation.manager.code}")
+	@Pattern(regexp = "^[A-Z]{2,3}\\d{6}$")
 	private String	code;
 
 	@Mandatory
