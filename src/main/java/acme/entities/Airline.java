@@ -3,13 +3,11 @@ package acme.entities;
 
 import java.util.Date;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.validation.constraints.Pattern;
 
 import acme.client.components.basis.AbstractEntity;
+import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidEmail;
@@ -32,37 +30,36 @@ public class Airline extends AbstractEntity {
 
 	@Mandatory
 	@ValidString(max = 50)
-	@Column(name = "name")
+	@Automapped
 	private String				name;
 
 	@Mandatory
 	@Pattern(regexp = "^[A-Z]{2}X$")
-	@Column(name = "iata")
+	@Automapped
 	private String				iata;
 
 	@Mandatory
 	@ValidUrl
-	@Column(name = "web_site")
+	@Automapped
 	private String				webSite;
 
 	@Mandatory
-	@Enumerated(EnumType.STRING)
-	@Column(name = "type")
+	@Automapped
 	private AirlineType			type;
 
 	@Mandatory
 	@ValidMoment(past = true)
-	@Column(name = "foundation_moment")
+	@Automapped
 	private Date				foundationMoment;
 
 	@Optional
 	@ValidEmail
-	@Column(name = "email")
+	@Automapped
 	private String				email;
 
 	@Optional
 	@Pattern(regexp = "^\\+?\\d{6,15}$")
-	@Column(name = "phone_number")
+	@Automapped
 	private String				phoneNumber;
 
 }
