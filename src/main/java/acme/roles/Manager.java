@@ -27,26 +27,34 @@ import lombok.Setter;
 @Setter
 public class Manager extends AbstractRole {
 
+	//Serialisation version ---------------------------------------------------------------------------
+
+	private static final long	serialVersionUID	= 1L;
+
 	//ATRIBUTES-------------------------------------------------------------------------------------
 
 	@Mandatory
 	@NotBlank
-	@Column(unique = true)
 	@Pattern(regexp = "^[A-Z]{2,3}\\d{6}$")
-	private String	code;
+	@Column(name = "manager_code", unique = true)
+	private String				managerCode;
 
 	@Mandatory
 	@NotNull
 	@Min(0)
-	private int		yearsOfExperience;
+	@Column(name = "years_of_experience")
+	private int					yearsOfExperience;
 
 	@Mandatory
 	@ValidMoment
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date	birthDay;
+	@Column()
+	private Date				birthDay;
 
 	@Optional
 	@URL
 	@Length(max = 255)
-	private String	pictureLink;
+	private String				pictureLink;
+
+	// Relationships ----------------------------------------------------------
 }
