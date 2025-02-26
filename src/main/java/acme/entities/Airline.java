@@ -4,7 +4,7 @@ package acme.entities;
 import java.util.Date;
 
 import javax.persistence.Entity;
-import javax.validation.constraints.Pattern;
+import javax.validation.Valid;
 
 import acme.client.components.basis.AbstractEntity;
 import acme.client.components.mappings.Automapped;
@@ -34,7 +34,7 @@ public class Airline extends AbstractEntity {
 	private String				name;
 
 	@Mandatory
-	@Pattern(regexp = "^[A-Z]{2}X$")
+	@ValidString(pattern = "^[A-Z]{2}X$", max = 3)
 	@Automapped
 	private String				iata;
 
@@ -44,6 +44,7 @@ public class Airline extends AbstractEntity {
 	private String				webSite;
 
 	@Mandatory
+	@Valid
 	@Automapped
 	private AirlineType			type;
 
@@ -58,7 +59,7 @@ public class Airline extends AbstractEntity {
 	private String				email;
 
 	@Optional
-	@Pattern(regexp = "^\\+?\\d{6,15}$")
+	@ValidString(pattern = "^\\+?\\d{6,15}$")
 	@Automapped
 	private String				phoneNumber;
 
