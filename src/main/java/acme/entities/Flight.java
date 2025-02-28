@@ -2,7 +2,7 @@
 package acme.entities;
 
 import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.validation.Valid;
 
 import acme.client.components.basis.AbstractEntity;
@@ -47,7 +47,7 @@ public class Flight extends AbstractEntity {
 
 	@Mandatory
 	@Valid
-	@ManyToOne(optional = false)
+	@OneToMany
 	private Leg					leg;
 
 }

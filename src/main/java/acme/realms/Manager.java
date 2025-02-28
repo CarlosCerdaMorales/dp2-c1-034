@@ -1,5 +1,5 @@
 
-package acme.roles;
+package acme.realms;
 
 import java.util.Date;
 
@@ -15,7 +15,7 @@ import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidMoment;
-import acme.client.components.validation.ValidScore;
+import acme.client.components.validation.ValidNumber;
 import acme.client.components.validation.ValidUrl;
 import lombok.Getter;
 import lombok.Setter;
@@ -38,11 +38,11 @@ public class Manager extends AbstractRole {
 
 	@Mandatory
 	@Automapped
-	@ValidScore
+	@ValidNumber(min = 0)
 	private Integer				yearsExperience;
 
 	@Mandatory
-	@ValidMoment
+	@ValidMoment(past = true)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date				birthDay;
 
