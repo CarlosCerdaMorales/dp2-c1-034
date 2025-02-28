@@ -49,6 +49,7 @@ public class Manager extends AbstractRole {
 	@Optional
 	@ValidUrl
 	@Length(max = 255)
+	@Automapped
 	private String				pictureLink;
 
 	// Relationships ----------------------------------------------------------
