@@ -39,7 +39,7 @@ public class Manager extends AbstractRole {
 	@Mandatory
 	@Automapped
 	@ValidScore
-	private int					yearsExperience;
+	private Integer				yearsExperience;
 
 	@Mandatory
 	@ValidMoment
