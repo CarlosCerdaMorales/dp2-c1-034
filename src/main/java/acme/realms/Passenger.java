@@ -1,68 +1,56 @@
 
-package acme.entities;
+package acme.realms;
 
 import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.Valid;
 
-import acme.client.components.basis.AbstractEntity;
+import acme.client.components.basis.AbstractRole;
 import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidEmail;
 import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidString;
-import acme.client.components.validation.ValidUrl;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
-public class Airline extends AbstractEntity {
+public class Passenger extends AbstractRole {
 
-	// Serialisation
+	// Serialisation version --------------------------------------------------
 
 	private static final long	serialVersionUID	= 1L;
 
-	// Attributes
+	// Attributes -------------------------------------------------------------
 
 	@Mandatory
-	@ValidString(max = 50)
+	@ValidString(max = 256)
 	@Automapped
-	private String				name;
+	private String				fullName;
 
 	@Mandatory
-	@ValidString(pattern = "^[A-Z]{2}X$", max = 3)
-	@Automapped
-	private String				iata;
-
-	@Mandatory
-	@ValidUrl
-	@Automapped
-	private String				webSite;
-
-	@Mandatory
-	@Valid
-	@Automapped
-	private AirlineType			type;
-
-	@Mandatory
-	@ValidMoment(past = true)
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date				foundationMoment;
-
-	@Optional
 	@ValidEmail
 	@Automapped
 	private String				email;
 
-	@Optional
-	@ValidString(pattern = "^\\+?\\d{6,15}$")
+	@Mandatory
+	@ValidString(pattern = "^[A-Z0-9]{6,9}$")
 	@Automapped
-	private String				phoneNumber;
+	private String				passport;
+
+	@Mandatory
+	@ValidMoment(past = true)
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date				dateOfBirth;
+
+	@Optional
+	@ValidString(max = 51)
+	@Automapped
+	private String				specialNeeds;
 
 }

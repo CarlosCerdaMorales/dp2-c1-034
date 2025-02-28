@@ -3,6 +3,7 @@ package acme.entities;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -12,57 +13,46 @@ import acme.client.components.basis.AbstractEntity;
 import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
-import acme.client.components.validation.ValidEmail;
 import acme.client.components.validation.ValidMoment;
+import acme.client.components.validation.ValidNumber;
 import acme.client.components.validation.ValidString;
-import acme.client.components.validation.ValidUrl;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
-public class Airline extends AbstractEntity {
+public class Booking extends AbstractEntity {
 
-	// Serialisation
+	// Serialisation identifier -----------------------------------------------
 
 	private static final long	serialVersionUID	= 1L;
 
-	// Attributes
+	// Attributes -----------------------------------------------
 
 	@Mandatory
-	@ValidString(max = 50)
-	@Automapped
-	private String				name;
-
-	@Mandatory
-	@ValidString(pattern = "^[A-Z]{2}X$", max = 3)
-	@Automapped
-	private String				iata;
-
-	@Mandatory
-	@ValidUrl
-	@Automapped
-	private String				webSite;
-
-	@Mandatory
-	@Valid
-	@Automapped
-	private AirlineType			type;
+	@ValidString(pattern = "^[A-Z0-9]{6,8}$")
+	@Column(unique = true)
+	private String				locatorCode;
 
 	@Mandatory
 	@ValidMoment(past = true)
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date				foundationMoment;
+	private Date				purchaseMoment;
+
+	@Mandatory
+	@Valid
+	@Automapped
+	private TravelClass			travelClass;
+
+	@Mandatory
+	@ValidNumber(min = 0)
+	@Automapped
+	private Integer				price;
 
 	@Optional
-	@ValidEmail
+	@ValidString(pattern = "^\\d{4}$")
 	@Automapped
-	private String				email;
-
-	@Optional
-	@ValidString(pattern = "^\\+?\\d{6,15}$")
-	@Automapped
-	private String				phoneNumber;
+	private String				lastNibble;
 
 }
