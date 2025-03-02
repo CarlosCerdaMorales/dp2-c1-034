@@ -30,7 +30,7 @@ public class Airport extends AbstractEntity {
 	private String				AirportName;
 
 	@Mandatory
-	@Pattern(regexp = "^[A-Z]{3}")
+	@ValidString(pattern = "^[A-Z]{3}")
 	@Automapped
 	private String				IATACode;
 
