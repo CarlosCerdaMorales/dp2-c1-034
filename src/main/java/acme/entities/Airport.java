@@ -20,51 +20,52 @@ import lombok.Setter;
 @Setter
 public class Airport extends AbstractEntity {
 
-	//Serialisation version ---------------------------------------------------------------------------
+	// Serialisation version
+	// ---------------------------------------------------------------------------
 
-	private static final long	serialVersionUID	= 1L;
+	private static final long serialVersionUID = 1L;
 
-	//Atributes----------------------------------------------------------------------------------------
+	// Atributes----------------------------------------------------------------------------------------
 
 	@Mandatory
 	@ValidString(max = 50)
 	@Automapped
-	private String				airportName;
+	private String airportName;
 
 	@Mandatory
 	@ValidString(pattern = "^[A-Z]{3}")
 	@Automapped
-	private String				IATACode;
+	private String IATACode;
 
 	@Mandatory
 	@Valid
 	@Automapped
-	private Scopes				operationalScope;
+	private Scopes operationalScope;
 
 	@Mandatory
 	@ValidString(max = 50)
 	@Automapped
-	private String				city;
+	private String city;
 
 	@Mandatory
 	@ValidString(max = 50)
 	@Automapped
-	private String				country;
+	private String country;
 
 	@Optional
 	@ValidUrl
 	@Automapped
-	private String				website;
+	private String website;
 
 	@Optional
 	@ValidEmail
 	@Automapped
-	private String				email;
+	private String email;
 
 	@Optional
 	@Automapped
-	@Pattern(regexp = "^\\+?\\d{6,15}$")
-	private String				contactPhoneNumber;
+	@ValidString(pattern = "^\\+?\\d{6,15}$")
+	private String contactPhoneNumber;
 
 	// Relationships ----------------------------------------------------------
 
