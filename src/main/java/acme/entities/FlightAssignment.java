@@ -12,7 +12,6 @@ import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidMoment;
-import acme.client.components.validation.ValidNumber;
 import acme.client.components.validation.ValidString;
 import lombok.Getter;
 import lombok.Setter;
@@ -20,8 +19,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class Review extends AbstractEntity {
-
+public class FlightAssignment extends AbstractEntity {
 	// Serialisation identifier -----------------------------------------------
 
 	private static final long	serialVersionUID	= 1L;
@@ -29,32 +27,21 @@ public class Review extends AbstractEntity {
 	// Attributes -----------------------------------------------
 	@Mandatory
 	@Automapped
-	@ValidString(max = 50)
-	private String				name;
+	public FlightCrewDuty		flightCrewDuty;
 
 	@Mandatory
 	@Automapped
 	@ValidMoment(past = true)
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date				postingMoment;
+	public Date					lastUpdate;
 
 	@Mandatory
 	@Automapped
-	@ValidString(max = 50)
-	private String				subject;
+	public AssignmentStatus		assignmentStatus;
 
-	@Mandatory
+	@Optional
 	@Automapped
 	@ValidString(max = 255)
-	private String				text;
-
-	@Optional
-	@Automapped
-	@ValidNumber(min = 0, max = 10)
-	private Double				score;
-
-	@Optional
-	@Automapped
-	private Boolean				isRecommended;
+	public String				remarks;
 
 }
