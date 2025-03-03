@@ -43,6 +43,7 @@ public class FlightCrewMember extends AbstractEntity {
 
 	@Mandatory
 	@Automapped
+	@Valid
 	@ManyToOne(optional = false)
 	private Airline workingFor;
 
