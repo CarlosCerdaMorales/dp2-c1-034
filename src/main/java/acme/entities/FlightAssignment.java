@@ -22,26 +22,26 @@ import lombok.Setter;
 public class FlightAssignment extends AbstractEntity {
 	// Serialisation identifier -----------------------------------------------
 
-	private static final long	serialVersionUID	= 1L;
+	private static final long serialVersionUID = 1L;
 
 	// Attributes -----------------------------------------------
 	@Mandatory
 	@Automapped
-	public FlightCrewDuty		flightCrewDuty;
+	private FlightCrewDuty flightCrewDuty;
 
 	@Mandatory
 	@Automapped
 	@ValidMoment(past = true)
 	@Temporal(TemporalType.TIMESTAMP)
-	public Date					lastUpdate;
+	private Date lastUpdate;
 
 	@Mandatory
 	@Automapped
-	public AssignmentStatus		assignmentStatus;
+	private AssignmentStatus assignmentStatus;
 
 	@Optional
 	@Automapped
 	@ValidString(max = 255)
-	public String				remarks;
+	private String remarks;
 
 }
