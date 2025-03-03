@@ -2,6 +2,7 @@
 package acme.entities;
 
 import javax.persistence.ManyToOne;
+import javax.validation.Valid;
 import javax.validation.constraints.Pattern;
 
 import acme.client.components.basis.AbstractEntity;
@@ -17,41 +18,42 @@ public class FlightCrewMember extends AbstractEntity {
 
 	// Serialisation identifier -----------------------------------------------
 
-	private static final long	serialVersionUID	= 1L;
+	private static final long serialVersionUID = 1L;
 
 	// Attributes -----------------------------------------------
 	@Mandatory
-	@ValidString(pattern = "[A-Z]{2-3}\\d{6}$", max = 3)
+	@ValidString(pattern = "[A-Z]{2-3}\\d{6}$")
 	@Automapped
-	private String				employeeCode;
+	private String employeeCode;
 
 	@Mandatory
 	@Automapped
-	@Pattern(regexp = "^\\+?\\d{6,15}$")
-	private String				phoneNumber;
+	@ValidString(pattern = "^+?\\d{6,15}$")
+	private String phoneNumber;
 
 	@Mandatory
 	@Automapped
 	@ValidString(max = 255)
-	private String				languageSkills;
+	private String languageSkills;
 
 	@Mandatory
 	@Automapped
-	private AvailabilityStatus	availabilityStatus;
+	@Valid
+	private AvailabilityStatus availabilityStatus;
 
 	@Mandatory
 	@Automapped
 	@ManyToOne(optional = false)
-	private Airline				workingFor;
+	private Airline workingFor;
 
 	@Mandatory
 	@Automapped
 	@ValidMoney
-	private Money				salary;
+	private Money salary;
 
 	@Optional
 	@Automapped
 	@ValidNumber
-	private Integer				yearsOfExperience;
+	private Integer yearsOfExperience;
 
 }
