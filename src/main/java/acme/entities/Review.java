@@ -24,37 +24,36 @@ public class Review extends AbstractEntity {
 
 	// Serialisation identifier -----------------------------------------------
 
-	private static final long	serialVersionUID	= 1L;
+	private static final long serialVersionUID = 1L;
 
 	// Attributes -----------------------------------------------
 	@Mandatory
 	@Automapped
 	@ValidString(max = 50)
-	private String				name;
+	private String name;
 
 	@Mandatory
-	@Automapped
 	@ValidMoment(past = true)
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date				postingMoment;
+	private Date postingMoment;
 
 	@Mandatory
 	@Automapped
 	@ValidString(max = 50)
-	private String				subject;
+	private String subject;
 
 	@Mandatory
 	@Automapped
 	@ValidString(max = 255)
-	private String				text;
+	private String text;
 
 	@Optional
 	@Automapped
 	@ValidNumber(min = 0, max = 10)
-	private Double				score;
+	private Double score;
 
 	@Optional
 	@Automapped
-	private Boolean				isRecommended;
+	private Boolean isRecommended;
 
 }
