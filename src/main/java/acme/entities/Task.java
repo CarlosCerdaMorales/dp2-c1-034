@@ -12,8 +12,8 @@ import acme.client.components.basis.AbstractEntity;
 import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.ValidNumber;
-import acme.client.components.validation.ValidScore;
 import acme.client.components.validation.ValidString;
+import acme.realms.Technician;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -29,23 +29,24 @@ public class Task extends AbstractEntity {
 	// Attributes -----------------------------------------------
 
 	@Mandatory
+	@Valid
 	@Automapped
 	private TaskType			type;
 
 	@Mandatory
 	@Automapped
-	@ValidString
+	@ValidString(max = 255)
 	private String				description;
 
 	@Mandatory
 	@Automapped
 	@ValidNumber(min = 0, max = 10, integer = 2, fraction = 0)
-	private int					priority;
+	private Integer				priority;
 
 	@Mandatory
 	@Automapped
-	@ValidScore
-	private double				estimatedDuration;
+	@ValidNumber(min = 0)
+	private Double				estimatedDuration;
 
 	// Relationships ----------------------------------------------------------
 

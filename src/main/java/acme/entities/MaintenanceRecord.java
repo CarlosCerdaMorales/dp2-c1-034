@@ -33,17 +33,16 @@ public class MaintenanceRecord extends AbstractEntity {
 	// Attributes -----------------------------------------------
 
 	@Mandatory
-	@Automapped
 	@ValidMoment(past = true)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date				maintenanceMoment;
 
 	@Mandatory
+	@Valid
 	@Automapped
 	private MaintenanceStatus	status;
 
 	@Mandatory
-	@Automapped
 	@ValidMoment
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date				nextInspectionDue;
@@ -51,7 +50,7 @@ public class MaintenanceRecord extends AbstractEntity {
 	@Mandatory
 	@Automapped
 	@ValidNumber(min = 0)
-	private double				estimatedCost;
+	private Double				estimatedCost;
 
 	@Optional
 	@Automapped

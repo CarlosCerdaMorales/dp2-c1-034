@@ -1,10 +1,8 @@
 
 package acme.entities;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.validation.constraints.Pattern;
-
-import org.checkerframework.common.aliasing.qual.Unique;
 
 import acme.client.components.basis.AbstractEntity;
 import acme.client.components.datatypes.Money;
@@ -45,15 +43,13 @@ public class Service extends AbstractEntity {
 	private Integer				averageDwellTime;
 
 	@Optional
-	@Unique
-	@Pattern(regexp = "\\^[A-Z]{4}-[0-9]{2}$")
-	@Automapped
+	@ValidString(pattern = "\\^[A-Z]{4}-[0-9]{2}$")
+	@Column(unique = true)
 	private String				promotionCode;
 
 	@Optional
 	@ValidMoney
 	@Automapped
-	@Unique
 	private Money				moneyDiscounted;
 
 }

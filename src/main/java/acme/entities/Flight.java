@@ -2,12 +2,12 @@
 package acme.entities;
 
 import javax.persistence.Entity;
-import javax.persistence.OneToMany;
 import javax.validation.Valid;
 
 import acme.client.components.basis.AbstractEntity;
 import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
+import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidNumber;
 import acme.client.components.validation.ValidString;
 import lombok.Getter;
@@ -30,24 +30,20 @@ public class Flight extends AbstractEntity {
 	private String				flightTag;
 
 	@Mandatory
+	@Valid
 	@Automapped
-	private boolean				isSelfTransfer;
+	private Boolean				isSelfTransfer;
 
 	@Mandatory
 	@Automapped
 	@ValidNumber(min = 0)
-	private double				flightCost;
+	private Double				flightCost;
 
-	@Mandatory
+	@Optional
 	@ValidString(max = 255)
 	@Automapped
 	private String				flightDescription;
 
 	//Relationships-----------------------------------------------------------------------------------
-
-	@Mandatory
-	@Valid
-	@OneToMany
-	private Leg					leg;
 
 }

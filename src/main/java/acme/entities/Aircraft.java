@@ -1,9 +1,9 @@
 
 package acme.entities;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
+import javax.validation.Valid;
 
 import acme.client.components.basis.AbstractEntity;
 import acme.client.components.mappings.Automapped;
@@ -31,28 +31,28 @@ public class Aircraft extends AbstractEntity {
 	private String				model;
 
 	@Mandatory
-	@Automapped
+	@Column(unique = true)
 	@ValidString(max = 50)
 	private String				registrationNumber;
 
 	@Mandatory
 	@Automapped
 	@ValidNumber(min = 0, fraction = 0)
-	private int					capacity;
+	private Integer				capacity;
 
 	@Mandatory
 	@Automapped
 	@ValidNumber(min = 2000, integer = 5, max = 50000)
-	private int					cargoWeight;
+	private Integer				cargoWeight;
 
 	@Mandatory
+	@Valid
 	@Automapped
-	@Enumerated(EnumType.STRING)
 	private AircraftStatus		status;
 
 	@Optional
 	@Automapped
-	@ValidString
+	@ValidString(max = 255)
 	private String				details;
 
 }

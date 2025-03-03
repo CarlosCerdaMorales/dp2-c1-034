@@ -3,6 +3,7 @@ package acme.entities;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -17,14 +18,16 @@ import acme.client.components.validation.ValidString;
 import acme.client.components.validation.ValidUrl;
 
 public class AssistanceAgent extends AbstractRole {
+
 	// Serialisation identifier -----------------------------------------------
 
 	private static final long	serialVersionUID	= 1L;
 
 	// Attributes -----------------------------------------------
+
 	@Mandatory
 	@ValidString(pattern = "^[A-Z]{2-3}\\d{6}$")
-	@Automapped
+	@Column(unique = true)
 	private String				employeeCode;
 
 	@Mandatory

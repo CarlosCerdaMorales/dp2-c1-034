@@ -3,12 +3,10 @@ package acme.realms;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.Pattern;
-
-import org.hibernate.validator.constraints.Length;
 
 import acme.client.components.basis.AbstractRole;
 import acme.client.components.mappings.Automapped;
@@ -16,6 +14,7 @@ import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidNumber;
+import acme.client.components.validation.ValidString;
 import acme.client.components.validation.ValidUrl;
 import lombok.Getter;
 import lombok.Setter;
@@ -32,8 +31,8 @@ public class Manager extends AbstractRole {
 	//ATRIBUTES-------------------------------------------------------------------------------------
 
 	@Mandatory
-	@Automapped
-	@Pattern(regexp = "^[A-Z]{2,3}\\d{6}$")
+	@Column(unique = true)
+	@ValidString(pattern = "^[A-Z]{2,3}\\d{6}$")
 	private String				managerCode;
 
 	@Mandatory
@@ -48,7 +47,6 @@ public class Manager extends AbstractRole {
 
 	@Optional
 	@ValidUrl
-	@Length(max = 255)
 	@Automapped
 	private String				pictureLink;
 
