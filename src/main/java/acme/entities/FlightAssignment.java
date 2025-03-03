@@ -28,6 +28,7 @@ public class FlightAssignment extends AbstractEntity {
 	// Attributes -----------------------------------------------
 	@Mandatory
 	@Automapped
+	@Valid
 	private FlightCrewDuty flightCrewDuty;
 
 	@Mandatory
