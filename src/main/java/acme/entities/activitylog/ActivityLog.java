@@ -13,6 +13,9 @@ import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidNumber;
 import acme.client.components.validation.ValidString;
 
+@Entity
+@Getter
+@Setter
 public class ActivityLog extends AbstractEntity {
 
 	// Serialisation identifier -----------------------------------------------
@@ -27,18 +30,18 @@ public class ActivityLog extends AbstractEntity {
 	private Date				registrationMoment;
 
 	@Mandatory
-	@Automapped
 	@ValidString(max = 50)
+	@Automapped
 	private String				incidentType;
 
 	@Mandatory
-	@Automapped
 	@ValidString(max = 255)
+	@Automapped
 	private String				description;
 
 	@Mandatory
-	@Automapped
 	@ValidNumber(min = 0, max = 10)
+	@Automapped
 	private Double				severityLevel;
 
 }
