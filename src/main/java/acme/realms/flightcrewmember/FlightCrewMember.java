@@ -14,6 +14,9 @@ import acme.client.components.validation.ValidNumber;
 import acme.client.components.validation.ValidString;
 import acme.entities.airline.Airline;
 
+@Entity
+@Getter
+@Setter
 public class FlightCrewMember extends AbstractRole {
 
 	// Serialisation identifier -----------------------------------------------
@@ -27,34 +30,34 @@ public class FlightCrewMember extends AbstractRole {
 	private String				employeeCode;
 
 	@Mandatory
-	@Automapped
 	@ValidString(pattern = "^+?\\d{6,15}$")
+	@Automapped
 	private String				phoneNumber;
 
 	@Mandatory
-	@Automapped
 	@ValidString(max = 255)
+	@Automapped
 	private String				languageSkills;
 
 	@Mandatory
-	@Automapped
 	@Valid
+	@Automapped
 	private AvailabilityStatus	availabilityStatus;
 
 	@Mandatory
-	@Automapped
 	@Valid
 	@ManyToOne(optional = false)
+	@Automapped
 	private Airline				workingFor;
 
 	@Mandatory
-	@Automapped
 	@ValidMoney
+	@Automapped
 	private Money				salary;
 
 	@Optional
-	@Automapped
 	@ValidNumber
+	@Automapped
 	private Integer				yearsOfExperience;
 
 }

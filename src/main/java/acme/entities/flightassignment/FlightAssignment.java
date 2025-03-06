@@ -27,8 +27,8 @@ public class FlightAssignment extends AbstractEntity {
 
 	// Attributes -----------------------------------------------
 	@Mandatory
-	@Automapped
 	@Valid
+	@Automapped
 	private FlightCrewDuty flightCrewDuty;
 
 	@Mandatory
@@ -37,13 +37,13 @@ public class FlightAssignment extends AbstractEntity {
 	private Date lastUpdate;
 
 	@Mandatory
-	@Automapped
 	@Valid
+	@Automapped
 	private AssignmentStatus assignmentStatus;
 
 	@Optional
-	@Automapped
 	@ValidString(max = 255)
+	@Automapped
 	private String remarks;
 
 }
