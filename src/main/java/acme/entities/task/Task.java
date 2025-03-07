@@ -35,18 +35,18 @@ public class Task extends AbstractEntity {
 	private TaskType			type;
 
 	@Mandatory
-	@Automapped
 	@ValidString(max = 255)
+	@Automapped
 	private String				description;
 
 	@Mandatory
-	@Automapped
 	@ValidNumber(min = 0, max = 10, integer = 2, fraction = 0)
+	@Automapped
 	private Integer				priority;
 
 	@Mandatory
-	@Automapped
 	@ValidNumber(min = 0)
+	@Automapped
 	private Double				estimatedDuration;
 
 	// Relationships ----------------------------------------------------------
