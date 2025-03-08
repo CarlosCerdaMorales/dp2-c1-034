@@ -29,7 +29,7 @@ public class Passenger extends AbstractRole {
 	// Attributes -------------------------------------------------------------
 
 	@Mandatory
-	@ValidString(max = 256)
+	@ValidString(max = 255)
 	@Automapped
 	private String				fullName;
 
@@ -49,7 +49,7 @@ public class Passenger extends AbstractRole {
 	private Date				dateOfBirth;
 
 	@Optional
-	@ValidString(max = 51)
+	@ValidString(max = 50)
 	@Automapped
 	private String				specialNeeds;
 
