@@ -1,5 +1,167 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="15.1">
-  <help_text/>
-  <zoom_level>10</zoom_level>
+  <zoom_level>7</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>805</x>
+      <y>357</y>
+      <w>469</w>
+      <h>98</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Aircraft
+--
++ model: String {Mandatory, ValidString(max=50), Automapped}
++ registrationNumber: String {Mandatory, ValidString(max=50), Column(unique=true)}
++ capacity: Integer {Mandatory, ValidNumber(min=0, fraction=0), Automapped}
++ cargoWeight: Integer {Mandatory, ValidNumber(min=2000, integer=5, max=50000), Automapped}
++ status: AircraftStatus {Mandatory, Valid, Automapped}
++ details: String {Optional, ValidString(max=255), Automapped}
+
+
+
+
+
+
+bg=GREEN</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>805</x>
+      <y>686</y>
+      <w>455</w>
+      <h>105</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Role&gt;&gt;
+Technician
+--
++ licenseNumber: String {Mandatory, ValidString(pattern = “^[A-Z]{2,3}\\d{6}$”), Column(unique = true)}
++ phoneNumber: Phone {Mandatory, Valid, Automapped}
++ specialisation: String {Mandatory, ValidString(min=1,max=50), Automapped}
++ annualHealthTestPassed: Boolean {Mandatory, Valid, Automapped}
++ yearsExperience: Integer {Mandatory, ValidNumber(min=0), Automapped}
++ certifications: String {Optional, ValidString(max=255), Automapped}
+bg=PINK</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>812</x>
+      <y>532</y>
+      <w>455</w>
+      <h>77</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Task
+--
++ type: TaskType {Mandatory, Valid, Automapped}
++ description: String {Mandatory, ValidString(max=255), Automapped}
++ priority: Double {Mandatory, ValidNumber(min = 0, max = 10, integer = 2, fraction = 0), Automapped}
++ estimatedDuration: Double {Mandatory, ValidNumber(min=0), Automapped}
+bg=GREEN</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1029</x>
+      <y>448</y>
+      <w>77</w>
+      <h>98</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=1
+m2=*
+ ^
+ performedIn
+</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;120.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1029</x>
+      <y>602</y>
+      <w>77</w>
+      <h>98</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m1=*
+m2=1
+ performedBy
+ v</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;120.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1274</x>
+      <y>532</y>
+      <w>91</w>
+      <h>77</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Enum&gt;&gt;
+TaskType
+--
+MAINTENANCE
+INSPECTION
+REPAIR
+SYSTEM_CHECK
+bg=YELLOW</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>273</x>
+      <y>525</y>
+      <w>413</w>
+      <h>91</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+MaintenanceRecord
+--
++ maintenanceMoment: Date {Mandatory, ValidMoment(past=true), Temporal(TIMESTAMP)}
++ status: MaintenanceStatus {Mandatory, Valid, Column(unique = true)}
++ nextInspectionDue: Date {Mandatory, ValidMoment,  Temporal(TIMESTAMP)}
++ estimatedCost: Money {Mandatory, ValidMoney, Automapped}
++ notes: String {Optional, ValidString, Automapped}
+bg=GREEN</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>161</x>
+      <y>546</y>
+      <w>91</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Enum&gt;&gt;
+MaintenanceStatus
+--
+PENDING
+IN_PROGRESS
+COMPLETED
+bg=YELLOW</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>679</x>
+      <y>567</y>
+      <w>147</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=1
+m2=*
+ &lt; composedOf</panel_attributes>
+    <additional_attributes>10.0;20.0;190.0;20.0</additional_attributes>
+  </element>
 </diagram>
