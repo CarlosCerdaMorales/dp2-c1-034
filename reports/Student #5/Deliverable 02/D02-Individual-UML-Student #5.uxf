@@ -4,8 +4,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>805</x>
-      <y>357</y>
+      <x>553</x>
+      <y>147</y>
       <w>469</w>
       <h>98</h>
     </coordinates>
@@ -17,7 +17,7 @@ Aircraft
 + capacity: Integer {Mandatory, ValidNumber(min=0, fraction=0), Automapped}
 + cargoWeight: Integer {Mandatory, ValidNumber(min=2000, integer=5, max=50000), Automapped}
 + status: AircraftStatus {Mandatory, Valid, Automapped}
-+ details: String {Optional, ValidString(max=255), Automapped}
+- details: String {Optional, ValidString(max=255), Automapped}
 
 
 
@@ -30,8 +30,8 @@ bg=GREEN</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>805</x>
-      <y>686</y>
+      <x>1183</x>
+      <y>588</y>
       <w>455</w>
       <h>105</h>
     </coordinates>
@@ -50,8 +50,8 @@ bg=PINK</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>812</x>
-      <y>532</y>
+      <x>560</x>
+      <y>308</y>
       <w>455</w>
       <h>77</h>
     </coordinates>
@@ -68,10 +68,10 @@ bg=GREEN</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1029</x>
-      <y>448</y>
+      <x>777</x>
+      <y>238</y>
       <w>77</w>
-      <h>98</h>
+      <h>84</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=1
@@ -79,28 +79,28 @@ m2=*
  ^
  performedIn
 </panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;120.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;100.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1029</x>
-      <y>602</y>
-      <w>77</w>
-      <h>98</h>
+      <x>1008</x>
+      <y>336</y>
+      <w>427</w>
+      <h>266</h>
     </coordinates>
     <panel_attributes>lt=-&gt;
 m1=*
 m2=1
- performedBy
- v</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;120.0</additional_attributes>
+ recordedBy
+ &gt;</panel_attributes>
+    <additional_attributes>10.0;20.0;580.0;20.0;580.0;360.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1274</x>
-      <y>532</y>
+      <x>455</x>
+      <y>308</y>
       <w>91</w>
       <h>77</h>
     </coordinates>
@@ -117,8 +117,8 @@ bg=YELLOW</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>273</x>
-      <y>525</y>
+      <x>567</x>
+      <y>602</y>
       <w>413</w>
       <h>91</h>
     </coordinates>
@@ -129,15 +129,15 @@ MaintenanceRecord
 + status: MaintenanceStatus {Mandatory, Valid, Column(unique = true)}
 + nextInspectionDue: Date {Mandatory, ValidMoment,  Temporal(TIMESTAMP)}
 + estimatedCost: Money {Mandatory, ValidMoney, Automapped}
-+ notes: String {Optional, ValidString, Automapped}
+- notes: String {Optional, ValidString, Automapped}
 bg=GREEN</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>161</x>
-      <y>546</y>
+      <x>455</x>
+      <y>609</y>
       <w>91</w>
       <h>63</h>
     </coordinates>
@@ -153,15 +153,80 @@ bg=YELLOW</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>679</x>
-      <y>567</y>
-      <w>147</w>
+      <x>973</x>
+      <y>651</y>
+      <w>224</w>
       <h>35</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m1=*
+m2=1
+ recordedBy
+ &gt;</panel_attributes>
+    <additional_attributes>10.0;20.0;300.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>567</x>
+      <y>462</y>
+      <w>413</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Involves
+--
++ maintenanceRecord: MaitenanceRecord {Mandatory, Valid, Automapped}
++ task: Task {Mandatory, Valid, Automapped}
+bg=CYAN</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>770</x>
+      <y>378</y>
+      <w>56</w>
+      <h>98</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=1
 m2=*
- &lt; composedOf</panel_attributes>
-    <additional_attributes>10.0;20.0;190.0;20.0</additional_attributes>
+ ^
+ Involves
+</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;120.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>0</x>
+      <y>14</y>
+      <w>56</w>
+      <h>98</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=1
+m2=*
+ ^
+ Involves
+</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;120.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>770</x>
+      <y>518</y>
+      <w>70</w>
+      <h>98</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+m1=1
+m2=*
+ ^
+ Involved in
+</panel_attributes>
+    <additional_attributes>10.0;120.0;10.0;10.0</additional_attributes>
   </element>
 </diagram>
