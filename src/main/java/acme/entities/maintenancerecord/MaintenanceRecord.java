@@ -72,9 +72,4 @@ public class MaintenanceRecord extends AbstractEntity {
 
 	// Relationships ----------------------------------------------------------
 
-	/*
-	 * Relations
-	 * -Aircraft
-	 * -Tasks
-	 */
 }

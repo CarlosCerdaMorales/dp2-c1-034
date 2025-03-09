@@ -55,4 +55,6 @@ public class Technician extends AbstractRole {
 	@Automapped
 	private String				certifications;
 
+	// Relationships -----------------------------------------------
+
 }

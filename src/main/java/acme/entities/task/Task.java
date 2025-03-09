@@ -1,10 +1,7 @@
 
 package acme.entities.task;
 
-import java.util.List;
-
 import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.validation.Valid;
 
@@ -52,18 +49,13 @@ public class Task extends AbstractEntity {
 	// Relationships ----------------------------------------------------------
 
 	@Mandatory
-	@ManyToOne(optional = false)
 	@Valid
+	@ManyToOne(optional = false)
 	private Technician			technician;
 
 	@Mandatory
-	@ManyToMany
 	@Valid
-	private List<Aircraft>		aircraft;
+	@ManyToOne(optional = false)
+	private Aircraft			aircraft;
 
-	/*
-	 * RELATIONS:
-	 * -Technician
-	 * -Aircraft?
-	 */
 }
