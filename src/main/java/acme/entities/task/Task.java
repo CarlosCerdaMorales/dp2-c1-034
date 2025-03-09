@@ -1,10 +1,7 @@
 
 package acme.entities.task;
 
-import java.util.List;
-
 import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.validation.Valid;
 
@@ -35,7 +32,7 @@ public class Task extends AbstractEntity {
 	private TaskType			type;
 
 	@Mandatory
-	@ValidString(max = 255)
+	@ValidString(min = 1, max = 255)
 	@Automapped
 	private String				description;
 
@@ -45,25 +42,20 @@ public class Task extends AbstractEntity {
 	private Integer				priority;
 
 	@Mandatory
-	@ValidNumber(min = 0)
+	@ValidNumber(min = 0, max = 1000)
 	@Automapped
 	private Double				estimatedDuration;
 
 	// Relationships ----------------------------------------------------------
 
 	@Mandatory
-	@ManyToOne(optional = false)
 	@Valid
+	@ManyToOne(optional = false)
 	private Technician			technician;
 
 	@Mandatory
-	@ManyToMany
 	@Valid
-	private List<Aircraft>		aircraft;
+	@ManyToOne(optional = false)
+	private Aircraft			aircraft;
 
-	/*
-	 * RELATIONS:
-	 * -Technician
-	 * -Aircraft?
-	 */
 }
