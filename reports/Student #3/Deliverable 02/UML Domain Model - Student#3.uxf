@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1">
+  <zoom_level>7</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1190</x>
+      <y>196</y>
+      <w>469</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Airline
+--
++ name: String {Mandatory, ValidString(max=50), Automapped}
++ IATACode: String {Mandatory, ValidString(pattern="^[A-Z]{2}X$", max=3), Automapped}
++ webSite: String {Mandatory, ValidUrl, Automapped}
++ type: AirlineType {Mandatory, Valid, Automapped}
++ foundationMoment: Date {Mandatory, ValidMoment(past=true), Temporal(TemporalType.TIMESTAMP)}
++ email: String {Optional, ValidEmail, Automapped}
++ phoneNumber: Phone {Optional, Valid, Automapped}
+
+
+
+bg=GREEN</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1680</x>
+      <y>224</y>
+      <w>84</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Enum&gt;&gt;
+AirlineType
+--
+LUXURY
+STANDARD
+LOW_COST
+--
+bg=YELLOW</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>686</x>
+      <y>406</y>
+      <w>434</w>
+      <h>77</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+FlightAssignment
+--
++ flightCrewDuty: FlightCrewDuty{Mandatory, Valid, Automapped}
++ lastUpdate: Date{Mandatory, ValidMoment(past = true), Temporal(TemporalType.TIMESTAMP)}
++ assignmentStatus: AssignmentStatus{Mandatory, Valid, Automapped}
++ remarks: String{Optional, ValidString(max=255), Automapped}
+
+bg=GREEN</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1015</x>
+      <y>490</y>
+      <w>105</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Enum&gt;&gt;
+AssignmentStatus
+--
+CONFIRMED
+PENDING
+CANCELLED
+bg=YELLOW</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>560</x>
+      <y>434</y>
+      <w>140</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+&lt; AssociatedWith
+m1=*
+m2=1
+</panel_attributes>
+    <additional_attributes>180.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1232</x>
+      <y>385</y>
+      <w>399</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Role&gt;&gt;
+FlightCrewMember
+--
++ employeeCode: String{Mandatory, ValidString(pattern = "[A-Z]{2-3}\d{6}$"), Automapped}
++ phoneNumber: Phone{Mandatory, Valid, Automapped}
++ languageSkills: String{Mandatory, ValidString(max=255), Automapped}
++ availabilityStatus: AvailaibilityStatus{Mandatory, Valid, Automapped}
++ workingFor: Airline{Mandatory,Valid,Automapped}
++ salary: Money{Mandatory, ValidMoney, Automapped}
++ yearsOfExperience: Integer{Optional, ValidNumber, Automapped}
+bg=PINK</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1638</x>
+      <y>413</y>
+      <w>84</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Enum&gt;&gt;
+AvailabilityStatus
+--
+AVAILABLE
+ON_VACATION
+ON_LEAVE
+bg=YELLOW</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1113</x>
+      <y>434</y>
+      <w>133</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m1=*
+m2=1
+</panel_attributes>
+    <additional_attributes>10.0;20.0;170.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>679</x>
+      <y>637</y>
+      <w>469</w>
+      <h>77</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+ActivityLog
+--
++ registrationMoment: Date{Mandatory, ValidMoment(past = true), Temporal(TemporalType.TIMESTAMP)}
++ incidentType: String{Mandatory, ValidString(max=50), Automapped}
++ description: String{Mandatory, ValidString(max=255), Automapped}
++ severityLevel: Double{Mandatory, ValidNumber(min = 0, max = 10), Automapped}
+bg=GREEN</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>896</x>
+      <y>476</y>
+      <w>70</w>
+      <h>175</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+
+ ^
+ BelongsTo
+m1=*
+m2=1
+</panel_attributes>
+    <additional_attributes>10.0;230.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>406</y>
+      <w>119</w>
+      <h>77</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Enum&gt;&gt;
+FlightStatus
+--
+ON_TIME
+DELAYED
+CANCELLED
+LANDED
+bg=YELLOW</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>140</x>
+      <y>399</y>
+      <w>427</w>
+      <h>91</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Leg
+--
++ flightNumber: String {Mandatory, ValidString("^[A-Z]{2}\d{4}$"), Column(unique = true)}
++ scheduledDeparture: Date {Mandatory, ValidMoment, Temporal(TemporalType.TIMESTAMP)}
++ scheduledArrival: Date {Mandatory, ValidMoment, Temporal(TemporalType.TIMESTAMP)}
++ durationInHours: Double {Mandatory, ValidNumber(min = 0), Automapped}
++ flightStatus: FlightStatus {Mandatory, Valid, Automapped}
+bg=GREEN</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1414</x>
+      <y>301</y>
+      <w>63</w>
+      <h>98</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+
+ ^
+WorksFor
+m1=*
+m2=1
+</panel_attributes>
+    <additional_attributes>10.0;120.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>742</x>
+      <y>490</y>
+      <w>105</w>
+      <h>91</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Enum&gt;&gt;
+FlightCrewDuty
+--
+PILOT
+LEAD_ATTENDANT
+CABIN_ATTENDANT
+CO_PILOT
+
+
+bg=YELLOW</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
