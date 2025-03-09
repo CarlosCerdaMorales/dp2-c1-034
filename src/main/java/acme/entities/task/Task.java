@@ -32,7 +32,7 @@ public class Task extends AbstractEntity {
 	private TaskType			type;
 
 	@Mandatory
-	@ValidString(max = 255)
+	@ValidString(min = 1, max = 255)
 	@Automapped
 	private String				description;
 
@@ -42,7 +42,7 @@ public class Task extends AbstractEntity {
 	private Integer				priority;
 
 	@Mandatory
-	@ValidNumber(min = 0)
+	@ValidNumber(min = 0, max = 1000)
 	@Automapped
 	private Double				estimatedDuration;
 
