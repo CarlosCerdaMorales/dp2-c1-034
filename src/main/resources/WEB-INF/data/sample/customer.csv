@@ -1,0 +1,4 @@
+key,key:userAccount,identifier,phoneNumber,address,country,city,points
+customer-01,user-account-customer-01,CCM234954,"Phone{country-code: '1', area-code: '1', number: '123 456-789'}","Calle de la Luna, 35, Piso 3, Puerta B",España,Madrid,12300
+customer-02,user-account-customer-02,LMN345123,"Phone{country-code: '32', area-code: '2', number: '125 126-789'}","Calle del Sol, 31, Piso 1, Puerta A",España,Barcelona,2300
+customer-03,user-account-customer-03,MSL123453,"Phone{country-code: '12', area-code: '5', number: '122 566-789'}","Calle de la Estrella, 23, Piso 5, Puerta H",España,Murcia,123

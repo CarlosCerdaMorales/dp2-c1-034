@@ -1,0 +1,12 @@
+key,key:booking,key:passenger
+isFrom-01,booking-01,passenger-01
+isFrom-02,booking-01,passenger-02
+isFrom-03,booking-01,passenger-03
+isFrom-04,booking-01,passenger-01
+isFrom-05,booking-02,passenger-01
+isFrom-06,booking-02,passenger-02
+isFrom-07,booking-02,passenger-03
+isFrom-08,booking-03,passenger-01
+isFrom-09,booking-03,passenger-02
+isFrom-10,booking-03,passenger-03
+isFrom-11,booking-04,passenger-01
