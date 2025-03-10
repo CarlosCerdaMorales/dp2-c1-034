@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="15.1">
-  <zoom_level>9</zoom_level>
+  <zoom_level>6</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>153</x>
-      <y>81</y>
-      <w>603</w>
-      <h>126</h>
+      <x>132</x>
+      <y>300</y>
+      <w>402</w>
+      <h>84</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 Aircraft
@@ -30,10 +30,10 @@ bg=GREEN</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>963</x>
-      <y>648</y>
-      <w>585</w>
-      <h>135</h>
+      <x>606</x>
+      <y>678</y>
+      <w>390</w>
+      <h>90</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Role&gt;&gt;
 Technician
@@ -50,10 +50,10 @@ bg=PINK</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>162</x>
-      <y>288</y>
-      <w>585</w>
-      <h>99</h>
+      <x>138</x>
+      <y>438</y>
+      <w>390</w>
+      <h>66</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 Task
@@ -68,10 +68,10 @@ bg=GREEN</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>441</x>
-      <y>198</y>
-      <w>99</w>
-      <h>108</h>
+      <x>324</x>
+      <y>378</y>
+      <w>66</w>
+      <h>72</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=1
@@ -84,25 +84,25 @@ m2=*
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>738</x>
-      <y>324</y>
-      <w>549</w>
-      <h>342</h>
+      <x>522</x>
+      <y>462</y>
+      <w>300</w>
+      <h>228</h>
     </coordinates>
     <panel_attributes>lt=-&gt;
 m1=*
 m2=1
  recordedBy
  &gt;</panel_attributes>
-    <additional_attributes>10.0;20.0;580.0;20.0;580.0;360.0</additional_attributes>
+    <additional_attributes>10.0;20.0;470.0;20.0;470.0;360.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>27</x>
-      <y>288</y>
-      <w>117</w>
-      <h>99</h>
+      <x>48</x>
+      <y>438</y>
+      <w>78</w>
+      <h>66</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Enum&gt;&gt;
 TaskType
@@ -117,10 +117,10 @@ bg=YELLOW</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>171</x>
-      <y>666</y>
-      <w>531</w>
-      <h>117</h>
+      <x>144</x>
+      <y>690</y>
+      <w>354</w>
+      <h>78</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 MaintenanceRecord
@@ -136,10 +136,10 @@ bg=GREEN</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>27</x>
-      <y>675</y>
-      <w>117</w>
-      <h>81</h>
+      <x>54</x>
+      <y>678</y>
+      <w>78</w>
+      <h>54</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Enum&gt;&gt;
 MaintenanceStatus
@@ -153,25 +153,25 @@ bg=YELLOW</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>693</x>
-      <y>729</y>
-      <w>288</w>
-      <h>45</h>
+      <x>492</x>
+      <y>732</y>
+      <w>126</w>
+      <h>30</h>
     </coordinates>
     <panel_attributes>lt=-&gt;
 m1=*
 m2=1
  recordedBy
  &gt;</panel_attributes>
-    <additional_attributes>10.0;20.0;300.0;20.0</additional_attributes>
+    <additional_attributes>10.0;20.0;190.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>171</x>
-      <y>486</y>
-      <w>531</w>
-      <h>81</h>
+      <x>144</x>
+      <y>570</y>
+      <w>354</w>
+      <h>54</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 Involves
@@ -184,10 +184,10 @@ bg=CYAN</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>432</x>
-      <y>378</y>
-      <w>72</w>
-      <h>126</h>
+      <x>318</x>
+      <y>498</y>
+      <w>48</w>
+      <h>84</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=1
@@ -200,10 +200,10 @@ m2=*
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>432</x>
-      <y>558</y>
-      <w>90</w>
-      <h>126</h>
+      <x>318</x>
+      <y>618</y>
+      <w>60</w>
+      <h>84</h>
     </coordinates>
     <panel_attributes>lt=&lt;-
 m1=1
@@ -212,5 +212,20 @@ m2=*
  Involved in
 </panel_attributes>
     <additional_attributes>10.0;120.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>30</x>
+      <y>342</y>
+      <w>126</w>
+      <h>414</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m1=*
+m2=1
+ about
+ &gt;</panel_attributes>
+    <additional_attributes>190.0;660.0;10.0;660.0;10.0;10.0;170.0;10.0</additional_attributes>
   </element>
 </diagram>
