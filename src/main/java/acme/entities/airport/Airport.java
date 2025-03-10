@@ -3,7 +3,6 @@ package acme.entities.airport;
 
 import javax.persistence.Entity;
 import javax.validation.Valid;
-import javax.validation.constraints.Pattern;
 
 import acme.client.components.basis.AbstractEntity;
 import acme.client.components.mappings.Automapped;
@@ -23,49 +22,49 @@ public class Airport extends AbstractEntity {
 	// Serialisation version
 	// ---------------------------------------------------------------------------
 
-	private static final long serialVersionUID = 1L;
+	private static final long	serialVersionUID	= 1L;
 
 	// Atributes----------------------------------------------------------------------------------------
 
 	@Mandatory
 	@ValidString(max = 50)
 	@Automapped
-	private String airportName;
+	private String				airportName;
 
 	@Mandatory
 	@ValidString(pattern = "^[A-Z]{3}")
 	@Automapped
-	private String IATACode;
+	private String				IATACode;
 
 	@Mandatory
 	@Valid
 	@Automapped
-	private Scope operationalScope;
+	private Scope				operationalScope;
 
 	@Mandatory
 	@ValidString(max = 50)
 	@Automapped
-	private String city;
+	private String				city;
 
 	@Mandatory
 	@ValidString(max = 50)
 	@Automapped
-	private String country;
+	private String				country;
 
 	@Optional
 	@ValidUrl
 	@Automapped
-	private String website;
+	private String				website;
 
 	@Optional
 	@ValidEmail
 	@Automapped
-	private String email;
+	private String				email;
 
 	@Optional
 	@Automapped
 	@ValidString(pattern = "^\\+?\\d{6,15}$")
-	private String contactPhoneNumber;
+	private String				contactPhoneNumber;
 
 	// Relationships ----------------------------------------------------------
 
