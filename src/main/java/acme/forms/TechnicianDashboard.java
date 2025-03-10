@@ -18,7 +18,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class Dashboard extends AbstractForm {
+public class TechnicianDashboard extends AbstractForm {
 
 	// Serialisation version --------------------------------------------------
 
@@ -32,10 +32,10 @@ public class Dashboard extends AbstractForm {
 	Double						numberMaintenanceRecordsCompleted;
 
 // The maintenance record with the nearest inspection due date, provided that he or she is involved in any tasks that need to be performed as part of that maintenance
-	MainteanceRecord						maintenanceRecordWithNearestInspectionDate; //STRING??
+	String						maintenanceRecordWithNearestInspectionDate; //STRING??
 	
 // The top five aircrafts with higher number of tasks in their maintenance records
-	List<Aircraft>						topFiveAircraftsWithMoreTaksInTheirMaintenanceRecords;
+	String						topFiveAircraftsWithMoreTaksInTheirMaintenanceRecords;
 
 // The average, minimum, maximum, and standard deviation of the estimated cost of their maintenance records in the last year
 	Double						averageDeviationOfLastYearEstimatedCost;
