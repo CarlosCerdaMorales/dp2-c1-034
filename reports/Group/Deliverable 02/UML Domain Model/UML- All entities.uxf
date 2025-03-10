@@ -1034,21 +1034,6 @@ m2=*
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>618</x>
-      <y>210</y>
-      <w>198</w>
-      <h>15</h>
-    </coordinates>
-    <panel_attributes>lt=-&gt;
-m1=*
-m2=1
- 
- madeBy &gt;</panel_attributes>
-    <additional_attributes>10.0;20.0;640.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
       <x>531</x>
       <y>231</y>
       <w>87</w>
@@ -1072,5 +1057,22 @@ m2=1
  about
 </panel_attributes>
     <additional_attributes>10.0;10.0;10.0;160.0;230.0;160.0;230.0;680.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>240</x>
+      <y>156</y>
+      <w>48</w>
+      <h>33</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Enum&gt;&gt;
+TrackingLogStatus
+--
+ACCEPTED
+REJECTED
+PENDING
+bg=YELLOW</panel_attributes>
+    <additional_attributes/>
   </element>
 </diagram>
