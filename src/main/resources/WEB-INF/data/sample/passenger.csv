@@ -1,0 +1,5 @@
+key,fullName,email,passport,dateOfBirth,specialNeeds,key:userAccount
+# base entity
+passenger-01,Carlitos Brown González,carbrogon@gmail.com,A1B2C3,2022/07/29 23:59,"Need wheelchair assistance during the flight.",user-account-passenger-01
+passenger-02,Marta Black Pérez,marblaper@gmail.com,Q2R5P7X,2001/07/29 23:59,"Passenger requests extra legroom and priority.",user-account-passenger-02
+passenger-03,Ludmila Green Carretero,ludgrecar@gmail.com,C1D2B3F8,2007/07/29 23:59,"Assistance needed for boarding.",user-account-passenger-03
