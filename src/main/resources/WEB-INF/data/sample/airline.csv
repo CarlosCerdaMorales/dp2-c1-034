@@ -6,6 +6,8 @@ airline-02,acme@lorem-ipsum.org,2002/02/01 10:00,ACX,Nombre1,"Phone{country-code
 airline-03,a@b.e,2002/02/01 10:00,AEX,Nombre3,"Phone{country-code:'44', area-code:'20', number:'7946-0958'}",LUXURY,https://www.fakeweb4.com
 airline-04,a@b.es,2002/02/01 10:00,AFX,Nombre4,"Phone{country-code:'44', area-code:'20', number:'7946-0958'}",LUXURY,https://www.fakeweb5.com
 airline-05,a@b.esx,2002/02/01 10:00,AGX,Nombre5,"Phone{country-code:'44', area-code:'20', number:'7946-0958'}",LUXURY,https://www.fakeweb6.com
+airline-06,marblaper@gmail.com,2020/08/05 0:00,CLX,Airline6,"Phone{country-code:'44', area-code:'20', number:'7946-0958'}",LUXURY,https://www.skywings.com
+airline-07,matblaper@gmail.com,2020/06/05 0:00,COX,Airline7,"Phone{country-code:'554', area-code:'20', number:'7946-0958'}",LUXURY,https://www.clau.com
 # foundation - standard variations
 airline-08,airline@gmail.com,2012/08/05 0:00,AJX,Ejemplo1,"Phone{country-code:'44', area-code:'20', number:'7946-0958'}",LOW_COST,https://www.fakeweb1.com
 airline-09,airline@gmail.com,2000/01/01 0:00,AKX,Ejemplo2,"Phone{country-code:'44', area-code:'20', number:'7946-0958'}",LOW_COST,https://www.fakeweb1.com
@@ -17,11 +19,13 @@ airline-13,airline@gmail.com,2000/01/01 0:01,AOX,Lo,"Phone{country-code:'44', ar
 airline-14,airline@gmail.com,2000/01/01 0:01,APX,"Lorem ipsum dolor sit amet, consectetur adipiscin","Phone{country-code:'44', area-code:'20', number:'7946-0958'}",LUXURY,https://www.fakeweb.com
 airline-15,airline@gmail.com,2000/01/01 0:01,AQX,"Lorem ipsum dolor sit amet, consectetur adipiscing","Phone{country-code:'44', area-code:'20', number:'7946-0958'}",LUXURY,https://www.fakeweb.com
 airline-16,airline@gmail.com,2000/01/01 0:01,ASX,โลเร็ม อิปซัม,"Phone{country-code:'44', area-code:'20', number:'7946-0958'}",LUXURY,https://www.fakeweb.com
-airline-17,airline@gmail.com,2000/01/01 0:01,ATX,洛伦·伊普森,"Phone{country-code:'44', area-code:'20', number:'7946-0958'}",LUXURY,https://www.fakeweb.com
+airline-17,airline@gmail.com,2000/01/01 0:01,ABX,洛伦·伊普森,"Phone{country-code:'44', area-code:'20', number:'7946-0958'}",LOW_COST,https://www.fakeweb.com
+airline-18,airline@gmail.com,2000/01/01 0:01,ACX,洛伦·伊普森,"Phone{country-code:'44', area-code:'20', number:'7946-0958'}",LOW_COST,https://www.fakeweb.com
+airline-19,airline@gmail.com,2000/01/01 0:01,ADX,洛伦·伊普森,"Phone{country-code:'44', area-code:'20', number:'7946-0958'}",LUXURY,https://www.fakeweb.com
+airline-20,airline@gmail.com,2000/01/01 0:01,AEX,洛伦·伊普森,"Phone{country-code:'44', area-code:'20', number:'7946-0958'}",STANDARD,https://www.fakeweb.com
 # website - standard variations
 airline-21,acme@lorem-ipsum.org,2002/02/01 10:00,BAX,Airline1,"Phone{country-code:'44', area-code:'20', number:'7946-0958'}",STANDARD,http://lorem.com/ipsum
 airline-22,acme@lorem-ipsum.org,2002/02/01 10:00,BBX,Airline2,"Phone{country-code:'44', area-code:'20', number:'7946-0958'}",STANDARD,ftp://a
 airline-23,acme@lorem-ipsum.org,2002/02/01 10:00,BCX,Airline3,"Phone{country-code:'44', area-code:'20', number:'7946-0958'}",STANDARD,ftp://a.b
 airline-24,acme@lorem-ipsum.org,2002/02/01 10:00,BDX,Airline4,"Phone{country-code:'44', area-code:'20', number:'7946-0958'}",STANDARD,"http://www.lorem-ipsum.org/dolor/sit.html"
 airline-25,acme@lorem-ipsum.org,2002/02/01 10:00,BEX,Airline5,"Phone{country-code:'44', area-code:'20', number:'7946-0958'}",STANDARD,"http://www.lorem-ipsum.org/"
-airline-26,marblaper@gmail.com,2020/08/05 0:00,CLX,Airline6,"Phone{country-code:'44', area-code:'20', number:'7946-0958'}",LUXURY,https://www.skywings.com
