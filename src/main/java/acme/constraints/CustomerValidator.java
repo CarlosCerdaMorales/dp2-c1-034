@@ -24,7 +24,7 @@ public class CustomerValidator extends AbstractValidator<ValidCustomer, Customer
 
 		boolean result;
 
-		if (customer == null)
+		if (customer == null || customer.getIdentifier() == null)
 			super.state(context, false, "*", "javax.validation.constraints.NotNull.message");
 		else {
 
@@ -54,6 +54,11 @@ public class CustomerValidator extends AbstractValidator<ValidCustomer, Customer
 		return result;
 
 	}
+
+	/*
+	 * TODO
+	 * Los dos O tres deben coincidir. No obliga a que los 3 coincidan, sin embargo, las dos primeras sí deben coincidir.
+	 */
 
 	public String getCustomerInitials(final String name, final String surname) {
 		String[] surnameParts = surname.split(" ");

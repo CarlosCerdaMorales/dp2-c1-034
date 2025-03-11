@@ -33,6 +33,11 @@ public class Customer extends AbstractRole {
 	@Column(unique = true)
 	private String				identifier;
 
+	/*
+	 * TODO
+	 * Cambiar phone por ValidString con el pattern
+	 */
+
 	@Mandatory
 	@Valid
 	@Automapped
@@ -54,7 +59,7 @@ public class Customer extends AbstractRole {
 	private String				city;
 
 	@Optional
-	@ValidNumber(max = 500000)
+	@ValidNumber(min = 0, max = 500000)
 	@Automapped
 	private Integer				points;
 
