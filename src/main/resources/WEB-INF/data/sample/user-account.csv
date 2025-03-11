@@ -19,4 +19,4 @@ user-account-flightCrewMember-02,true,"UserIdentity{name: 'David', surname: 'CoP
 user-account-flightCrewMember-03,true,"UserIdentity{name: 'Sofia', surname: 'Attendant', email: 'sofia.attendant@acme.com'}",attendant1,attendant1
 # falta crear los 3 administradores para el grupal
 # falta crear los datos de prueba para airport, aircraft, etc. Los datos de prueba de Acme-Jobs nos vale
-user-account-administrator-01,true,"UserIdentity{name: 'Sofia', surname: 'Attendant', email: 'sofia.attendant@acme.com'}",administrator1,administrator1
+user-account-administrator-001,true,"UserIdentity{name: 'Sofia', surname: 'Attendant', email: 'sofia.attendant@acme.com'}",administrator1,administrator1
