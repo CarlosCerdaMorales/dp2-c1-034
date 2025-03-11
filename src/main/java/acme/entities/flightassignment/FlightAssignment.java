@@ -26,49 +26,38 @@ import lombok.Setter;
 public class FlightAssignment extends AbstractEntity {
 	// Serialisation identifier -----------------------------------------------
 
-	private static final long serialVersionUID = 1L;
+	private static final long	serialVersionUID	= 1L;
 
 	// Attributes -----------------------------------------------
 	@Mandatory
 	@Valid
 	@Automapped
-	private FlightCrewDuty flightCrewDuty;
+	private FlightCrewDuty		flightCrewDuty;
 
 	@Mandatory
 	@ValidMoment(past = true)
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date lastUpdate;
+	private Date				lastUpdate;
 
 	@Mandatory
 	@Valid
 	@Automapped
-	private AssignmentStatus assignmentStatus;
+	private AssignmentStatus	assignmentStatus;
 
 	@Optional
 	@ValidString(min = 0, max = 255)
 	@Automapped
-	private String remarks;
+	private String				remarks;
 
 	// Relationships -----------------------------------------------
 	@Mandatory
 	@Valid
 	@ManyToOne(optional = false)
-	private Leg leg;
+	private Leg					leg;
 
 	@Mandatory
 	@Valid
 	@ManyToOne(optional = false)
-	private FlightCrewMember flightCrewMember;
-
-	// Relationships -----------------------------------------------
-	@Mandatory
-	@Valid
-	@ManyToOne(optional = false)
-	private Leg leg;
-
-	@Mandatory
-	@Valid
-	@ManyToOne(optional = false)
-	private FlightCrewMember flightCrewMember;
+	private FlightCrewMember	flightCrewMember;
 
 }
