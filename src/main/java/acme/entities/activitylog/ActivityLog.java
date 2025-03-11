@@ -41,7 +41,7 @@ public class ActivityLog extends AbstractEntity {
 	private String				incidentType;
 
 	@Mandatory
-	@ValidString(max = 255)
+	@ValidString(min = 1, max = 255)
 	@Automapped
 	private String				description;
 
