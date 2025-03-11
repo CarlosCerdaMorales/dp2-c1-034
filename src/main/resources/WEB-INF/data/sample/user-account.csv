@@ -17,6 +17,9 @@ user-account-passenger-03,true,"UserIdentity{name: 'Ludmila', surname: 'Green Ca
 user-account-flightCrewMember-01,true,"UserIdentity{name: 'Ana', surname: 'Pilot', email: 'ana.pilot@acme.com'}",pilot1,pilot1
 user-account-flightCrewMember-02,true,"UserIdentity{name: 'David', surname: 'CoPilot', email: 'david.copilot@acme.com'}",copilot1,copilot1
 user-account-flightCrewMember-03,true,"UserIdentity{name: 'Sofia', surname: 'Attendant', email: 'sofia.attendant@acme.com'}",attendant1,attendant1
+user-account-assistanceAgent-01,true,"UserIdentity{name: 'Rosario', surname: 'Pineda', email: 'holasoyRo@acme.com'}",agent1,agent1
+user-account-assistanceAgent-02,true,"UserIdentity{name: 'Obama', surname: 'Tractor', email: 'holasoyObama@acme.com'}",agent2,agent2
+
 
 user-account-manager-01,true,"UserIdentity{name: 'Sergio', surname: 'manager', email: 'blanco@acme.com'}",manager1,manager1
 user-account-manager-02,true,"UserIdentity{name: 'Pepe', surname: 'pepillo', email: 'pepe@acme.com'}",manager2,manager2
