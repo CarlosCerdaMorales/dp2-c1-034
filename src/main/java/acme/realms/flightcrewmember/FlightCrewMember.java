@@ -39,7 +39,7 @@ public class FlightCrewMember extends AbstractRole {
 	private Phone				phoneNumber;
 
 	@Mandatory
-	@ValidString(max = 255)
+	@ValidString(min = 1, max = 255)
 	@Automapped
 	private String				languageSkills;
 
