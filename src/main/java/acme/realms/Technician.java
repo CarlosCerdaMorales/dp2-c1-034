@@ -11,7 +11,6 @@ import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidNumber;
 import acme.client.components.validation.ValidString;
-import acme.datatypes.Phone;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -32,9 +31,9 @@ public class Technician extends AbstractRole {
 	private String				licenseNumber;
 
 	@Mandatory
-	@Valid
+	@ValidString(pattern = "^\\+?\\d{6,15}$")
 	@Automapped
-	private Phone				phoneNumber;
+	private String				phoneNumber;
 
 	@Mandatory
 	@ValidString(min = 1, max = 50)
