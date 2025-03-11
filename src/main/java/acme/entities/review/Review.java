@@ -29,7 +29,7 @@ public class Review extends AbstractEntity {
 	// Attributes -----------------------------------------------
 	@Mandatory
 	@Automapped
-	@ValidString(max = 50)
+	@ValidString(min = 1, max = 50)
 	private String				name;
 
 	@Mandatory
@@ -39,12 +39,12 @@ public class Review extends AbstractEntity {
 
 	@Mandatory
 	@Automapped
-	@ValidString(max = 50)
+	@ValidString(min = 1, max = 50)
 	private String				subject;
 
 	@Mandatory
 	@Automapped
-	@ValidString(max = 255)
+	@ValidString(min = 1)
 	private String				text;
 
 	@Optional
