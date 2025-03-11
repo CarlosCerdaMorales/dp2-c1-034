@@ -1,0 +1,18 @@
+key,flightCrewDuty,lastUpdate,assignmentStatus,remarks,key:leg,key:flightCrewMember
+# base entity
+flightAssignment-01,PILOT,2023/10/26 10:00,CONFIRMED,null,leg-01,flightCrewMember-01
+# flightCrewDuty variations
+flightAssignment-02,CO_PILOT,2023/10/26 10:05,CONFIRMED,null,leg-01,flightCrewMember-02
+flightAssignment-03,CABIN_ATTENDANT,2023/10/26 10:10,CONFIRMED,null,leg-01,flightCrewMember-03
+flightAssignment-04,LEAD_ATTENDANT,2023/10/26 10:11,CONFIRMED,null,leg-01,flightCrewMember-04
+# lastUpdate variations
+flightAssignment-05,PILOT,2023/10/25 12:00,CONFIRMED,null,leg-02,flightCrewMember-01
+flightAssignment-06,CO_PILOT,2023/10/27 14:30,CONFIRMED,null,leg-02,flightCrewMember-02
+# assignmentStatus variations
+flightAssignment-07,CABIN_ATTENDANT,2023/10/26 11:00,PENDING,null,leg-03,flightCrewMember-03
+flightAssignment-08,PILOT,2023/10/26 11:15,CANCELLED,null,leg-03,flightCrewMember-01
+# remarks variations
+flightAssignment-09,CO_PILOT,2023/10/26 11:30,CONFIRMED,Extra assistance needed,leg-04,flightCrewMember-02
+flightAssignment-10,CABIN_ATTENDANT,2023/10/26 11:45,CONFIRMED,Passenger with special needs,leg-04,flightCrewMember-03
+flightAssignment-11,LEAD_ATTENDANT,2023/10/26 11:46,CONFIRMED,VIP on board,leg-04,flightCrewMember-04
+flightAssignment-12,PILOT,2023/10/26 11:47,CONFIRMED,Equipment malfunction,leg-04,flightCrewMember-05
