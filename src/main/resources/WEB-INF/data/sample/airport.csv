@@ -13,9 +13,9 @@ airport-08,"<marquee>Hacked</marquee>",UWK,INTERNATIONAL,"Lorem ipsum dolor sit 
 airport-09,"<script>alert(‘Hacked!’);</script>",UWK,INTERNATIONAL,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit ame","http://lorem.com/ipsum","acme@lorem-ipsum.org",+41840843849
 airport-10,"' or 'A' = 'A ",UWK,INTERNATIONAL,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit ame","http://lorem.com/ipsum","acme@lorem-ipsum.org",+41840843849
 # IATA variations
+airport-11,"Lorem ipsum dolor sit ame",SAI,INTERNATIONAL,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit ame","http://lorem.com/ipsum","acme@lorem-ipsum.org",+41840843849
 airport-12,"Lorem ipsum dolor sit ame",NDR,INTERNATIONAL,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit ame","http://lorem.com/ipsum","acme@lorem-ipsum.org",+41840843849
 airport-13,"Lorem ipsum dolor sit ame",JVD,INTERNATIONAL,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit ame","http://lorem.com/ipsum","acme@lorem-ipsum.org",+41840843849
-airport-11,"Lorem ipsum dolor sit ame",PJA,INTERNATIONAL,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit ame","http://lorem.com/ipsum","acme@lorem-ipsum.org",+41840843849
 airport-14,"Lorem ipsum dolor sit ame",IRV,INTERNATIONAL,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit ame","http://lorem.com/ipsum","acme@lorem-ipsum.org",+41840843849
 airport-15,"Lorem ipsum dolor sit ame",OPQ,INTERNATIONAL,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit ame","http://lorem.com/ipsum","acme@lorem-ipsum.org",+41840843849
 # Scope variation
@@ -57,7 +57,7 @@ airport-47,"Lorem ipsum dolor sit ame",UWK,INTERNATIONAL,"Lorem ipsum dolor sit 
 # Phone number variations
 airport-48,"Lorem ipsum dolor sit ame",UWK,INTERNATIONAL,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit ame","http://lorem.com/ipsum","acme@lorem-ipsum.org",+92124788689114
 airport-49,"Lorem ipsum dolor sit ame",UWK,INTERNATIONAL,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit ame","http://lorem.com/ipsum","acme@lorem-ipsum.org",+522196
-airport-48,"Lorem ipsum dolor sit ame",UWK,INTERNATIONAL,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit ame","http://lorem.com/ipsum","acme@lorem-ipsum.org",+71308330098
-airport-49,"Lorem ipsum dolor sit ame",UWK,INTERNATIONAL,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit ame","http://lorem.com/ipsum","acme@lorem-ipsum.org",+078017949498
+airport-50,"Lorem ipsum dolor sit ame",UWK,INTERNATIONAL,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit ame","http://lorem.com/ipsum","acme@lorem-ipsum.org",+71308330098
+airport-51,"Lorem ipsum dolor sit ame",UWK,INTERNATIONAL,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit ame","http://lorem.com/ipsum","acme@lorem-ipsum.org",+078017949498
 
 
