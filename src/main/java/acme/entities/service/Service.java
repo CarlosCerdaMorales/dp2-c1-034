@@ -31,7 +31,7 @@ public class Service extends AbstractEntity {
 	// Atributes --------------------------------------------------------------
 
 	@Mandatory
-	@ValidString(max = 50)
+	@ValidString(min = 1, max = 50)
 	@Automapped
 	private String				name;
 
