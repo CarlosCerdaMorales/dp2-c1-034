@@ -1,0 +1,27 @@
+key,registrationMoment,incidentType,description,severityLevel,key:flightAssignmentf
+# base entity
+activityLog-01,2023/10/26 10:15,Delay,"Flight delayed due to weather conditions",3.0,flightAssignment-01
+# registrationMoment variations
+activityLog-02,2023/10/25 12:30,Technical,"Engine malfunction reported",7.0,flightAssignment-02
+activityLog-03,2023/10/27 14:45,Passenger,"Unruly passenger on board",5.0,flightAssignment-03
+# incidentType variations
+activityLog-04,2023/10/26 11:00,Medical,"Passenger requiring medical assistance",6.0,flightAssignment-04
+activityLog-05,2023/10/26 11:30,Security,"Security breach at gate",8.0,flightAssignment-05
+# description variations
+activityLog-06,2023/10/26 12:00,Baggage,"Lost baggage reported by passenger",2.0,flightAssignment-06
+activityLog-07,2023/10/26 12:30,Crew,"Crew member reported sick",4.0,flightAssignment-07
+# severityLevel variations
+activityLog-08,2023/10/26 13:00,Maintenance,"Routine maintenance performed",1.0,flightAssignment-08
+activityLog-09,2023/10/26 13:30,Communication,"Communication failure with ATC",9.0,flightAssignment-09
+activityLog-10,2023/10/26 14:00,Other,"Miscellaneous incident reported",0.0,flightAssignment-10
+# flightAssignmentId variations
+activityLog-11,2023/10/26 14:15,Delay,"Flight delayed due to air traffic",3.0,flightAssignment-11
+activityLog-12,2023/10/26 14:30,Technical,"Avionics system error",7.0,flightAssignment-12
+activityLog-13,2023/10/26 14:45,Passenger,"Passenger refused to follow safety instructions",5.0,flightAssignment-13
+activityLog-14,2023/10/26 15:00,Medical,"Passenger fainted during flight",6.0,flightAssignment-14
+activityLog-15,2023/10/26 15:15,Security,"Suspicious package found in overhead bin",8.0,flightAssignment-15
+activityLog-16,2023/10/26 15:30,Baggage,"Damaged baggage claim",2.0,flightAssignment-16
+activityLog-17,2023/10/26 15:45,Crew,"Pilot reported fatigue",4.0,flightAssignment-17
+activityLog-18,2023/10/26 16:00,Maintenance,"Tire pressure check",1.0,flightAssignment-18
+activityLog-19,2023/10/26 16:15,Communication,"Lost radio contact for a brief period",9.0,flightAssignment-19
+activityLog-20,2023/10/26 16:30,Other,"Passenger complaint about seat",0.0,flightAssignment-20
