@@ -24,6 +24,3 @@ user-account-manager-03,true,"UserIdentity{name: 'lola', surname: 'flores', emai
 
 # falta crear los 3 administradores para el grupal
 # falta crear los datos de prueba para airport, aircraft, etc. Los datos de prueba de Acme-Jobs nos vale
-user-account-administrator-00,true,"UserIdentity{name: 'Sofia', surname: 'Attendant', email: 'sofia.attendant@acme.com'}",administrator0,administrator0
-user-account-administrator-01,true,"UserIdentity{name: 'Carla', surname: 'Flowe', email: 'carla.attendant@acme.com'}",administrator1,administrator1
-user-account-administrator-02,true,"UserIdentity{name: 'Sol', surname: 'Jane', email: 'sol.attendant@acme.com'}",administrator2,administrator2
