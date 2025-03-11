@@ -5,7 +5,7 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
@@ -39,8 +39,8 @@ public class Manager extends AbstractRole {
 	//ATRIBUTES-------------------------------------------------------------------------------------
 
 	@Mandatory
+	@Column(unique = true) // CREAR VALIDATION
 	@ValidString(pattern = "^[A-Z]{2,3}\\d{6}$")
-	@Column(unique = true)
 	private String				managerCode;
 
 	@Mandatory
@@ -67,7 +67,7 @@ public class Manager extends AbstractRole {
 
 	@Mandatory
 	@Valid
-	@OneToOne(optional = false)
+	@ManyToOne(optional = false)
 	private Airline				airline;
 
 }
