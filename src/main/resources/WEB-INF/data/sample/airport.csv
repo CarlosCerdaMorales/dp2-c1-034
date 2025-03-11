@@ -1,0 +1,63 @@
+key,airportName,IATACode,operationalScope,city,country,website,email,contactPhoneNumber
+# Base entity
+airport-01,"Lorem ipsum dolor sit ame",UWK,INTERNATIONAL,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit ame","http://lorem.com/ipsum","acme@lorem-ipsum.org",+41840843849
+# Name variation
+airport-01,"L",UWK,INTERNATIONAL,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit ame","http://lorem.com/ipsum","acme@lorem-ipsum.org",+41840843849
+airport-02,"Lo",UWK,INTERNATIONAL,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit ame","http://lorem.com/ipsum","acme@lorem-ipsum.org",+41840843849
+airport-03,"Lorem ipsum dolor sit amet, consectetur adipiscin",UWK,INTERNATIONAL,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit ame","http://lorem.com/ipsum","acme@lorem-ipsum.org",+41840843849
+airport-04,"Lorem ipsum dolor sit amet, consectetur adipiscing",UWK,INTERNATIONAL,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit ame","http://lorem.com/ipsum","acme@lorem-ipsum.org",+41840843849
+airport-05,"โลเร็ม อิปซัม",UWK,INTERNATIONAL,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit ame","http://lorem.com/ipsum","acme@lorem-ipsum.org",+41840843849
+airport-06,"لوريم إيبسوم",UWK,INTERNATIONAL,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit ame","http://lorem.com/ipsum","acme@lorem-ipsum.org",+41840843849
+airport-07,"洛伦·伊普森",UWK,INTERNATIONAL,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit ame","http://lorem.com/ipsum","acme@lorem-ipsum.org",+41840843849
+airport-08,"<marquee>Hacked</marquee>",UWK,INTERNATIONAL,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit ame","http://lorem.com/ipsum","acme@lorem-ipsum.org",+41840843849
+airport-09,"<script>alert(‘Hacked!’);</script>",UWK,INTERNATIONAL,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit ame","http://lorem.com/ipsum","acme@lorem-ipsum.org",+41840843849
+airport-10,"' or 'A' = 'A ",UWK,INTERNATIONAL,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit ame","http://lorem.com/ipsum","acme@lorem-ipsum.org",+41840843849
+# IATA variations
+airport-12,"Lorem ipsum dolor sit ame",NDR,INTERNATIONAL,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit ame","http://lorem.com/ipsum","acme@lorem-ipsum.org",+41840843849
+airport-13,"Lorem ipsum dolor sit ame",JVD,INTERNATIONAL,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit ame","http://lorem.com/ipsum","acme@lorem-ipsum.org",+41840843849
+airport-11,"Lorem ipsum dolor sit ame",PJA,INTERNATIONAL,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit ame","http://lorem.com/ipsum","acme@lorem-ipsum.org",+41840843849
+airport-14,"Lorem ipsum dolor sit ame",IRV,INTERNATIONAL,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit ame","http://lorem.com/ipsum","acme@lorem-ipsum.org",+41840843849
+airport-15,"Lorem ipsum dolor sit ame",OPQ,INTERNATIONAL,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit ame","http://lorem.com/ipsum","acme@lorem-ipsum.org",+41840843849
+# Scope variation
+airport-16,"Lorem ipsum dolor sit ame",UWK,INTERNATIONAL,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit ame","http://lorem.com/ipsum","acme@lorem-ipsum.org",+41840843849
+airport-17,"Lorem ipsum dolor sit ame",UWK,DOMESTIC,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit ame","http://lorem.com/ipsum","acme@lorem-ipsum.org",+41840843849
+airport-18,"Lorem ipsum dolor sit ame",UWK,REGIONAL,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit ame","http://lorem.com/ipsum","acme@lorem-ipsum.org",+41840843849
+# City variations
+airport-19,"Lorem ipsum dolor sit ame",UWK,INTERNATIONAL,"L","Lorem ipsum dolor sit ame","http://lorem.com/ipsum","acme@lorem-ipsum.org",+41840843849
+airport-20,"Lorem ipsum dolor sit ame",UWK,INTERNATIONAL,"Lo","Lorem ipsum dolor sit ame","http://lorem.com/ipsum","acme@lorem-ipsum.org",+41840843849
+airport-21,"Lorem ipsum dolor sit ame",UWK,INTERNATIONAL,"Lorem ipsum dolor sit amet, consectetur adipiscin","Lorem ipsum dolor sit ame","http://lorem.com/ipsum","acme@lorem-ipsum.org",+41840843849
+airport-22,"Lorem ipsum dolor sit ame",UWK,INTERNATIONAL,"Lorem ipsum dolor sit amet, consectetur adipiscing","Lorem ipsum dolor sit ame","http://lorem.com/ipsum","acme@lorem-ipsum.org",+41840843849
+airport-23,"Lorem ipsum dolor sit ame",UWK,INTERNATIONAL,"โลเร็ม อิปซัม","Lorem ipsum dolor sit ame","http://lorem.com/ipsum","acme@lorem-ipsum.org",+41840843849
+airport-24,"Lorem ipsum dolor sit ame",UWK,INTERNATIONAL,"لوريم إيبسوم","Lorem ipsum dolor sit ame","http://lorem.com/ipsum","acme@lorem-ipsum.org",+41840843849
+airport-25,"Lorem ipsum dolor sit ame",UWK,INTERNATIONAL,"洛伦·伊普森","Lorem ipsum dolor sit ame","http://lorem.com/ipsum","acme@lorem-ipsum.org",+41840843849
+airport-26,"Lorem ipsum dolor sit ame",UWK,INTERNATIONAL,"<marquee>Hacked</marquee>","Lorem ipsum dolor sit ame","http://lorem.com/ipsum","acme@lorem-ipsum.org",+41840843849
+airport-27,"Lorem ipsum dolor sit ame",UWK,INTERNATIONAL,"<script>alert(‘Hacked!’);</script>","Lorem ipsum dolor sit ame","http://lorem.com/ipsum","acme@lorem-ipsum.org",+41840843849
+airport-28,"Lorem ipsum dolor sit ame",UWK,INTERNATIONAL,"' or 'A' = 'A","L","http://lorem.com/ipsum","acme@lorem-ipsum.org",+41840843849
+# Country variations
+airport-29,"Lorem ipsum dolor sit ame",UWK,INTERNATIONAL,"Lorem ipsum dolor sit ame","Lo","http://lorem.com/ipsum","acme@lorem-ipsum.org",+41840843849
+airport-30,"Lorem ipsum dolor sit ame",UWK,INTERNATIONAL,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit amet, consectetur adipiscin","http://lorem.com/ipsum","acme@lorem-ipsum.org",+41840843849
+airport-31,"Lorem ipsum dolor sit ame",UWK,INTERNATIONAL,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit amet, consectetur adipiscing","http://lorem.com/ipsum","acme@lorem-ipsum.org",+41840843849
+airport-32,"Lorem ipsum dolor sit ame",UWK,INTERNATIONAL,"Lorem ipsum dolor sit ame","โลเร็ม อิปซัม","http://lorem.com/ipsum","acme@lorem-ipsum.org",+41840843849
+airport-33,"Lorem ipsum dolor sit ame",UWK,INTERNATIONAL,"Lorem ipsum dolor sit ame","لوريم إيبسوم","http://lorem.com/ipsum","acme@lorem-ipsum.org",+41840843849
+airport-34,"Lorem ipsum dolor sit ame",UWK,INTERNATIONAL,"Lorem ipsum dolor sit ame","洛伦·伊普森","http://lorem.com/ipsum","acme@lorem-ipsum.org",+41840843849
+airport-35,"Lorem ipsum dolor sit ame",UWK,INTERNATIONAL,"Lorem ipsum dolor sit ame","<marquee>Hacked</marquee>","http://lorem.com/ipsum","acme@lorem-ipsum.org",+41840843849
+airport-36,"Lorem ipsum dolor sit ame",UWK,INTERNATIONAL,"Lorem ipsum dolor sit ame","<script>alert(‘Hacked!’);</script>","http://lorem.com/ipsum","acme@lorem-ipsum.org",+41840843849
+airport-37,"Lorem ipsum dolor sit ame",UWK,INTERNATIONAL,"Lorem ipsum dolor sit ame","' or 'A' = 'A","http://lorem.com/ipsum","acme@lorem-ipsum.org",+41840843849
+# Website variations
+airport-38,"Lorem ipsum dolor sit ame",UWK,INTERNATIONAL,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit ame","ftp://a.b","acme@lorem-ipsum.org",+41840843849
+airport-39,"Lorem ipsum dolor sit ame",UWK,INTERNATIONAL,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit ame","https://www.lorem-ipsum.org","acme@lorem-ipsum.org",+41840843849
+airport-40,"Lorem ipsum dolor sit ame",UWK,INTERNATIONAL,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit ame","http://www.lorem-ipsum.org/dolor/sit.html","acme@lorem-ipsum.org",+41840843849
+airport-41,"Lorem ipsum dolor sit ame",UWK,INTERNATIONAL,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit ame","http://example.org/a/b?","acme@lorem-ipsum.org",+41840843849
+airport-42,"Lorem ipsum dolor sit ame",UWK,INTERNATIONAL,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit ame","http://example.org?a=1&b=2","acme@lorem-ipsum.org",+41840843849
+# Email variations
+airport-43,"Lorem ipsum dolor sit ame",UWK,INTERNATIONAL,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit ame","http://lorem.com/ipsum","a@b.e",+41840843849
+airport-45,"Lorem ipsum dolor sit ame",UWK,INTERNATIONAL,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit ame","http://lorem.com/ipsum","a@b.es",+41840843849
+airport-46,"Lorem ipsum dolor sit ame",UWK,INTERNATIONAL,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit ame","http://lorem.com/ipsum","a@b.esx",+41840843849
+airport-47,"Lorem ipsum dolor sit ame",UWK,INTERNATIONAL,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit ame","http://lorem.com/ipsum","lorem-ipsum@dolor.sit.amet.consectetur.adipiscing.elit.sed.do.eiusmod.tempor.incididunt.ut.labore.et.dolore.magna.aliqua.Ut.enim.ad.minim.veniam.quis.nostrud.exercitation.ullamco.laboris.nisi.ut.aliquip.ex.ea.commodo.consequat.duis.aute.irure.doloris.edu",+41840843849
+# Phone number variations
+airport-48,"Lorem ipsum dolor sit ame",UWK,INTERNATIONAL,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit ame","http://lorem.com/ipsum","acme@lorem-ipsum.org",+92124788689114
+airport-49,"Lorem ipsum dolor sit ame",UWK,INTERNATIONAL,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit ame","http://lorem.com/ipsum","acme@lorem-ipsum.org",+522196
+airport-48,"Lorem ipsum dolor sit ame",UWK,INTERNATIONAL,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit ame","http://lorem.com/ipsum","acme@lorem-ipsum.org",+71308330098
+airport-49,"Lorem ipsum dolor sit ame",UWK,INTERNATIONAL,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit ame","http://lorem.com/ipsum","acme@lorem-ipsum.org",+078017949498
+
+
