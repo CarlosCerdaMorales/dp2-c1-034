@@ -104,32 +104,6 @@ bg=GREEN</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>160</x>
-      <y>584</y>
-      <w>536</w>
-      <h>112</h>
-    </coordinates>
-    <panel_attributes>&lt;&lt;Entity&gt;&gt;
-Aircraft
---
-+ model: String {Mandatory, ValidString(max=50), Automapped}
-+ registrationNumber: String {Mandatory, ValidString(max=50), Column(unique=true)}
-+ capacity: Integer {Mandatory, ValidNumber(min=0, fraction=0), Automapped}
-+ cargoWeight: Integer {Mandatory, ValidNumber(min=2000, integer=5, max=50000), Automapped}
-+ status: AircraftStatus {Mandatory, Valid, Automapped}
-+ details: String {Optional, ValidString(max=255), Automapped}
-
-
-
-
-
-
-bg=GREEN</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
     <id>Relation</id>
     <coordinates>
       <x>416</x>
@@ -240,6 +214,32 @@ Review
 + text: String {Mandatory, ValidString(max=255), Automapped}  
 + score: Double {Optional, ValidNumber(min=0, max=10), Automapped}
 + isRecommended: Boolean {Optional, Valid, Automapped}
+bg=GREEN</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>152</x>
+      <y>584</y>
+      <w>536</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Aircraft
+--
++ model: String {Mandatory, ValidString(min=1, max=50), Automapped}
++ registrationNumber: String {Mandatory, ValidString(min=1,max=50), Column(unique=true)}
++ capacity: Integer {Mandatory, ValidNumber(min=0), Automapped}
++ cargoWeight: Integer {Mandatory, ValidNumber(min=2000, max=5'000, integer=5), Automapped}
++ status: AircraftStatus {Mandatory, Valid, Automapped}
++ details: String {Optional, ValidString, Automapped}
+
+
+
+
+
+
 bg=GREEN</panel_attributes>
     <additional_attributes/>
   </element>

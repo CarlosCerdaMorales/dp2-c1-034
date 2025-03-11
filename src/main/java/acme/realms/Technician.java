@@ -51,7 +51,7 @@ public class Technician extends AbstractRole {
 	private int					yearsExperience;
 
 	@Optional
-	@ValidString(min = 0)
+	@ValidString
 	@Automapped
 	private String				certifications;
 
