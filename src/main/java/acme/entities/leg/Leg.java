@@ -27,13 +27,18 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class Leg extends AbstractEntity {
+public class Leg extends AbstractEntity { // Atributos y relaciones OK. Los derivados no...
 
 	// Serialisation identifier -----------------------------------------------
 
 	private static final long	serialVersionUID	= 1L;
 
 	// Attributes -----------------------------------------------
+
+	/*
+	 * TODO
+	 * Comprobar que las tres primeras del flightNumber coincide con el IATA de la aerolinea
+	 */
 
 	@Mandatory
 	@ValidString(pattern = "^[A-Z]{2}\\d{4}$") //HACER VALIDATOR

@@ -42,6 +42,11 @@ public class Flight extends AbstractEntity {
 	@Automapped
 	private Boolean				isSelfTransfer;
 
+	/*
+	 * TODO
+	 * Poner el coste como Money
+	 */
+
 	@Mandatory
 	@Automapped
 	@ValidMoney

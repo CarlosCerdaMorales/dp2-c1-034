@@ -19,7 +19,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class Aircraft extends AbstractEntity {
+public class Aircraft extends AbstractEntity { // Ok follow up
 
 	// Serialisation identifier -----------------------------------------------
 
@@ -38,12 +38,12 @@ public class Aircraft extends AbstractEntity {
 	private String				registrationNumber;
 
 	@Mandatory
-	@ValidNumber(min = 0)
+	@ValidNumber(min = 0) // En el foro dice el max y el min de los atributos 
 	@Automapped
 	private Integer				capacity;
 
 	@Mandatory
-	@ValidNumber(min = 2000, integer = 5, max = 50000)
+	@ValidNumber(min = 2000, max = 50000)
 	@Automapped
 	private Integer				cargoWeight;
 

@@ -22,6 +22,10 @@ import lombok.Setter;
 @Setter
 public class Passenger extends AbstractRole {
 
+	/*
+	 * TODO Cambiar Role por Entity
+	 */
+
 	// Serialisation version --------------------------------------------------
 
 	private static final long	serialVersionUID	= 1L;
