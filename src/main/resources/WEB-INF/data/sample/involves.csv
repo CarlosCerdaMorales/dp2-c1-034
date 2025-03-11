@@ -1,0 +1,26 @@
+key,key:task,key:maintenance_record
+# Base entity
+involvement-01,task-01,maintenance-record-01
+# Task variations
+involvement-02,task-02,maintenance-record-02
+involvement-03,task-03,maintenance-record-03
+involvement-04,task-04,maintenance-record-04
+# Maintenance record variations
+involvement-05,task-05,maintenance-record-05
+involvement-06,task-06,maintenance-record-06
+involvement-07,task-07,maintenance-record-07
+involvement-08,task-08,maintenance-record-08
+# Mixed assignments
+involvement-09,task-09,maintenance-record-09
+involvement-10,task-10,maintenance-record-10
+involvement-11,task-11,maintenance-record-11
+involvement-12,task-12,maintenance-record-12
+# Edge cases
+involvement-13,task-13,maintenance-record-13
+involvement-14,task-14,maintenance-record-14
+involvement-15,task-15,maintenance-record-14
+involvement-16,task-16,maintenance-record-06
+involvement-17,task-17,maintenance-record-07
+involvement-18,task-18,maintenance-record-08
+involvement-19,task-19,maintenance-record-09
+involvement-20,task-20,maintenance-record-10
