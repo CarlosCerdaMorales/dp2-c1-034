@@ -9,10 +9,11 @@ import javax.persistence.Entity;
 import javax.validation.Valid;
 
 import acme.client.components.basis.AbstractEntity;
+import acme.client.components.datatypes.Money;
 import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
-import acme.client.components.validation.ValidNumber;
+import acme.client.components.validation.ValidMoney;
 import acme.client.components.validation.ValidString;
 import acme.client.helpers.SpringHelper;
 import acme.entities.airport.Airport;
@@ -32,7 +33,7 @@ public class Flight extends AbstractEntity {
 	// Attributes -----------------------------------------------
 
 	@Mandatory
-	@ValidString(max = 50)
+	@ValidString(min = 1, max = 50)
 	@Automapped
 	private String				flightTag;
 
@@ -43,8 +44,8 @@ public class Flight extends AbstractEntity {
 
 	@Mandatory
 	@Automapped
-	@ValidNumber(min = 0)
-	private Double				flightCost;
+	@ValidMoney
+	private Money				flightCost;
 
 	@Optional
 	@ValidString(max = 255)
@@ -52,6 +53,8 @@ public class Flight extends AbstractEntity {
 	private String				flightDescription;
 
 	//Relationships-----------------------------------------------------------------------------------
+
+	//NO HAY 
 
 	//@Mandatory
 	//@Valid
@@ -85,7 +88,7 @@ public class Flight extends AbstractEntity {
 	public Integer getLayovers() {
 		FlightRepository repository = SpringHelper.getBean(FlightRepository.class);
 		List<Leg> listOfLegs = repository.legsDuringFlight(this.getId());
-		return listOfLegs.size();
+		return listOfLegs.size() - 1;
 	}
 
 	@Transient

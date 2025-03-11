@@ -36,7 +36,7 @@ public class Leg extends AbstractEntity {
 	// Attributes -----------------------------------------------
 
 	@Mandatory
-	@ValidString(pattern = "^[A-Z]{2}\\d{4}$")
+	@ValidString(pattern = "^[A-Z]{2}\\d{4}$") //HACER VALIDATOR
 	@Column(unique = true)
 	private String				flightNumber;
 
@@ -57,16 +57,14 @@ public class Leg extends AbstractEntity {
 
 	//Relationships-----------------------------------------------------------------------------------
 
-	//CREO QUE SE DEBERIA AÑADIR RELACION DE ARRIVAL AIRPORT Y DEPARTURE AIRPORT
-
 	@Mandatory
-	@ManyToOne(optional = false)
 	@Valid
+	@ManyToOne(optional = false)
 	private Airport				airportDeparture;
 
 	@Mandatory
-	@ManyToOne(optional = false)
 	@Valid
+	@ManyToOne(optional = false)
 	private Airport				airportArrival;
 
 	@Mandatory
