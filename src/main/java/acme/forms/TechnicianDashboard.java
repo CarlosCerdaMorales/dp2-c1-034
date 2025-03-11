@@ -12,7 +12,10 @@
 
 package acme.forms;
 
+import java.util.Map;
+
 import acme.client.components.basis.AbstractForm;
+import acme.forms.statistics.StatsTechnician;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -22,33 +25,23 @@ public class TechnicianDashboard extends AbstractForm {
 
 	// Serialisation version --------------------------------------------------
 
-	private static final long	serialVersionUID	= 1L;
+	private static final long	serialVersionUID				= 1L;
 
 	// Attributes -------------------------------------------------------------
 
-// The number of maintenance records grouped by their status
-	Double						numberMaintenanceRecordsPending;
-	Double						numberMaintenanceRecordsInProgress;
-	Double						numberMaintenanceRecordsCompleted;
+	// The number of maintenance records grouped by their status
+	Map<String, Integer>		maintenanceRecordsGroupByStatus;
+	// The maintenance record with the nearest inspection due date, provided that he or she is involved in any tasks that need to be performed as part of that maintenance
+	String						maintenanceRecordWithNearestInspectionDate;
 
-// The maintenance record with the nearest inspection due date, provided that he or she is involved in any tasks that need to be performed as part of that maintenance
-	String						maintenanceRecordWithNearestInspectionDate; //STRING??
-	
-// The top five aircrafts with higher number of tasks in their maintenance records
+	// The top five aircrafts with higher number of tasks in their maintenance records
 	String						topFiveAircraftsWithMoreTaksInTheirMaintenanceRecords;
 
-// The average, minimum, maximum, and standard deviation of the estimated cost of their maintenance records in the last year
-	Double						averageDeviationOfLastYearEstimatedCost;
-	Double						maxDeviationOfLastYearEstimatedCost;
-	Double						minDeviationOfLastYearEstimatedCost;
-	Double						standardDeviationOfLastYearEstimatedCost;
+	// The average, minimum, maximum, and standard deviation of the estimated cost of their maintenance records in the last year
+	StatsTechnician				lastYearEstimatedCostStats		= new StatsTechnician();
 
-// The average, minimum, maximum, and standard deviation of the estimated dura-tion of the tasks in which he or she is involved.
-	Double						averageDeviationOfLastYearEstimatedDuration;
-	Double						maxDeviationOfLastYearEstimatedDuration;
-	Double						minDeviationOfLastYearEstimatedDuration;
-	Double						standardDeviationOfLastYearEstimatedDuration;
-
+	// The estimated duration statistics for the tasks in which the technician is involved
+	StatsTechnician				lastYearEstimatedDurationStats	= new StatsTechnician();
 
 	// Derived attributes -----------------------------------------------------
 
