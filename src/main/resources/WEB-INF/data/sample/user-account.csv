@@ -8,9 +8,13 @@ user-account-provider-03,true,"UserIdentity{name: 'Antonia', surname: 'אבטי�
 user-account-customer-01,true,"UserIdentity{name: 'Carlos', surname: 'Cerdá Morales', email: 'carlos@acme.com'}",customer1,customer1
 user-account-customer-02,true,"UserIdentity{name: 'Lucas', surname: 'Martínez Negro', email: 'lucas@acme.com'}",customer2,customer2
 user-account-customer-03,true,"UserIdentity{name: 'Marta', surname: 'Serrano López', email: 'marta@acme.com'}",customer3,customer3
+user-account-technician-01,true,"UserIdentity{name: 'Claudia', surname: 'Vizcaino Serrano', email: 'claudia@acme.com'}",technician1,technician1
+user-account-technician-02,true,"UserIdentity{name: 'Marcos', surname: 'Moral Valles', email: 'marcos@acme.com'}",technician2,technician2
+user-account-technician-03,true,"UserIdentity{name: 'Carlos', surname: 'Moral Valles', email: 'litos@acme.com'}",technician3,technician3
 user-account-passenger-01,true,"UserIdentity{name: 'Carlitos', surname: 'Brown González', email: 'carbrogon@gmail.com'}",passenger1,passenger1
 user-account-passenger-02,true,"UserIdentity{name: 'Marta', surname: 'Black Pérez', email: 'marblaper@gmail.com'}",passenger2,passenger2
 user-account-passenger-03,true,"UserIdentity{name: 'Ludmila', surname: 'Green Carretero', email: 'ludgrecar@gmail.com'}",passenger3,passenger3
 user-account-flightCrewMember-01,true,"UserIdentity{name: 'Ana', surname: 'Pilot', email: 'ana.pilot@acme.com'}",pilot1,pilot1
 user-account-flightCrewMember-02,true,"UserIdentity{name: 'David', surname: 'CoPilot', email: 'david.copilot@acme.com'}",copilot1,copilot1
 user-account-flightCrewMember-03,true,"UserIdentity{name: 'Sofia', surname: 'Attendant', email: 'sofia.attendant@acme.com'}",attendant1,attendant1
+

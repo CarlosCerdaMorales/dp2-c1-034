@@ -1,0 +1,26 @@
+key,type,description,priority,estimated_duration,key:technician,key:aircraft
+# Base entity
+task-01,MAINTENANCE,"Routine engine maintenance check.",5,4.5,technician-01,aircraft-01
+# Task type variations
+task-02,INSPECTION,"Comprehensive safety inspection before flight.",7,2.0,technician-01,aircraft-02
+task-03,REPAIR,"Landing gear hydraulic system repair.",9,8.0,technician-01,aircraft-03
+task-04,SYSTEM_CHECK,"Electrical system performance test.",4,3.2,technician-01,aircraft-04
+# Priority variations
+task-05,MAINTENANCE,"Full engine overhaul after extended operation.",10,10.0,technician-01,aircraft-05
+task-06,INSPECTION,"Minor visual inspection of fuselage.",1,1.0,technician-01,aircraft-06
+task-07,REPAIR,"Cabin pressure system leakage fix.",6,5.0,technician-01,aircraft-07
+task-08,SYSTEM_CHECK,"Software diagnostics on avionics systems.",3,2.5,technician-01,aircraft-08
+# Estimated duration variations
+task-09,MAINTENANCE,"Replacement of air filters.",2,0.5,technician-01,aircraft-09
+task-10,INSPECTION,"Night-time lighting system check.",8,1.5,technician-01,aircraft-10
+task-11,REPAIR,"Flap actuator replacement.",7,6.5,technician-01,aircraft-11
+task-12,SYSTEM_CHECK,"Fuel system calibration and leak detection.",5,4.0,technician-01,aircraft-12
+# Edge cases
+task-13,MAINTENANCE,"Critical engine component failure repair.",10,9.8,technician-01,aircraft-13
+task-14,INSPECTION,"Post-flight damage assessment.",3,1.2,technician-01,aircraft-14
+task-15,REPAIR,"Sensor calibration for autopilot accuracy.",5,3.5,technician-01,aircraft-15
+task-16,SYSTEM_CHECK,"Black box system diagnostics.",6,2.8,technician-01,aircraft-16
+task-17,MAINTENANCE,"Emergency fix on wing de-icing system.",9,7.5,technician-01,aircraft-17
+task-18,INSPECTION,"Cargo door mechanical check.",4,1.8,technician-01,aircraft-18
+task-19,REPAIR,"Navigation system update and recalibration.",8,5.5,technician-01,aircraft-19
+task-20,SYSTEM_CHECK,"Hydraulic pressure stress test.",5,4.7,technician-01,aircraft-20
