@@ -27,6 +27,11 @@ import lombok.Setter;
 @Setter
 public class Manager extends AbstractRole {
 
+	/*
+	 * TODO
+	 * ValidAirlineManager para validar el tema de las iniciales
+	 */
+
 	//Serialisation version ---------------------------------------------------------------------------
 
 	private static final long	serialVersionUID	= 1L;
@@ -34,13 +39,13 @@ public class Manager extends AbstractRole {
 	//ATRIBUTES-------------------------------------------------------------------------------------
 
 	@Mandatory
-	@Column(unique = true)
 	@ValidString(pattern = "^[A-Z]{2,3}\\d{6}$")
+	@Column(unique = true)
 	private String				managerCode;
 
 	@Mandatory
+	@ValidNumber(min = 0, max = 120)
 	@Automapped
-	@ValidNumber(min = 0)
 	private Integer				yearsExperience;
 
 	@Mandatory
@@ -54,6 +59,11 @@ public class Manager extends AbstractRole {
 	private String				pictureLink;
 
 	// Relationships ----------------------------------------------------------
+
+	/*
+	 * TODO
+	 * Un flight es gestionado por un manager.
+	 */
 
 	@Mandatory
 	@Valid

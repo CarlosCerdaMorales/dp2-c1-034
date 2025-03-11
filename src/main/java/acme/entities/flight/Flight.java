@@ -32,7 +32,7 @@ public class Flight extends AbstractEntity {
 	// Attributes -----------------------------------------------
 
 	@Mandatory
-	@ValidString(max = 50)
+	@ValidString(min = 1, max = 50)
 	@Automapped
 	private String				flightTag;
 
@@ -40,6 +40,11 @@ public class Flight extends AbstractEntity {
 	@Valid
 	@Automapped
 	private Boolean				isSelfTransfer;
+
+	/*
+	 * TODO
+	 * Poner el coste como Money
+	 */
 
 	@Mandatory
 	@Automapped

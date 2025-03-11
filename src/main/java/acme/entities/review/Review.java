@@ -6,6 +6,7 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.Valid;
 
 import acme.client.components.basis.AbstractEntity;
 import acme.client.components.mappings.Automapped;
@@ -20,7 +21,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class Review extends AbstractEntity {
+public class Review extends AbstractEntity { // OK follow up
 
 	// Serialisation identifier -----------------------------------------------
 
@@ -28,8 +29,8 @@ public class Review extends AbstractEntity {
 
 	// Attributes -----------------------------------------------
 	@Mandatory
-	@Automapped
 	@ValidString(min = 1, max = 50)
+	@Automapped
 	private String				name;
 
 	@Mandatory
@@ -38,21 +39,22 @@ public class Review extends AbstractEntity {
 	private Date				postingMoment;
 
 	@Mandatory
-	@Automapped
 	@ValidString(min = 1, max = 50)
+	@Automapped
 	private String				subject;
 
 	@Mandatory
+	@ValidString(min = 1, max = 255)
 	@Automapped
-	@ValidString(min = 1)
 	private String				text;
 
 	@Optional
+	@ValidNumber(min = 0, max = 10, fraction = 2)
 	@Automapped
-	@ValidNumber(min = 0, max = 10)
 	private Double				score;
 
 	@Optional
+	@Valid
 	@Automapped
 	private Boolean				isRecommended;
 
