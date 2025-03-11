@@ -1,0 +1,4 @@
+key,key:userAccount,managerCode,yearsExperience,birthDay,pictureLink,key:airline
+manager-01,user-account-manager-01,SM739113,20,03/07/2001 00:00,http://example.org?a=1&b=2,airline-01
+manager-02,user-account-manager-02,PP639212,46,08/14/2012 00:00,http://example.org,airline-14
+manager-03,user-account-manager-03,LF539311,1,02/11/2025 00:00,http://example.org?a=1,airline-25
