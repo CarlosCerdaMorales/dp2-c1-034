@@ -41,20 +41,9 @@ public class FlightCrewMember extends AbstractRole {
 	private Phone				phoneNumber;
 
 	@Mandatory
-	@ValidString(min = 1, max = 255)
-	@Automapped
-	private String				languageSkills;
-
-	@Mandatory
 	@Valid
 	@Automapped
 	private AvailabilityStatus	availabilityStatus;
-
-	@Mandatory
-	@Valid
-	@ManyToOne(optional = false)
-	@Automapped
-	private Airline				workingFor;
 
 	@Mandatory
 	@ValidMoney
@@ -65,5 +54,18 @@ public class FlightCrewMember extends AbstractRole {
 	@ValidNumber
 	@Automapped
 	private Integer				yearsOfExperience;
+
+	@Mandatory
+	@ValidString(min = 1, max = 255)
+	@Automapped
+	private String				languageSkills;
+
+	// Relationships -----------------------------------------------
+
+	@Mandatory
+	@Valid
+	@ManyToOne(optional = false)
+	@Automapped
+	private Airline				workingFor;
 
 }
