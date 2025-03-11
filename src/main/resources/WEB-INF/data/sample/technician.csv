@@ -1,4 +1,4 @@
 key,key:user-account,annual_health_test_passed,certifications,license_number,phone_number,specialisation,years_experience
-technician-01,user-account-technician-01,true,Composite,AB123456,"Phone{country-code:'34', area-code:'912', number:'345-678'}",Composite,100
-technician-02,user-account-technician-02,false,Hydraulics,XYZ987654,"Phone{country-code:'1', area-code:'800', number:'123 4567'}",Powerplant,20
-technician-03,user-account-technician-03,true,Airframe,CD456789,"Phone{country-code:'44', area-code:'20', number:'7946-0958'}",Avionics,3
+technician-01,user-account-technician-01,true,Composite,AB123456,123456,Composite,100
+technician-02,user-account-technician-02,false,Hydraulics,XYZ987654,123456,Powerplant,20
+technician-03,user-account-technician-03,true,Airframe,CD456789,123456,Avionics,3
