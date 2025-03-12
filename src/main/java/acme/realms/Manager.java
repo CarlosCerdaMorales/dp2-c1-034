@@ -18,6 +18,7 @@ import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidNumber;
 import acme.client.components.validation.ValidString;
 import acme.client.components.validation.ValidUrl;
+import acme.constraints.ValidManager;
 import acme.entities.airline.Airline;
 import lombok.Getter;
 import lombok.Setter;
@@ -25,12 +26,8 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+@ValidManager
 public class Manager extends AbstractRole {
-
-	/*
-	 * TODO
-	 * ValidAirlineManager para validar el tema de las iniciales
-	 */
 
 	//Serialisation version ---------------------------------------------------------------------------
 
@@ -39,8 +36,8 @@ public class Manager extends AbstractRole {
 	//ATRIBUTES-------------------------------------------------------------------------------------
 
 	@Mandatory
-	@Column(unique = true) // CREAR VALIDATION
 	@ValidString(pattern = "^[A-Z]{2,3}\\d{6}$")
+	@Column(unique = true)
 	private String				managerCode;
 
 	@Mandatory
@@ -57,13 +54,6 @@ public class Manager extends AbstractRole {
 	@ValidUrl
 	@Automapped
 	private String				pictureLink;
-
-	// Relationships ----------------------------------------------------------
-
-	/*
-	 * TODO
-	 * Un flight es gestionado por un manager.
-	 */
 
 	@Mandatory
 	@Valid

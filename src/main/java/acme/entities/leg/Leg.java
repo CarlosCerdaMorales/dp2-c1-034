@@ -18,6 +18,7 @@ import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidString;
+import acme.constraints.ValidLeg;
 import acme.entities.aircraft.Aircraft;
 import acme.entities.airport.Airport;
 import acme.entities.flight.Flight;
@@ -27,7 +28,8 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class Leg extends AbstractEntity { // Atributos y relaciones OK. Los derivados no...
+@ValidLeg
+public class Leg extends AbstractEntity {
 
 	// Serialisation identifier -----------------------------------------------
 
@@ -35,13 +37,8 @@ public class Leg extends AbstractEntity { // Atributos y relaciones OK. Los deri
 
 	// Attributes -----------------------------------------------
 
-	/*
-	 * TODO
-	 * Comprobar que las tres primeras del flightNumber coincide con el IATA de la aerolinea
-	 */
-
 	@Mandatory
-	@ValidString(pattern = "^[A-Z]{3}\\d{4}$") //HACER VALIDATOR
+	@ValidString(pattern = "^[A-Z]{3}\\d{4}$")
 	@Column(unique = true)
 	private String				flightNumber;
 
@@ -94,11 +91,5 @@ public class Leg extends AbstractEntity { // Atributos y relaciones OK. Los deri
 
 		return duration.toHoursPart();
 	}
-
-	//NO ESTOY SEGURO SI ES ATRIBUTO DERIVADO O NO
-	//@Transient
-	//public String flightNumber() {
-	//	return this.aircraft.getAirline().getIATACode() + this.flightNumber;
-	//}
 
 }

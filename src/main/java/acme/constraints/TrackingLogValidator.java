@@ -31,10 +31,10 @@ public class TrackingLogValidator extends AbstractValidator<ValidTrackingLog, Tr
 			{
 				if (resolutionPercentage < 100) {
 					if (status == TrackingLogStatus.ACCEPTED || status == TrackingLogStatus.REJECTED)
-						super.state(context, false, "*", "status", "");
+						super.state(context, false, "Mensaje error 1", "status", "Mensaje error");
 
-				} else if (resolutionPercentage < 100 && resolution == null)
-					super.state(context, false, "*", "resolution", "");
+				} else if (status == TrackingLogStatus.PENDING || resolution == null || resolution.isEmpty())
+					super.state(context, false, "Mensaje error 2", "resolution", "Mensaje error");
 			}
 		}
 		result = !super.hasErrors(context);

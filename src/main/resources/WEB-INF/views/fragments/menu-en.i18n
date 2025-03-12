@@ -20,7 +20,6 @@ master.menu.anonymous.favourite-link-student3 = 495*****Q:Founoun ElAoud, Loubna
 master.menu.anonymous.favourite-link-student4 = 778*****N:Moraza Vergara, Jose Luis
 master.menu.anonymous.favourite-link-student5 = 491*****P:Oviedo Govantes, Claudia
 
-
 # master.menu.administrator ###################################################
 
 master.menu.administrator = Administrator
@@ -47,3 +46,7 @@ master.menu.user-account.become-provider = Become a provider
 master.menu.user-account.provider-profile = Provider profile
 master.menu.user-account.become-consumer = Become a consumer
 master.menu.user-account.consumer-profile = Consumer profile
+
+# messages technician validator
+master.menu.message.valid.technician = There is an error while Validating the technician. Check the license number and/or phone number
+

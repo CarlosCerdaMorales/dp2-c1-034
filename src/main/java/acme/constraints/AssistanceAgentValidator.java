@@ -33,14 +33,14 @@ public class AssistanceAgentValidator extends AbstractValidator<ValidAssistanceA
 			String codePrefix = employeeCode.substring(0, 2);
 
 			{ // If my customers ID does not match the pattern, the state is triggered.
-				if (!employeeCode.matches("^[A-Z]{2-3}\\d{6}$"))
-					super.state(context, false, "identifier", "");
+				if (!employeeCode.matches("^[A-Z]{2,3}\\d{6}$"))
+					super.state(context, false, "employeeCode", "acme.validations.");
 
 			}
 
 			{ // If the initials I have are not the same as the expected ones, the state is triggered.
 				if (!codePrefix.equals(expectedInitials))
-					super.state(context, false, "identifier", "");
+					super.state(context, false, "identifier", "asda");
 
 			}
 		}

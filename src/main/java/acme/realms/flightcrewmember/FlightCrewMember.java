@@ -45,6 +45,7 @@ public class FlightCrewMember extends AbstractRole {
 	private AvailabilityStatus availabilityStatus;
 
 	@Mandatory
+	@Mandatory
 	@ValidMoney
 	@Automapped
 	private Money salary;
