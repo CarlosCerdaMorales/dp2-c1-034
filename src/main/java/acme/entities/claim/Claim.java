@@ -10,6 +10,7 @@ import javax.validation.Valid;
 import acme.client.components.basis.AbstractEntity;
 import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
+import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidEmail;
 import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidString;
@@ -45,10 +46,12 @@ public class Claim extends AbstractEntity {
 	private String				description;
 
 	@Mandatory
+	@Valid
 	@Automapped
-	private ClaimType			type;
+	private ClaimType			claimType;
 
-	@Mandatory
+	@Optional
+	@Valid
 	@Automapped
 	private Boolean				accepted;
 
