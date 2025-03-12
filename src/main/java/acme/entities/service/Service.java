@@ -43,7 +43,7 @@ public class Service extends AbstractEntity {
 	private String				picture;
 
 	@Mandatory
-	@ValidNumber(min = 0)
+	@ValidNumber(min = 1, max = 100)
 	@Automapped
 	private Integer				averageDwellTime;
 

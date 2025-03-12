@@ -23,8 +23,8 @@ import lombok.Setter;
 
 @Entity
 @Getter
-@ValidAssistanceAgent
 @Setter
+@ValidAssistanceAgent
 public class AssistanceAgent extends AbstractRole {
 
 	// Serialisation identifier -----------------------------------------------
@@ -39,7 +39,7 @@ public class AssistanceAgent extends AbstractRole {
 	private String				employeeCode;
 
 	@Mandatory
-	@ValidString(max = 255)
+	@ValidString(min = 1, max = 255)
 	@Automapped
 	private String				spokenLanguages;
 

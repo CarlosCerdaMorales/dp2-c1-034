@@ -3,26 +3,26 @@ key,model,registration_number,capacity,cargo_weight,status,details,key:airline
 aircraft-01,Boeing 737,REG-1234,180,18000,ACTIVE,Standard short-haul aircraft.,airline-01
 # Capacity variations
 aircraft-02,Airbus A320,REG-5678,150,16000,UNDER_MAINTENANCE,Routine checks in progress.,airline-02
-aircraft-03,Cessna 172,REG-9012,4,2000,ACTIVE,Private aircraft - low maintenance.,airline-03
+aircraft-03,Cessna 172,REG-9012,4,20000,ACTIVE,Private aircraft - low maintenance.,airline-03
 aircraft-04,Bombardier Q400,REG-3456,78,8000,UNDER_MAINTENANCE,Engine noise issue reported.,airline-04
 # Cargo weight variations
 aircraft-05,Antonov An-225,REG-7890,250,50000,ACTIVE,Heavy cargo transport - max weight capacity.,airline-05
 aircraft-06,Gulfstream G550,REG-2468,19,2000,UNDER_MAINTENANCE,Luxury business jet - undergoing upgrade.,airline-06
-aircraft-07,Boeing 747,REG-1357,400,30000,ACTIVE,Long-haul passenger aircraft.,airline-07
+aircraft-07,Boeing 747,REG-1357,200,30000,ACTIVE,Long-haul passenger aircraft.,airline-07
 # Details variations,"","","","","",""
 aircraft-08,Boeing 757,REG-9876,239,25000,ACTIVE,Currently leased to international airline.,airline-08
 aircraft-09,Piper PA-28,REG-6543,2,2000,UNDER_MAINTENANCE,Lorem ipsum dolor sit amet. consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor*,airline-09
 aircraft-10,Lockheed C-130,REG-3210,92,45000,ACTIVE,โลเร็ม อิปซัม,airline-10
-aircraft-11,Airbus A380,REG-1111,615,40000,ACTIVE,洛伦·伊普森,airline-11
-aircraft-12,Boeing 777,REG-2222,396,38000,UNDER_MAINTENANCE,<script>alert(‘Hacked!’);</script>,airline-12
+aircraft-11,Airbus A380,REG-1111,215,40000,ACTIVE,洛伦·伊普森,airline-11
+aircraft-12,Boeing 777,REG-2222,226,38000,UNDER_MAINTENANCE,<script>alert(‘Hacked!’);</script>,airline-12
 aircraft-13,Douglas DC-3,REG-3333,28,7000,ACTIVE,<marquee>Hacked</marquee>,airline-13
 aircraft-14,Embraer E190,REG-4444,114,12500,ACTIVE,a,airline-14
 aircraft-15,Fokker 100,REG-5555,109,9000,UNDER_MAINTENANCE,.,airline-15
 # Model variations
-aircraft-16,McDonnell Douglas MD-11,REG-7865,293,27500,ACTIVE,Cargo version in service.,airline-16
+aircraft-16,McDonnell Douglas MD-11,REG-7865,210,27500,ACTIVE,Cargo version in service.,airline-16
 aircraft-17,a,REG-3902,74,6000,ACTIVE,Short-haul propeller aircraft.,airline-17
 aircraft-18,.,REG-3288,72,6000,UNDER_MAINTENANCE,Landing gear inspection in progress.,airline-18
-aircraft-19,<marquee>Hacked</marquee> 767,REG-5212,261,32000,ACTIVE,Retrofitted for modern avionics.,airline-19
+aircraft-19,<marquee>Hacked</marquee> 227,REG-5212,221,32000,ACTIVE,Retrofitted for modern avionics.,airline-19
 aircraft-20,洛伦·伊普森,REG-0021,100,18000,ACTIVE,Retired supersonic aircraft - used in demonstrations.,airline-20
 aircraft-21,โลเร็ม อิปซัม,REG-6890,250,50000,ACTIVE,Heavy cargo transport - max weight capacity.,airline-05
 aircraft-22,Lorem ipsum dolor sit amet. consectetur adipiscing,REG-9468,19,2000,UNDER_MAINTENANCE,Luxury business jet - undergoing upgrade.,airline-06

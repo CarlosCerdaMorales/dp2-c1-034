@@ -20,7 +20,7 @@ service-24,"<marquee>Hacked</marquee>","http://www.lorem-ipsum.org/dolor/sit.htm
 service-25,"<script>alert(‘Hacked!’);</script>","http://www.lorem-ipsum.org/dolor/sit.html#dolor",50,STLV-25,EUR 50.00,airport-09
 service-26,"' or 'A' = 'A ","http://www.lorem-ipsum.org/dolor/sit.html#dolor",50,STKV-25,EUR 50.00,airport-09
 # averageDwellTime - variations
-service-12,Lorem ipsum dolor sit ame,http://lorem.com/ipsum,0,ABKK-25,EUR 50.00,airport-12
+service-12,Lorem ipsum dolor sit ame,http://lorem.com/ipsum,2,ABKK-25,EUR 50.00,airport-12
 service-13,Lorem ipsum dolor sit ame,http://lorem.com/ipsum,1,ABXK-25,EUR 50.00,airport-05
 service-14,Lorem ipsum dolor sit ame,http://lorem.com/ipsum,100,FBCK-25,EUR 50.00,airport-02
 service-15,Lorem ipsum dolor sit ame,http://lorem.com/ipsum,99,AGCK-25,EUR 50.00,airport-08
