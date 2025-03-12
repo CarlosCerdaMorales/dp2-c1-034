@@ -49,13 +49,13 @@ public class MaintenanceRecord extends AbstractEntity {
 	private Date				nextInspectionDue;
 
 	@Mandatory
-	@Automapped
 	@ValidMoney
+	@Automapped
 	private Money				estimatedCost;
 
 	@Optional
+	@ValidString(max = 255)
 	@Automapped
-	@ValidString
 	private String				notes;
 
 	// Relationships ----------------------------------------------------------

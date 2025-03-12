@@ -29,7 +29,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @ValidLeg
-public class Leg extends AbstractEntity { // Atributos y relaciones OK. Los derivados no...
+public class Leg extends AbstractEntity {
 
 	// Serialisation identifier -----------------------------------------------
 
@@ -37,13 +37,8 @@ public class Leg extends AbstractEntity { // Atributos y relaciones OK. Los deri
 
 	// Attributes -----------------------------------------------
 
-	/*
-	 * TODO
-	 * Comprobar que las tres primeras del flightNumber coincide con el IATA de la aerolinea
-	 */
-
 	@Mandatory
-	@ValidString(pattern = "^[A-Z]{3}\\d{4}$") //HACER VALIDATOR
+	@ValidString(pattern = "^[A-Z]{3}\\d{4}$")
 	@Column(unique = true)
 	private String				flightNumber;
 
@@ -96,11 +91,5 @@ public class Leg extends AbstractEntity { // Atributos y relaciones OK. Los deri
 
 		return duration.toHoursPart();
 	}
-
-	//NO ESTOY SEGURO SI ES ATRIBUTO DERIVADO O NO
-	//@Transient
-	//public String flightNumber() {
-	//	return this.aircraft.getAirline().getIATACode() + this.flightNumber;
-	//}
 
 }

@@ -44,12 +44,13 @@ public class FlightCrewMember extends AbstractRole {
 	@Automapped
 	private AvailabilityStatus	availabilityStatus;
 
+	@Mandatory
 	@ValidMoney
 	@Automapped
 	private Money				salary;
 
 	@Optional
-	@ValidNumber
+	@ValidNumber(max = 120)
 	@Automapped
 	private Integer				yearsOfExperience;
 

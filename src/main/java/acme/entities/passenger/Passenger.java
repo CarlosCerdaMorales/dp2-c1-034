@@ -50,7 +50,7 @@ public class Passenger extends AbstractEntity {
 	private Date				dateOfBirth;
 
 	@Optional
-	@ValidString(min = 0, max = 50)
+	@ValidString(max = 50)
 	@Automapped
 	private String				specialNeeds;
 

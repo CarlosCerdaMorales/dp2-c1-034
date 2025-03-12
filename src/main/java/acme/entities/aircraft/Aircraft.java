@@ -38,7 +38,7 @@ public class Aircraft extends AbstractEntity { // Ok follow up
 	private String				registrationNumber;
 
 	@Mandatory
-	@ValidNumber(min = 0) // En el foro dice el max y el min de los atributos 
+	@ValidNumber(min = 1, max = 255)
 	@Automapped
 	private Integer				capacity;
 
@@ -53,7 +53,7 @@ public class Aircraft extends AbstractEntity { // Ok follow up
 	private AircraftStatus		status;
 
 	@Optional
-	@ValidString
+	@ValidString(max = 255)
 	@Automapped
 	private String				details;
 
