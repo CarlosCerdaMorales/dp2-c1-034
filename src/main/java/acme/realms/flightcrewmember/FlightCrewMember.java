@@ -44,7 +44,6 @@ public class FlightCrewMember extends AbstractRole {
 	@Automapped
 	private AvailabilityStatus	availabilityStatus;
 
-	@Mandatory
 	@ValidMoney
 	@Automapped
 	private Money				salary;
@@ -64,7 +63,6 @@ public class FlightCrewMember extends AbstractRole {
 	@Mandatory
 	@Valid
 	@ManyToOne(optional = false)
-	@Automapped
 	private Airline				workingFor;
 
 }
