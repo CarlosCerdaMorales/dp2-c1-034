@@ -1,14 +1,21 @@
 
 package acme.relationships;
 
+import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.validation.Valid;
 
+import acme.client.components.basis.AbstractEntity;
 import acme.client.components.validation.Mandatory;
 import acme.entities.airline.Airline;
 import acme.entities.airport.Airport;
+import lombok.Getter;
+import lombok.Setter;
 
-public class OperatesAt {
+@Entity
+@Getter
+@Setter
+public class OperatesAt extends AbstractEntity {
 
 	// Serialisation identifier -----------------------------------------------
 
