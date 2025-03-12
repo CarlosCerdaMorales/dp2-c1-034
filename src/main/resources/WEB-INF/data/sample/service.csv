@@ -13,6 +13,12 @@ service-08,Lorem ipsum dolor sit ame,"http://www.lorem-ipsum.org/dolor/sit.html"
 service-09,Lorem ipsum dolor sit ame,"http://example.org?a&b",50,^KLMN-10,EUR 50.00,airport-08
 service-10,Lorem ipsum dolor sit ame,"http://example.org/a/b?a&b",50,^OPQR-11,EUR 50.00,airport-02
 service-11,Lorem ipsum dolor sit ame,"http://www.lorem-ipsum.org/dolor/sit.html#dolor",50,^STUV-12,EUR 50.00,airport-14
+service-21,โลเร็ม อิปซัม,"http://www.lorem-ipsum.org/dolor/sit.html#dolor",50,^STUV-13,EUR 50.00,airport-14
+service-22,لوريم إيبسوم,"http://www.lorem-ipsum.org/dolor/sit.html#dolor",50,^STUV-15,EUR 50.00,airport-08
+service-23,洛伦·伊普森,"http://www.lorem-ipsum.org/dolor/sit.html#dolor",50,^STUV-18,EUR 50.00,airport-09
+service-24,"<marquee>Hacked</marquee>","http://www.lorem-ipsum.org/dolor/sit.html#dolor",50,^HTUV-18,EUR 50.00,airport-07
+service-25,"<script>alert(‘Hacked!’);</script>","http://www.lorem-ipsum.org/dolor/sit.html#dolor",50,^STUV-78,EUR 50.00,airport-09
+service-26,"' or 'A' = 'A ","http://www.lorem-ipsum.org/dolor/sit.html#dolor",50,^STKV-18,EUR 50.00,airport-09
 # averageDwellTime - variations
 service-12,Lorem ipsum dolor sit ame,http://lorem.com/ipsum,0,^ABCK-01,EUR 50.00,airport-12
 service-13,Lorem ipsum dolor sit ame,http://lorem.com/ipsum,1,^ABCK-02,EUR 50.00,airport-05
