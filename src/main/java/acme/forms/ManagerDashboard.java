@@ -1,10 +1,12 @@
 
 package acme.forms;
 
-import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import acme.client.components.basis.AbstractForm;
 import acme.entities.airport.Airport;
+import acme.forms.statistics.StatsAssistanceAgent;
 
 public class ManagerDashboard extends AbstractForm {
 
@@ -14,33 +16,25 @@ public class ManagerDashboard extends AbstractForm {
 
 	// Attributes -------------------------------------------------------------
 
-	// Rank of a manager based on years of experience. 
-	String						rankingBasedOnExperience;
+	// Ranking of the manager based on years of experience
+	List<String>				ranking;
 
-	// Number of years to retire. 
-	Double						NumberOfYearsToRetire;
+	// Years to be retired.
+	Integer						yearsToRetire;
 
-	// Ratio of on-time/delayed legs. 
-	Double						ratioOnTimelegs;
-	Integer						ratioDelayedlegs;
+	// The ratio of on-time flights.  
+	Map<String, Double>			flightsGroupedBy;
 
-	// Most and least popular airport. 
-	Airport						mostPopularAirport;
+	// Least popular airport based on visits.  
 	Airport						leastPopularAirport;
 
-	// Number of flights grouped by their status
-	HashMap<String, Integer>	numberOfFlightsGroupedByTheirStatus;
+	// Most popular airport based on visits.
+	Airport						mostPopularAirport;
 
-	// Count, average, minimum, maximum, and standard deviation of the cost of their flights.
+	// Number of legs based on status.
+	Map<String, Integer>		numberOfLegsBasedOnStatus;
 
-	Double						countOfCostInFlights;
-	Double						averageCostInFlights;
-	Double						minCostOfInFlights;
-	Double						maxCostOfInFlights;
-	Double						standardDeviationOfCostInFlights;
-
-	// Derived attributes -----------------------------------------------------
-
-	// Relationships ----------------------------------------------------------
+	// The average, minimum, maximum, and standard deviation of the number of claims they assisted during the last month.
+	StatsAssistanceAgent		costOfFlights;
 
 }
