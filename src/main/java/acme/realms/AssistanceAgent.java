@@ -17,11 +17,13 @@ import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidMoney;
 import acme.client.components.validation.ValidString;
 import acme.client.components.validation.ValidUrl;
+import acme.constraints.ValidAssistanceAgent;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
+@ValidAssistanceAgent
 @Setter
 public class AssistanceAgent extends AbstractRole {
 

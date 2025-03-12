@@ -26,11 +26,11 @@ public class ServiceValidator extends AbstractValidator<ValidService, Service> {
 			super.state(context, false, "*", "javax.validation.constraints.NotNull.message");
 		else {
 			String promotionCode = service.getPromotionCode();
-			String codeYear = promotionCode.substring(promotionCode.length(), -2);
-			String actualYear = MomentHelper.getCurrentMoment().toString().substring(promotionCode.length(), -2);
+			String codeYear = promotionCode.substring(promotionCode.length() - 2);
+			String actualYear = MomentHelper.getCurrentMoment().toString().substring(MomentHelper.getCurrentMoment().toString().length() - 2);
 			{
 				if (!codeYear.equals(actualYear))
-					super.state(context, false, "", "");
+					super.state(context, false, "Invalid promo code", "ofjd");
 
 			}
 		}
