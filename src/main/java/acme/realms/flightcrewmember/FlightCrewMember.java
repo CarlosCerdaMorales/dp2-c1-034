@@ -30,7 +30,7 @@ public class FlightCrewMember extends AbstractRole {
 
 	// Attributes -----------------------------------------------
 	@Mandatory
-	@ValidString(pattern = "[A-Z]{2-3}\\d{6}$")
+	@ValidString(pattern = "^[A-Z]{2,3}\\d{6}$")
 	@Automapped
 	private String				employeeCode;
 
@@ -49,15 +49,15 @@ public class FlightCrewMember extends AbstractRole {
 	@Automapped
 	private Money				salary;
 
-	@Optional
-	@ValidNumber(max = 120)
-	@Automapped
-	private Integer				yearsOfExperience;
-
 	@Mandatory
 	@ValidString(min = 1, max = 255)
 	@Automapped
 	private String				languageSkills;
+
+	@Optional
+	@ValidNumber(max = 120)
+	@Automapped
+	private Integer				yearsOfExperience;
 
 	// Relationships -----------------------------------------------
 

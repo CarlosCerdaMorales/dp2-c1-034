@@ -34,13 +34,13 @@ public class FlightCrewMemberValidator extends AbstractValidator<ValidFlightCrew
 
 			{
 				if (!id.matches("^[A-Z]{2,3}\\d{6}$"))
-					super.state(context, false, "employeeCode", "Employee Code does not match the expected pattern");
+					super.state(context, false, "employeeCode", "");
 
 			}
 
 			{
 				if (!idPrefix.equals(expectedInitials))
-					super.state(context, false, "iemployeeCode", "Employee Code first 2 or 3 letters should match employee's initials");
+					super.state(context, false, "iemployeeCode", "");
 			}
 
 		}
@@ -51,15 +51,8 @@ public class FlightCrewMemberValidator extends AbstractValidator<ValidFlightCrew
 	}
 
 	public String getFlightCrewMemberInitials(final String name, final String surname) {
-		String[] surnameParts = surname.split(" ");
-		String initials;
+		return ("" + name.charAt(0) + surname.charAt(0)).toUpperCase();
 
-		if (surnameParts.length > 1)
-			initials = ("" + name.charAt(0) + surnameParts[0].charAt(0) + surnameParts[1].charAt(0)).toUpperCase();
-		else
-			initials = ("" + name.charAt(0) + surname.substring(0, 1)).toUpperCase();
-
-		return initials;
 	}
 
 }
