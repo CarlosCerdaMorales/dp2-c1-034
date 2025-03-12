@@ -13,7 +13,7 @@
 Airline
 --
 + name: String {Mandatory, ValidString(max=50), Automapped}
-+ IATACode: String {Mandatory, ValidString(pattern="^[A-Z]{2}X$", max=3), Automapped}
++ IATACode: String {Mandatory, ValidIataCode, Automapped}
 + webSite: String {Mandatory, ValidUrl, Automapped}
 + type: AirlineType {Mandatory, Valid, Automapped}
 + foundationMoment: Date {Mandatory, ValidMoment(past=true), Temporal(TemporalType.TIMESTAMP)}
@@ -97,29 +97,8 @@ m2=1
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1232</x>
-      <y>385</y>
-      <w>399</w>
-      <h>112</h>
-    </coordinates>
-    <panel_attributes>&lt;&lt;Role&gt;&gt;
-FlightCrewMember
---
-+ employeeCode: String{Mandatory, ValidString(pattern = "[A-Z]{2-3}\d{6}$"), Automapped}
-+ phoneNumber: Phone{Mandatory, Valid, Automapped}
-+ languageSkills: String{Mandatory, ValidString(max=255), Automapped}
-+ availabilityStatus: AvailaibilityStatus{Mandatory, Valid, Automapped}
-+ workingFor: Airline{Mandatory,Valid,Automapped}
-+ salary: Money{Mandatory, ValidMoney, Automapped}
-+ yearsOfExperience: Integer{Optional, ValidNumber, Automapped}
-bg=PINK</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>1638</x>
-      <y>413</y>
+      <x>1652</x>
+      <y>420</y>
       <w>84</w>
       <h>63</h>
     </coordinates>
@@ -137,14 +116,14 @@ bg=YELLOW</panel_attributes>
     <coordinates>
       <x>1113</x>
       <y>434</y>
-      <w>133</w>
+      <w>147</w>
       <h>35</h>
     </coordinates>
     <panel_attributes>lt=-&gt;
 m1=*
 m2=1
 </panel_attributes>
-    <additional_attributes>10.0;20.0;170.0;20.0</additional_attributes>
+    <additional_attributes>10.0;20.0;190.0;20.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
@@ -224,7 +203,7 @@ bg=GREEN</panel_attributes>
       <x>1414</x>
       <y>301</y>
       <w>63</w>
-      <h>98</h>
+      <h>112</h>
     </coordinates>
     <panel_attributes>lt=-&gt;
 
@@ -233,7 +212,7 @@ WorksFor
 m1=*
 m2=1
 </panel_attributes>
-    <additional_attributes>10.0;120.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;140.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
@@ -253,6 +232,27 @@ CO_PILOT
 
 
 bg=YELLOW</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1246</x>
+      <y>399</y>
+      <w>399</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Role&gt;&gt;
+FlightCrewMember
+--
++ employeeCode: String{Mandatory, ValidString(pattern = "[A-Z]{2-3}\d{6}$"), Automapped}
++ phoneNumber: String{Mandatory, ValidString(pattern = "^\\+?\\d{6,15}$"), Automapped}
++ languageSkills: String{Mandatory, ValidString(max=255), Automapped}
++ availabilityStatus: AvailaibilityStatus{Mandatory, Valid, Automapped}
++ workingFor: Airline{Mandatory,Valid,Automapped}
++ salary: Money{Mandatory, ValidMoney, Automapped}
++ yearsOfExperience: Integer{Optional, ValidNumber, Automapped}
+bg=PINK</panel_attributes>
     <additional_attributes/>
   </element>
 </diagram>
