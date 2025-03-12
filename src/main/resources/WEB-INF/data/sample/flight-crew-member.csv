@@ -1,37 +1,5 @@
-key,employee_code,phone_number,availability_status,salary,years_of_experience,language_skills,key:working_for, key:user_account
-# base entity
-flight_crew_member-01,AP123456,+1234567890,AVAILABLE,EUR 500000.00,5,English,airline-01, user-account-member-01
-# employeeCode variations
-flight_crew_member-02,AP123456,+1234567890,AVAILABLE,EUR 500000.00,5,English,airline-01, user-account-member-01
-flight_crew_member-03,DC112233,+1234567890,AVAILABLE,EUR 500000.00,5,English,airline-02, user-account-member-02
-flight_crew_member-04,SA122233,+1234567890,AVAILABLE,EUR 500000.00,5,English,airline-03, user-account-member-03
-flight_crew_member-05,LA112333,+1234567890,AVAILABLE,EUR 500000.00,5,English,airline-04, user-account-member-04
-# phoneNumber variations
-flight_crew_member-06,AP123456,123456,AVAILABLE,EUR 500000.00,5,English,airline-01, user-account-member-01
-flight_crew_member-07,AP123456,+1234567890,AVAILABLE,EUR 500000.00,5,English,airline-01, user-account-member-01
-flight_crew_member-08,AP123456,+9567878,AVAILABLE,EUR 500000.00,5,English,airline-01, user-account-member-01
-# availabilityStatus variations
-flight_crew_member-09,AP123456,+1234567890,AVAILABLE,EUR 500000.00,5,English,airline-01, user-account-member-01
-flight_crew_member-10,AP123456,+1234567890,ON_VACATION,EUR 500000.00,5,English,airline-01, user-account-member-01
-flight_crew_member-11,AP123456,+1234567890,ON_LEAVE,EUR 500000.00,5,English,airline-01, user-account-member-01
-# salary variations
-flight_crew_member-12,AP123456,+1234567890,AVAILABLE,EUR 00.00,5,English,airline-01, user-account-member-01
-flight_crew_member-13,AP123456,+1234567890,AVAILABLE,EUR 00.01,5,English,airline-01, user-account-member-01
-flight_crew_member-14,AP123456,+1234567890,AVAILABLE,EUR 999999.99,5,English,airline-01, user-account-member-01
-flight_crew_member-15,AP123456,+1234567890,AVAILABLE,EUR 1000000.00,5,English,airline-01, user-account-member-01
-# yearsOfExperience variations
-flight_crew_member-16,AP123456,+1234567890,AVAILABLE,EUR 500000.00,0,English,airline-01, user-account-member-01
-flight_crew_member-17,AP123456,+1234567890,AVAILABLE,EUR 500000.00,1,English,airline-01, user-account-member-01
-flight_crew_member-18,AP123456,+1234567890,AVAILABLE,EUR 500000.00,119,English,airline-01, user-account-member-01
-flight_crew_member-19,AP123456,+1234567890,AVAILABLE,EUR 500000.00,120,English,airline-01, user-account-member-01
-# languageSkills variations
-flight_crew_member-20,AP123456,+1234567890,AVAILABLE,EUR 500000.00,5,L,airline-01, user-account-member-01
-flight_crew_member-21,AP123456,+1234567890,AVAILABLE,EUR 500000.00,5,Lo,airline-01, user-account-member-01
-flight_crew_member-22,AP123456,+1234567890,AVAILABLE,EUR 500000.00,5,Lorem ipsum dolor sit amet consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor,airline-01, user-account-member-01
-flight_crew_member-23,AP123456,+1234567890,AVAILABLE,EUR 500000.00,5,Lorem ipsum dolor sit amet consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor*,airline-01, user-account-member-01
-flight_crew_member-24,AP123456,+1234567890,AVAILABLE,EUR 500000.00,5,<marquee>Hacked</marquee>,airline-01, user-account-member-01
-flight_crew_member-25,AP123456,+1234567890,AVAILABLE,EUR 500000.00,5,<script>alert("Hacked!");</script>,airline-01, user-account-member-01
-flight_crew_member-26,AP123456,+1234567890,AVAILABLE,EUR 500000.00,5,洛伦·伊普森,airline-01, user-account-member-01
-flight_crew_member-27,AP123456,+1234567890,AVAILABLE,EUR 500000.00,5,لوريم إيبسو,airline-01, user-account-member-01
-flight_crew_member-28,AP123456,+1234567890,AVAILABLE,EUR 500000.00,5,โลเร็ม อิปซัม,airline-01, user-account-member-01
-flight_crew_member-29,AP123456,+1234567890,AVAILABLE,EUR 500000.00,5,' or 'A' = 'A,airline-01, user-account-member-01
+key,employee_code,phone_number,availability_status,salary,years_of_experience,language_skills,key:working_for,key:user_account
+flight-crew-member-01,AP123456,+1234567890,AVAILABLE,EUR 500000.00,5,Lo,airline-01,user-account-member-01
+flight-crew-member-02,DC654321,123456,ON_LEAVE,EUR 500000.00,5,English,airline-02,user-account-member-02
+flight-crew-member-03,SA122233,+1234567890,ON_VACATION,EUR 500000.00,5,洛伦·伊普森,airline-03,user-account-member-03
+flight-crew-member-04,LA112333,+1234567890,AVAILABLE,EUR 999999.99,5,English,airline-04,user-account-member-04

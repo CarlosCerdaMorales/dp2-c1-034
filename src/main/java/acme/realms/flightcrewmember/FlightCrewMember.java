@@ -26,45 +26,44 @@ public class FlightCrewMember extends AbstractRole {
 
 	// Serialisation identifier -----------------------------------------------
 
-	private static final long serialVersionUID = 1L;
+	private static final long	serialVersionUID	= 1L;
 
 	// Attributes -----------------------------------------------
 	@Mandatory
-	@ValidString(pattern = "[A-Z]{2-3}\\d{6}$")
+	@ValidString(pattern = "^[A-Z]{2,3}\\d{6}$")
 	@Automapped
-	private String employeeCode;
+	private String				employeeCode;
 
 	@Mandatory
 	@ValidString(pattern = "^\\+?\\d{6,15}$")
 	@Automapped
-	private String phoneNumber;
+	private String				phoneNumber;
 
 	@Mandatory
 	@Valid
 	@Automapped
-	private AvailabilityStatus availabilityStatus;
+	private AvailabilityStatus	availabilityStatus;
 
-	@Mandatory
 	@Mandatory
 	@ValidMoney
 	@Automapped
-	private Money salary;
+	private Money				salary;
 
 	@Mandatory
 	@ValidString(min = 1, max = 255)
 	@Automapped
-	private String languageSkills;
+	private String				languageSkills;
 
 	@Optional
-	@ValidNumber
+	@ValidNumber(max = 120)
 	@Automapped
-	private Integer yearsOfExperience;
+	private Integer				yearsOfExperience;
 
 	// Relationships -----------------------------------------------
 
 	@Mandatory
 	@Valid
 	@ManyToOne(optional = false)
-	private Airline workingFor;
+	private Airline				workingFor;
 
 }

@@ -16,7 +16,7 @@ user-account-passenger-02,true,"UserIdentity{name: 'Marta', surname: 'Black Pér
 user-account-passenger-03,true,"UserIdentity{name: 'Ludmila', surname: 'Green Carretero', email: 'ludgrecar@gmail.com'}",passenger3,passenger3
 user-account-member-01,true,"UserIdentity{name: 'Ana', surname: 'Pilot', email: 'ana.pilot@acme.com'}", member1,member1
 user-account-member-02,true,"UserIdentity{name: 'David', surname: 'CoPilot', email: 'david.copilot@acme.com'}",member2,member2
-user-account-member-03,true,"UserIdentity{name: 'Sofia', surname: 'Attendant', email: 'sofia.attendant@acme.com'}",member3,member4
+user-account-member-03,true,"UserIdentity{name: 'Sofia', surname: 'Attendant', email: 'sofia.attendant@acme.com'}",member3,member3
 user-account-member-04,true,"UserIdentity{name: 'Laura', surname: 'Attendant', email: 'laura.attendant@acme.com'}",member4,member4
 user-account-member-05,true,"UserIdentity{name: 'Elsa', surname: 'Rosa', email: 'elsa.rosa@acme.com'}",member,member
 user-account-assistanceAgent-01,true,"UserIdentity{name: 'Rosario', surname: 'Pineda', email: 'holasoyRo@acme.com'}",agent1,agent1
