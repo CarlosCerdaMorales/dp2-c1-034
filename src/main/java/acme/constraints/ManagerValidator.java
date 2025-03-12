@@ -42,7 +42,8 @@ public class ManagerValidator extends AbstractValidator<ValidManager, Manager> {
 
 			validIdentifier = validLength && validPattern;
 
-			super.state(context, validIdentifier, "managerIdentifier", "java.validation.airlineManager.identifier.message");
+			super.state(context, validIdentifier, "managerIdentifier",
+					"java.validation.airlineManager.identifier.message");
 		}
 
 		result = !super.hasErrors(context);

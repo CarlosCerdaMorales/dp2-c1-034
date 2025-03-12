@@ -12,7 +12,6 @@ public class LegValidator extends AbstractValidator<ValidLeg, Leg> {
 
 	boolean result;
 
-
 	@Override
 	protected void initialise(final ValidLeg annotation) {
 		assert annotation != null;

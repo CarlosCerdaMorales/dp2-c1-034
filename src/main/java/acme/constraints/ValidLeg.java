@@ -19,5 +19,6 @@ public @interface ValidLeg {
 	String message() default "";
 
 	Class<?>[] groups() default {};
+
 	Class<? extends Payload>[] payload() default {};
 }
