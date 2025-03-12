@@ -31,6 +31,7 @@ public class CustomerValidator extends AbstractValidator<ValidCustomer, Customer
 			String id = customer.getIdentifier();
 			String name = customer.getIdentity().getName();
 			String surname = customer.getIdentity().getSurname();
+			String phone = customer.getPhoneNumber();
 
 			String expectedInitials = this.getCustomerInitials(name, surname);
 			String idPrefix = id.substring(0, expectedInitials.length());
@@ -47,6 +48,12 @@ public class CustomerValidator extends AbstractValidator<ValidCustomer, Customer
 
 			}
 
+			{ // If my customers phone does not match the pattern, the state is triggered.
+				if (!phone.matches("^\\+?\\d{6,15}$"))
+					super.state(context, false, "phoneNumber", "");
+
+			}
+
 		}
 
 		result = !super.hasErrors(context);
@@ -55,23 +62,8 @@ public class CustomerValidator extends AbstractValidator<ValidCustomer, Customer
 
 	}
 
-	/*
-	 * TODO
-	 * Los dos O tres deben coincidir. No obliga a que los 3 coincidan, sin embargo, las dos primeras sí deben coincidir.
-	 */
-
 	public String getCustomerInitials(final String name, final String surname) {
-		String[] surnameParts = surname.split(" ");
-		String initials;
-
-		if (surnameParts.length > 1)
-			// Two surnames
-			initials = ("" + name.charAt(0) + surnameParts[0].charAt(0) + surnameParts[1].charAt(0)).toUpperCase();
-		else
-			// Just one surname
-			initials = ("" + name.charAt(0) + surname.substring(0, 1)).toUpperCase();
-
-		return initials;
+		return ("" + name.charAt(0) + surname.charAt(0)).toUpperCase();
 	}
 
 }
