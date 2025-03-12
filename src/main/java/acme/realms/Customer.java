@@ -3,7 +3,6 @@ package acme.realms;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.validation.Valid;
 
 import acme.client.components.basis.AbstractRole;
 import acme.client.components.mappings.Automapped;
@@ -12,7 +11,6 @@ import acme.client.components.validation.Optional;
 import acme.client.components.validation.ValidNumber;
 import acme.client.components.validation.ValidString;
 import acme.constraints.ValidCustomer;
-import acme.datatypes.Phone;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -34,9 +32,9 @@ public class Customer extends AbstractRole {
 	private String				identifier;
 
 	@Mandatory
-	@Valid
+	@ValidString(pattern = "^\\+?\\d{6,15}$")
 	@Automapped
-	private Phone				phoneNumber;
+	private String				phoneNumber;
 
 	@Mandatory
 	@ValidString(max = 255)
@@ -54,7 +52,7 @@ public class Customer extends AbstractRole {
 	private String				city;
 
 	@Optional
-	@ValidNumber(max = 500000)
+	@ValidNumber(min = 0, max = 500000)
 	@Automapped
 	private Integer				points;
 

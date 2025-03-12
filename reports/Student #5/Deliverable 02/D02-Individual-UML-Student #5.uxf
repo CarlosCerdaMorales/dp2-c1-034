@@ -4,20 +4,20 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>360</x>
-      <y>99</y>
+      <x>180</x>
+      <y>72</y>
       <w>603</w>
       <h>126</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 Aircraft
 --
-+ model: String {Mandatory, ValidString(max=50), Automapped}
-+ registrationNumber: String {Mandatory, ValidString(max=50), Column(unique=true)}
-+ capacity: Integer {Mandatory, ValidNumber(min=0, fraction=0), Automapped}
-+ cargoWeight: Integer {Mandatory, ValidNumber(min=2000, integer=5, max=50000), Automapped}
++ model: String {Mandatory, ValidString(min=1, max=50), Automapped}
++ registrationNumber: String {Mandatory, ValidString(min=1,max=50), Column(unique=true)}
++ capacity: Integer {Mandatory, ValidNumber(min=0), Automapped}
++ cargoWeight: Integer {Mandatory, ValidNumber(min=2000, max=5'000, integer=5), Automapped}
 + status: AircraftStatus {Mandatory, Valid, Automapped}
-+ details: String {Optional, ValidString(max=255), Automapped}
++ details: String {Optional, ValidString, Automapped}
 
 
 
@@ -30,8 +30,8 @@ bg=GREEN</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1071</x>
-      <y>666</y>
+      <x>891</x>
+      <y>639</y>
       <w>585</w>
       <h>135</h>
     </coordinates>
@@ -39,19 +39,19 @@ bg=GREEN</panel_attributes>
 Technician
 --
 + licenseNumber: String {Mandatory, ValidString(pattern = “^[A-Z]{2,3}\\d{6}$”), Column(unique = true)}
-+ phoneNumber: Phone {Mandatory, Valid, Automapped}
++ phoneNumber: String {Mandatory, ValidString, Automapped}
 + specialisation: String {Mandatory, ValidString(min=1,max=50), Automapped}
 + annualHealthTestPassed: Boolean {Mandatory, Valid, Automapped}
 + yearsExperience: Integer {Mandatory, ValidNumber(min=0), Automapped}
-+ certifications: String {Optional, ValidString(max=255), Automapped}
++ certifications: String {Optional, ValidString, Automapped}
 bg=PINK</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>369</x>
-      <y>306</y>
+      <x>189</x>
+      <y>279</y>
       <w>585</w>
       <h>99</h>
     </coordinates>
@@ -59,33 +59,17 @@ bg=PINK</panel_attributes>
 Task
 --
 + type: TaskType {Mandatory, Valid, Automapped}
-+ description: String {Mandatory, ValidString(max=255), Automapped}
-+ priority: Double {Mandatory, ValidNumber(min = 0, max = 10, integer = 2, fraction = 0), Automapped}
-+ estimatedDuration: Double {Mandatory, ValidNumber(min=0), Automapped}
++ description: String {Mandatory, ValidString(min = 1), Automapped}
++ priority: Double {Mandatory, ValidNumber(min = 0, max = 10, integer = 2), Automapped}
++ estimatedDuration: Double {Mandatory, ValidNumber(min=0, max=1000), Automapped}
 bg=GREEN</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>648</x>
-      <y>216</y>
-      <w>99</w>
-      <h>108</h>
-    </coordinates>
-    <panel_attributes>lt=&lt;-
-m1=1
-m2=*
- ^
- performedIn
-</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;100.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>945</x>
-      <y>342</y>
+      <x>765</x>
+      <y>315</y>
       <w>450</w>
       <h>342</h>
     </coordinates>
@@ -99,8 +83,8 @@ m2=1
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>234</x>
-      <y>306</y>
+      <x>54</x>
+      <y>279</y>
       <w>117</w>
       <h>99</h>
     </coordinates>
@@ -117,8 +101,8 @@ bg=YELLOW</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>378</x>
-      <y>684</y>
+      <x>198</x>
+      <y>657</y>
       <w>531</w>
       <h>117</h>
     </coordinates>
@@ -126,7 +110,7 @@ bg=YELLOW</panel_attributes>
 MaintenanceRecord
 --
 + maintenanceMoment: Date {Mandatory, ValidMoment(past=true), Temporal(TIMESTAMP)}
-+ status: MaintenanceStatus {Mandatory, Valid, Column(unique = true)}
++ status: MaintenanceStatus {Mandatory, Valid, Automapped}
 + nextInspectionDue: Date {Mandatory, ValidMoment,  Temporal(TIMESTAMP)}
 + estimatedCost: Money {Mandatory, ValidMoney, Automapped}
 + notes: String {Optional, ValidString, Automapped}
@@ -136,8 +120,8 @@ bg=GREEN</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>243</x>
-      <y>666</y>
+      <x>63</x>
+      <y>639</y>
       <w>117</w>
       <h>81</h>
     </coordinates>
@@ -153,8 +137,8 @@ bg=YELLOW</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>900</x>
-      <y>747</y>
+      <x>720</x>
+      <y>720</y>
       <w>189</w>
       <h>45</h>
     </coordinates>
@@ -168,8 +152,8 @@ m2=1
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>378</x>
-      <y>504</y>
+      <x>198</x>
+      <y>477</y>
       <w>531</w>
       <h>81</h>
     </coordinates>
@@ -184,8 +168,8 @@ bg=CYAN</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>639</x>
-      <y>396</y>
+      <x>459</x>
+      <y>369</y>
       <w>72</w>
       <h>126</h>
     </coordinates>
@@ -200,8 +184,8 @@ m2=*
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>639</x>
-      <y>576</y>
+      <x>459</x>
+      <y>549</y>
       <w>90</w>
       <h>126</h>
     </coordinates>
@@ -216,8 +200,8 @@ m2=*
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>207</x>
-      <y>189</y>
+      <x>27</x>
+      <y>162</y>
       <w>189</w>
       <h>594</h>
     </coordinates>
@@ -231,8 +215,8 @@ m2=1
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>198</x>
-      <y>108</y>
+      <x>18</x>
+      <y>81</y>
       <w>153</w>
       <h>72</h>
     </coordinates>

@@ -1,6 +1,6 @@
 key,locatorCode,purchaseMoment,travelClass,price,lastNibble,key:customer,key:flight
 # base entity
-booking-01,X9Y7Z1,2021/12/31 23:59,ECONOMY,EUR 500000.00,1434,customer-01,flight-01
+booking-01,2YRD1DH,2021/12/31 23:59,ECONOMY,EUR 500000.00,1434,customer-01,flight-01
 # locatorCode - variations
 booking-02,A1B2C3,2021/12/31 23:59,ECONOMY,EUR 500000.00,1434,customer-02,flight-02
 booking-03,X9Z7Y1,2021/12/31 23:59,ECONOMY,EUR 500000.00,1434,customer-01,flight-02
@@ -31,7 +31,7 @@ booking-23,X9Y7G1,2021/12/31 23:59,ECONOMY,EUR 1000000.00,1434,customer-02,fligh
 booking-24,X9Y7H1,2021/12/31 23:59,ECONOMY,EUR 500000.00,1434,customer-01,flight-19
 booking-25,X9Y7I1,2021/12/31 23:59,ECONOMY,EUR 500000.00,0000,customer-02,flight-20
 booking-26,X9Y7J1,2021/12/31 23:59,ECONOMY,EUR 500000.00,9999,customer-01,flight-21
-booking-27,X9Y7K1,2021/12/31 23:59,ECONOMY,EUR 500000.00,1293,customer-02,flight-21
-booking-28,X9Y7L1,2021/12/31 23:59,ECONOMY,EUR 500000.00,4953,customer-01,flight-31
-booking-29,X9Y7M1,2021/12/31 23:59,ECONOMY,EUR 500000.00,1230,customer-02,flight-32
-booking-30,X9Y7N1,2021/12/31 23:59,ECONOMY,EUR 500000.00,4444,customer-01,flight-32
+booking-27,X9Y7K1,2021/12/31 23:59,ECONOMY,EUR 500000.00,1293,customer-02,flight-22
+booking-28,X9Y7L1,2021/12/31 23:59,ECONOMY,EUR 500000.00,4953,customer-01,flight-23
+booking-29,X9Y7M1,2021/12/31 23:59,ECONOMY,EUR 500000.00,1230,customer-02,flight-24
+booking-30,X9Y7N1,2021/12/31 23:59,ECONOMY,EUR 500000.00,4444,customer-01,flight-25

@@ -55,7 +55,7 @@ public class MaintenanceRecord extends AbstractEntity {
 
 	@Optional
 	@Automapped
-	@ValidString(min = 0)
+	@ValidString
 	private String				notes;
 
 	// Relationships ----------------------------------------------------------

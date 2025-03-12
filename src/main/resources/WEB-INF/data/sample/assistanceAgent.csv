@@ -1,0 +1,4 @@
+key,key:user-account,employeeCode,spokenLanguages,workingSince,briefBio,salary,photoLink
+agent-01,user-account-assistanceAgent-01,"AB123456",English,2015/06/15 09:00,"Experienced aviation specialist.",EUR 4500.00,http://example.com/photo1.jpg
+agent-02,user-account-assistanceAgent-02,"AB153456",Spanish,2018/06/15 09:00,"Experienced aviation specialist.",EUR 2000.00,http://example.com/photo2.jpg
+agent-03,user-account-manager-03,"AB253456",Spanish,2017/08/15 09:00,"Experienced aviation specialist.",EUR 1700.00,http://example.com/photo3.jpg

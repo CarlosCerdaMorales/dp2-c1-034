@@ -1,13 +1,14 @@
 
-package acme.realms;
+package acme.entities.passenger;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import acme.client.components.basis.AbstractRole;
+import acme.client.components.basis.AbstractEntity;
 import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.Optional;
@@ -20,7 +21,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class Passenger extends AbstractRole {
+public class Passenger extends AbstractEntity {
 
 	// Serialisation version --------------------------------------------------
 
@@ -40,7 +41,7 @@ public class Passenger extends AbstractRole {
 
 	@Mandatory
 	@ValidString(pattern = "^[A-Z0-9]{6,9}$")
-	@Automapped
+	@Column(unique = true)
 	private String				passport;
 
 	@Mandatory

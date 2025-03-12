@@ -22,9 +22,9 @@ import javax.validation.Payload;
 
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
-@Constraint(validatedBy = PhoneValidator.class)
+@Constraint(validatedBy = AssistanceAgentValidator.class)
 
-public @interface ValidPhone {
+public @interface ValidAssistanceAgent {
 
 	// Standard validation properties -----------------------------------------
 

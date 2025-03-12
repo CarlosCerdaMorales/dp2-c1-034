@@ -1,38 +1,32 @@
-key,flightTag,isSelfTransfer,flightCost,flightDescription
+key,flightTag,isSelfTransfer,flightCost,flightDescription,key:manager
 # base entity
-flight-01,5439XDS,true,34.34,'Flight directly to your heart'
+flight-01,"Lorem ipsum dolor sit ame",true,EUR 500000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",manager-01
 # flightTag - variations
-flight-02,AEROLÍNEA-12345-DESTINO-LON-EXTRA-ALTA-CATEGORÍA,true,34.34,'Flight directly to your heart'
-flight-03,AA-123,true,34.34,'Flight directly to your heart'
-flight-04,VUELO-EXTRAORDINARIO-12345-PARIS-NUEVA-YORK,true,34.34,'Flight directly to your heart'
-flight-05,T,true,34.34,'Flight directly to your heart'
-flight-06,QR12345,true,34.34,'Flight directly to your heart'
-flight-07,DEPARTURE-FLIGHT-EXPECTED-IN-3-HOURS-LUXURY,true,34.34,'Flight directly to your heart'
-flight-08,Z,true,34.34,'Flight directly to your heart'
-flight-09,VU-23456-LOS-ÁNGELES-VERANO-ESPECIAL,true,34.34,'Flight directly to your heart'
-flight-10,CX123-FAST-TRACK,true,34.34,'Flight directly to your heart'
+flight-02,"L",true,EUR 500000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",manager-01
+flight-03,"Lo",true,EUR 500000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",manager-02
+flight-04,"Lorem ipsum dolor sit amet, consectetur adipiscin",true,EUR 500000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",manager-01
+flight-05,"Lorem ipsum dolor sit amet, consectetur adipiscing",true,EUR 500000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",manager-01
+flight-06,"โลเร็ม อิปซัม",true,EUR 500000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",manager-02
+flight-07,"لوريم إيبسوم",true,EUR 500000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",manager-01
+flight-08,"洛伦·伊普森",true,EUR 500000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",manager-02
+flight-09,"<marquee>Hacked</marquee>",true,EUR 500000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",manager-01
+flight-10,"<script>alert(‘Hacked!’);</script>",true,EUR 500000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",manager-01
+flight-11,"' or 'A' = 'A ",true,EUR 500000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",manager-02
 # isSelfTransfer - variations
-flight-11,5439XDS,true,34.34,'Flight directly to your heart'
-flight-12,5439XDS,false,34.34,'Flight directly to your heart'
+flight-12,"Lorem ipsum dolor sit ame",false,EUR 500000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",manager-01
 # flightCost - variations
-flight-13,5439XDS,true,0.0,'Flight directly to your heart'
-flight-14,5439XDS,true,0.01,'Flight directly to your heart'
-flight-15,5439XDS,true,0.5,'Flight directly to your heart'
-flight-16,5439XDS,true,0.1,'Flight directly to your heart'
-flight-17,5439XDS,true,1,'Flight directly to your heart'
-flight-18,5439XDS,true,10.00,'Flight directly to your heart'
-flight-19,5439XDS,true,50.25,'Flight directly to your heart'
-flight-20,5439XDS,true,200.75,'Flight directly to your heart'
-flight-21,5439XDS,true,450.00,'Flight directly to your heart'
-flight-22,5439XDS,true,500.00,'Flight directly to your heart'
+flight-13,"Lorem ipsum dolor sit ame",true,EUR 0.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",manager-01
+flight-14,"Lorem ipsum dolor sit ame",true,EUR 0.01,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",manager-02
+flight-15,"Lorem ipsum dolor sit ame",true,EUR 999999.99,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",manager-01
+flight-16,"Lorem ipsum dolor sit ame",true,EUR 1000000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",manager-02
 # flightDescription - variations
-flight-23,5439XDS,true,34.34,'A'
-flight-24,5439XDS,true,34.34,"Vuelo desde Madrid a Barcelona, sin escalas"
-flight-25,5439XDS,true,34.34,'Vuelo internacional con opciones de entretenimiento a bordo'
-flight-26,5439XDS,true,34.34,"Vuelo con asientos reclinables, comida gourmet y acceso a internet de alta velocidad durante el trayecto"
-flight-27,5439XDS,true,34.34,'Flight'
-flight-28,5439XDS,true,34.34,"Viaje con salida desde Nueva York a Los Ángeles, con desayuno incluido, asientos confortables y entretenimiento exclusivo durante el vuelo"
-flight-29,5439XDS,true,34.34,"Vuelo directo desde Londres a Tokio con servicio de lujo, películas, menús internacionales y acceso a wifi gratuito. Una experiencia única a bordo"
-flight-30,5439XDS,true,34.34,"Vuelo de largo recorrido, cómodo y relajante, con opción de elegir entre varias comidas, entretenimiento a bordo y Wi-Fi gratuito. Ideal para viajeros frecuentes."
-flight-31,5439XDS,true,34.34,"Este vuelo tiene todo lo que necesitas: asientos reclinables, comida gourmet, películas a demanda, y un servicio impecable para que llegues relajado a tu destino."
-flight-32,5439XDS,true,34.34,"Vuelo de lujo que te llevará a tu destino con la mayor comodidad, comida gourmet, acceso a wifi, y entretenimiento de última generación durante todo el trayecto. Disfruta del viaje."
+flight-17,"Lorem ipsum dolor sit ame",true,EUR 500000.00,"L",manager-01
+flight-18,"Lorem ipsum dolor sit ame",true,EUR 500000.00,"Lo",manager-02
+flight-19,"Lorem ipsum dolor sit ame",true,EUR 500000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor",manager-01
+flight-20,"Lorem ipsum dolor sit ame",true,EUR 500000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor*",manager-02
+flight-21,"Lorem ipsum dolor sit ame",true,EUR 500000.00,"โลเร็ม อิปซัม",manager-01
+flight-22,"Lorem ipsum dolor sit ame",true,EUR 500000.00,"لوريم إيبسوم",manager-02
+flight-23,"Lorem ipsum dolor sit ame",true,EUR 500000.00,"洛伦·伊普森",manager-01
+flight-24,"Lorem ipsum dolor sit ame",true,EUR 500000.00,"<marquee>Hacked</marquee>",manager-02
+flight-25,"Lorem ipsum dolor sit ame",true,EUR 500000.00,"<script>alert(‘Hacked!’);</script>",manager-01
+flight-26,"Lorem ipsum dolor sit ame",true,EUR 500000.00,"' or 'A' = 'A ",manager-02
