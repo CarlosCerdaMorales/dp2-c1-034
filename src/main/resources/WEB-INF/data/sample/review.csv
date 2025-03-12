@@ -1,0 +1,48 @@
+key,name,postingMoment,subject,text,score,isRecommended
+# base entity
+review-01,"Lorem ipsum dolor sit ame",2012/07/02 0:00,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",5,true
+# name - variants
+review-02,"L",2012/07/02 0:00,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",5,true
+review-03,"Lo",2012/07/02 0:00,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",5,true
+review-04,"Lorem ipsum dolor sit amet, consectetur adipiscin",2012/07/02 0:00,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",5,true
+review-05,"Lorem ipsum dolor sit amet, consectetur adipiscing",2012/07/02 0:00,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",5,true
+review-06,"โลเร็ม อิปซัม",2012/07/02 0:00,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",5,true
+review-07,لوريم إيبسوم,2012/07/02 0:00,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",5,true
+review-08,"洛伦·伊普森",2012/07/02 0:00,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",5,true
+review-09,"<marquee>Hacked</marquee>",2012/07/02 0:00,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",5,true
+review-10,"<script>alert(‘Hacked!’);</script>",2012/07/02 0:00,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",5,true
+review-11,"' or 'A' = 'A ",2012/07/02 0:00,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",5,true
+# postingMoment - variants
+review-12,"Lorem ipsum dolor sit ame",2000/01/01 0:00,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",5,true
+review-13,"Lorem ipsum dolor sit ame",2000/01/01 0:01,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",5,true
+review-14,"Lorem ipsum dolor sit ame",2024/12/31 23:59,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",5,true
+review-15,"Lorem ipsum dolor sit ame",2025/01/01 0:00,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",5,true
+# subject - variants
+review-16,"Lorem ipsum dolor sit ame",2012/07/02 0:00,"L","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",5,true
+review-17,"Lorem ipsum dolor sit ame",2012/07/02 0:00,"Lo","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",5,true
+review-18,"Lorem ipsum dolor sit ame",2012/07/02 0:00,"Lorem ipsum dolor sit amet, consectetur adipiscin","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",5,true
+review-19,"Lorem ipsum dolor sit ame",2012/07/02 0:00,"Lorem ipsum dolor sit amet, consectetur adipiscing","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",5,true
+review-20,"Lorem ipsum dolor sit ame",2012/07/02 0:00,"โลเร็ม อิปซัม","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",5,true
+review-21,"Lorem ipsum dolor sit ame",2012/07/02 0:00,لوريم إيبسوم,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",5,true
+review-22,"Lorem ipsum dolor sit ame",2012/07/02 0:00,洛伦·伊普森,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",5,true
+review-23,"Lorem ipsum dolor sit ame",2012/07/02 0:00,"<marquee>Hacked</marquee>","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",5,true
+review-24,"Lorem ipsum dolor sit ame",2012/07/02 0:00,"<script>alert(‘Hacked!’);</script>","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",5,true
+review-25,"Lorem ipsum dolor sit ame",2012/07/02 0:00,"' or 'A' = 'A ","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",5,true
+# text - variants
+review-26,"Lorem ipsum dolor sit ame",2012/07/02 0:00,"Lorem ipsum dolor sit ame","L",5,true
+review-27,"Lorem ipsum dolor sit ame",2012/07/02 0:00,"Lorem ipsum dolor sit ame","Lo",5,true
+review-28,"Lorem ipsum dolor sit ame",2012/07/02 0:00,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor",5,true
+review-29,"Lorem ipsum dolor sit ame",2012/07/02 0:00,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor*",5,true
+review-30,"Lorem ipsum dolor sit ame",2012/07/02 0:00,"Lorem ipsum dolor sit ame","โลเร็ม อิปซัม",5,true
+review-31,"Lorem ipsum dolor sit ame",2012/07/02 0:00,"Lorem ipsum dolor sit ame",لوريم إيبسوم,5,true
+review-32,"Lorem ipsum dolor sit ame",2012/07/02 0:00,"Lorem ipsum dolor sit ame","洛伦·伊普森",5,true
+review-33,"Lorem ipsum dolor sit ame",2012/07/02 0:00,"Lorem ipsum dolor sit ame","<marquee>Hacked</marquee>",5,true
+review-34,"Lorem ipsum dolor sit ame",2012/07/02 0:00,"Lorem ipsum dolor sit ame","<script>alert(‘Hacked!’);</script>",5,true
+review-35,"Lorem ipsum dolor sit ame",2012/07/02 0:00,"Lorem ipsum dolor sit ame","' or 'A' = 'A ",5,true
+# score - variants
+review-36,"Lorem ipsum dolor sit ame",2012/07/02 0:00,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",0,true
+review-37,"Lorem ipsum dolor sit ame",2012/07/02 0:00,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",1,true
+review-38,"Lorem ipsum dolor sit ame",2012/07/02 0:00,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",9,true
+review-39,"Lorem ipsum dolor sit ame",2012/07/02 0:00,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",10,true
+# isRecommended - variants
+review-40,"Lorem ipsum dolor sit ame",2012/07/02 0:00,"Lorem ipsum dolor sit ame","Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",5,false
