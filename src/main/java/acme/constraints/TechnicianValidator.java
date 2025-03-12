@@ -60,7 +60,7 @@ public class TechnicianValidator extends AbstractValidator<ValidTechnician, Tech
 			}
 
 			if (phone != null && !phone.matches("^\\+?\\d{6,15}$")) {
-				super.state(context, false, "phoneNumber", "");
+				super.state(context, false, "phoneNumber", "{master.menu.message.valid.technician}");
 				result = false;
 			}
 		}
