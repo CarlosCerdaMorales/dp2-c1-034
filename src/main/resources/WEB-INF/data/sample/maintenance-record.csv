@@ -1,7 +1,8 @@
 key,maintenance_moment,status,next_inspection_due,estimated_cost,notes,key:aircraft,key:technician
 # Base entity
-maintenance-record-01,2019/05/14 14:30,COMPLETED,2023/06/15 10:00,EUR 500000.00,"Routine engine check, no major issues.",aircraft-01,technician-01
+maintenance-record-01,2019/05/14 14:30,COMPLETED,2026/06/15 10:00,EUR 500000.00,"Routine engine check, no major issues.",aircraft-01,technician-01
 # Status variations
+<<<<<<< Updated upstream
 maintenance-record-02,2018/07/30 08:45,PENDING,2023/12/01 12:00,EUR 500000.00,Minor oil leak detected.,aircraft-01,technician-01
 maintenance-record-03,2021/11/22 18:10,IN_PROGRESS,2024/05/20 09:30,EUR 500000.00,Full system diagnostics underway.,aircraft-01,technician-01
 maintenance-record-04,2020/02/28 09:00,COMPLETED,2024/02/28 15:00,EUR 500000.00,Electrical system updated.,aircraft-01,technician-01
@@ -21,3 +22,30 @@ maintenance-record-15,2014/05/03 00:00,IN_PROGRESS,2025/05/05 00:00,EUR 500000.0
 maintenance-record-16,2017/09/10 07:30,COMPLETED,2022/11/12 14:30,EUR 01.00,<script>alert(‘Hacked!’);</script>,aircraft-01,technician-01
 maintenance-record-17,2016/12/05 22:45,IN_PROGRESS,2023/07/25 09:00,EUR 0.01,<marquee>Hacked</marquee>,aircraft-01,technician-01
 
+=======
+maintenance-record-02,2018/07/30 08:45,PENDING,2028/12/01 12:00,EUR 500000.00,Minor oil leak detected.,aircraft-01,technician-01
+maintenance-record-03,2021/11/22 18:10,IN_PROGRESS,2028/05/20 09:30,EUR 500000.00,Full system diagnostics underway.,aircraft-01,technician-01
+maintenance-record-04,2020/02/28 09:00,COMPLETED,2044/02/28 15:00,EUR 500000.00,Electrical system updated.,aircraft-01,technician-01
+maintenance-record-05,2021/01/15 16:45,PENDING,2055/01/20 11:15,EUR 500000.00,Structural integrity check needed.,aircraft-01,technician-01
+# Cost variations
+maintenance-record-06,2017/09/10 07:30,COMPLETED,2066/11/12 14:30,EUR 500000.00,Covered under warranty.,aircraft-01,technician-01
+maintenance-record-07,2016/12/05 22:45,IN_PROGRESS,2077/07/25 09:00,EUR 0.00,Major overhaul required.,aircraft-01,technician-01
+maintenance-record-08,2022/06/18 10:15,PENDING,2088/09/30 08:00,EUR 1000000.00,Braking system recalibration.,aircraft-01,technician-01
+maintenance-record-09,2015/03/27 20:50,COMPLETED,2099/05/05 13:00,EUR 999999.99,Routine avionics inspection.,aircraft-01,technician-01
+# Notes with potential edge cases
+maintenance-record-10,2020/10/09 11:20,PENDING,2011/06/10 10:00,EUR 500000.00,Unusually high wear on landing gear,aircraft-01,technician-01
+maintenance-record-11,2014/11/02 17:00,IN_PROGRESS,2111/08/22 12:30,EUR 500000.00,N/A,aircraft-01,technician-01
+maintenance-record-12,2021/04/17 23:55,COMPLETED,2022/12/31 16:00,EUR 500000.00,"",aircraft-01,technician-01
+maintenance-record-13,2019/08/25 13:40,PENDING,2033/11/14 11:45,EUR 500000.00,Further investigation required.,aircraft-01,technician-01
+maintenance-record-14,2020/01/01 00:00,COMPLETED,2044/01/01 00:00,EUR 500000.00,Comprehensive refurbishment completed.,aircraft-01,technician-01
+# Maintenance moment variations
+maintenance-record-15,2000/01/01 0:00,PENDING,2026/12/01 12:00,EUR 500000.00,Minor oil leak detected.,aircraft-01,technician-01
+maintenance-record-16,2000/01/01 0:01,COMPLETED,2028/02/28 15:00,EUR 500000.00,Electrical system updated.,aircraft-01,technician-01
+maintenance-record-17,2020/12/31 23:58,IN_PROGRESS,2045/12/31 16:00,EUR 500000.00,No notes,aircraft-01,technician-01
+maintenance-record-18,2003/12/31 23:59,PENDING,2099/09/30 08:00,EUR 500000.00,Braking system recalibration.,aircraft-01,technician-01
+# Next Inspections variations,"",""
+maintenance-record-19,2005/03/09 0:00,COMPLETED,2025/01/01 0:00,EUR 500000.00,Minor oil leak detected.,aircraft-01,technician-01
+maintenance-record-20,2006/04/09 0:01,IN_PROGRESS,2025/01/01 0:01,EUR 500000.00,Electrical system updated.,aircraft-01,technician-01
+maintenance-record-21,2010/11/09 23:58,COMPLETED,2200/12/31 23:58,EUR 500000.00,No notes,aircraft-01,technician-01
+maintenance-record-22,2020/02/09 23:59,PENDING,2200/12/31 23:59,EUR 500000.00,Braking system recalibration.,aircraft-01,technician-01
+>>>>>>> Stashed changes
