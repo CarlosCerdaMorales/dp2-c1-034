@@ -2,34 +2,34 @@ key,lastUpdateMoment,stepUndergoing,resolutionPercentage,status,resolution,key:c
 # Base entity
 trackinglog-01,2023/08/15 12:45,"Lorem ipsum dolor sit ame",10,PENDING,null,claim-01
 # stepUndergoing - variations
-trackinglog-02,2023/08/15 12:45,"L",10,PENDING,null,claim-01
-trackinglog-03,2023/08/15 12:45,"Lo",20,PENDING,null,claim-01
-trackinglog-04,2023/08/15 12:45,"Lorem ipsum dolor sit amet, consectetur adipiscin",30,PENDING,null,claim-01
-trackinglog-05,2023/08/15 12:45,"Lorem ipsum dolor sit amet, consectetur adipiscing",40,PENDING,null,claim-01
-trackinglog-06,2023/08/15 12:45,"โลเร็ม อิปซัม",50,PENDING,null,claim-01
-trackinglog-07,2023/08/15 12:45,"洛伦·伊普森",60,PENDING,null,claim-01
-trackinglog-08,2023/08/15 12:45,"<marquee>Hacked</marquee>",70,PENDING,null,claim-01
-trackinglog-09,2023/08/15 12:45,"<script>alert(‘Hacked!’);</script>",80,PENDING,null,claim-01
-trackinglog-10,2023/08/15 12:45,"' or 'A' = 'A ",90,PENDING,null,claim-01
+trackinglog-02,2023/08/15 12:46,"L",10,PENDING,null,claim-01
+trackinglog-03,2023/08/15 12:47,"Lo",20,PENDING,null,claim-01
+trackinglog-04,2023/08/15 12:48,"Lorem ipsum dolor sit amet, consectetur adipiscin",30,PENDING,null,claim-01
+trackinglog-05,2023/08/15 12:49,"Lorem ipsum dolor sit amet, consectetur adipiscing",40,PENDING,null,claim-01
+trackinglog-06,2023/08/15 12:50,"โลเร็ม อิปซัม",50,PENDING,null,claim-01
+trackinglog-07,2023/08/15 12:51,"洛伦·伊普森",60,PENDING,null,claim-01
+trackinglog-08,2023/08/15 12:52,"<marquee>Hacked</marquee>",70,PENDING,null,claim-01
+trackinglog-09,2023/08/15 12:53,"<script>alert(‘Hacked!’);</script>",80,PENDING,null,claim-01
+trackinglog-10,2023/08/15 12:54,"' or 'A' = 'A ",90,PENDING,null,claim-01
 # resolutionPercentage - variatons
-trackinglog-11,2023/08/15 12:45,"Lorem ipsum dolor sit ame",0,PENDING,null,claim-02
-trackinglog-12,2023/08/15 12:45,"Lorem ipsum dolor sit ame",1,PENDING,null,claim-02
-trackinglog-13,2023/08/15 12:45,"Lorem ipsum dolor sit ame",99,PENDING,null,claim-02
-trackinglog-14,2023/08/15 12:45,"Lorem ipsum dolor sit ame",100,REJECTED,"Claim rejected, invalid format",claim-01
+trackinglog-11,2023/08/15 12:55,"Lorem ipsum dolor sit ame",0,PENDING,null,claim-02
+trackinglog-12,2023/08/15 12:56,"Lorem ipsum dolor sit ame",1,PENDING,null,claim-02
+trackinglog-13,2023/08/15 12:57,"Lorem ipsum dolor sit ame",99,PENDING,null,claim-02
+trackinglog-14,2023/08/15 12:58,"Lorem ipsum dolor sit ame",100,REJECTED,"Claim rejected, invalid format",claim-01
 # status - variations (REJECTED and PENDING already proved)
-trackinglog-15,2023/08/15 12:45,"Lorem ipsum dolor sit ame",100,ACCEPTED,"Doors problem solved",claim-02
+trackinglog-15,2023/08/15 12:59,"Lorem ipsum dolor sit ame",100,ACCEPTED,"Doors problem solved",claim-02
 # resolution - variations
-trackinglog-16,2023/08/15 12:45,"Lorem ipsum dolor sit ame",10,PENDING,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",claim-03
-trackinglog-17,2023/08/15 12:45,"Lorem ipsum dolor sit ame",12,PENDING,"L",claim-03
-trackinglog-18,2023/08/15 12:45,"Lorem ipsum dolor sit ame",14,PENDING,"Lo",claim-03
-trackinglog-19,2023/08/15 12:45,"Lorem ipsum dolor sit ame",16,PENDING,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor",claim-03
-trackinglog-20,2023/08/15 12:45,"Lorem ipsum dolor sit ame",18,PENDING,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor*",claim-03
-trackinglog-21,2023/08/15 12:45,"Lorem ipsum dolor sit ame",20,PENDING,"โลเร็ม อิปซัม",claim-03
-trackinglog-22,2023/08/15 12:45,"Lorem ipsum dolor sit ame",22,PENDING,"洛伦·伊普森",claim-03
-trackinglog-23,2023/08/15 12:45,"Lorem ipsum dolor sit ame",24,PENDING,"<marquee>Hacked</marquee>",claim-03
-trackinglog-24,2023/08/15 12:45,"Lorem ipsum dolor sit ame",26,PENDING,"<script>alert(‘Hacked!’);</script>",claim-03
-trackinglog-26,2023/08/15 12:45,"Lorem ipsum dolor sit ame",28,PENDING,"' or 'A' = 'A ",claim-03
-trackinglog-27,2023/08/15 12:45,"Lorem ipsum dolor sit ame",30,PENDING,"",claim-03
+trackinglog-16,2023/08/15 13:01,"Lorem ipsum dolor sit ame",10,PENDING,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",claim-03
+trackinglog-17,2023/08/15 13:02,"Lorem ipsum dolor sit ame",12,PENDING,"L",claim-03
+trackinglog-18,2023/08/15 13:03,"Lorem ipsum dolor sit ame",14,PENDING,"Lo",claim-03
+trackinglog-19,2023/08/15 13:04,"Lorem ipsum dolor sit ame",16,PENDING,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor",claim-03
+trackinglog-20,2023/08/15 13:05,"Lorem ipsum dolor sit ame",18,PENDING,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor*",claim-03
+trackinglog-21,2023/08/15 13:06,"Lorem ipsum dolor sit ame",20,PENDING,"โลเร็ม อิปซัม",claim-03
+trackinglog-22,2023/08/15 13:07,"Lorem ipsum dolor sit ame",22,PENDING,"洛伦·伊普森",claim-03
+trackinglog-23,2023/08/15 13:08,"Lorem ipsum dolor sit ame",24,PENDING,"<marquee>Hacked</marquee>",claim-03
+trackinglog-24,2023/08/15 13:09,"Lorem ipsum dolor sit ame",26,PENDING,"<script>alert(‘Hacked!’);</script>",claim-03
+trackinglog-26,2023/08/15 13:10,"Lorem ipsum dolor sit ame",28,PENDING,"' or 'A' = 'A ",claim-03
+trackinglog-27,2023/08/15 13:11,"Lorem ipsum dolor sit ame",30,PENDING,"",claim-03
 
 
 
