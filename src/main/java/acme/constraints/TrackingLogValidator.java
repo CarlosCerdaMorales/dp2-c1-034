@@ -26,7 +26,7 @@ public class TrackingLogValidator extends AbstractValidator<ValidTrackingLog, Tr
 		boolean result;
 
 		if (trLog == null)
-			super.state(context, false, "*", "javax.validation.constraints.NotNull.message");
+			super.state(context, false, "null", "javax.validation.constraints.NotNull.message");
 
 		else {
 			Integer resolutionPercentage = trLog.getResolutionPercentage();
@@ -36,10 +36,10 @@ public class TrackingLogValidator extends AbstractValidator<ValidTrackingLog, Tr
 			{
 				if (resolutionPercentage < 100) {
 					if (status == TrackingLogStatus.ACCEPTED || status == TrackingLogStatus.REJECTED)
-						super.state(context, false, "Mensaje error 1", "status", "Mensaje error");
+						super.state(context, false, "status", "acme.validation.trackinglog.invalid-status-notresolute.message = El estado debe de ser pending ya que el porcentaje de resolución es menor a 100.");
 
 				} else if (status == TrackingLogStatus.PENDING || resolution == null || resolution.isEmpty())
-					super.state(context, false, "Mensaje error 2", "resolution", "Mensaje error");
+					super.state(context, false, "status", "acme.validation.trackinglog.invalid-status-resolute.message = El estado no debe de ser pending o debe de existir el mensaje de resolución.");
 			}
 		}
 
@@ -48,7 +48,7 @@ public class TrackingLogValidator extends AbstractValidator<ValidTrackingLog, Tr
 		Boolean estaOrdenada = IntStream.range(0, listLastTr.size() - 1).allMatch(i -> listLastTr.get(i).getResolutionPercentage() >= listLastTr.get(i + 1).getResolutionPercentage());
 
 		if (!estaOrdenada)
-			super.state(context, false, "Mensaje error 3", "resolution", "Mensaje error");
+			super.state(context, false, "resolutionpercentage", "");
 
 		result = !super.hasErrors(context);
 		return result;

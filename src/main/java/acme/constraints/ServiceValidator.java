@@ -23,14 +23,14 @@ public class ServiceValidator extends AbstractValidator<ValidService, Service> {
 		boolean result;
 
 		if (service == null || service.getPromotionCode() == null)
-			super.state(context, false, "*", "javax.validation.constraints.NotNull.message");
+			super.state(context, false, "null", "javax.validation.constraints.NotNull.message");
 		else {
 			String promotionCode = service.getPromotionCode();
 			String codeYear = promotionCode.substring(promotionCode.length() - 2);
 			String actualYear = MomentHelper.getCurrentMoment().toString().substring(MomentHelper.getCurrentMoment().toString().length() - 2);
 			{
 				if (!codeYear.equals(actualYear))
-					super.state(context, false, "Invalid promo code", "ofjd");
+					super.state(context, false, "promotionCode", "acme.validation.service.invalid-promotionCode-year.message");
 
 			}
 		}
