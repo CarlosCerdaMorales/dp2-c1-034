@@ -12,9 +12,11 @@
 
 package acme.forms;
 
-import java.util.List;
+import java.util.Map;
 
 import acme.client.components.basis.AbstractForm;
+import acme.entities.airline.AirlineType;
+import acme.entities.airport.Scope;
 import acme.forms.statistics.StatsAdministrator;
 import lombok.Getter;
 import lombok.Setter;
@@ -30,9 +32,9 @@ public class AdministratorDashboard extends AbstractForm {
 	// Attributes -------------------------------------------------------------
 
 	// Total number of airports grouped by their operational scope.
-	List<Object>				numberOfAirportsByTheirScope;
+	Map<Integer, Scope>			numberOfAirportsByTheirScope;
 	// Number of airlines grouped by their type.
-	List<Object>				numberOfAirlineByTheirType;
+	Map<Integer, AirlineType>	numberOfAirlineByTheirType;
 
 	// Ratio of airlines with both an email address and a phone number.
 	Double						airlinesWithEmailAndPhoneRatio;
