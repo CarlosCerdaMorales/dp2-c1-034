@@ -38,19 +38,19 @@ public class CustomerValidator extends AbstractValidator<ValidCustomer, Customer
 
 			{ // If my customers ID does not match the pattern, the state is triggered.
 				if (!id.matches("^[A-Z]{2,3}\\d{6}$"))
-					super.state(context, false, "identifier", "");
+					super.state(context, false, "identifier", "acme.validation.customer.invalid-identifier-pattern.message");
 
 			}
 
 			{ // If the initials I have are not the same as the expected ones, the state is triggered.
 				if (!idPrefix.equals(expectedInitials))
-					super.state(context, false, "identifier", "");
+					super.state(context, false, "identifier", "acme.validation.customer.invalid-identifier-initials.message");
 
 			}
 
 			{ // If my customers phone does not match the pattern, the state is triggered.
 				if (!phone.matches("^\\+?\\d{6,15}$"))
-					super.state(context, false, "phoneNumber", "");
+					super.state(context, false, "phoneNumber", "acme.validation.customer.invalid-phone-pattern.message");
 
 			}
 
