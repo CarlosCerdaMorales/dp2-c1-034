@@ -22,7 +22,7 @@ public class AssistanceAgentValidator extends AbstractValidator<ValidAssistanceA
 		boolean result;
 
 		if (aG == null || aG.getEmployeeCode() == null)
-			super.state(context, false, "*", "javax.validation.constraints.NotNull.message");
+			super.state(context, false, "employeeCode", "javax.validation.constraints.NotNull.message");
 		else {
 			DefaultUserIdentity identity = aG.getIdentity();
 			String name = identity.getName();
@@ -34,13 +34,13 @@ public class AssistanceAgentValidator extends AbstractValidator<ValidAssistanceA
 
 			{ // If my customers ID does not match the pattern, the state is triggered.
 				if (!employeeCode.matches("^[A-Z]{2,3}\\d{6}$"))
-					super.state(context, false, "employeeCode", "acme.validations.");
+					super.state(context, false, "employeeCode", "acme.validation.assistanceagent.invalid-employeecode-pattern.message");
 
 			}
 
 			{ // If the initials I have are not the same as the expected ones, the state is triggered.
 				if (!codePrefix.equals(expectedInitials))
-					super.state(context, false, "identifier", "asda");
+					super.state(context, false, "employeeCode", "acme.validation.assistanceagent.invalid-employeeCode-initials.message");
 
 			}
 		}
