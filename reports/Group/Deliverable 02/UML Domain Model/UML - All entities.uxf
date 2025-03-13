@@ -465,7 +465,6 @@ FlightCrewMember {ValidFlightCrewMember}
 + salary: Money{Mandatory, ValidMoney, Automapped}
 + yearsOfExperience: Integer{Optional, ValidNumber(max=120), Automapped}
 + languageSkills: String{Mandatory, ValidString(min=1, max=255), Automapped}
-+ workingFor: Airline{Mandatory,Valid,Automapped}
 bg=PINK</panel_attributes>
     <additional_attributes/>
   </element>
@@ -1101,5 +1100,20 @@ m2=*
  
 </panel_attributes>
     <additional_attributes>10.0;20.0;210.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>528</x>
+      <y>546</y>
+      <w>1440</w>
+      <h>108</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+&lt; workingFor
+m1=*
+m2=1
+</panel_attributes>
+    <additional_attributes>2380.0;160.0;2380.0;20.0;10.0;20.0</additional_attributes>
   </element>
 </diagram>
