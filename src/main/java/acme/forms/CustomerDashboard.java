@@ -6,7 +6,11 @@ import java.util.Map;
 
 import acme.client.components.basis.AbstractForm;
 import acme.forms.statistics.StatsCustomer;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 public class CustomerDashboard extends AbstractForm {
 
 	// Serialisation version --------------------------------------------------
