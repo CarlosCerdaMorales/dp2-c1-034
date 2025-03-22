@@ -24,6 +24,7 @@ acme.validation.trackinglog.invalid-resolutionpercentage.message = El porcentaje
 acme.validation.technician.invalid-license-number-pattern.message = Patrón de numero de licencia no válido.
 acme.validation.technician.invalid-identifier-initials.message = Las iniciales del tecnico no se ven reflejadas en el identificador.
 acme.validation.technician.invalid-phone-pattern = Patrón de teléfono no válido.
+acme.validation.technician.duplicated-identifier.message = Ya existe un tecnico con este numero de licencia.
 
 acme.validation.maintenancerecord = Maintenance record invalido.
 acme.validation.nextInspection.invalid-future-date = Fecha de proxima inspeccion invalida debido a que no ocurre después de la fecha de mantenimiento.

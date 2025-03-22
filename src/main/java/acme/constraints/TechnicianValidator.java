@@ -3,15 +3,21 @@ package acme.constraints;
 
 import javax.validation.ConstraintValidatorContext;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import acme.client.components.validation.AbstractValidator;
 import acme.client.components.validation.Validator;
 import acme.client.helpers.StringHelper;
+import acme.features.entities.technician.TechnicianRepository;
 import acme.realms.Technician;
 
 @Validator
 public class TechnicianValidator extends AbstractValidator<ValidTechnician, Technician> {
 
 	// ConstraintValidator interface ------------------------------------------
+	@Autowired
+	TechnicianRepository technicianRepository;
+
 
 	@Override
 	protected void initialise(final ValidTechnician annotation) {
@@ -27,6 +33,14 @@ public class TechnicianValidator extends AbstractValidator<ValidTechnician, Tech
 		if (technician == null || technician.getLicenseNumber() == null) {
 			super.state(context, false, "*", "javax.validation.constraints.NotNull.message");
 			result = false;
+		} else {
+			boolean uniqueTechnician;
+			Technician existingTechnician;
+
+			existingTechnician = this.technicianRepository.findTechnicianByLicenseNumber(technician.getLicenseNumber());
+			uniqueTechnician = existingTechnician == null || existingTechnician.equals(technician);
+
+			super.state(context, uniqueTechnician, "identifier", "acme.validation.technician.duplicated-identifier.message");
 		}
 
 		if (result && technician != null && technician.getLicenseNumber() != null && technician.getIdentity() != null) {
