@@ -24,3 +24,4 @@ acme.validation.technician = There is an error while Validating the technician. 
 acme.validation.maintenancerecord = Invalid maintenance record.
 acme.validation.nextInspection.invalid-future-date = Invalid next inspection date as it is not after maintenance moment.
 acme.validation.airport.duplicated-iata.message = There is an existing airport with this IATA Code.
+acme.validation.airline.duplicated-iata.message = There is an existing airline with this IATA Code.
