@@ -6,9 +6,11 @@ import javax.validation.ConstraintValidatorContext;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.validation.AbstractValidator;
+import acme.client.components.validation.Validator;
 import acme.entities.airport.Airport;
 import acme.features.entities.airport.AirportRepository;
 
+@Validator
 public class AirportValidator extends AbstractValidator<ValidAirport, Airport> {
 
 	// Internal state ---------------------------------------------------------
