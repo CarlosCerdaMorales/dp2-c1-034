@@ -11,9 +11,14 @@
 acme.validation.customer.invalid-identifier-pattern.message  = Patrón de identificador no válido
 acme.validation.customer.invalid-identifier-initials.message = Las iniciales del cliente no se ven reflejadas en el identificador
 acme.validation.customer.invalid-phone-pattern.message = Patrón de teléfono no válido
+
 acme.validation.assistanceagent.invalid-employeecode-pattern.message = Código de empleado no válido ya que no va de acuerdo al patrón establecido.
 acme.validation.assistanceagent.invalid-employeeCode-initials.message = Las iniciales del cliente no se ven reflejadas en el código de empleado.
+
 acme.validation.service.invalid-promotionCode-year.message = Los dos últimos digitos no coinciden con el año actual.
+
 acme.validation.trackinglog.invalid-status-notresolute.message = El estado debe de ser pending ya que el porcentaje de resolución es menor a 100.
 acme.validation.trackinglog.invalid-status-resolute.message = El estado no debe de ser pending o debe de existir el mensaje de resolución.
 acme.validation.trackinglog.invalid-resolutionpercentage.message = El porcentaje de resolución debe de ser siempre creciente.
+
+acme.validation.airport.duplicated-iata.message = Ya existe un aeropuerto con este código IATA.
