@@ -25,5 +25,6 @@ acme.validation.maintenancerecord = Maintenance record invalido.
 acme.validation.nextInspection.invalid-future-date = Fecha de proxima inspeccion invalida debido a que no ocurre después de la fecha de mantenimiento.
 
 acme.validation.airport.duplicated-iata.message = Ya existe un aeropuerto con este código IATA.
-
+acme.validation.airline.duplicated-iata.message = Ya existe un aerolinea con este código IATA.
 acme.validation.aircraft.invalid-registration-number = Ya existe un avion con este numero de registro.
+
