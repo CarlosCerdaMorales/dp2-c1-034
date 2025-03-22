@@ -22,6 +22,7 @@ acme.validation.assistanceagent.invalid-employeeCode-initials.message = The clie
 ### Service ###
 
 acme.validation.service.invalid-promotionCode-year.message = The last two digits do not match the current year.
+acme.validation.service.duplicated-promocode.message = The promotional code is not unique
 
 ### Tracking Log ###
 
@@ -41,5 +42,12 @@ acme.validation.nextInspection.invalid-future-date = Invalid next inspection dat
 ### Airport ###
 
 acme.validation.airport.duplicated-iata.message = There is an existing airport with this IATA Code.
+
+### Airline ###
+
 acme.validation.airline.duplicated-iata.message = There is an existing airline with this IATA Code.
+
+### Aircraft ###
+
 acme.validation.aircraft.invalid-registration-number = There is an existing aircraft with this registration number.
+

@@ -22,6 +22,7 @@ acme.validation.assistanceagent.invalid-employeeCode-initials.message = Las inic
 ### Service ###
 
 acme.validation.service.invalid-promotionCode-year.message = Los dos últimos digitos no coinciden con el año actual.
+acme.validation.service.duplicated-promocode.message = El código promocional no es único
 
 ### Tracking Log ###
 
