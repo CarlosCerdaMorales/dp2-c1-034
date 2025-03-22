@@ -2,16 +2,18 @@
 package acme.forms;
 
 import java.util.List;
-import java.util.Map;
 
 import acme.client.components.basis.AbstractForm;
-import acme.forms.statistics.StatsCustomer;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 public class CustomerDashboard extends AbstractForm {
 
 	// Serialisation version --------------------------------------------------
 
-	private static final long	serialVersionUID				= 1L;
+	private static final long	serialVersionUID	= 1L;
 
 	// Attributes -------------------------------------------------------------
 
@@ -25,15 +27,15 @@ public class CustomerDashboard extends AbstractForm {
 
 	// Their number of bookings grouped by travel class. 
 
-	Map<String, Integer>		bookingsGroupedByTravelClass;
+	String						bookingsGroupedByTravelClass;
 
 	// Count, average, minimum, maximum, and standard deviation of the cost of their bookings in the last five years. 
 
-	StatsCustomer				costsOfBookingsLastFiveYears	= new StatsCustomer();
+	String						costsOfBookingsLastFiveYears;
 
 	// Count, average, minimum, maximum, and standard deviation of the number of passengers in their bookings. 
 
-	StatsCustomer				numberOfPassengersInBookings	= new StatsCustomer();
+	String						numberOfPassengersInBookings;
 
 	// Derived attributes -----------------------------------------------------
 
