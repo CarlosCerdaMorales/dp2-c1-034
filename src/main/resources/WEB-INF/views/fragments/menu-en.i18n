@@ -46,6 +46,8 @@ master.menu.user-account.become-provider = Become a provider
 master.menu.user-account.provider-profile = Provider profile
 master.menu.user-account.become-consumer = Become a consumer
 master.menu.user-account.consumer-profile = Consumer profile
+master.menu.assistanceagent = Assistance agent
+master.menu.consumer.dashboard = Assistance agent dashboard
 
 # messages technician validator
 master.menu.message.valid.technician = There is an error while Validating the technician. Check the license number and/or phone number
