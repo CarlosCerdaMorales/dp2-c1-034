@@ -4,6 +4,7 @@ package acme.constraints;
 import javax.validation.ConstraintValidatorContext;
 
 import acme.client.components.validation.AbstractValidator;
+import acme.client.helpers.StringHelper;
 import acme.realms.Manager;
 
 public class ManagerValidator extends AbstractValidator<ValidManager, Manager> {
@@ -38,7 +39,8 @@ public class ManagerValidator extends AbstractValidator<ValidManager, Manager> {
 			String managerIdentifier = manager.getManagerCode();
 
 			boolean validLength = managerIdentifier.length() >= 8 && managerIdentifier.length() <= 9;
-			boolean validPattern = managerIdentifier.matches("^" + initials + "\\d{6}$");
+			String initialsFromIdentifier = managerIdentifier.subSequence(0, initials.length()).toString();
+			boolean validPattern = StringHelper.isEqual(initialsFromIdentifier, initials, true) && managerIdentifier.matches("^[A-Z]{2,3}\\d{6}$");
 
 			validIdentifier = validLength && validPattern;
 
