@@ -3,7 +3,6 @@ package acme.entities.leg;
 
 import java.beans.Transient;
 import java.time.Duration;
-import java.time.Instant;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -18,6 +17,7 @@ import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
 import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidString;
+import acme.client.helpers.MomentHelper;
 import acme.constraints.ValidLeg;
 import acme.entities.aircraft.Aircraft;
 import acme.entities.airport.Airport;
@@ -84,12 +84,8 @@ public class Leg extends AbstractEntity {
 
 	@Transient
 	public int durationInHours() {
-		Instant departureInstant = this.scheduledDeparture.toInstant();
-		Instant arrivalInstant = this.scheduledArrival.toInstant();
-
-		Duration duration = Duration.between(departureInstant, arrivalInstant);
-
-		return duration.toHoursPart();
+		Duration duration = MomentHelper.computeDuration(this.scheduledDeparture, this.scheduledArrival);
+		return (int) duration.toHours();
 	}
 
 }
