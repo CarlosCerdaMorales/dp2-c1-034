@@ -13,6 +13,7 @@
 acme.validation.customer.invalid-identifier-pattern.message = Invalid identifier's pattern
 acme.validation.customer.invalid-identifier-initials.message = Customer's initals are not reflected in its identifier
 acme.validation.customer.invalid-phone-pattern.message = Invalid phone's pattern
+acme.validation.customer.duplicated-identifier.message = There is an existing customer with this identifier.
 
 ### Assistance Agent ###
 
@@ -41,5 +42,16 @@ acme.validation.nextInspection.invalid-future-date = Invalid next inspection dat
 ### Airport ###
 
 acme.validation.airport.duplicated-iata.message = There is an existing airport with this IATA Code.
+
+### Booking ###
+
+acme.validation.booking.duplicated-locator-code.message = There is an existing booking with this locator code.
+
+### Airline ###
+
 acme.validation.airline.duplicated-iata.message = There is an existing airline with this IATA Code.
+
+### Aircraft ###
+
 acme.validation.aircraft.invalid-registration-number = There is an existing aircraft with this registration number.
+
