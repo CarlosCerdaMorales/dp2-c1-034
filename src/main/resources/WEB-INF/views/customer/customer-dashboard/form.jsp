@@ -18,4 +18,7 @@
 <acme:form>
 	<acme:input-textarea code="customer.customer-dashboard.form.label.lastFiveDestinations" path="lastFiveDestinations"/>
 	<acme:input-double code="customer.customer-dashboard.form.label.moneySpentInBookingsLastYear" path="moneySpentInBookingsLastYear"/>
+	<acme:input-textbox code="customer.customer-dashboard.form.label.bookingsGroupedByTravelClass" path="bookingsGroupedByTravelClass"/>
+	<acme:input-textbox code="customer.customer-dashboard.form.label.costsOfBookingsLastFiveYears" path="costsOfBookingsLastFiveYears"/>
+	<acme:input-textbox code="customer.customer-dashboard.form.label.numberOfPassengersInBookings" path="numberOfPassengersInBookings"/>
 </acme:form>
