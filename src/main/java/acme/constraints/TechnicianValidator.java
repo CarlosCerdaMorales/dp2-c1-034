@@ -5,6 +5,7 @@ import javax.validation.ConstraintValidatorContext;
 
 import acme.client.components.validation.AbstractValidator;
 import acme.client.components.validation.Validator;
+import acme.client.helpers.StringHelper;
 import acme.realms.Technician;
 
 @Validator
@@ -24,20 +25,8 @@ public class TechnicianValidator extends AbstractValidator<ValidTechnician, Tech
 		boolean result = true;  // Variable única de control
 
 		if (technician == null || technician.getLicenseNumber() == null) {
-			super.state(context, false, "*", "{acme.validation.technician}");
+			super.state(context, false, "*", "javax.validation.constraints.NotNull.message");
 			result = false;
-		}
-
-		if (technician != null) {
-			if (technician.getIdentity() == null || technician.getIdentity().getName() == null || technician.getIdentity().getSurname() == null) {
-				super.state(context, false, "identity", "{acme.validation.technician}");
-				result = false;
-			}
-
-			if (technician.getPhoneNumber() == null) {
-				super.state(context, false, "phoneNumber", "{acme.validation.technician}");
-				result = false;
-			}
 		}
 
 		if (result && technician != null && technician.getLicenseNumber() != null && technician.getIdentity() != null) {
@@ -49,18 +38,18 @@ public class TechnicianValidator extends AbstractValidator<ValidTechnician, Tech
 			String expectedInitials = this.getTechnicianInitials(name, surname);
 			String prefix = licenseNumber.substring(0, expectedInitials.length());
 
-			if (!licenseNumber.matches("^[A-Z]{2,3}\\d{6}$")) {
-				super.state(context, false, "identifier", "");
+			if (!StringHelper.matches(licenseNumber, "^[A-Z]{2,3}\\d{6}$")) {
+				super.state(context, false, "identifier", "acme.validation.technician.invalid-license-number-pattern.message ");
 				result = false;
 			}
 
-			if (!prefix.equals(expectedInitials)) {
-				super.state(context, false, "identifier", "");
+			if (!StringHelper.isEqual(expectedInitials, prefix, true)) {
+				super.state(context, false, "identifier", "acme.validation.technician.invalid-identifier-initials.message");
 				result = false;
 			}
 
-			if (phone != null && !phone.matches("^\\+?\\d{6,15}$")) {
-				super.state(context, false, "phoneNumber", "{acme.validation.technician}");
+			if (phone != null && !StringHelper.matches(phone, "^\\+?\\d{6,15}$")) {
+				super.state(context, false, "phoneNumber", "acme.validation.technician.invalid-phone-pattern");
 				result = false;
 			}
 		}

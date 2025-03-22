@@ -33,6 +33,9 @@ acme.validation.trackinglog.invalid-resolutionpercentage.message = The resolutio
 ### Technician ###
 
 acme.validation.technician = There is an error while Validating the technician. Check the license number and/or phone number.
+acme.validation.technician.invalid-license-number-pattern.message = Invalid license number's pattern.
+acme.validation.technician.invalid-identifier-initials.message = Technician's initals are not reflected in its identifier.
+acme.validation.technician.invalid-phone-pattern = Invalid phone's pattern.
 
 ### Maintenance Record ###
 

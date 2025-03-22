@@ -16,7 +16,7 @@ public @interface ValidTechnician {
 
 	// Standard validation properties -----------------------------------------
 
-	String message() default "{master.menu.message.valid.technician}";
+	String message() default "";
 
 	Class<?>[] groups() default {};
 	Class<? extends Payload>[] payload() default {};
