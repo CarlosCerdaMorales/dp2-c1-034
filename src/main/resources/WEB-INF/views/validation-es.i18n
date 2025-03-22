@@ -20,5 +20,8 @@ acme.validation.service.invalid-promotionCode-year.message = Los dos últimos di
 acme.validation.trackinglog.invalid-status-notresolute.message = El estado debe de ser pending ya que el porcentaje de resolución es menor a 100.
 acme.validation.trackinglog.invalid-status-resolute.message = El estado no debe de ser pending o debe de existir el mensaje de resolución.
 acme.validation.trackinglog.invalid-resolutionpercentage.message = El porcentaje de resolución debe de ser siempre creciente.
+acme.validation.technician = Ha ocurrido un erro durante la validacion del tecnico. Revise su numero de licencia y/o numero de telefono.
+acme.validation.maintenancerecord = Maintenance record invalido.
+acme.validation.nextInspection.invalid-future-date = Fecha de proxima inspeccion invalida debido a que no ocurre después de la fecha de mantenimiento.
 
 acme.validation.airport.duplicated-iata.message = Ya existe un aeropuerto con este código IATA.
