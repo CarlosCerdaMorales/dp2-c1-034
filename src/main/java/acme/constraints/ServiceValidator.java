@@ -3,13 +3,20 @@ package acme.constraints;
 
 import javax.validation.ConstraintValidatorContext;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import acme.client.components.validation.AbstractValidator;
 import acme.client.components.validation.Validator;
 import acme.client.helpers.MomentHelper;
 import acme.entities.service.Service;
+import acme.entities.service.ServiceRepository;
 
 @Validator
 public class ServiceValidator extends AbstractValidator<ValidService, Service> {
+
+	@Autowired
+	private ServiceRepository repository;
+
 
 	@Override
 	protected void initialise(final ValidService annotation) {
@@ -28,6 +35,11 @@ public class ServiceValidator extends AbstractValidator<ValidService, Service> {
 			String promotionCode = service.getPromotionCode();
 			String codeYear = promotionCode.substring(promotionCode.length() - 2);
 			String actualYear = MomentHelper.getCurrentMoment().toString().substring(MomentHelper.getCurrentMoment().toString().length() - 2);
+			boolean uniqueService;
+			Service existingservice = this.repository.findServiceByPromoCode(service.getPromotionCode());
+			uniqueService = existingservice == null || existingservice.equals(service);
+
+			super.state(context, uniqueService, "promotionalCode", "acme.validation.service.duplicated-promocode.message");
 			{
 				if (!codeYear.equals(actualYear))
 					super.state(context, false, "promotionCode", "acme.validation.service.invalid-promotionCode-year.message");
