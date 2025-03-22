@@ -24,18 +24,18 @@ public class TechnicianValidator extends AbstractValidator<ValidTechnician, Tech
 		boolean result = true;  // Variable única de control
 
 		if (technician == null || technician.getLicenseNumber() == null) {
-			super.state(context, false, "*", "javax.validation.constraints.NotNull.message");
+			super.state(context, false, "*", "{acme.validation.technician}");
 			result = false;
 		}
 
 		if (technician != null) {
 			if (technician.getIdentity() == null || technician.getIdentity().getName() == null || technician.getIdentity().getSurname() == null) {
-				super.state(context, false, "identity", "javax.validation.constraints.NotNull.message");
+				super.state(context, false, "identity", "{acme.validation.technician}");
 				result = false;
 			}
 
 			if (technician.getPhoneNumber() == null) {
-				super.state(context, false, "phoneNumber", "javax.validation.constraints.NotNull.message");
+				super.state(context, false, "phoneNumber", "{acme.validation.technician}");
 				result = false;
 			}
 		}
@@ -60,7 +60,7 @@ public class TechnicianValidator extends AbstractValidator<ValidTechnician, Tech
 			}
 
 			if (phone != null && !phone.matches("^\\+?\\d{6,15}$")) {
-				super.state(context, false, "phoneNumber", "{master.menu.message.valid.technician}");
+				super.state(context, false, "phoneNumber", "{acme.validation.technician}");
 				result = false;
 			}
 		}
