@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1">
+  <zoom_level>7</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>315</x>
+      <y>413</y>
+      <w>245</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Constraint&gt;&gt;
+ValidFlightCrewMember
+--
++ employee code must reflect person's initials in first 
+two characters
+bg=RED</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>574</x>
+      <y>133</y>
+      <w>357</w>
+      <h>91</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Form&gt;&gt;
+AssistanceAgentDashboard
+--
++ claimsResolvedRatio: Double
++ claimsRejectedRatio: Double
++ topThreeMonthsWithClaims: List&lt;String&gt;
++ numberOfLogsClaims: StatsAssistanceAgent		
++ numberOfClaimsAssistedLastMonth: StatsAssistanceAgent		
+bg=cyan</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>945</x>
+      <y>133</y>
+      <w>273</w>
+      <h>77</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Class&gt;&gt;
+StatsAssistanceAgent
+--
++ average: Double
++ minimum: Integer
++ maximum: Integer
++ standardDeviation: Double
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>945</x>
+      <y>231</y>
+      <w>273</w>
+      <h>77</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Class&gt;&gt;
+StatsCustomer
+--
++ average: Double
++ minimum: Integer
++ maximum: Integer
++ standardDeviation: Double
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>945</x>
+      <y>329</y>
+      <w>273</w>
+      <h>77</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Class&gt;&gt;
+StatsManager
+--
++ average: Double
++ minimum: Integer
++ maximum: Integer
++ standardDeviation: Double
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>945</x>
+      <y>448</y>
+      <w>273</w>
+      <h>77</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Class&gt;&gt;
+StatsTechnician
+--
++ average: Double
++ minimum: Integer
++ maximum: Integer
++ standardDeviation: Double
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>952</x>
+      <y>672</y>
+      <w>273</w>
+      <h>77</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Class&gt;&gt;
+StatsAdministrator
+--
++ average: Double
++ minimum: Integer
++ maximum: Integer
++ standardDeviation: Double
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>574</x>
+      <y>679</y>
+      <w>357</w>
+      <h>98</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Form&gt;&gt;
+AdministratorDashboard
+--
++ numberOfAirportsByTheirScope: List&lt;Object&gt;
++ numberOfAirlineByTheirType: List&lt;Object&gt;
++ airlinesWithEmailAndPhoneRatio: Double						
++ activeAndNonActiveAircraftRatio: Double								
++ reviewsAboveFiveRatio: Double						
++ reviewsPostedOverLastTenWeeks:	 StatsAdministrator	
+bg=cyan</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>574</x>
+      <y>448</y>
+      <w>357</w>
+      <h>91</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Form&gt;&gt;
+TechnicianDashboard
+--
++ maintenanceRecordsGroupByStatus: Map&lt;String, Integer&gt;
++ maintenanceRecordWithNearestInspectionDate: Double
++ topFiveAircraftsWithMoreTaksInTheirMaintenanceRecords: List&lt;String&gt;
++ lastYearEstimatedCostStats : StatsTechnician		
++ lastYearEstimatedDurationStats : StatsTechnician		
+bg=cyan</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>574</x>
+      <y>329</y>
+      <w>357</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Form&gt;&gt;
+ManagerDashboard
+--
++ ranking: List&lt;String&gt;
++ yearsToRetire: Double
++ flightsGroupedByStatus: Map&lt;String, Double&gt;
++ leastPopularAirport: Airport
++ mostPopularAirport: Airport
++ numberOfLegsBasedOnStatus: Map&lt;String, Integer&gt;
++ numberOfClaimsAssistedLastMonth: StatsAssistanceAgent		
+bg=cyan</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>574</x>
+      <y>231</y>
+      <w>357</w>
+      <h>91</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Form&gt;&gt;
+CustomerDashboard
+--
++ lastFiveDestinations: List&lt;String&gt;
++ moneySpentInBookingsLastYear: Double
++ bookingsGroupedByTravelClass: Map&lt;String, Integer&gt;
++ costOfBookingsLastFiveYears: StatsCustomer
++ numberOfPassengersInBookings: StatsCustomer		
+bg=cyan</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>315</x>
+      <y>133</y>
+      <w>245</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Constraint&gt;&gt;
+ValidIataCode
+--
++ Pattern(regexp="^[A-Z]{3}")
+bg=RED</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>315</x>
+      <y>189</y>
+      <w>245</w>
+      <h>77</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Constraint&gt;&gt;
+ValidTrackingLog
+--
++ status must reflect resolution's percentage
++ if it's ACCEPTED or REJECTED, resolution 
+can't be empty
++ resolution's percentage must increase monotonically
+bg=RED</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>315</x>
+      <y>273</y>
+      <w>245</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Constraint&gt;&gt;
+ValidAssistanceAgent
+--
++ employee code must reflect person's initials in first 
+two characters
+bg=RED</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>315</x>
+      <y>336</y>
+      <w>245</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Constraint&gt;&gt;
+ValidCustomer
+--
++ identifier must reflect person's initials in first 
+two characters
++ phone must follow given pattern
+bg=RED</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>315</x>
+      <y>476</y>
+      <w>245</w>
+      <h>49</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Constraint&gt;&gt;
+ValidLeg
+--
++ leg's flight number must start with airline's iata code
+bg=RED</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>315</x>
+      <y>532</y>
+      <w>245</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Constraint&gt;&gt;
+ValidAssistanceAgent
+--
++ manager code must reflect person's initials in first 
+two characters
+bg=RED</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>315</x>
+      <y>595</y>
+      <w>245</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Constraint&gt;&gt;
+ValidService
+--
++ promotion code's last two digits must equal actual 
+year digits
+bg=RED</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>315</x>
+      <y>658</y>
+      <w>245</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Constraint&gt;&gt;
+ValidTechnician
+--
++ license number must reflect person's initials in first 
+two characters
++ phone must follow given pattern
+bg=RED</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>574</x>
+      <y>553</y>
+      <w>357</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Form&gt;&gt;
+FlightCrewMemberDashboard
+--
++ lastFiveDestinationsAssigned: List&lt;String&gt;
++ numberOfLegsWithActivityLogsLowSeverityLevel: Integer
++ numberOfLegsWithActivityLogsMediumSeverityLevel: Integer
++ numberOfLegsWithActivityLogsHighSeverityLevel: Integer
++ crewMembersAssignedInLastLeg: Integer
++ numberOfFlightAssignmentsGroupedByTheirStatus : Map&lt;String,Integer&gt;
++ numberOfFlightAssignmentsInLastMonth: StatsFlightCrewMember	
+bg=cyan
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>945</x>
+      <y>560</y>
+      <w>273</w>
+      <h>77</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Class&gt;&gt;
+StatsFlightCrewMember
+--
++ average: Double
++ minimum: Integer
++ maximum: Integer
++ standardDeviation: Double
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

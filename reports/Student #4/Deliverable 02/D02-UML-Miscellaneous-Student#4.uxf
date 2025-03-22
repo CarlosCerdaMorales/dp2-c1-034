@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1">
+  <zoom_level>5</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>470</x>
+      <y>205</y>
+      <w>255</w>
+      <h>65</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Form&gt;&gt;
+AssistanceAgentDashboard
+--
++ claimsResolvedRatio: Double
++ claimsRejectedRatio: Double
++ topThreeMonthsWithClaims: List&lt;String&gt;
++ numberOfLogsClaims: StatsAssistanceAgent		
++ numberOfClaimsAssistedLastMonth: StatsAssistanceAgent		
+bg=cyan</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>285</x>
+      <y>170</y>
+      <w>175</w>
+      <h>55</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Constraint&gt;&gt;
+ValidTrackingLog
+--
++ status must reflect resolution's percentage
++ if it's ACCEPTED or REJECTED, resolution 
+can't be empty
++ resolution's percentage must increase monotonically
+bg=RED</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>285</x>
+      <y>230</y>
+      <w>175</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Constraint&gt;&gt;
+ValidAssistanceAgent
+--
++ employee code must reflect person's initials in first 
+two characters
+bg=RED</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>735</x>
+      <y>215</y>
+      <w>195</w>
+      <h>55</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Class&gt;&gt;
+StatsAssistanceAgent
+--
++ average: Double
++ minimum: Integer
++ maximum: Integer
++ standardDeviation: Double
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

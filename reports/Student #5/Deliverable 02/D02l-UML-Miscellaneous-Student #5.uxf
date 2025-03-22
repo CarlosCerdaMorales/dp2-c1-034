@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>40</x>
+      <y>390</y>
+      <w>350</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Constraint&gt;&gt;
+ValidIataCode
+--
++ Pattern(regexp="^[A-Z]{3}")
+bg=RED</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>40</x>
+      <y>270</y>
+      <w>350</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Constraint&gt;&gt;
+ValidTechnician
+--
++ license number must reflect person's initials in first 
+two characters
++ phone must follow given pattern
+bg=RED</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>410</x>
+      <y>270</y>
+      <w>510</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Form&gt;&gt;
+TechnicianDashboard
+--
++ maintenanceRecordsGroupByStatus: Map&lt;String, Integer&gt;
++ maintenanceRecordWithNearestInspectionDate: Double
++ topFiveAircraftsWithMoreTaksInTheirMaintenanceRecords: List&lt;String&gt;
++ lastYearEstimatedCostStats : StatsTechnician		
++ lastYearEstimatedDurationStats : StatsTechnician		
+bg=cyan</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>940</x>
+      <y>270</y>
+      <w>390</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Class&gt;&gt;
+StatsTechnician
+--
++ average: Double
++ minimum: Integer
++ maximum: Integer
++ standardDeviation: Double
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

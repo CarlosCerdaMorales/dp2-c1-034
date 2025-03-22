@@ -5,12 +5,13 @@ import java.util.HashMap;
 import java.util.List;
 
 import acme.client.components.basis.AbstractForm;
+import acme.forms.statistics.StatsFlightCrewMember;
 
 public class FlightCrewMemberDashboard extends AbstractForm {
 
 	// Serialisation version --------------------------------------------------
 
-	private static final long	serialVersionUID	= 1L;
+	private static final long	serialVersionUID						= 1L;
 
 	// Attributes -------------------------------------------------------------
 
@@ -30,10 +31,7 @@ public class FlightCrewMemberDashboard extends AbstractForm {
 
 	// The average, minimum, maximum, and standard deviation of the number of flight assignments they had in the last month.. 
 
-	Double						averageFlightAssignmentsInLastMonth;
-	Double						minFlightAssignmentsInLastMonth;
-	Double						maxFlightAssignmentsInLastMonth;
-	Double						standardDeviationFlightAssignmentsInLastMonth;
+	StatsFlightCrewMember		numberOfFlightAssignmentsInLastMonth	= new StatsFlightCrewMember();
 
 	// Derived attributes -----------------------------------------------------
 
