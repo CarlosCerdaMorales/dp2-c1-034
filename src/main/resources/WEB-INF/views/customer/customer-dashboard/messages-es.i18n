@@ -12,3 +12,6 @@ customer.customer-dashboard.form.title = Detalles de cliente
 
 customer.customer-dashboard.form.label.lastFiveDestinations = Últimos cinco destinos
 customer.customer-dashboard.form.label.moneySpentInBookingsLastYear = Dinero invertido en las reservas del último año
+customer.customer-dashboard.form.label.bookingsGroupedByTravelClass = Número de reservas agrupadas por clase
+customer.customer-dashboard.form.label.costsOfBookingsLastFiveYears = Diferentes estadísticas en tus reservas de los últimos cinco años
+customer.customer-dashboard.form.label.numberOfPassengersInBookings = Diferentes estadísticas de pasajeros en tus reservas

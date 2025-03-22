@@ -12,3 +12,6 @@ customer.customer-dashboard.form.title = Customer dashboard
 
 customer.customer-dashboard.form.label.lastFiveDestinations = Last five destinations
 customer.customer-dashboard.form.label.moneySpentInBookingsLastYear = Money spent in bookings through last year
+customer.customer-dashboard.form.label.bookingsGroupedByTravelClass = Bookings grouped by travel class
+customer.customer-dashboard.form.label.costsOfBookingsLastFiveYears = Different costs in last five years 
+customer.customer-dashboard.form.label.numberOfPassengersInBookings = Different statistics for passengers in your bookings
