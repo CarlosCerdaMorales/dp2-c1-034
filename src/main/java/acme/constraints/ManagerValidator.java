@@ -27,11 +27,11 @@ public class ManagerValidator extends AbstractValidator<ValidManager, Manager> {
 			String[] nameParts = fullName.split(", ");
 
 			String[] surnameParts = nameParts[0].split(" ");
-			initials = nameParts[1].substring(0, 1).toUpperCase();
-			initials += surnameParts[0].substring(0, 1).toUpperCase();
+			initials = nameParts[1].substring(0, 1);
+			initials += surnameParts[0].substring(0, 1);
 
 			if (surnameParts.length > 1)
-				initials += surnameParts[1].substring(0, 1).toUpperCase();
+				initials += surnameParts[1].substring(0, 1);
 
 			boolean validIdentifier;
 
@@ -42,8 +42,7 @@ public class ManagerValidator extends AbstractValidator<ValidManager, Manager> {
 
 			validIdentifier = validLength && validPattern;
 
-			super.state(context, validIdentifier, "managerIdentifier",
-					"java.validation.airlineManager.identifier.message");
+			super.state(context, validIdentifier, "managerIdentifier", "java.validation.airlineManager.identifier.message");
 		}
 
 		result = !super.hasErrors(context);
