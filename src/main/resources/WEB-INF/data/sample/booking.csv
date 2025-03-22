@@ -2,7 +2,7 @@ key,locatorCode,purchaseMoment,travelClass,price,lastNibble,key:customer,key:fli
 # base entity
 booking-01,ABC123,2012/07/02 0:00,ECONOMY,EUR 500000.00,1234,customer-01,flight-01
 # locatorCode - variations
-booking-02,A1B2C3D4,2012/07/02 0:00,ECONOMY,EUR 500000.00,1234,customer-02,flight-02
+booking-02,X9Y7Z8,2012/07/02 0:00,ECONOMY,EUR 500000.00,1234,customer-02,flight-02
 booking-03,A1B2C3D4,2012/07/02 0:00,ECONOMY,EUR 500000.00,1234,customer-01,flight-03
 booking-04,12345678,2012/07/02 0:00,ECONOMY,EUR 500000.00,1234,customer-02,flight-04
 booking-05,ABCDEFGH,2012/07/02 0:00,ECONOMY,EUR 500000.00,1234,customer-01,flight-04
