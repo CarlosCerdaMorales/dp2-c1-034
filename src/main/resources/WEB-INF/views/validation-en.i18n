@@ -26,3 +26,4 @@ acme.validation.nextInspection.invalid-future-date = Invalid next inspection dat
 
 acme.validation.airport.duplicated-iata.message = There is an existing airport with this IATA Code.
 acme.validation.airline.duplicated-iata.message = There is an existing airline with this IATA Code.
+acme.validation.aircraft.invalid-registration-number = There is an existing aircraft with this registration number.
