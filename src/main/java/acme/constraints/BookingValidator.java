@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.validation.AbstractValidator;
 import acme.client.components.validation.Validator;
+import acme.client.helpers.StringHelper;
 import acme.entities.booking.Booking;
 import acme.features.entities.booking.BookingRepository;
 
@@ -36,13 +37,20 @@ public class BookingValidator extends AbstractValidator<ValidBooking, Booking> {
 		if (booking == null)
 			super.state(context, false, "*", "javax.validation.constraints.NotNull.message");
 		else {
-			boolean uniqueBooking;
-			Booking existingBooking;
+			{
+				boolean uniqueBooking;
+				Booking existingBooking;
 
-			existingBooking = this.repository.getBookingFromLocatorCode(booking.getLocatorCode());
-			uniqueBooking = existingBooking == null || existingBooking.equals(booking);
+				existingBooking = this.repository.getBookingFromLocatorCode(booking.getLocatorCode());
+				uniqueBooking = existingBooking == null || existingBooking.equals(booking);
 
-			super.state(context, uniqueBooking, "IATACode", "acme.validation.booking.duplicated-locator-code.message");
+				super.state(context, uniqueBooking, "IATACode", "acme.validation.booking.duplicated-locator-code.message");
+			}
+			{
+				String lastNibble = booking.getLastNibble();
+				if (!StringHelper.matches(lastNibble, "\\d{4}|"))
+					super.state(context, false, "lastNibble", "acme.validation.booking.invalid-nibble.message");
+			}
 		}
 
 		result = !super.hasErrors(context);
