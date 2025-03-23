@@ -50,6 +50,7 @@ acme.validation.airport.duplicated-iata.message = Ya existe un aeropuerto con es
 ### Booking ###
 
 acme.validation.booking.duplicated-locator-code.message = Ya existe una reserva con este código de localización.
+acme.validation.booking.invalid-nibble.message = En caso de indicar los últimos dígitos, han de ser los cuatro últimos.
 
 ### Airline ###
 
