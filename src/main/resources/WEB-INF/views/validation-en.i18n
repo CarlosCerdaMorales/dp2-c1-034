@@ -13,6 +13,7 @@
 acme.validation.customer.invalid-identifier-pattern.message = Invalid identifier's pattern
 acme.validation.customer.invalid-identifier-initials.message = Customer's initals are not reflected in its identifier
 acme.validation.customer.invalid-phone-pattern.message = Invalid phone's pattern
+acme.validation.customer.duplicated-identifier.message = There is an existing customer with this identifier.
 
 ### Assistance Agent ###
 
@@ -22,6 +23,7 @@ acme.validation.assistanceagent.invalid-employeeCode-initials.message = The clie
 ### Service ###
 
 acme.validation.service.invalid-promotionCode-year.message = The last two digits do not match the current year.
+acme.validation.service.duplicated-promocode.message = The promotional code is not unique
 
 ### Tracking Log ###
 
@@ -32,6 +34,10 @@ acme.validation.trackinglog.invalid-resolutionpercentage.message = The resolutio
 ### Technician ###
 
 acme.validation.technician = There is an error while Validating the technician. Check the license number and/or phone number.
+acme.validation.technician.invalid-license-number-pattern.message = Invalid license number's pattern.
+acme.validation.technician.invalid-identifier-initials.message = Technician's initals are not reflected in its identifier.
+acme.validation.technician.invalid-phone-pattern = Invalid phone's pattern.
+acme.validation.technician.duplicated-identifier.message = There already is a technician with this license number.
 
 ### Maintenance Record ###
 
@@ -41,5 +47,16 @@ acme.validation.nextInspection.invalid-future-date = Invalid next inspection dat
 ### Airport ###
 
 acme.validation.airport.duplicated-iata.message = There is an existing airport with this IATA Code.
+
+### Booking ###
+
+acme.validation.booking.duplicated-locator-code.message = There is an existing booking with this locator code.
+acme.validation.booking.invalid-nibble.message = Last nibble must be formed by 4 digits.
+
+### Airline ###
+
 acme.validation.airline.duplicated-iata.message = There is an existing airline with this IATA Code.
+
+### Aircraft ###
+
 acme.validation.aircraft.invalid-registration-number = There is an existing aircraft with this registration number.

@@ -1,5 +1,5 @@
 
-package acme.features.authenticated.customer.dashboard;
+package acme.features.authenticated.manager.dashboard;
 
 import javax.annotation.PostConstruct;
 
@@ -7,16 +7,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.controllers.AbstractGuiController;
 import acme.client.controllers.GuiController;
-import acme.forms.CustomerDashboard;
-import acme.realms.Customer;
+import acme.forms.ManagerDashboard;
+import acme.realms.Manager;
 
 @GuiController
-public class CustomerDashboardController extends AbstractGuiController<Customer, CustomerDashboard> {
+public class ManagerDashboardController extends AbstractGuiController<Manager, ManagerDashboard> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private CustomerDashboardShowService showService;
+	private ManagerDashboardShowService showService;
 
 	// Constructors -----------------------------------------------------------
 
