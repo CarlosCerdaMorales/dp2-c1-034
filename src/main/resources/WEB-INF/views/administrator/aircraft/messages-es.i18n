@@ -8,9 +8,12 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
-
+administrator.aircraft.list.title = Listado de aviones
 administrator.aircraft.list.label.model = Modelo
 administrator.aircraft.list.label.registrationNumber = Número de Registro
+administrator.aircraft.list.label.capacity = Capacidad
+administrator.aircraft.list.label.cargoWeight = Peso de la carga
+administrator.aircraft.list.label.status = Estatus
 
 
 administrator.aicraft.list.button.create = Crear

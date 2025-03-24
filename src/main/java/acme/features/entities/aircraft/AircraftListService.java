@@ -38,7 +38,7 @@ public class AircraftListService extends AbstractGuiService<Administrator, Aircr
 	public void unbind(final Aircraft aircraft) {
 		Dataset dataset;
 
-		dataset = super.unbindObject(aircraft, "model", "registrationNumber");
+		dataset = super.unbindObject(aircraft, "model", "registrationNumber", "capacity", "cargoWeight", "status");
 
 		super.getResponse().addData(dataset);
 	}
