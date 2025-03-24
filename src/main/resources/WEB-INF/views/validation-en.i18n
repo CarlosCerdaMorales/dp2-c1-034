@@ -60,4 +60,3 @@ acme.validation.airline.duplicated-iata.message = There is an existing airline w
 ### Aircraft ###
 
 acme.validation.aircraft.invalid-registration-number = There is an existing aircraft with this registration number.
-
