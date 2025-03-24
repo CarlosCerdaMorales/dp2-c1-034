@@ -14,7 +14,7 @@ import acme.realms.Manager;
 @Repository
 public interface ManagerDashboardRepository extends AbstractRepository {
 
-	@Query("select m.name from Manager m order by m.yearsExperience desc")
+	@Query("select m from Manager m order by m.yearsExperience desc")
 	public List<String> findManagersSortedByYearsOfExperience();
 
 	@Query("select m from Manager m where m.id = :id")
