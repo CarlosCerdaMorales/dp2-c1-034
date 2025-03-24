@@ -9,6 +9,7 @@ import javax.validation.ConstraintValidatorContext;
 import acme.client.components.validation.AbstractValidator;
 import acme.client.components.validation.Validator;
 import acme.client.helpers.SpringHelper;
+import acme.client.helpers.StringHelper;
 import acme.entities.trackinglog.TrackingLog;
 import acme.entities.trackinglog.TrackingLogRepository;
 import acme.entities.trackinglog.TrackingLogStatus;
@@ -25,11 +26,11 @@ public class TrackingLogValidator extends AbstractValidator<ValidTrackingLog, Tr
 		assert context != null;
 		boolean result;
 
-		if (trLog == null)
+		if (trLog == null || trLog.getResolutionPercentage() == null)
 			super.state(context, false, "null", "javax.validation.constraints.NotNull.message");
 
 		else {
-			Integer resolutionPercentage = trLog.getResolutionPercentage();
+			Double resolutionPercentage = trLog.getResolutionPercentage();
 			TrackingLogStatus status = trLog.getStatus();
 			String resolution = trLog.getResolution();
 
@@ -38,7 +39,7 @@ public class TrackingLogValidator extends AbstractValidator<ValidTrackingLog, Tr
 					if (status == TrackingLogStatus.ACCEPTED || status == TrackingLogStatus.REJECTED)
 						super.state(context, false, "status", "acme.validation.trackinglog.invalid-status-notresolute.message = El estado debe de ser pending ya que el porcentaje de resolución es menor a 100.");
 
-				} else if (status == TrackingLogStatus.PENDING || resolution == null || resolution.isEmpty())
+				} else if (status == TrackingLogStatus.PENDING || resolution == null || StringHelper.isBlank(resolution) || StringHelper.isEqual("", resolution, true))
 					super.state(context, false, "status", "acme.validation.trackinglog.invalid-status-resolute.message = El estado no debe de ser pending o debe de existir el mensaje de resolución.");
 			}
 		}
