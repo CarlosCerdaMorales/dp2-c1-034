@@ -39,7 +39,7 @@ public class AircraftValidator extends AbstractValidator<ValidAircraft, Aircraft
 			boolean uniqueAircraft;
 			Aircraft existingAircraft;
 
-			existingAircraft = this.repository.findAirportByRegistrationNumber(aircraft.getRegistrationNumber());
+			existingAircraft = this.repository.findAircraftByRegistrationNumber(aircraft.getRegistrationNumber());
 			uniqueAircraft = existingAircraft == null || existingAircraft.equals(aircraft);
 
 			super.state(context, uniqueAircraft, "registrationNumber", "acme.validation.aircraft.invalid-registration-number");
