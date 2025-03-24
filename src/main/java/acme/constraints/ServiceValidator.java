@@ -29,12 +29,13 @@ public class ServiceValidator extends AbstractValidator<ValidService, Service> {
 
 		boolean result;
 
-		if (service == null || service.getPromotionCode() == null)
+		if (service == null || service.getPromotionCode() == null || service.getPromotionCode().length() < 2)
 			super.state(context, false, "null", "javax.validation.constraints.NotNull.message");
 		else {
 			String promotionCode = service.getPromotionCode();
 			String codeYear = promotionCode.substring(promotionCode.length() - 2);
-			String actualYear = MomentHelper.getCurrentMoment().toString().substring(MomentHelper.getCurrentMoment().toString().length() - 2);
+			String currentDate = MomentHelper.getCurrentMoment().toString();
+			String actualYear = currentDate.substring(currentDate.length() - 2);
 			boolean uniqueService;
 			Service existingservice = this.repository.findServiceByPromoCode(service.getPromotionCode());
 			uniqueService = existingservice == null || existingservice.equals(service);
