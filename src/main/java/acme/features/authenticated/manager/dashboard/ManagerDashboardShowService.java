@@ -5,11 +5,14 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import acme.client.components.models.Dataset;
+import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.forms.ManagerDashboard;
+import acme.realms.Manager;
 
 @GuiService
-public class ManagerDashboardShowService {
+public class ManagerDashboardShowService extends AbstractGuiService<Manager, ManagerDashboard> {
 
 	// Internal state ---------------------------------------------------------
 
@@ -28,9 +31,10 @@ public class ManagerDashboardShowService {
 	public void load() {
 
 		int id = super.getRequest().getPrincipal().getActiveRealm().getId();
+		Manager manager = this.repository.findManagerById(id);
 		ManagerDashboard managerDashboard;
 
-		List<String> ranking;
+		List<String> rankingManagerByExperience;
 		Integer yearsToRetire;
 		String flightsGroupedBy;
 		String leastPopularAirport;
@@ -38,6 +42,22 @@ public class ManagerDashboardShowService {
 		Integer numberOfLegsBasedOnStatus;
 		String costOfFlights;
 
+		rankingManagerByExperience = this.repository.findManagersSortedByYearsOfExperience();
+		//TODO: HACER EL RESTO DE LLAMADAS ANTES ME QUIERO QUITAR LAS OBLIGATORIAS Y LAS GRUPALES
+
+		managerDashboard = new ManagerDashboard();
+
+		super.getBuffer().addData(managerDashboard);
+
+	}
+
+	@Override
+	public void unbind(final ManagerDashboard managerDashboard) {
+		Dataset dataset;
+
+		dataset = super.unbindObject(managerDashboard, "rankingManagerByExperience", "moneySpentInBookingsLastYear", "bookingsGroupedByTravelClass", "costsOfBookingsLastFiveYears", "numberOfPassengersInBookings");
+
+		super.getResponse().addData(dataset);
 	}
 
 }

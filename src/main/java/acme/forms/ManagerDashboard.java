@@ -2,8 +2,10 @@
 package acme.forms;
 
 import java.util.List;
+import java.util.Map;
 
 import acme.client.components.basis.AbstractForm;
+import acme.entities.airport.Airport;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -27,16 +29,15 @@ public class ManagerDashboard extends AbstractForm {
 	String						flightsGroupedBy;
 
 	// Least popular airport based on visits.  
-	String						leastPopularAirport;
+	Airport						leastPopularAirport;
 
 	// Most popular airport based on visits.
-	String						mostPopularAirport;
+	Airport						mostPopularAirport;
 
 	// Number of legs based on status.
-	//Map<String, Integer>		numberOfLegsBasedOnStatus;
-	String						numberOfLegsBasedOnStatus;
+	Map<String, Integer>		numberOfLegsBasedOnStatus;
 
 	// The average, minimum, maximum, and standard deviation of the number of claims they assisted during the last month.
-	String						costOfFlights;
+	String						statistcsAboutFlights;
 
 }
