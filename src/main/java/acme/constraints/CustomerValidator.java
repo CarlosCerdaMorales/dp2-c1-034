@@ -50,12 +50,6 @@ public class CustomerValidator extends AbstractValidator<ValidCustomer, Customer
 			String name = customer.getIdentity().getName();
 			String surname = customer.getIdentity().getSurname();
 			String phone = customer.getPhoneNumber();
-			// If name, surname or phone is either null or blank, the state is triggered
-			if (StringHelper.isBlank(name) || StringHelper.isBlank(surname) || StringHelper.isBlank(phone))
-				super.state(context, false, "*", "acme.validation.customer.invalid-namesurnameorphone.message");
-			else {
-				String expectedInitials = this.getCustomerInitials(name, surname);
-				String idPrefix = id.substring(0, expectedInitials.length());
 
 			// If name, surname or phone is either null or blank, the state is triggered
 			if (StringHelper.isBlank(name) || StringHelper.isBlank(surname) || StringHelper.isBlank(phone))
