@@ -7,9 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.principals.Administrator;
 import acme.client.controllers.AbstractGuiController;
+import acme.client.controllers.GuiController;
 import acme.entities.airline.Airline;
 
-public class AirlineController extends AbstractGuiController<Administrator, Airline> {
+@GuiController
+public class AdministratorAirlineController extends AbstractGuiController<Administrator, Airline> {
 
 	@Autowired
 	private AdministratorAirlineListService		listService;
