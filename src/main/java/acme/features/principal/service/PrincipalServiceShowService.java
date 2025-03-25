@@ -1,15 +1,16 @@
 
-package acme.entities.service;
+package acme.features.principal.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 
 import acme.client.components.models.Dataset;
-import acme.client.components.principals.Any;
+import acme.client.components.principals.Authenticated;
 import acme.client.services.AbstractGuiService;
+import acme.entities.service.Service;
 
-public class PrincipalServiceShowService extends AbstractGuiService<Any, Service> {
+public class PrincipalServiceShowService extends AbstractGuiService<Authenticated, Service> {
 
 	@Autowired
 	private ServiceRepository repository;
@@ -32,7 +33,7 @@ public class PrincipalServiceShowService extends AbstractGuiService<Any, Service
 	public void unbind(final Service service) {
 
 		Dataset dataset;
-		dataset = super.unbindObject(service, "name", "picture", "averageDwellTime", "promotionCode", "moneyDiscounted", "airport");
+		dataset = super.unbindObject(service, "picture");
 		super.getResponse().addData(dataset);
 	}
 }
