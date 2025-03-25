@@ -9,6 +9,7 @@
 # they accept any liabilities with respect to them.
 
 administrator.aircraft.list.title = Aircraft List
+administrator.aircraft.form.title = Aircraft Form
 
 administrator.aircraft.list.label.model = Model
 administrator.aircraft.list.label.registrationNumber = Registration Number
