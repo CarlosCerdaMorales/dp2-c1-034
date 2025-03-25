@@ -57,6 +57,13 @@ public class CustomerValidator extends AbstractValidator<ValidCustomer, Customer
 				String expectedInitials = this.getCustomerInitials(name, surname);
 				String idPrefix = id.substring(0, expectedInitials.length());
 
+			// If name, surname or phone is either null or blank, the state is triggered
+			if (StringHelper.isBlank(name) || StringHelper.isBlank(surname) || StringHelper.isBlank(phone))
+				super.state(context, false, "*", "acme.validation.customer.invalid-namesurnameorphone.message");
+			else {
+				String expectedInitials = this.getCustomerInitials(name, surname);
+				String idPrefix = id.substring(0, expectedInitials.length());
+
 				{ // If my customers ID does not match the pattern, the state is triggered.
 					if (!StringHelper.matches(id, "^[A-Z]{2,3}\\d{6}$"))
 						super.state(context, false, "identifier", "acme.validation.customer.invalid-identifier-pattern.message");
