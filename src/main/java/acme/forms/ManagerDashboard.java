@@ -6,8 +6,11 @@ import java.util.Map;
 
 import acme.client.components.basis.AbstractForm;
 import acme.entities.airport.Airport;
-import acme.forms.statistics.StatsAssistanceAgent;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 public class ManagerDashboard extends AbstractForm {
 
 	// Serialisation version --------------------------------------------------
@@ -23,7 +26,7 @@ public class ManagerDashboard extends AbstractForm {
 	Integer						yearsToRetire;
 
 	// The ratio of on-time flights.  
-	Map<String, Double>			flightsGroupedBy;
+	String						flightsGroupedBy;
 
 	// Least popular airport based on visits.  
 	Airport						leastPopularAirport;
@@ -35,6 +38,6 @@ public class ManagerDashboard extends AbstractForm {
 	Map<String, Integer>		numberOfLegsBasedOnStatus;
 
 	// The average, minimum, maximum, and standard deviation of the number of claims they assisted during the last month.
-	StatsAssistanceAgent		costOfFlights;
+	String						statistcsAboutFlights;
 
 }

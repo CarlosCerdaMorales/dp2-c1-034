@@ -1,4 +1,4 @@
 key,key:user-account,annual_health_test_passed,certifications,license_number,phone_number,specialisation,years_experience
-technician-01,user-account-technician-01,true,Composite,CV123456,+123456,Composite,100
-technician-02,user-account-technician-02,false,Hydraulics,MMX987654,123456,Powerplant,20
-technician-03,user-account-technician-03,true,Airframe,CMV562789,123456,Avionics,3
+technician-01,user-account-technician-01,true,Composite,CV123456,+22588284116,Composite,100
+technician-02,user-account-technician-02,false,Hydraulics,MMX987654,+52588284116,Powerplant,20
+technician-03,user-account-technician-03,true,Airframe,CMV562789,+42588284116,Avionics,3

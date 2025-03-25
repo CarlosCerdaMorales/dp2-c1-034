@@ -9,12 +9,12 @@ import lombok.Setter;
 public class StatsManager {
 
 	private Double	average;
-	private Integer	minimum;
-	private Integer	maximum;
+	private Double	minimum;
+	private Double	maximum;
 	private Double	standardDeviation;
 
 
-	public StatsManager(final Double average, final Integer minimum, final Integer maximum, final Double standardDeviation) {
+	public StatsManager(final Double average, final Double minimum, final Double maximum, final Double standardDeviation) {
 		this.average = average;
 		this.minimum = minimum;
 		this.maximum = maximum;
