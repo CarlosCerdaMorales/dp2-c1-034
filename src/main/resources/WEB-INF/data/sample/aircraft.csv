@@ -10,28 +10,28 @@ aircraft-05,Lorem ipsum dolor sit ame,REG-7890,127,2000,ACTIVE,"Lorem ipsum dolo
 aircraft-06,Lorem ipsum dolor sit ame,REG-2468,127,2001,ACTIVE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airline-06
 aircraft-07,Lorem ipsum dolor sit ame,REG-1357,127,50000,ACTIVE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airline-07
 # Status variations
-aircraft-08,Lorem ipsum dolor sit ame,REG-7891,127,26000,ACTIVE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airline-05
-aircraft-09,Lorem ipsum dolor sit ame,REG-2460,127,26000,UNDER_MAINTENANCE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airline-06
-aircraft-10,Lorem ipsum dolor sit ame,REG-1358,127,26000,ACTIVE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airline-07
+aircraft-08,Lorem ipsum dolor sit ame,REG-7891,127,26000,ACTIVE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airline-08
+aircraft-09,Lorem ipsum dolor sit ame,REG-2460,127,26000,UNDER_MAINTENANCE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airline-09
+aircraft-10,Lorem ipsum dolor sit ame,REG-1358,127,26000,ACTIVE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airline-10
 # Details variations
-aircraft-11,Lorem ipsum dolor sit ame,REG-9876,127,26000,ACTIVE,L,airline-08
-aircraft-12,Lorem ipsum dolor sit ame,REG-6543,127,26000,UNDER_MAINTENANCE,Lo,airline-09
-aircraft-13,Lorem ipsum dolor sit ame,REG-3210,127,26000,ACTIVE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor*",airline-10
-aircraft-14,Lorem ipsum dolor sit ame,REG-1111,127,26000,ACTIVE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor",airline-11
-aircraft-15,Lorem ipsum dolor sit ame,REG-2222,127,26000,UNDER_MAINTENANCE,โลเร็ม อิปซัม,airline-12
-aircraft-16,Lorem ipsum dolor sit ame,REG-3333,127,26000,ACTIVE,لوريم إيبسوم,airline-13
-aircraft-17,Lorem ipsum dolor sit ame,REG-4444,127,26000,ACTIVE,洛伦·伊普森,airline-14
-aircraft-18,Lorem ipsum dolor sit ame,REG-5555,127,26000,UNDER_MAINTENANCE,<marquee>Hacked</marquee>,airline-15
-aircraft-19,Lorem ipsum dolor sit ame,REG-6666,127,26000,ACTIVE,<script>alert(‘Hacked!’);</script>,airline-14
-aircraft-20,Lorem ipsum dolor sit ame,REG-7777,127,26000,UNDER_MAINTENANCE,' or 'A' = 'A,airline-15
+aircraft-11,Lorem ipsum dolor sit ame,REG-9876,127,26000,ACTIVE,L,airline-11
+aircraft-12,Lorem ipsum dolor sit ame,REG-6543,127,26000,UNDER_MAINTENANCE,Lo,airline-12
+aircraft-13,Lorem ipsum dolor sit ame,REG-3210,127,26000,ACTIVE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor*",airline-13
+aircraft-14,Lorem ipsum dolor sit ame,REG-1111,127,26000,ACTIVE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor",airline-14
+aircraft-15,Lorem ipsum dolor sit ame,REG-2222,127,26000,UNDER_MAINTENANCE,โลเร็ม อิปซัม,airline-15
+aircraft-16,Lorem ipsum dolor sit ame,REG-3333,127,26000,ACTIVE,لوريم إيبسوم,airline-16
+aircraft-17,Lorem ipsum dolor sit ame,REG-4444,127,26000,ACTIVE,洛伦·伊普森,airline-17
+aircraft-18,Lorem ipsum dolor sit ame,REG-5555,127,26000,UNDER_MAINTENANCE,<marquee>Hacked</marquee>,airline-18
+aircraft-19,Lorem ipsum dolor sit ame,REG-6666,127,26000,ACTIVE,<script>alert(‘Hacked!’);</script>,airline-19
+aircraft-20,Lorem ipsum dolor sit ame,REG-7777,127,26000,UNDER_MAINTENANCE,' or 'A' = 'A,airline-20
 # Model variations
-aircraft-21,L,REG-7865,127,26000,ACTIVE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airline-16
-aircraft-22,Lo,REG-3902,127,26000,ACTIVE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airline-17
-aircraft-23,"Lorem ipsum dolor sit amet, consectetur adipiscin",REG-3288,127,26000,UNDER_MAINTENANCE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airline-18
-aircraft-24,"Lorem ipsum dolor sit amet, consectetur adipiscing",REG-5212,127,26000,ACTIVE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airline-19
-aircraft-25,โลเร็ม อิปซัม,REG-0021,127,26000,ACTIVE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airline-20
-aircraft-26,لوريم إيبسوم,REG-6890,127,26000,ACTIVE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airline-05
-aircraft-27,洛伦·伊普森,REG-9468,127,26000,UNDER_MAINTENANCE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airline-06
-aircraft-28,<marquee>Hacked</marquee>,REG-0022,127,26000,ACTIVE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airline-20
-aircraft-29,<script>alert(‘Hacked!’);</script>,REG-6891,127,26000,ACTIVE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airline-05
-aircraft-,' or 'A' = 'A,REG-9469,127,26000,UNDER_MAINTENANCE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airline-06
+aircraft-21,L,REG-7865,127,26000,ACTIVE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airline-21
+aircraft-22,Lo,REG-3902,127,26000,ACTIVE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airline-22
+aircraft-23,"Lorem ipsum dolor sit amet, consectetur adipiscin",REG-3288,127,26000,UNDER_MAINTENANCE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airline-23
+aircraft-24,"Lorem ipsum dolor sit amet, consectetur adipiscing",REG-5212,127,26000,ACTIVE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airline-24
+aircraft-25,โลเร็ม อิปซัม,REG-0021,127,26000,ACTIVE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airline-25
+aircraft-26,لوريم إيبسوم,REG-6890,127,26000,ACTIVE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airline-01
+aircraft-27,洛伦·伊普森,REG-9468,127,26000,UNDER_MAINTENANCE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airline-02
+aircraft-28,<marquee>Hacked</marquee>,REG-0022,127,26000,ACTIVE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airline-03
+aircraft-29,<script>alert(‘Hacked!’);</script>,REG-6891,127,26000,ACTIVE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airline-04
+aircraft-,' or 'A' = 'A,REG-9469,127,26000,UNDER_MAINTENANCE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airline-05
