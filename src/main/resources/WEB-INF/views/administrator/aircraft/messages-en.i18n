@@ -19,6 +19,8 @@ administrator.aircraft.list.label.status = Status
 
 administrator.aicraft.list.button.create = Create
 
+administrator.aircraft.form.title = Aircraft information
+
 administrator.aicraft.form.label.model = Model
 administrator.aicraft.form.label.registrationNumber = Registration Number
 administrator.aicraft.form.label.capacity = Capacity

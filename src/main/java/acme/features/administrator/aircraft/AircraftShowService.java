@@ -1,25 +1,27 @@
 
-package acme.features.entities.aircraft;
-
-import java.util.Collection;
+package acme.features.administrator.aircraft;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
 import acme.client.components.principals.Administrator;
+import acme.client.components.views.SelectChoices;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.aircraft.Aircraft;
+import acme.entities.aircraft.AircraftStatus;
 
 @GuiService
-public class AircraftListService extends AbstractGuiService<Administrator, Aircraft> {
+public class AircraftShowService extends AbstractGuiService<Administrator, Aircraft> {
 
 	// Internal state ---------------------------------------------------------
-	@Autowired
-	private AircraftRepository repository;
 
+	@Autowired
+	AircraftRepository repository;
 
 	// AbstractGuiService interface -------------------------------------------
+
+
 	@Override
 	public void authorise() {
 		super.getResponse().setAuthorised(true);
@@ -27,20 +29,27 @@ public class AircraftListService extends AbstractGuiService<Administrator, Aircr
 
 	@Override
 	public void load() {
-		Collection<Aircraft> aircrafts;
+		Aircraft aircraft;
+		int id;
 
-		aircrafts = this.repository.findAllAircrafts();
+		id = super.getRequest().getData("id", int.class);
+		aircraft = this.repository.findAircraftById(id);
 
-		super.getBuffer().addData(aircrafts);
+		super.getBuffer().addData(aircraft);
 	}
 
 	@Override
 	public void unbind(final Aircraft aircraft) {
 		Dataset dataset;
+		SelectChoices choices;
 
-		dataset = super.unbindObject(aircraft, "model", "registrationNumber", "capacity", "cargoWeight", "status");
+		choices = SelectChoices.from(AircraftStatus.class, aircraft.getStatus());
+
+		dataset = super.unbindObject(aircraft, "model", "registrationNumber", "capacity", "cargoWeight", "status", "details");
+		dataset.put("statuses", choices);
 
 		super.getResponse().addData(dataset);
+
 	}
 
 }
