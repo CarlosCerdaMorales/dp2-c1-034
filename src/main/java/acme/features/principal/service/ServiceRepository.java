@@ -1,11 +1,12 @@
 
-package acme.entities.service;
+package acme.features.principal.service;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
 
 import acme.client.repositories.AbstractRepository;
+import acme.entities.service.Service;
 
 public interface ServiceRepository extends AbstractRepository {
 
