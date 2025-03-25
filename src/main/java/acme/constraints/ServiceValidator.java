@@ -9,7 +9,7 @@ import acme.client.components.validation.AbstractValidator;
 import acme.client.components.validation.Validator;
 import acme.client.helpers.MomentHelper;
 import acme.entities.service.Service;
-import acme.entities.service.ServiceRepository;
+import acme.features.principal.service.ServiceRepository;
 
 @Validator
 public class ServiceValidator extends AbstractValidator<ValidService, Service> {
