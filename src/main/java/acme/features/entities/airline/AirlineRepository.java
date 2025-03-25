@@ -18,7 +18,7 @@ public interface AirlineRepository extends AbstractRepository {
 	@Query("select a from Airline a")
 	public List<Airline> findAllAirlines();
 
-	@Query("select a from Airline a.id = :id")
+	@Query("select a from Airline a where a.id = :id")
 	public Airline findAirlineById(int id);
 
 }
