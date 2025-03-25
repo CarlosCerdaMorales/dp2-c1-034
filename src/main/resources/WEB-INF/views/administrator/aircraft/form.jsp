@@ -19,15 +19,13 @@
 	<acme:input-textbox code="administrator.aicraft.form.label.model" path="model"/>
 	<acme:input-textbox code="administrator.aicraft.form.label.registrationNumber" path="registrationNumber"/>
 	<acme:input-integer code="administrator.aicraft.form.label.capacity" path="capacity"/>
-	<acme:input-integer code="administrator.aicraft.form.label.cargoWeight" path="cargoWeight"/>
 	<acme:input-select code="administrator.aicraft.form.label.status" path="status" choices="${statuses}"/>
+	<acme:input-integer code="administrator.aicraft.form.label.cargoWeight" path="cargoWeight"/>
 	<acme:input-textbox code="administrator.aicraft.form.label.details" path="details"/>
 	
-	<jstl:choose>	 
-		<jstl:when test="${_command == 'show' && draftMode == false}">
-			<acme:button code="administrator.aircraft.form.button.duties" action=""/>			
-		</jstl:when>
-		<jstl:when test="${acme:anyOf(_command, 'show|update|delete') && draftMode == true}">
+	
+	<jstl:choose>
+		<jstl:when test="${acme:anyOf(_command, 'show|update|delete')}">
 			<acme:submit code="administrator.aircraft.form.button.update" action="/administrator/aircraft/update"/>
 			<acme:submit code="administrator.aircraft.form.button.delete" action="/administrator/aircraft/delete"/>
 		</jstl:when>

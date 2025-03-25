@@ -1,5 +1,5 @@
 
-package acme.features.entities.aircraft;
+package acme.features.administrator.aircraft;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -12,7 +12,7 @@ import acme.entities.aircraft.Aircraft;
 import acme.entities.aircraft.AircraftStatus;
 
 @GuiService
-public class AircraftUpdateService extends AbstractGuiService<Administrator, Aircraft> {
+public class AircraftCreateService extends AbstractGuiService<Administrator, Aircraft> {
 
 	// Internal state ---------------------------------------------------------
 	@Autowired
@@ -29,12 +29,12 @@ public class AircraftUpdateService extends AbstractGuiService<Administrator, Air
 	@Override
 	public void load() {
 		Aircraft aircraft;
-		int id;
 
-		id = super.getRequest().getData("id", int.class);
-		aircraft = this.repository.findAircraftById(id);
+		aircraft = new Aircraft();
+		// aircraft.setDraftMode(true);
 
 		super.getBuffer().addData(aircraft);
+
 	}
 
 	@Override
@@ -69,4 +69,5 @@ public class AircraftUpdateService extends AbstractGuiService<Administrator, Air
 		super.getResponse().addData(dataset);
 
 	}
+
 }
