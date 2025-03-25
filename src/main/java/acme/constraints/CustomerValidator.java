@@ -50,26 +50,30 @@ public class CustomerValidator extends AbstractValidator<ValidCustomer, Customer
 			String name = customer.getIdentity().getName();
 			String surname = customer.getIdentity().getSurname();
 			String phone = customer.getPhoneNumber();
+			// If name, surname or phone is either null or blank, the state is triggered
+			if (StringHelper.isBlank(name) || StringHelper.isBlank(surname) || StringHelper.isBlank(phone))
+				super.state(context, false, "*", "acme.validation.customer.invalid-namesurnameorphone.message");
+			else {
+				String expectedInitials = this.getCustomerInitials(name, surname);
+				String idPrefix = id.substring(0, expectedInitials.length());
 
-			String expectedInitials = this.getCustomerInitials(name, surname);
-			String idPrefix = id.substring(0, expectedInitials.length());
+				{ // If my customers ID does not match the pattern, the state is triggered.
+					if (!StringHelper.matches(id, "^[A-Z]{2,3}\\d{6}$"))
+						super.state(context, false, "identifier", "acme.validation.customer.invalid-identifier-pattern.message");
 
-			{ // If my customers ID does not match the pattern, the state is triggered.
-				if (!StringHelper.matches(id, "^[A-Z]{2,3}\\d{6}$"))
-					super.state(context, false, "identifier", "acme.validation.customer.invalid-identifier-pattern.message");
+				}
 
-			}
+				{ // If the initials I have are not the same as the expected ones, the state is triggered.
+					if (!StringHelper.isEqual(idPrefix, expectedInitials, true))
+						super.state(context, false, "identifier", "acme.validation.customer.invalid-identifier-initials.message");
 
-			{ // If the initials I have are not the same as the expected ones, the state is triggered.
-				if (!StringHelper.isEqual(idPrefix, expectedInitials, true))
-					super.state(context, false, "identifier", "acme.validation.customer.invalid-identifier-initials.message");
+				}
 
-			}
+				{ // If my customers phone does not match the pattern, the state is triggered.
+					if (!StringHelper.matches(phone, "^\\+?\\d{6,15}$"))
+						super.state(context, false, "phoneNumber", "acme.validation.customer.invalid-phone-pattern.message");
 
-			{ // If my customers phone does not match the pattern, the state is triggered.
-				if (!StringHelper.matches(phone, "^\\+?\\d{6,15}$"))
-					super.state(context, false, "phoneNumber", "acme.validation.customer.invalid-phone-pattern.message");
-
+				}
 			}
 
 		}

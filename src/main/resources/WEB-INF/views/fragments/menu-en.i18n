@@ -44,6 +44,7 @@ master.menu.consumer.favourite-link = Favourite link
 
 master.menu.customer = Customer
 master.menu.customer.dashboard = Dashboard
+master.menu.customer.booking = My bookings
 
 # master.menu.user-account ####################################################
 
