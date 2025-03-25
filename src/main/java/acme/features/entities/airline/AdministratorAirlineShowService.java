@@ -6,8 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import acme.client.components.models.Dataset;
 import acme.client.components.principals.Administrator;
 import acme.client.services.AbstractGuiService;
+import acme.client.services.GuiService;
 import acme.entities.airline.Airline;
 
+@GuiService
 public class AdministratorAirlineShowService extends AbstractGuiService<Administrator, Airline> {
 
 	@Autowired
@@ -34,7 +36,7 @@ public class AdministratorAirlineShowService extends AbstractGuiService<Administ
 	public void unbind(final Airline airline) {
 		Dataset dataset;
 
-		dataset = super.unbindObject(airline, "name", "iata", "website", "type", "foundationMoment", "email", "phoneNumber");
+		dataset = super.unbindObject(airline, "name", "iata", "phoneNumber");
 
 		super.getResponse().addData(dataset);
 
