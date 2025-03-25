@@ -12,7 +12,7 @@ public interface ServiceRepository extends AbstractRepository {
 	@Query("select s from Service s where s.promotionCode = :promoCode")
 	public Service findServiceByPromoCode(String promoCode);
 
-	@Query("select s from Service s order by fuction('RAND')")
+	@Query("select s from Service s order by rand()")
 	public Page<Service> findRandomService(Pageable pageable);
 
 }
