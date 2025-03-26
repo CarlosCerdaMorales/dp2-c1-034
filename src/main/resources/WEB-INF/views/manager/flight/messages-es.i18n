@@ -1,0 +1,23 @@
+manager.flight.list.title = Lista de mis vuelos:
+manager.flight.form.title = Detalles del vuelo:
+
+manager.flight.list.label.flightTag = Etiqueta:
+manager.flight.list.label.flightCost = Coste:
+manager.flight.list.label.departure = Origen:
+manager.flight.list.label.arrival = Destino:
+manager.flight.form.label.flightTag = Etiqueta:
+manager.flight.form.label.selfTransfer = Auto Transferencia:
+manager.flight.form.label.flightCost = Coste:
+manager.flight.form.label.description = Descripción:
+manager.flight.form.label.scheduledDeparture = Hora de salida:
+manager.flight.form.label.scheduledArrival = Hora de llegada:
+manager.flight.form.label.layovers = Transbosrdos:
+manager.flight.form.label.departure = Origen:
+manager.flight.form.label.arrival = Destino:
+manager.flight.form.label.confirmation = Confirma que todos los datos son correctos
+
+manager.flight.form.button.create = Crear
+manager.flight.list.button.create = Crear
+manager.flight.form.button.update = Actualizar
+manager.flight.form.button.delete = Borrar
+manager.flight.form.button.publish = Publicar

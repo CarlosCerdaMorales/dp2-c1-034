@@ -13,7 +13,7 @@ import acme.entities.airline.Airline;
 public class AdministratorAirlineUpdateService extends AbstractGuiService<Administrator, Airline> {
 
 	@Autowired
-	private AirlineRepository repository;
+	private AdministratorAirlineRepository repository;
 
 
 	@Override
