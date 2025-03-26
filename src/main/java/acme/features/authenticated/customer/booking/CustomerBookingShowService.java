@@ -61,8 +61,7 @@ public class CustomerBookingShowService extends AbstractGuiService<Customer, Boo
 		SelectChoices classChoices;
 		Dataset dataset;
 
-		customerId = super.getRequest().getPrincipal().getActiveRealm().getId();
-		flights = this.repository.findFlightsByCustomerId(customerId);
+		flights = this.repository.findAllFlights();
 		classChoices = SelectChoices.from(TravelClass.class, booking.getTravelClass());
 		choices = SelectChoices.from(flights, "flightTag", booking.getFlight());
 

@@ -34,17 +34,25 @@ public class BookingValidator extends AbstractValidator<ValidBooking, Booking> {
 
 		boolean result;
 
-		if (booking == null)
+		if (booking == null || booking.getFlight() == null || booking.getCustomer() == null)
 			super.state(context, false, "*", "javax.validation.constraints.NotNull.message");
 		else {
 			{
 				boolean uniqueBooking;
+				//boolean uniqueBooking1;
 				Booking existingBooking;
+				//Booking existingByCustomerAndFlight;
 
 				existingBooking = this.repository.getBookingFromLocatorCode(booking.getLocatorCode());
-				uniqueBooking = existingBooking == null || existingBooking.equals(booking);
+				int flightId = booking.getFlight().getId();
+				int customerId = booking.getCustomer().getId();
+				//existingByCustomerAndFlight = this.repository.getBookingFromCustomerAndFlight(customerId, flightId);
 
-				super.state(context, uniqueBooking, "*", "acme.validation.booking.duplicated-locator-code.message");
+				uniqueBooking = existingBooking == null || existingBooking.equals(booking);
+				//uniqueBooking1 = existingByCustomerAndFlight == null || existingByCustomerAndFlight.equals(booking);
+
+				super.state(context, uniqueBooking, "locatorCode", "acme.validation.booking.duplicated-locator-code.message");
+				//super.state(context, uniqueBooking1, "flight", "acme.validation.booking.duplicated-flight.message");
 			}
 			{
 				String lastNibble = booking.getLastNibble();

@@ -51,8 +51,9 @@ acme.validation.airport.duplicated-iata.message = There is an existing airport w
 
 ### Booking ###
 
-acme.validation.booking.duplicated-locator-code.message = There is an existing booking with this locator code.
-acme.validation.booking.invalid-nibble.message = Last nibble must be formed by 4 digits.
+acme.validation.booking.duplicated-locator-code.message = There is an existing booking with this locator code
+acme.validation.booking.invalid-nibble.message = Last nibble must be formed by 4 digits
+acme.validation.booking.duplicated-flight.message = There is an existing booking related to this flight
 
 ### Airline ###
 

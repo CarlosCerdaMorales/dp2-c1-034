@@ -5,9 +5,9 @@
 
 <acme:form> 
 	<acme:input-textbox code="customer.booking.form.locatorCode" path="locatorCode"/>
-	<acme:input-textbox code="customer.booking.form.purchaseMoment" path="purchaseMoment"/>
+	<acme:input-moment code="customer.booking.form.purchaseMoment" path="purchaseMoment"/>
 	<acme:input-select code="customer.booking.form.travelClass" path="travelClass" choices="${classes}"/>	
-	<acme:input-textbox code="customer.booking.form.price" path="price"/>
+	<acme:input-money code="customer.booking.form.price" path="price"/>
 	<acme:input-textbox code="customer.booking.form.lastNibble" path="lastNibble"/>
 	<acme:input-select code="customer.booking.form.flight" path="flight" choices="${flights}"/>	
 
