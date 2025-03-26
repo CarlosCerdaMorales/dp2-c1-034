@@ -1,3 +1,4 @@
+
 package acme.constraints;
 
 import javax.validation.ConstraintValidatorContext;
@@ -8,7 +9,7 @@ import acme.client.components.validation.AbstractValidator;
 import acme.client.components.validation.Validator;
 import acme.client.helpers.StringHelper;
 import acme.entities.booking.Booking;
-import acme.features.entities.booking.BookingRepository;
+import acme.features.booking.BookingRepository;
 
 @Validator
 public class BookingValidator extends AbstractValidator<ValidBooking, Booking> {
@@ -43,7 +44,7 @@ public class BookingValidator extends AbstractValidator<ValidBooking, Booking> {
 				existingBooking = this.repository.getBookingFromLocatorCode(booking.getLocatorCode());
 				uniqueBooking = existingBooking == null || existingBooking.equals(booking);
 
-				super.state(context, uniqueBooking, "IATACode", "acme.validation.booking.duplicated-locator-code.message");
+				super.state(context, uniqueBooking, "*", "acme.validation.booking.duplicated-locator-code.message");
 			}
 			{
 				String lastNibble = booking.getLastNibble();

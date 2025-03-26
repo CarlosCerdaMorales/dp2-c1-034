@@ -1,0 +1,14 @@
+customer.passenger.list.title = Pasajeros de mi reserva
+customer.passenger.list.fullName = Nombre completo
+customer.passenger.list.email = Email
+customer.passenger.list.passport = Pasaporte
+customer.passenger.list.dateOfBirth = Fecha de nacimiento
+customer.passenger.list.specialNeeds = Necesidades especiales
+
+customer.passenger.form.title = Información del pasajero
+customer.passenger.form.fullName = Nombre Completo
+customer.passenger.form.email = Correo electrónico
+customer.passenger.form.passport = Pasaporte
+customer.passenger.form.dateOfBirth = Fecha de nacimiento
+customer.passenger.form.specialNeeds = Necesidades especiales
+ 

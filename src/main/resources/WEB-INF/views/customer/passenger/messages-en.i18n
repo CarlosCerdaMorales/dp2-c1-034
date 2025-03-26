@@ -1,0 +1,13 @@
+customer.passenger.list.title = Passengers from my booking
+customer.passenger.list.fullName = Full name
+customer.passenger.list.email = Email
+customer.passenger.list.passport = Passport
+customer.passenger.list.dateOfBirth = Date of Birth
+customer.passenger.list.specialNeeds = Special Needs
+
+customer.passenger.form.title = Passenger Information
+customer.passenger.form.fullName = Full Name
+customer.passenger.form.email = Email
+customer.passenger.form.passport = Passport
+customer.passenger.form.dateOfBirth = Date Of Birth
+customer.passenger.form.specialNeeds = Special Needs

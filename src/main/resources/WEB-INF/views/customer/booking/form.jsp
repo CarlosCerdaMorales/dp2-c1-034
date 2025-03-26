@@ -5,14 +5,15 @@
 
 <acme:form> 
 	<acme:input-textbox code="customer.booking.form.locatorCode" path="locatorCode"/>
-	<acme:input-moment code="customer.booking.form.purchaseMoment" path="purchaseMoment"/>
+	<acme:input-textbox code="customer.booking.form.purchaseMoment" path="purchaseMoment"/>
 	<acme:input-select code="customer.booking.form.travelClass" path="travelClass" choices="${classes}"/>	
-	<acme:input-money code="customer.booking.form.price" path="price"/>
+	<acme:input-textbox code="customer.booking.form.price" path="price"/>
 	<acme:input-textbox code="customer.booking.form.lastNibble" path="lastNibble"/>
 	<acme:input-select code="customer.booking.form.flight" path="flight" choices="${flights}"/>	
 
 	<jstl:choose>	 
-		<jstl:when test="${_command == 'show'}">			
+		<jstl:when test="${_command == 'show'}">	
+			<acme:button code="customer.booking.form.show.passengers" action="/customer/passenger/list?bookingId=${bookingId}"/>		
 		</jstl:when>
 		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish')}">
 			<acme:submit code="employer.job.form.button.update" action="/employer/job/update"/>

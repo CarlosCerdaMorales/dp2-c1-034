@@ -1,5 +1,5 @@
 
-package acme.features.entities.customer.dashboard;
+package acme.features.authenticated.customer.dashboard;
 
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;

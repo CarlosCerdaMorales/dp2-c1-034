@@ -1,5 +1,5 @@
 
-package acme.features.entities.customer.booking;
+package acme.features.authenticated.customer.booking;
 
 import java.util.Collection;
 
@@ -70,6 +70,7 @@ public class CustomerBookingShowService extends AbstractGuiService<Customer, Boo
 		dataset.put("flight", choices.getSelected().getKey());
 		dataset.put("flights", choices);
 		dataset.put("classes", classChoices);
+		dataset.put("bookingId", booking.getId());
 
 		super.getResponse().addData(dataset);
 

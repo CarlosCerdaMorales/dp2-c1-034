@@ -13,3 +13,4 @@ customer.booking.form.travelClass = Clase
 customer.booking.form.lastNibble = Últimos dígitos tarjeta de crédito usada
 customer.booking.form.flight = Etiqueta de vuelo
 customer.booking.form.button.create = Crear
+customer.booking.form.show.passengers = Ver pasajeros
