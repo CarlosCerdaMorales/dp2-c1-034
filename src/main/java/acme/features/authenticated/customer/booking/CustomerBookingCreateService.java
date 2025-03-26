@@ -1,5 +1,5 @@
 
-package acme.features.entities.customer.booking;
+package acme.features.authenticated.customer.booking;
 
 import java.util.Collection;
 import java.util.Date;
@@ -51,38 +51,39 @@ public class CustomerBookingCreateService extends AbstractGuiService<Customer, B
 		flightId = super.getRequest().getData("flight", int.class);
 		flight = this.repository.findFlightById(flightId);
 
-		super.bindObject(booking, "locatorCode", "travelClass", "price", "lastNibble");
+		super.bindObject(booking, "locatorCode", "purchaseMoment", "travelClass", "price", "lastNibble");
 		booking.setFlight(flight);
 	}
 
 	@Override
 	public void validate(final Booking booking) {
-		boolean confirmation;
+		//boolean confirmation;
 
-		confirmation = super.getRequest().getData("confirmation", boolean.class);
-		super.state(confirmation, "confirmation", "acme.validation.confirmation.message");
+		//confirmation = super.getRequest().getData("confirmation", boolean.class);
+		//super.state(confirmation, "confirmation", "acme.validation.confirmation.message");
 	}
 
 	@Override
 	public void perform(final Booking booking) {
 		Date moment = MomentHelper.getCurrentMoment();
+		Flight flight = booking.getFlight();
 		booking.setPurchaseMoment(moment);
+		booking.setPrice(flight.getFlightCost());
 		this.repository.save(booking);
 	}
 
 	@Override
 	public void unbind(final Booking booking) {
-		int customerId = super.getRequest().getPrincipal().getActiveRealm().getId();
 		Collection<Flight> flights;
 		SelectChoices choices;
 		SelectChoices classes;
-		Dataset dataset;
+		Dataset dataset = new Dataset();
 
-		flights = this.repository.findFlightsByCustomerId(customerId);
+		flights = this.repository.findAllFlights();
 		choices = SelectChoices.from(flights, "flightTag", booking.getFlight());
 		classes = SelectChoices.from(TravelClass.class, booking.getTravelClass());
-		
-		dataset = super.unbindObject(booking, "locatorCode", "purchaseMoment", "price", "lastNibble");
+
+		dataset = super.unbindObject(booking, "locatorCode", "purchaseMoment", "travelClass", "price", "lastNibble");
 		dataset.put("flight", choices.getSelected().getKey());
 		dataset.put("flights", choices);
 		dataset.put("classes", classes);
