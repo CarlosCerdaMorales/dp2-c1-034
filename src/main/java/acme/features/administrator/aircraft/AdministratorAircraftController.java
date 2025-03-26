@@ -11,21 +11,21 @@ import acme.client.controllers.GuiController;
 import acme.entities.aircraft.Aircraft;
 
 @GuiController
-public class AircraftController extends AbstractGuiController<Administrator, Aircraft> {
+public class AdministratorAircraftController extends AbstractGuiController<Administrator, Aircraft> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private AircraftListService		listService;
+	private AdministratorAircraftListService		listService;
 
 	@Autowired
-	private AircraftShowService		showService;
+	private AdministratorAircraftShowService		showService;
 
 	@Autowired
-	private AircraftCreateService	createService;
+	private AdministratorAircraftCreateService	createService;
 
 	@Autowired
-	private AircraftUpdateService	updateService;
+	private AdministratorAircraftUpdateService	updateService;
 
 	// Constructors -----------------------------------------------------------
 

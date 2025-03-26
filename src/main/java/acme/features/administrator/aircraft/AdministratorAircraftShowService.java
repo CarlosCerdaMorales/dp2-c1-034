@@ -15,11 +15,12 @@ import acme.entities.aircraft.AircraftStatus;
 import acme.entities.airline.Airline;
 
 @GuiService
-public class AircraftUpdateService extends AbstractGuiService<Administrator, Aircraft> {
+public class AdministratorAircraftShowService extends AbstractGuiService<Administrator, Aircraft> {
 
 	// Internal state ---------------------------------------------------------
+
 	@Autowired
-	private AircraftRepository repository;
+	AdministratorAircraftRepository repository;
 
 	// AbstractGuiService interface -------------------------------------------
 
@@ -38,25 +39,6 @@ public class AircraftUpdateService extends AbstractGuiService<Administrator, Air
 		aircraft = this.repository.findAircraftById(id);
 
 		super.getBuffer().addData(aircraft);
-	}
-
-	@Override
-	public void bind(final Aircraft aircraft) {
-		super.bindObject(aircraft, "model", "registrationNumber", "capacity", "cargoWeight", "status", "details");
-
-	}
-
-	@Override
-	public void validate(final Aircraft aircraft) {
-		boolean confirmation;
-
-		confirmation = super.getRequest().getData("confirmation", boolean.class);
-		super.state(confirmation, "confirmation", "acme.validation.confirmation.message");
-	}
-
-	@Override
-	public void perform(final Aircraft aircraft) {
-		this.repository.save(aircraft);
 	}
 
 	@Override
@@ -79,4 +61,5 @@ public class AircraftUpdateService extends AbstractGuiService<Administrator, Air
 		super.getResponse().addData(dataset);
 
 	}
+
 }

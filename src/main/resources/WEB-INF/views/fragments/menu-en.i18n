@@ -48,6 +48,12 @@ master.menu.customer = Customer
 master.menu.customer.dashboard = Dashboard
 master.menu.customer.booking = My bookings
 
+# master.menu.customer ##########################################################
+
+master.menu.technician = Technician
+master.menu.technician.dashboard = Dashboard
+master.menu.technician.task = My tasks
+
 # master.menu.user-account ####################################################
 
 master.menu.user-account = Account
