@@ -26,6 +26,7 @@ administrator.aicraft.form.label.capacity = Capacity
 administrator.aicraft.form.label.cargoWeight = Cargo Weight
 administrator.aicraft.form.label.status = Status
 administrator.aicraft.form.label.details = Details
+administrator.aicraft.form.label.airline = Airline
 
 administrator.aircraft.form.button.create = Create
 
