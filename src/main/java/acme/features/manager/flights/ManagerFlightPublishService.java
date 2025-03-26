@@ -8,21 +8,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import acme.client.components.models.Dataset;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
-import acme.entities.booking.Booking;
 import acme.entities.flight.Flight;
 import acme.entities.leg.Leg;
-import acme.features.manager.legs.ManagerLegDeleteService;
 import acme.realms.Manager;
-import acme.relationships.IsFrom;
 
 @GuiService
-public class ManagerFlightDeleteService extends AbstractGuiService<Manager, Flight> {
+public class ManagerFlightPublishService extends AbstractGuiService<Manager, Flight> {
 
 	@Autowired
-	private ManagerFlightRepository	repository;
-
-	@Autowired
-	private ManagerLegDeleteService	legsDeleteService;
+	private ManagerFlightRepository repository;
 
 
 	@Override
@@ -35,7 +29,7 @@ public class ManagerFlightDeleteService extends AbstractGuiService<Manager, Flig
 		flightId = super.getRequest().getData("id", int.class);
 		flight = this.repository.findFlightById(flightId);
 		manager = flight == null ? null : flight.getManager();
-		status = flight != null && flight.isDraftMode() && flight.getDraftMode() && super.getRequest().getPrincipal().hasRealm(manager);
+		status = flight != null && flight.isDraftMode() && super.getRequest().getPrincipal().hasRealm(manager);
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -53,38 +47,33 @@ public class ManagerFlightDeleteService extends AbstractGuiService<Manager, Flig
 
 	@Override
 	public void bind(final Flight flight) {
-		super.bindObject(flight, "flightTag", "isSelfTransfer", "flightCost", "flightDescription", "");
+		super.bindObject(flight, "flightTag", "isSelfTransfer", "flightCost", "flightDescription");
 
 	}
 
 	@Override
 	public void validate(final Flight flight) {
-		;
+		boolean canBePublish = false;
+		List<Leg> legs = this.repository.findLegsByFlightId(flight.getId());
+		if (!legs.isEmpty())
+			canBePublish = flight.getDraftMode();
+		super.state(canBePublish, "*", "acme.validation.flight.cant-be-publish.message");
 	}
 
 	@Override
 	public void perform(final Flight flight) {
-		List<Booking> bookings;
-		List<IsFrom> bookingRelationsWithPassengers;
-		List<Leg> legs;
-
-		bookings = this.repository.findBookingsByFlightId(flight.getId());
-		bookings.stream().forEach(b -> this.repository.deleteAll(this.repository.findIsFromsByBookingId(b.getId())));
-		this.repository.deleteAll(bookings);
-
-		legs = this.repository.findLegsByFlightId(flight.getId());
-		legs.stream().forEach(l -> this.legsDeleteService.perform(l));
-		this.repository.delete(flight);
+		flight.setDraftMode(false);
+		this.repository.save(flight);
 	}
 
 	@Override
 	public void unbind(final Flight flight) {
 		Dataset dataset;
 
-		dataset = super.unbindObject(flight, "flightTag", "isSelfTransfer", "flightCost", "flightDescription", "drafMode");
+		dataset = super.unbindObject(flight, "flightTag", "isSelfTransfer", "flightCost", "flightDescription", "draftMode");
 		dataset.put("isdraftMode", flight.isDraftMode());
-		dataset.put("departure", flight.getDeparture() != null ? flight.getDeparture().getAirportName() : flight.getDeparture());
-		dataset.put("arrival", flight.getArrival() != null ? flight.getArrival().getAirportName() : flight.getArrival());
+		dataset.put("origin", flight.getDeparture() != null ? flight.getDeparture().getAirportName() : flight.getDeparture());
+		dataset.put("destination", flight.getArrival() != null ? flight.getArrival().getAirportName() : flight.getArrival());
 		dataset.put("scheduledDeparture", flight.getFlightDeparture());
 		dataset.put("scheduledArrival", flight.getFlightArrival());
 		dataset.put("layovers", flight.getLayovers());
