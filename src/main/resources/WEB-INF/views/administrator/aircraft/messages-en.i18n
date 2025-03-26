@@ -28,6 +28,7 @@ administrator.aicraft.form.label.status = Status
 administrator.aicraft.form.label.details = Details
 administrator.aicraft.form.label.airline = Airline
 
+administrator.aircraft.form.label.confirmation = Confirm that the aircraft is correct.
 administrator.aircraft.form.button.create = Create
 
 administrator.aircraft.form.button.duties = Duties
