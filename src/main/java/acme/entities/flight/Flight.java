@@ -123,9 +123,9 @@ public class Flight extends AbstractEntity {
 		if (legs.isEmpty())
 			return false;
 
-		List<Leg> validLegs = legs.stream().filter(l -> l.getDraftMode().equals(true)).collect(Collectors.toList());
+		List<Leg> draftModeLegs = legs.stream().filter(l -> l.getDraftMode().equals(true)).collect(Collectors.toList());
 
-		return validLegs.size() == legs.size();
+		return draftModeLegs.size() != 0;
 	}
 
 }

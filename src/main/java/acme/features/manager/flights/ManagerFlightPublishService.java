@@ -30,7 +30,6 @@ public class ManagerFlightPublishService extends AbstractGuiService<Manager, Fli
 		flight = this.repository.findFlightById(flightId);
 		manager = flight == null ? null : flight.getManager();
 		status = flight != null && flight.isDraftMode() && super.getRequest().getPrincipal().hasRealm(manager);
-
 		super.getResponse().setAuthorised(status);
 	}
 
@@ -56,7 +55,7 @@ public class ManagerFlightPublishService extends AbstractGuiService<Manager, Fli
 		boolean canBePublish = false;
 		List<Leg> legs = this.repository.findLegsByFlightId(flight.getId());
 		if (!legs.isEmpty())
-			canBePublish = flight.getDraftMode();
+			canBePublish = flight.isDraftMode();
 		super.state(canBePublish, "*", "acme.validation.flight.cant-be-publish.message");
 	}
 

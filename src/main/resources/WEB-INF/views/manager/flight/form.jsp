@@ -27,7 +27,7 @@
 	<acme:input-textbox code="manager.flight.form.label.arrival" path="arrival" readonly="true"/>
 	
 	<jstl:choose>
-		<jstl:when test="${acme:anyOf(_command, 'show|update|delete') && draftMode == true}}">
+		<jstl:when test="${acme:anyOf(_command, 'show|update|delete') && draftMode == true}">
 				<acme:input-checkbox code="manager.flight.form.label.confirmation" path="confirmation"/>
 			<acme:submit code="manager.flight.form.button.update" action="/manager/flight/update"/>
 			<acme:submit code="manager.flight.form.button.delete" action="/manager/flight/delete"/>

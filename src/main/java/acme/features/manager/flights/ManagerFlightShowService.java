@@ -49,7 +49,8 @@ public class ManagerFlightShowService extends AbstractGuiService<Manager, Flight
 
 		managerId = super.getRequest().getPrincipal().getActiveRealm().getId();
 
-		dataset = super.unbindObject(flight, "flightTag", "isSelfTransfer", "flightCost", "flightDescription");
+		dataset = super.unbindObject(flight, "flightTag", "isSelfTransfer", "flightCost", "flightDescription", "draftMode");
+
 		dataset.put("isdraftMode", flight.isDraftMode());
 		dataset.put("departure", flight.getDeparture() != null ? flight.getDeparture().getAirportName() : flight.getDeparture());
 		dataset.put("arrival", flight.getArrival() != null ? flight.getArrival().getAirportName() : flight.getArrival());
