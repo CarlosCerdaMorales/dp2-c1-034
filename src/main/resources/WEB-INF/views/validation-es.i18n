@@ -51,8 +51,9 @@ acme.validation.airport.duplicated-iata.message = Ya existe un aeropuerto con es
 
 ### Booking ###
 
-acme.validation.booking.duplicated-locator-code.message = Ya existe una reserva con este código de localización.
-acme.validation.booking.invalid-nibble.message = En caso de indicar los últimos dígitos, han de ser los cuatro últimos.
+acme.validation.booking.duplicated-locator-code.message = Ya existe una reserva con este código de localización
+acme.validation.booking.invalid-nibble.message = En caso de indicar los últimos dígitos, han de ser los cuatro últimos
+acme.validation.booking.duplicated-flight.message = Ya existe una reserva relacionada a este vuelo
 
 ### Airline ###
 
@@ -61,3 +62,8 @@ acme.validation.airline.duplicated-iata.message = Ya existe un aerolinea con est
 ### Aircraft ###
 
 acme.validation.aircraft.invalid-registration-number = Ya existe un avion con este numero de registro.
+
+### Passenger ###
+
+acme.validation.passenger.duplicated-passport.message = Ya existe un pasajero con este pasaporte
+acme.validation.passenger.invalid-passport-pattern.message = El patrón del pasaporte no coincide con el exigido

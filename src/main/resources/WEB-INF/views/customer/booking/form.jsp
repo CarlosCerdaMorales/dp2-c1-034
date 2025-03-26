@@ -12,7 +12,8 @@
 	<acme:input-select code="customer.booking.form.flight" path="flight" choices="${flights}"/>	
 
 	<jstl:choose>	 
-		<jstl:when test="${_command == 'show'}">			
+		<jstl:when test="${_command == 'show'}">	
+			<acme:button code="customer.booking.form.show.passengers" action="/customer/passenger/list?bookingId=${bookingId}"/>		
 		</jstl:when>
 		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish')}">
 			<acme:submit code="employer.job.form.button.update" action="/employer/job/update"/>

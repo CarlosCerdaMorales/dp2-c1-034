@@ -51,8 +51,9 @@ acme.validation.airport.duplicated-iata.message = There is an existing airport w
 
 ### Booking ###
 
-acme.validation.booking.duplicated-locator-code.message = There is an existing booking with this locator code.
-acme.validation.booking.invalid-nibble.message = Last nibble must be formed by 4 digits.
+acme.validation.booking.duplicated-locator-code.message = There is an existing booking with this locator code
+acme.validation.booking.invalid-nibble.message = Last nibble must be formed by 4 digits
+acme.validation.booking.duplicated-flight.message = There is an existing booking related to this flight
 
 ### Airline ###
 
@@ -61,3 +62,10 @@ acme.validation.airline.duplicated-iata.message = There is an existing airline w
 ### Aircraft ###
 
 acme.validation.aircraft.invalid-registration-number = There is an existing aircraft with this registration number.
+
+### Passenger ###
+
+acme.validation.passenger.duplicated-passport.message = There is an existing passenger with this passport
+acme.validation.passenger.invalid-passport-pattern.message = This passenger's passport pattern is invalid
+
+
