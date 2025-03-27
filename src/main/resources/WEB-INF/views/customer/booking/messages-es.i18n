@@ -6,11 +6,16 @@ customer.booking.list.travelClass = Clase
 customer.booking.list.button.create = Crear reserva
 
 customer.booking.form.title = Información de mi reserva
-customer.booking.form.locatorCode = Código de localización
+customer.booking.form.locatorCode = Código de localización (patrón = ^[A-Z0-9]{6,8}$)
 customer.booking.form.purchaseMoment = Momento de compra
 customer.booking.form.price = Precio
 customer.booking.form.travelClass = Clase
-customer.booking.form.lastNibble = Últimos dígitos tarjeta de crédito usada
+customer.booking.form.lastNibble = Últimos dígitos tarjeta de crédito usada (patrón = \\d{4}|)
 customer.booking.form.flight = Etiqueta de vuelo
+
 customer.booking.form.button.create = Crear
+customer.booking.form.button.update = Actualizar
+customer.booking.form.button.delete = Eliminar
+customer.booking.form.button.publish = Publicar
+
 customer.booking.form.show.passengers = Ver pasajeros

@@ -4,21 +4,20 @@
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
 <acme:form> 
-	<acme:input-textbox code="customer.booking.form.locatorCode" path="locatorCode"/>
-	<acme:input-moment code="customer.booking.form.purchaseMoment" path="purchaseMoment"/>
+	<acme:input-textbox code="customer.booking.form.locatorCode" path="locatorCode" readonly="true"/>
+	<acme:input-moment code="customer.booking.form.purchaseMoment" path="purchaseMoment" readonly="true"/>
 	<acme:input-select code="customer.booking.form.travelClass" path="travelClass" choices="${classes}"/>	
-	<acme:input-money code="customer.booking.form.price" path="price"/>
+	<acme:input-money code="customer.booking.form.price" path="price" readonly="true"/>
 	<acme:input-textbox code="customer.booking.form.lastNibble" path="lastNibble"/>
 	<acme:input-select code="customer.booking.form.flight" path="flight" choices="${flights}"/>	
 
+	<acme:button code="customer.booking.form.show.passengers" action="/customer/passenger/list?bookingId=${bookingId}"/>
+
 	<jstl:choose>	 
-		<jstl:when test="${_command == 'show'}">	
-			<acme:button code="customer.booking.form.show.passengers" action="/customer/passenger/list?bookingId=${bookingId}"/>		
-		</jstl:when>
-		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish')}">
-			<acme:submit code="employer.job.form.button.update" action="/employer/job/update"/>
-			<acme:submit code="employer.job.form.button.delete" action="/employer/job/delete"/>
-			<acme:submit code="employer.job.form.button.publish" action="/employer/job/publish"/>
+		<jstl:when test="${_command == 'show' && draftMode}"  >		
+			<acme:submit code="customer.booking.form.button.update" action="/customer/booking/update"/>
+			<acme:submit code="customer.booking.form.button.delete" action="/customer/booking/delete"/>
+			<acme:submit code="customer.booking.form.button.publish" action="/customer/booking/publish"/>	
 		</jstl:when>
 		<jstl:when test="${_command == 'create'}">
 			<acme:submit code="customer.booking.form.button.create" action="/customer/booking/create"/>

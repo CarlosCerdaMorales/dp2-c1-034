@@ -8,6 +8,6 @@ customer.passenger.list.specialNeeds = Special Needs
 customer.passenger.form.title = Passenger Information
 customer.passenger.form.fullName = Full Name
 customer.passenger.form.email = Email
-customer.passenger.form.passport = Passport
+customer.passenger.form.passport = Passport (pattern = ^[A-Z0-9]{6,9}$)
 customer.passenger.form.dateOfBirth = Date Of Birth
 customer.passenger.form.specialNeeds = Special Needs

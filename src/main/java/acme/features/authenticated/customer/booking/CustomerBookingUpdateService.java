@@ -15,14 +15,11 @@ import acme.entities.flight.Flight;
 import acme.realms.Customer;
 
 @GuiService
-public class CustomerBookingShowService extends AbstractGuiService<Customer, Booking> {
-
+public class CustomerBookingUpdateService extends AbstractGuiService<Customer, Booking> {
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
 	private CustomerBookingRepository repository;
-
-	// AbstractGuiService interface -------------------------------------------
 
 
 	@Override
@@ -35,7 +32,7 @@ public class CustomerBookingShowService extends AbstractGuiService<Customer, Boo
 		bookingId = super.getRequest().getData("id", int.class);
 		booking = this.repository.findBookingById(bookingId);
 		customer = booking == null ? null : booking.getCustomer();
-		status = super.getRequest().getPrincipal().hasRealm(customer) && booking != null;
+		status = booking != null && booking.isDraftMode() && super.getRequest().getPrincipal().hasRealm(customer);
 
 		super.getResponse().setAuthorised(status);
 
@@ -44,12 +41,24 @@ public class CustomerBookingShowService extends AbstractGuiService<Customer, Boo
 	@Override
 	public void load() {
 		Booking booking;
-		int id;
+		int bookingId;
 
-		id = super.getRequest().getData("id", int.class);
-		booking = this.repository.findBookingById(id);
+		bookingId = super.getRequest().getData("id", int.class);
+		booking = this.repository.findBookingById(bookingId);
 
-		this.getBuffer().addData(booking);
+		super.getBuffer().addData(booking);
+	}
+
+	@Override
+	public void bind(final Booking booking) {
+		int flightId;
+		Flight flight;
+
+		flightId = super.getRequest().getData("flight", int.class);
+		flight = this.repository.findFlightById(flightId);
+
+		super.bindObject(booking, "locatorCode", "purchaseMoment", "travelClass", "price", "lastNibble");
+		booking.setFlight(flight);
 
 	}
 
@@ -62,6 +71,13 @@ public class CustomerBookingShowService extends AbstractGuiService<Customer, Boo
 	}
 
 	@Override
+	public void perform(final Booking booking) {
+		Flight flight = booking.getFlight();
+		booking.setPrice(flight.getFlightCost());
+		this.repository.save(booking);
+	}
+
+	@Override
 	public void unbind(final Booking booking) {
 		Collection<Flight> flights;
 		SelectChoices choices;
@@ -69,8 +85,8 @@ public class CustomerBookingShowService extends AbstractGuiService<Customer, Boo
 		Dataset dataset;
 
 		flights = this.repository.findAllFlights();
-		classChoices = SelectChoices.from(TravelClass.class, booking.getTravelClass());
 		choices = SelectChoices.from(flights, "flightTag", booking.getFlight());
+		classChoices = SelectChoices.from(TravelClass.class, booking.getTravelClass());
 
 		dataset = super.unbindObject(booking, "locatorCode", "purchaseMoment", "travelClass", "price", "lastNibble", "draftMode");
 		dataset.put("flight", choices.getSelected().getKey());
@@ -81,5 +97,4 @@ public class CustomerBookingShowService extends AbstractGuiService<Customer, Boo
 		super.getResponse().addData(dataset);
 
 	}
-
 }
