@@ -57,6 +57,11 @@ public class Leg extends AbstractEntity {
 	@Automapped
 	private FlightStatus		flightStatus;
 
+	@Mandatory
+	@Valid
+	@Automapped
+	private Boolean				draftMode;
+
 	//Relationships-----------------------------------------------------------------------------------
 
 	@Mandatory

@@ -1,0 +1,16 @@
+customer.booking.list.title = Mis reservas
+customer.booking.list.locatorCode = Código de localización
+customer.booking.list.purchaseMoment = Fecha de compra
+customer.booking.list.price = Precio
+customer.booking.list.travelClass = Clase
+customer.booking.list.button.create = Crear reserva
+
+customer.booking.form.title = Información de mi reserva
+customer.booking.form.locatorCode = Código de localización
+customer.booking.form.purchaseMoment = Momento de compra
+customer.booking.form.price = Precio
+customer.booking.form.travelClass = Clase
+customer.booking.form.lastNibble = Últimos dígitos tarjeta de crédito usada
+customer.booking.form.flight = Etiqueta de vuelo
+customer.booking.form.button.create = Crear
+customer.booking.form.show.passengers = Ver pasajeros
