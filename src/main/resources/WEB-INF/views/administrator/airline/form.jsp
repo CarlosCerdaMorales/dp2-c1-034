@@ -26,10 +26,12 @@
 	
 	<jstl:choose>
 		<jstl:when test="${acme:anyOf(_command, 'show|update|delete')}">
+		<acme:input-checkbox code="administrator.airline.form.label.confirmation" path="confirmation"/>
 			<acme:submit code="administrator.airline.form.button.update" action="/administrator/airline/update"/>
 			<acme:submit code="administrator.airline.form.button.delete" action="/administrator/airline/delete"/>
 		</jstl:when>
 		<jstl:when test="${_command == 'create'}">
+				<acme:input-checkbox code="administrator.airline.form.label.confirmation" path="confirmation"/>
 			<acme:submit code="administrator.airline.form.button.create" action="/administrator/airline/create"/>
 		</jstl:when>		
 	</jstl:choose>

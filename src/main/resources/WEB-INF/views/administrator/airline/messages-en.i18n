@@ -31,6 +31,8 @@ administrator.airline.form.label.phoneNumber = phoneNumber
 
 administrator.airline.form.button.create = Create
 
+administrator.airline.form.label.confirmation = Confirm the airline information is correct
+
 administrator.airline.form.button.duties = Duties
 administrator.airline.form.button.update = Update
 administrator.airline.form.button.delete = Delete

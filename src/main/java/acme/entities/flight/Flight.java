@@ -4,6 +4,7 @@ package acme.entities.flight;
 import java.beans.Transient;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -49,6 +50,11 @@ public class Flight extends AbstractEntity {
 	@ValidMoney
 	private Money				flightCost;
 
+	@Mandatory
+	@Valid
+	@Automapped
+	private Boolean				draftMode;
+
 	@Optional
 	@ValidString(max = 255)
 	@Automapped
@@ -88,7 +94,7 @@ public class Flight extends AbstractEntity {
 	public Integer getLayovers() {
 		FlightRepository repository = SpringHelper.getBean(FlightRepository.class);
 		List<Leg> listOfLegs = repository.legsDuringFlight(this.getId());
-		return listOfLegs.size() - 1;
+		return listOfLegs.size();
 	}
 
 	@Transient
@@ -107,6 +113,19 @@ public class Flight extends AbstractEntity {
 		if (!listOfLegs.isEmpty())
 			destination = listOfLegs.get(listOfLegs.size() - 1).getAirportArrival();
 		return destination;
+	}
+
+	@Transient
+	public boolean isDraftMode() {
+		FlightRepository repository = SpringHelper.getBean(FlightRepository.class);
+		List<Leg> legs = repository.legsDuringFlight(this.getId());
+
+		if (legs.isEmpty())
+			return false;
+
+		List<Leg> draftModeLegs = legs.stream().filter(l -> l.getDraftMode().equals(true)).collect(Collectors.toList());
+
+		return draftModeLegs.size() != 0;
 	}
 
 }
