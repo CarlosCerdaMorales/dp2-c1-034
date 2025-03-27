@@ -1,6 +1,7 @@
 
 package acme.features.authenticated.customer.booking;
 
+import java.security.SecureRandom;
 import java.util.Collection;
 import java.util.Date;
 
@@ -47,12 +48,19 @@ public class CustomerBookingCreateService extends AbstractGuiService<Customer, B
 	public void bind(final Booking booking) {
 		int flightId;
 		Flight flight;
+		Date moment = MomentHelper.getCurrentMoment();
 
 		flightId = super.getRequest().getData("flight", int.class);
 		flight = this.repository.findFlightById(flightId);
 
-		super.bindObject(booking, "locatorCode", "purchaseMoment", "travelClass", "price", "lastNibble");
+		super.bindObject(booking, "travelClass", "lastNibble");
+
 		booking.setFlight(flight);
+		booking.setPurchaseMoment(moment);
+		booking.setPrice(flight.getFlightCost());
+		booking.setLocatorCode(this.generateLocatorCode());
+		booking.setDraftMode(true);
+
 	}
 
 	@Override
@@ -65,10 +73,6 @@ public class CustomerBookingCreateService extends AbstractGuiService<Customer, B
 
 	@Override
 	public void perform(final Booking booking) {
-		Date moment = MomentHelper.getCurrentMoment();
-		Flight flight = booking.getFlight();
-		booking.setPurchaseMoment(moment);
-		booking.setPrice(flight.getFlightCost());
 		this.repository.save(booking);
 	}
 
@@ -77,7 +81,7 @@ public class CustomerBookingCreateService extends AbstractGuiService<Customer, B
 		Collection<Flight> flights;
 		SelectChoices choices;
 		SelectChoices classes;
-		Dataset dataset = new Dataset();
+		Dataset dataset;
 
 		flights = this.repository.findAllFlights();
 		choices = SelectChoices.from(flights, "flightTag", booking.getFlight());
@@ -91,6 +95,18 @@ public class CustomerBookingCreateService extends AbstractGuiService<Customer, B
 
 		super.getResponse().addData(dataset);
 
+	}
+
+	private String generateLocatorCode() {
+		String CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+		SecureRandom RANDOM = new SecureRandom();
+		int length = 6 + RANDOM.nextInt(3); // Longitud entre 6 y 8
+		StringBuilder codigo = new StringBuilder(length);
+
+		for (int i = 0; i < length; i++)
+			codigo.append(CHARACTERS.charAt(RANDOM.nextInt(CHARACTERS.length())));
+
+		return codigo.toString();
 	}
 
 }

@@ -15,7 +15,7 @@ import acme.entities.flight.Flight;
 import acme.realms.Customer;
 
 @GuiService
-public class CustomerBookingUpdateService extends AbstractGuiService<Customer, Booking> {
+public class CustomerBookingPublishService extends AbstractGuiService<Customer, Booking> {
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
@@ -59,7 +59,6 @@ public class CustomerBookingUpdateService extends AbstractGuiService<Customer, B
 
 		super.bindObject(booking, "travelClass", "lastNibble");
 		booking.setFlight(flight);
-		booking.setDraftMode(true);
 
 	}
 
@@ -73,6 +72,7 @@ public class CustomerBookingUpdateService extends AbstractGuiService<Customer, B
 
 	@Override
 	public void perform(final Booking booking) {
+		booking.setDraftMode(false);
 		this.repository.save(booking);
 	}
 

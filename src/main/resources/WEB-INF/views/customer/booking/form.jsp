@@ -11,13 +11,18 @@
 	<acme:input-textbox code="customer.booking.form.lastNibble" path="lastNibble"/>
 	<acme:input-select code="customer.booking.form.flight" path="flight" choices="${flights}"/>	
 
-	<acme:button code="customer.booking.form.show.passengers" action="/customer/passenger/list?bookingId=${bookingId}"/>
-
 	<jstl:choose>	 
-		<jstl:when test="${_command == 'show' && draftMode}"  >		
+		<jstl:when test="${_command == 'show' && draftMode && lastNibbleIsEmpty}"  >		
+			<acme:button code="customer.booking.form.show.passengers" action="/customer/passenger/list?bookingId=${bookingId}"/>
 			<acme:submit code="customer.booking.form.button.update" action="/customer/booking/update"/>
-			<acme:submit code="customer.booking.form.button.delete" action="/customer/booking/delete"/>
-			<acme:submit code="customer.booking.form.button.publish" action="/customer/booking/publish"/>	
+		</jstl:when>
+		<jstl:when test="${_command == 'show' && draftMode && !lastNibbleIsEmpty}"  >		
+			<acme:button code="customer.booking.form.show.passengers" action="/customer/passenger/list?bookingId=${bookingId}"/>
+			<acme:submit code="customer.booking.form.button.publish" action="/customer/booking/publish"/>
+			<acme:submit code="customer.booking.form.button.update" action="/customer/booking/update"/>
+		</jstl:when>
+		<jstl:when test="${_command == 'show' && !draftMode}"  >		
+			<acme:button code="customer.booking.form.show.passengers" action="/customer/passenger/list?bookingId=${bookingId}"/>
 		</jstl:when>
 		<jstl:when test="${_command == 'create'}">
 			<acme:submit code="customer.booking.form.button.create" action="/customer/booking/create"/>

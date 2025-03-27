@@ -67,6 +67,7 @@ public class CustomerBookingShowService extends AbstractGuiService<Customer, Boo
 		SelectChoices choices;
 		SelectChoices classChoices;
 		Dataset dataset;
+		boolean status = true;
 
 		flights = this.repository.findAllFlights();
 		classChoices = SelectChoices.from(TravelClass.class, booking.getTravelClass());
@@ -77,6 +78,9 @@ public class CustomerBookingShowService extends AbstractGuiService<Customer, Boo
 		dataset.put("flights", choices);
 		dataset.put("classes", classChoices);
 		dataset.put("bookingId", booking.getId());
+		if (!booking.getLastNibble().isEmpty())
+			status = false;
+		dataset.put("lastNibbleIsEmpty", status);
 
 		super.getResponse().addData(dataset);
 
