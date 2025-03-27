@@ -31,6 +31,8 @@ administrator.airline.form.label.phoneNumber = Número de teléfono
 
 administrator.airline.form.button.create = Crear
 
+administrator.airline.form.label.confirmation = Confirme que la información de la areolinea es correcta
+
 administrator.airline.form.button.duties = Deberes
 administrator.airline.form.button.update = Actualizar
 administrator.airline.form.button.delete = Eliminar

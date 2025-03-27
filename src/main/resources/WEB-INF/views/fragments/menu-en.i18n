@@ -49,6 +49,11 @@ master.menu.customer.dashboard = Dashboard
 master.menu.customer.booking = My bookings
 master.menu.customer.passenger = My passengers
 
+# master.menu.manager ##########################################################
+
+master.menu.manager = Manager
+master.menu.manager.flights = Flight list
+
 # master.menu.user-account ####################################################
 
 master.menu.user-account = Account

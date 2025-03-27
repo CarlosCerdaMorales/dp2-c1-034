@@ -15,7 +15,7 @@ import acme.entities.airline.AirlineType;
 public class AdministratorAirlineShowService extends AbstractGuiService<Administrator, Airline> {
 
 	@Autowired
-	private AirlineRepository repository;
+	private AdministratorAirlineRepository repository;
 
 
 	@Override
@@ -41,7 +41,7 @@ public class AdministratorAirlineShowService extends AbstractGuiService<Administ
 
 		choices = SelectChoices.from(AirlineType.class, airline.getType());
 
-		dataset = super.unbindObject(airline, "name", "iata", "phoneNumber");
+		dataset = super.unbindObject(airline, "name", "iata", "website", "type", "foundationMoment", "email", "phoneNumber");
 		dataset.put("statuses", choices);
 
 		super.getResponse().addData(dataset);

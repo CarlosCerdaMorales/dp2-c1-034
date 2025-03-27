@@ -48,6 +48,13 @@ master.menu.customer.dashboard = Panel del cliente
 master.menu.customer.booking = Mis reservas
 master.menu.customer.passenger = Mis pasajeros
 
+# master.menu.manager ##########################################################
+
+master.menu.manager = Gerente
+master.menu.manager.flights = Listado de vuelos
+
+
+
 # master.menu.user-account ####################################################
 
 master.menu.user-account = Cuenta

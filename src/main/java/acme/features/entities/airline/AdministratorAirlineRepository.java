@@ -10,7 +10,7 @@ import acme.client.repositories.AbstractRepository;
 import acme.entities.airline.Airline;
 
 @Repository
-public interface AirlineRepository extends AbstractRepository {
+public interface AdministratorAirlineRepository extends AbstractRepository {
 
 	@Query("select a from Airline a where a.iata = :iata")
 	public Airline findAirlineByIATACode(String iata);
