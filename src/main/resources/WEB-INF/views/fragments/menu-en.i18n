@@ -53,6 +53,7 @@ master.menu.customer.booking = My bookings
 master.menu.technician = Technician
 master.menu.technician.dashboard = Dashboard
 master.menu.technician.task = My tasks
+master.menu.technician.maintenance-record = My Maintenance records
 
 # master.menu.user-account ####################################################
 

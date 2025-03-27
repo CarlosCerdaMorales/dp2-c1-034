@@ -16,12 +16,10 @@
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
 <acme:list>
-	<acme:list-column code="technician.task.list.label.type" path="type" width="40%"/>
-	<acme:list-column code="technician.task.list.label.priority" path="priority" width="30%"/>
-	<acme:list-column code="technician.task.list.label.estimatedDuration" path="estimatedDuration" width="30%"/>
-	<acme:list-payload path="payload"/>	
+	<acme:list-column code="technician.maintenance-record.list.label.status" path="status" width="40%"/>
+	<acme:list-column code="technician.maintenance-record.list.label.maintenanceMoment" path="maintenanceMoment" width="30%"/>
+	<acme:list-column code="technician.maintenance-record.list.label.nextInspectionDue" path="nextInspectionDue" width="30%"/>
+	<acme:list-payload path="payload"/>
 </acme:list>
 
-<jstl:if test="${_command == 'list'}">
-	<acme:button code="technician.task.form.button.create" action="/technician/task/create"/>
-</jstl:if>
+<acme:button code="technician.maintenance-record.list.button.create" action="/technician/maintenance-record/create"/>

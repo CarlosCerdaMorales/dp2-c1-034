@@ -30,6 +30,7 @@ public class TechnicianTaskUpdateService extends AbstractGuiService<Technician, 
 
 		taskId = super.getRequest().getData("id", int.class);
 		task = this.repository.findTaskById(taskId);
+
 		technician = task == null ? null : task.getTechnician();
 		status = task != null && task.isDraftMode() && super.getRequest().getPrincipal().hasRealm(technician);
 

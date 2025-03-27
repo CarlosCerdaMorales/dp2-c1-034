@@ -67,6 +67,7 @@ public class AdministratorAircraftUpdateService extends AbstractGuiService<Admin
 		Collection<Airline> airlines;
 
 		choices = SelectChoices.from(AircraftStatus.class, aircraft.getStatus());
+
 		airlines = this.repository.findAllAirlines();
 		selectedAirlines = SelectChoices.from(airlines, "name", aircraft.getAirline());
 
