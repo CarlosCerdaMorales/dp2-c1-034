@@ -67,3 +67,9 @@ acme.validation.aircraft.invalid-registration-number = Ya existe un avion con es
 
 acme.validation.passenger.duplicated-passport.message = Ya existe un pasajero con este pasaporte
 acme.validation.passenger.invalid-passport-pattern.message = El patrón del pasaporte no coincide con el exigido
+
+### FlightCrewMember ###
+
+acme.validation.flightcrewmember.duplicated-employeecode.message = Ya existe un miembro del staff de vuelo con este código de empleado.
+acme.validation.flightcrewmember.invalid-employeecode-pattern.message = El código de empleado tiene una estructura inválida.
+acme.validation.flightcrewmember.invalid-employeecode-initials.message = Las dos primeras letras del código de empleado debe coincidir con las iniciales del empleado.
