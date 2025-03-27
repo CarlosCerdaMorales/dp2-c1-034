@@ -31,6 +31,8 @@ master.menu.administrator.list-aircrafts = Listado de aviones
 
 master.menu.administrator.list-airlines = Listado de aerolineas
 
+master.menu.administrator.list-airports = Listado de aeropuertos
+
 # master.menu.provider ########################################################
 
 master.menu.provider = Proveedor
