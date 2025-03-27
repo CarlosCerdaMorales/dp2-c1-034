@@ -44,18 +44,18 @@ public class FlightCrewMemberValidator extends AbstractValidator<ValidFlightCrew
 
 			{
 				if (!id.matches("^[A-Z]{2,3}\\d{6}$"))
-					super.state(context, false, "employeeCode", "");
+					super.state(context, false, "employeeCode", "acme.validation.flightcrewmember.invalid-employeecode-pattern.message");
 
 			}
 
 			{
 				if (!idPrefix.equals(expectedInitials))
-					super.state(context, false, "employeeCode", "");
+					super.state(context, false, "employeeCode", "acme.validation.flightcrewmember.invalid-employeecode-initials.message");
 			}
 
 			{
 				if (!((existingFlightCrewMembers.isEmpty() || existingFlightCrewMembers.contains(flightCrewMember)) && existingFlightCrewMembers.size() == 1))
-					super.state(context, false, "employeeCode", "");
+					super.state(context, false, "employeeCode", "acme.validation.flightcrewmember.duplicated-employeecode.message");
 
 			}
 
