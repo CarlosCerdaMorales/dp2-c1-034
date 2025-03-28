@@ -16,14 +16,14 @@
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
 <acme:form>
-	<acme:input-textbox code="administrator.airport.form.label.name" path="name"/>
+	<acme:input-textbox code="administrator.airport.form.label.airportName" path="airportName"/>
 	<acme:input-textbox code="administrator.airport.form.label.IATACode" path="IATACode"/>
 	<acme:input-select code="administrator.airport.form.label.operationalScope" path="operationalScope" choices="${scopes}"/>
 	<acme:input-textbox code="administrator.airport.form.label.city" path="city"/>
 	<acme:input-textbox code="administrator.airport.form.label.country" path="country"/>
 	<acme:input-textbox code="administrator.airport.form.label.website" path="website"/>
-	<acme:input-textbox code="administrator.airport.form.label.emailAddress" path="emailAddress"/>
-	<acme:input-textbox code="administrator.airport.form.label.phoneNumber" path="phoneNumber"/>
+	<acme:input-textbox code="administrator.airport.form.label.email" path="email"/>
+	<acme:input-textbox code="administrator.airport.form.label.contactPhoneNumber" path="contactPhoneNumber"/>
 	
 	
 	<jstl:choose>
