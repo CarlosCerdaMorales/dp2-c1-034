@@ -21,6 +21,15 @@ public class CustomerPassengerController extends AbstractGuiController<Customer,
 	@Autowired
 	private CustomerPassengerShowService	showService;
 
+	@Autowired
+	private CustomerPassengerCreateService	createService;
+
+	@Autowired
+	private CustomerPassengerUpdateService	updateService;
+
+	@Autowired
+	private CustomerPassengerPublishService	publishService;
+
 	// Constructors -----------------------------------------------------------
 
 
@@ -28,6 +37,9 @@ public class CustomerPassengerController extends AbstractGuiController<Customer,
 	protected void initialise() {
 		super.addBasicCommand("list", this.listService);
 		super.addBasicCommand("show", this.showService);
+		super.addBasicCommand("create", this.createService);
+		super.addBasicCommand("update", this.updateService);
+		super.addCustomCommand("publish", "update", this.publishService);
 	}
 
 }
