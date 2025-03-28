@@ -3,3 +3,16 @@ flight-crew-member.flight-assignment.list.title = Listado de Asignaciones de vue
 flight-crew-member.flight-assignment.list.label.flightCrewDuty = Deber de la tripulación de vuelo.
 flight-crew-member.flight-assignment.list.label.lastUpdate = Última actualización.
 flight-crew-member.flight-assignment.list.label.assignmentStatus = Estado del asignación de vuelo. 
+
+flight-crew-member.flight-assignment.form.title = Información de asignaciones de vuelo.
+
+flight-crew-member.flight-assignment.form.label.flightCrewDuty = Deber de la tripulación de vuelo.
+flight-crew-member.flight-assignment.form.label.lastUpdate = Última actualización.
+flight-crew-member.flight-assignment.form.label.assignmentStatus = Estado del asignación de vuelo.
+flight-crew-member.flight-assignment.form.label.remarks = Coemntarios
+flight-crew-member.flight-assignment.form.label.leg = Escala
+flight-crew-member.flight-assignment.form.label.flightCrewMember = Miembro de tripulación de vuelo
+
+flight-crew-member.flight-assignment.form.label.confirmation = Confirmar
+
+flight-crew-member.flight-assignment.form.button.update = Actualizar
