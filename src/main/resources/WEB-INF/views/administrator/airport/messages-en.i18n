@@ -12,14 +12,11 @@
 administrator.airport.list.title = Aiport List
 administrator.airport.form.title = Airport Form
 
-administrator.airport.list.label.name = Airport Name
+administrator.airport.list.label.airportName = Airport Name
 administrator.airport.list.label.IATACode = IATA Code
 administrator.airport.list.label.operationalScope = Operational Scope
 administrator.airport.list.label.city = City
 administrator.airport.list.label.country = Country
-administrator.airport.list.label.website = Website
-administrator.airport.list.label.emailAddress = Email Address
-administrator.airport.list.label.phoneNumber = Contact Phone Number
 
 administrator.airport.list.button.create = Create
 

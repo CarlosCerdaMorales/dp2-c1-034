@@ -16,14 +16,11 @@
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
 <acme:list>
-	<acme:list-column code="administrator.airport.list.label.name" path="name" width="20%"/>
+	<acme:list-column code="administrator.airport.list.label.airportName" path="airportName" width="20%"/>
 	<acme:list-column code="administrator.airport.list.label.IATACode" path="IATACode" width="20%"/>
 	<acme:list-column code="administrator.airport.list.label.operationalScope" path="operationalScope" width="20%"/>
 	<acme:list-column code="administrator.airport.list.label.city" path="city" width="20%"/>
 	<acme:list-column code="administrator.airport.list.label.country" path="country" width="20%"/>
-	<acme:list-column code="administrator.airport.list.label.website" path="website" width="20%"/>
-	<acme:list-column code="administrator.airport.list.label.emailAddress" path="emailAddress" width="20%"/>
-	<acme:list-column code="administrator.airport.list.label.phoneNumber" path="phoneNumber" width="20%"/>
 	<acme:list-payload path="payload"/>	
 </acme:list>
 

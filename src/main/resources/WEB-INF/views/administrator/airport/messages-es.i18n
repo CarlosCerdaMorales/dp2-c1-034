@@ -12,7 +12,7 @@
 administrator.airport.list.title = Listado de aeropuertos
 administrator.airport.form.title = Detalles del aeropuerto.
 
-administrator.airport.list.label.name = Nombre del Aeropuerto
+administrator.airport.list.label.airportName = Nombre del Aeropuerto
 administrator.airport.list.label.IATACode = Código IATA
 administrator.airport.list.label.operationalScope = Alcance operacional
 administrator.airport.list.label.city = Ciudad
