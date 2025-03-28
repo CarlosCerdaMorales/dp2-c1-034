@@ -75,3 +75,6 @@ acme.validation.flightcrewmember.duplicated-employeecode.message = Ya existe un 
 acme.validation.flightcrewmember.invalid-employeecode-pattern.message = El código de empleado tiene una estructura inválida.
 acme.validation.flightcrewmember.invalid-employeecode-initials.message = Las dos primeras letras del código de empleado debe coincidir con las iniciales del empleado.
 
+### IsFrom ###
+
+acme.validation.booking.duplicated-is-from.message = Ya existe esta reserva asociada a este pasajero

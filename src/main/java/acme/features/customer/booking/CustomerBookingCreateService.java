@@ -1,7 +1,6 @@
 
 package acme.features.customer.booking;
 
-import java.security.SecureRandom;
 import java.util.Collection;
 import java.util.Date;
 
@@ -53,12 +52,11 @@ public class CustomerBookingCreateService extends AbstractGuiService<Customer, B
 		flightId = super.getRequest().getData("flight", int.class);
 		flight = this.repository.findFlightById(flightId);
 
-		super.bindObject(booking, "travelClass", "lastNibble");
+		super.bindObject(booking, "locatorCode", "travelClass", "lastNibble");
 
 		booking.setFlight(flight);
 		booking.setPurchaseMoment(moment);
 		booking.setPrice(flight.getFlightCost());
-		booking.setLocatorCode(this.generateLocatorCode());
 		booking.setDraftMode(true);
 
 	}
@@ -97,16 +95,18 @@ public class CustomerBookingCreateService extends AbstractGuiService<Customer, B
 
 	}
 
-	private String generateLocatorCode() {
-		String CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-		SecureRandom RANDOM = new SecureRandom();
-		int length = 6 + RANDOM.nextInt(3); // Longitud entre 6 y 8
-		StringBuilder codigo = new StringBuilder(length);
-
-		for (int i = 0; i < length; i++)
-			codigo.append(CHARACTERS.charAt(RANDOM.nextInt(CHARACTERS.length())));
-
-		return codigo.toString();
-	}
+	/*
+	 * private String generateLocatorCode() {
+	 * String CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+	 * SecureRandom RANDOM = new SecureRandom();
+	 * int length = 6 + RANDOM.nextInt(3); // Longitud entre 6 y 8
+	 * StringBuilder codigo = new StringBuilder(length);
+	 * 
+	 * for (int i = 0; i < length; i++)
+	 * codigo.append(CHARACTERS.charAt(RANDOM.nextInt(CHARACTERS.length())));
+	 * 
+	 * return codigo.toString();
+	 * }
+	 */
 
 }
