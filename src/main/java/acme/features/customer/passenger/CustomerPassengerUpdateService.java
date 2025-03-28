@@ -10,51 +10,63 @@ import acme.entities.passenger.Passenger;
 import acme.realms.Customer;
 
 @GuiService
-public class CustomerPassengerShowService extends AbstractGuiService<Customer, Passenger> {
-	// Internal state ---------------------------------------------------------
+public class CustomerPassengerUpdateService extends AbstractGuiService<Customer, Passenger> {
 
 	@Autowired
 	private CustomerPassengerRepository repository;
-
-	// AbstractGuiService interface -------------------------------------------
 
 
 	@Override
 	public void authorise() {
 		boolean status;
 		int passengerId;
-		int customerId = super.getRequest().getPrincipal().getActiveRealm().getId();
 		Passenger passenger;
 		Customer customer;
 
 		passengerId = super.getRequest().getData("id", int.class);
 		passenger = this.repository.findPassengerById(passengerId);
-		customer = this.repository.findCustomerFromId(customerId);
-		status = super.getRequest().getPrincipal().hasRealm(customer) && passenger != null;
+		customer = passenger == null ? null : passenger.getCustomer();
+		status = customer != null && passenger.isDraftMode() && super.getRequest().getPrincipal().hasRealm(customer);
 
 		super.getResponse().setAuthorised(status);
-
 	}
 
 	@Override
 	public void load() {
+		int passengerId;
 		Passenger passenger;
-		int id;
 
-		id = super.getRequest().getData("id", int.class);
-		passenger = this.repository.findPassengerById(id);
+		passengerId = super.getRequest().getData("id", int.class);
+		passenger = this.repository.findPassengerById(passengerId);
 
-		this.getBuffer().addData(passenger);
+		super.getBuffer().addData(passenger);
 
+	}
+
+	@Override
+	public void bind(final Passenger passenger) {
+		super.bindObject(passenger, "fullName", "email", "passport", "dateOfBirth", "specialNeeds");
+	}
+
+	@Override
+	public void perform(final Passenger passenger) {
+		this.repository.save(passenger);
+	}
+
+	@Override
+	public void validate(final Passenger passenger) {
+		//boolean confirmation;
+
+		//confirmation = super.getRequest().getData("confirmation", boolean.class);
+		//super.state(confirmation, "confirmation", "acme.validation.confirmation.message");
 	}
 
 	@Override
 	public void unbind(final Passenger passenger) {
 		Dataset dataset;
-
 		dataset = super.unbindObject(passenger, "fullName", "email", "passport", "dateOfBirth", "specialNeeds", "draftMode");
-
 		super.getResponse().addData(dataset);
 
 	}
+
 }

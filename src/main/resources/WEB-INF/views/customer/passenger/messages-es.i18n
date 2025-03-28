@@ -5,10 +5,16 @@ customer.passenger.list.passport = Pasaporte
 customer.passenger.list.dateOfBirth = Fecha de nacimiento
 customer.passenger.list.specialNeeds = Necesidades especiales
 
+customer.passenger.list.button.create = Crear pasajero
+
 customer.passenger.form.title = Información del pasajero
 customer.passenger.form.fullName = Nombre Completo
 customer.passenger.form.email = Correo electrónico
 customer.passenger.form.passport = Pasaporte (patrón = ^[A-Z0-9]{6,9}$)
 customer.passenger.form.dateOfBirth = Fecha de nacimiento
 customer.passenger.form.specialNeeds = Necesidades especiales
+
+customer.passenger.form.button.create = Crear
+customer.passenger.form.button.update = Actualizar información
+customer.passenger.form.button.publish = Publicar
  
