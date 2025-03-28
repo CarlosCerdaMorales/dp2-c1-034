@@ -1,0 +1,5 @@
+flight-crew-member.flight-assignment.list.title = List Flight Assignment
+
+flight-crew-member.flight-assignment.list.label.flightCrewDuty = Flight Crew Duty
+flight-crew-member.flight-assignment.list.label.lastUpdate = Last Updated
+flight-crew-member.flight-assignment.list.label.assignmentStatus = Flight Assignment Status

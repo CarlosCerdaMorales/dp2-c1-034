@@ -1,0 +1,5 @@
+flight-crew-member.flight-assignment.list.title = Listado de Asignaciones de vuelos
+
+flight-crew-member.flight-assignment.list.label.flightCrewDuty = Deber de la tripulación de vuelo.
+flight-crew-member.flight-assignment.list.label.lastUpdate = Última actualización.
+flight-crew-member.flight-assignment.list.label.assignmentStatus = Estado del asignación de vuelo. 
