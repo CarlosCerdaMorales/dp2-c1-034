@@ -68,4 +68,7 @@ acme.validation.aircraft.invalid-registration-number = There is an existing airc
 acme.validation.passenger.duplicated-passport.message = There is an existing passenger with this passport
 acme.validation.passenger.invalid-passport-pattern.message = This passenger's passport pattern is invalid
 
+### IATACode ###
+
+acme.validation.iatacode.message = IATA Code has an invalid pattern.
 
