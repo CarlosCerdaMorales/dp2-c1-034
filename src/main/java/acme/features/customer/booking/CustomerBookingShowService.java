@@ -1,5 +1,5 @@
 
-package acme.features.authenticated.customer.booking;
+package acme.features.customer.booking;
 
 import java.util.Collection;
 
@@ -54,22 +54,33 @@ public class CustomerBookingShowService extends AbstractGuiService<Customer, Boo
 	}
 
 	@Override
+	public void validate(final Booking booking) {
+		//		boolean confirmation;
+		//
+		//		confirmation = super.getRequest().getData("confirmation", boolean.class);
+		//		super.state(confirmation, "confirmation", "acme.validation.confirmation.message");
+	}
+
+	@Override
 	public void unbind(final Booking booking) {
-		int customerId;
 		Collection<Flight> flights;
 		SelectChoices choices;
 		SelectChoices classChoices;
 		Dataset dataset;
+		boolean status = true;
 
 		flights = this.repository.findAllFlights();
 		classChoices = SelectChoices.from(TravelClass.class, booking.getTravelClass());
 		choices = SelectChoices.from(flights, "flightTag", booking.getFlight());
 
-		dataset = super.unbindObject(booking, "locatorCode", "purchaseMoment", "travelClass", "price", "lastNibble");
+		dataset = super.unbindObject(booking, "locatorCode", "purchaseMoment", "travelClass", "price", "lastNibble", "draftMode");
 		dataset.put("flight", choices.getSelected().getKey());
 		dataset.put("flights", choices);
 		dataset.put("classes", classChoices);
 		dataset.put("bookingId", booking.getId());
+		if (!booking.getLastNibble().isEmpty())
+			status = false;
+		dataset.put("lastNibbleIsEmpty", status);
 
 		super.getResponse().addData(dataset);
 

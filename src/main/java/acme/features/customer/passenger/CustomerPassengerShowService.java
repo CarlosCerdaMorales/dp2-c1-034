@@ -1,7 +1,5 @@
 
-package acme.features.authenticated.customer.passenger;
-
-import java.util.Collection;
+package acme.features.customer.passenger;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -12,8 +10,7 @@ import acme.entities.passenger.Passenger;
 import acme.realms.Customer;
 
 @GuiService
-public class CustomerPassengerListService extends AbstractGuiService<Customer, Passenger> {
-
+public class CustomerPassengerShowService extends AbstractGuiService<Customer, Passenger> {
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
@@ -24,22 +21,31 @@ public class CustomerPassengerListService extends AbstractGuiService<Customer, P
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status;
+		int passengerId;
+		int customerId = super.getRequest().getPrincipal().getActiveRealm().getId();
+		Passenger passenger;
+		Customer customer;
+
+		passengerId = super.getRequest().getData("id", int.class);
+		passenger = this.repository.findPassengerById(passengerId);
+		customer = this.repository.findCustomerFromId(customerId);
+		status = super.getRequest().getPrincipal().hasRealm(customer) && passenger != null;
+
+		super.getResponse().setAuthorised(status);
+
 	}
 
 	@Override
 	public void load() {
-		Collection<Passenger> passengers;
-		int bookingId;
-		int customerId = super.getRequest().getPrincipal().getActiveRealm().getId();
+		Passenger passenger;
+		int id;
 
-		if (super.getRequest().getData().isEmpty())
-			passengers = this.repository.findPassengersFromCustomer(customerId);
-		else {
-			bookingId = super.getRequest().getData("bookingId", int.class);
-			passengers = this.repository.findPassengersFromBooking(bookingId);
-		}
-		super.getBuffer().addData(passengers);
+		id = super.getRequest().getData("id", int.class);
+		passenger = this.repository.findPassengerById(id);
+
+		this.getBuffer().addData(passenger);
+
 	}
 
 	@Override
@@ -49,6 +55,6 @@ public class CustomerPassengerListService extends AbstractGuiService<Customer, P
 		dataset = super.unbindObject(passenger, "fullName", "email", "passport", "dateOfBirth", "specialNeeds");
 
 		super.getResponse().addData(dataset);
-	}
 
+	}
 }

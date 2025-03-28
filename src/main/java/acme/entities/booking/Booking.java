@@ -61,6 +61,10 @@ public class Booking extends AbstractEntity {
 	@Automapped
 	private String				lastNibble;
 
+	@Mandatory
+	@Automapped
+	private boolean				draftMode;
+
 	// Relationships -----------------------------------------------
 
 	@Mandatory

@@ -8,7 +8,7 @@ customer.passenger.list.specialNeeds = Necesidades especiales
 customer.passenger.form.title = Información del pasajero
 customer.passenger.form.fullName = Nombre Completo
 customer.passenger.form.email = Correo electrónico
-customer.passenger.form.passport = Pasaporte
+customer.passenger.form.passport = Pasaporte (patrón = ^[A-Z0-9]{6,9}$)
 customer.passenger.form.dateOfBirth = Fecha de nacimiento
 customer.passenger.form.specialNeeds = Necesidades especiales
  
