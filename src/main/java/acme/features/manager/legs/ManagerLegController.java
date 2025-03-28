@@ -14,12 +14,33 @@ import acme.realms.Manager;
 public class ManagerLegController extends AbstractGuiController<Manager, Leg> {
 
 	@Autowired
-	private ManagerLegDeleteService deleteService;
+	private ManagerLegListService		listService;
+
+	@Autowired
+	private ManagerLegShowService		showService;
+
+	@Autowired
+	private ManagerLegCreateService		createService;
+
+	@Autowired
+	private ManagerLegUpdateService		updateService;
+
+	@Autowired
+	private ManagerLegPublishService	publishService;
+
+	@Autowired
+	private ManagerLegDeleteService		deleteService;
 
 
 	@PostConstruct
 	protected void initialise() {
+		super.addBasicCommand("list", this.listService);
+		super.addBasicCommand("show", this.showService);
+		super.addBasicCommand("create", this.createService);
+		super.addBasicCommand("update", this.updateService);
 		super.addBasicCommand("delete", this.deleteService);
+
+		super.addCustomCommand("publish", "update", this.publishService);
 	}
 
 }

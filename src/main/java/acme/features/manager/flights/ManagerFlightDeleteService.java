@@ -52,7 +52,7 @@ public class ManagerFlightDeleteService extends AbstractGuiService<Manager, Flig
 
 	@Override
 	public void bind(final Flight flight) {
-		super.bindObject(flight, "flightTag", "isSelfTransfer", "flightCost", "flightDescription", "");
+		super.bindObject(flight, "flightTag", "isSelfTransfer", "flightCost", "flightDescription");
 
 	}
 
