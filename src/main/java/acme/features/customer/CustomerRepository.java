@@ -1,5 +1,5 @@
 
-package acme.features.authenticated.customer;
+package acme.features.customer;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

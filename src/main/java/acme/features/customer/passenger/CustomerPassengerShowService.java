@@ -1,5 +1,5 @@
 
-package acme.features.authenticated.customer.passenger;
+package acme.features.customer.passenger;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
