@@ -6,7 +6,7 @@ manager.leg.list.label.scheduledDeparture = Hora de salida
 manager.leg.list.label.airportDeparture = Areopuerto de salida
 manager.leg.list.label.airportArrival = Areopuerto de llegada
 
-manager.leg.form.label.fligthNumber = Número de vuelo:
+manager.leg.form.label.flightNumber = Número de vuelo:
 manager.leg.form.label.scheduledDeparture = Hora de salida:
 manager.leg.form.label.scheduledArrival = Hora de llegada:
 manager.leg.form.label.duration = Duracion:

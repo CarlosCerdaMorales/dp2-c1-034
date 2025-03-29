@@ -6,7 +6,7 @@ manager.leg.list.label.scheduledDeparture = Scheduled departure
 manager.leg.list.label.airportDeparture = Airport departure
 manager.leg.list.label.airportArrival = Airport arrival
 
-manager.leg.form.label.fligthNumber = Flight number:
+manager.leg.form.label.flightNumber = Flight number:
 manager.leg.form.label.scheduledDeparture = Departure scheduled:
 manager.leg.form.label.scheduledArrival = Arrival scheduled:
 manager.leg.form.label.duration = Duration:

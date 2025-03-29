@@ -74,7 +74,7 @@ public class ManagerLegShowService extends AbstractGuiService<Manager, Leg> {
 		} else {
 			managerId = super.getRequest().getPrincipal().getActiveRealm().getId();
 			flights = this.flightRepository.findManagerFlightsByManagerId(managerId);
-			aircrafts = this.repository.findAllAircraftsByManagerId(managerId);
+			aircrafts = this.repository.findAllAircraftsByManager(managerId);
 		}
 		flightsChoices = SelectChoices.from(flights, "flightTag", leg.getFlight());
 		aircraftChoices = SelectChoices.from(aircrafts, "registrationNumber", leg.getAircraft());

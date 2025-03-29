@@ -99,7 +99,7 @@ public class ManagerLegCreateService extends AbstractGuiService<Manager, Leg> {
 		managerId = super.getRequest().getPrincipal().getActiveRealm().getId();
 		flights = this.flightRepository.findFlightsByManagerId(managerId);
 		flightsChoices = SelectChoices.from(flights, "flightTag", leg.getFlight());
-		aircrafts = this.repository.findAllAircraftsByManagerId(managerId);
+		aircrafts = this.repository.findAllAircraftsByManager(managerId);
 		aircraftChoices = SelectChoices.from(aircrafts, "registrationNumber", leg.getAircraft());
 		airports = this.repository.findAllAirports();
 		departureChoices = SelectChoices.from(airports, "airportName", leg.getAirportDeparture());
@@ -112,9 +112,9 @@ public class ManagerLegCreateService extends AbstractGuiService<Manager, Leg> {
 		dataset.put("aircraft", aircraftChoices.getSelected().getKey());
 		dataset.put("aircrafts", aircraftChoices);
 		dataset.put("airportDeparture", departureChoices.getSelected().getKey());
-		dataset.put("departures", departureChoices);
+		dataset.put("airportDepartures", departureChoices);
 		dataset.put("airportArrival", arrivalChoices.getSelected().getKey());
-		dataset.put("arrivals", arrivalChoices);
+		dataset.put("airportArrivals", arrivalChoices);
 
 		super.getResponse().addData(dataset);
 	}

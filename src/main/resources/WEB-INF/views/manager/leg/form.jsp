@@ -11,8 +11,8 @@
 	<acme:input-select code="manager.leg.form.label.flightStatus" path="flightStatus" choices="${statuses}"/>
 	<acme:input-select code="manager.leg.form.label.flight" path="flight" choices="${flights}"/>
 	<acme:input-select code="manager.leg.form.label.aircraft" path="aircraft" choices="${aircrafts}"/>
-	<acme:input-select code="manager.leg.form.label.airportDeparture" path="airportDeparture" choices="${departures}"/>
-	<acme:input-select code="manager.leg.form.label.airportArrival" path="airportArrival" choices="${arrivals}"/>
+	<acme:input-select code="manager.leg.form.label.airportDeparture" path="airportDeparture" choices="${airportDepartures}"/>
+	<acme:input-select code="manager.leg.form.label.airportArrival" path="airportArrival" choices="${airportArrivals}"/>
 	
 	<jstl:choose>
 		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish') && draftMode == true}">

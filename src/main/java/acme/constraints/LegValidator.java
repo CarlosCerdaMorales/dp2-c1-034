@@ -17,9 +17,9 @@ public class LegValidator extends AbstractValidator<ValidLeg, Leg> {
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private LegRepository	repository;
+	private LegRepository repository;
 
-	boolean					result;
+	// ConstraintValidator interface ------------------------------------------
 
 
 	@Override
@@ -29,33 +29,46 @@ public class LegValidator extends AbstractValidator<ValidLeg, Leg> {
 
 	@Override
 	public boolean isValid(final Leg leg, final ConstraintValidatorContext context) {
+
 		assert context != null;
 
 		boolean result;
 
-		if (leg == null || leg.getFlight() == null || leg.getAirportArrival() == null || leg.getAirportDeparture() == null || leg.getAircraft() == null)
+		if (leg == null || leg.getAircraft() == null || leg.getAirportArrival() == null || leg.getAirportDeparture() == null || leg.getFlight() == null)
 			super.state(context, false, "*", "javax.validation.constraints.NotNull.message");
 		else {
-			boolean uniqueLeg;
-			Leg existingLeg;
+			{
 
-			existingLeg = this.repository.getBookingFromLocatorCode(booking.getLocatorCode());
+				boolean uniqueLeg;
+
+				Leg existingLeg;
+
+				existingLeg = this.repository.getLegFromFlightNumber(leg.getFlightNumber());
+
+				uniqueLeg = existingLeg == null || existingLeg.equals(leg);
+
+				super.state(context, uniqueLeg, "flightNumber", "acme.validation.leg.duplicated-flight-number.message");
+			}
+			{
+
+				String legFlightNumber = leg.getFlightNumber();
+
+				if (StringHelper.isBlank(legFlightNumber))
+					super.state(context, false, "flightNumber", "acme.validation.leg.flight_number.blank");
+
+				String IATAFlightNumberCode = legFlightNumber.substring(0, 3);
+
+				String IATAAirlineCode = leg.getAircraft().getAirline().getIata();
+
+				boolean validLeg = StringHelper.isEqual(IATAFlightNumberCode, IATAAirlineCode, true);
+
+				super.state(context, validLeg, "flightNumber", "acme.validation.leg.flight_number.mismatch");
+
+			}
 		}
 
-		String legFlightNumber = leg.getFlightNumber();
+		result = !super.hasErrors(context);
 
-		if (StringHelper.isBlank(legFlightNumber)) {
-			super.state(context, false, "flightNumber", "acme.validation.leg.flight_number.blank");
-			return false;
-		}
-
-		String IATAFlightNumberCode = legFlightNumber.substring(0, 3);
-		String IATAAirlineCode = leg.getAircraft().getAirline().getIata();
-
-		boolean validLeg = StringHelper.isEqual(IATAFlightNumberCode, IATAAirlineCode, true);
-		super.state(context, validLeg, "flightNumber", "acme.validation.leg.flight_number.mismatch");
-
-		return validLeg;
+		return result;
 	}
-
 }
