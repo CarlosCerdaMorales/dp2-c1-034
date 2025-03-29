@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
 import acme.client.components.views.SelectChoices;
+import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.flightassignment.AssignmentStatus;
@@ -50,7 +51,7 @@ public class FlightCrewMemberFlightAssignmentUpdateService extends AbstractGuiSe
 
 	@Override
 	public void bind(final FlightAssignment flightAssignment) {
-		super.bindObject(flightAssignment, "flightCrewDuty", "lastUpdate", "assignmentStatus", "remarks", "leg", "flightCrewMember");
+		super.bindObject(flightAssignment, "flightCrewDuty", "assignmentStatus", "remarks", "leg", "flightCrewMember");
 
 	}
 
@@ -61,13 +62,13 @@ public class FlightCrewMemberFlightAssignmentUpdateService extends AbstractGuiSe
 
 	@Override
 	public void perform(final FlightAssignment flightAssignment) {
+		flightAssignment.setLastUpdate(MomentHelper.getCurrentMoment());
 		this.repository.save(flightAssignment);
 	}
 
 	@Override
 	public void unbind(final FlightAssignment flightAssignment) {
 		Dataset dataset;
-		int flightCrewMemberId;
 		FlightCrewMember flightCrewMember = (FlightCrewMember) super.getRequest().getPrincipal().getActiveRealm();
 		SelectChoices choices;
 		SelectChoices dutiesChoices;
@@ -80,9 +81,7 @@ public class FlightCrewMemberFlightAssignmentUpdateService extends AbstractGuiSe
 		dutiesChoices = SelectChoices.from(FlightCrewDuty.class, flightAssignment.getFlightCrewDuty());
 		legChoices = SelectChoices.from(legs, "flightNumber", null);
 		flightCrewMemberChoices = SelectChoices.from(flightCrewMembers, "identity.fullName", null);
-		flightCrewMemberId = super.getRequest().getPrincipal().getActiveRealm().getId();
-
-		dataset = super.unbindObject(flightAssignment, "flightCrewDuty", "lastUpdate", "assignmentStatus", "draftMode", "remarks", "leg", "flightCrewMember");
+		dataset = super.unbindObject(flightAssignment, "flightCrewDuty", "assignmentStatus", "draftMode", "remarks", "leg", "flightCrewMember");
 		dataset.put("statuses", choices);
 		dataset.put("duties", dutiesChoices);
 		dataset.put("members", flightCrewMemberChoices);
