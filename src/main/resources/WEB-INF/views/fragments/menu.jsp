@@ -54,6 +54,7 @@
 			<acme:menu-suboption code="master.menu.customer.dashboard" action="/customer/customer-dashboard/show"/>
 			<acme:menu-suboption code="master.menu.customer.booking" action="/customer/booking/list"/>
 			<acme:menu-suboption code="master.menu.customer.passenger" action="/customer/passenger/list"/>
+			<acme:menu-suboption code="master.menu.customer.is-from" action="/customer/is-from/list"/>
 		</acme:menu-option>
 	</acme:menu-left>
 

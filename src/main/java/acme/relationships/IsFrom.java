@@ -6,7 +6,9 @@ import javax.persistence.ManyToOne;
 import javax.validation.Valid;
 
 import acme.client.components.basis.AbstractEntity;
+import acme.client.components.mappings.Automapped;
 import acme.client.components.validation.Mandatory;
+import acme.constraints.ValidIsFrom;
 import acme.entities.booking.Booking;
 import acme.entities.passenger.Passenger;
 import lombok.Getter;
@@ -15,6 +17,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+@ValidIsFrom
 /*
  * This entity represents a Many-to-many relationship between passenger and booking,
  * where one passenger can be registered in several bookings simultaneously and vice-versa.
@@ -36,5 +39,9 @@ public class IsFrom extends AbstractEntity {
 	@Valid
 	@ManyToOne(optional = false)
 	private Passenger			passenger;
+
+	@Mandatory
+	@Automapped
+	private boolean				draftMode;
 
 }
