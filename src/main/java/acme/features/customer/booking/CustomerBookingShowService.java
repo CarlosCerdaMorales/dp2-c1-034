@@ -1,5 +1,5 @@
 
-package acme.features.authenticated.customer.booking;
+package acme.features.customer.booking;
 
 import java.util.Collection;
 
@@ -12,6 +12,7 @@ import acme.client.services.GuiService;
 import acme.entities.booking.Booking;
 import acme.entities.booking.TravelClass;
 import acme.entities.flight.Flight;
+import acme.entities.passenger.Passenger;
 import acme.realms.Customer;
 
 @GuiService
@@ -54,22 +55,39 @@ public class CustomerBookingShowService extends AbstractGuiService<Customer, Boo
 	}
 
 	@Override
+	public void validate(final Booking booking) {
+		//		boolean confirmation;
+		//
+		//		confirmation = super.getRequest().getData("confirmation", boolean.class);
+		//		super.state(confirmation, "confirmation", "acme.validation.confirmation.message");
+	}
+
+	@Override
 	public void unbind(final Booking booking) {
-		int customerId;
 		Collection<Flight> flights;
 		SelectChoices choices;
 		SelectChoices classChoices;
 		Dataset dataset;
+		boolean status = true;
+		boolean anyInDraftMode = true;
+		Collection<Passenger> passengersInDraftMode;
 
 		flights = this.repository.findAllFlights();
 		classChoices = SelectChoices.from(TravelClass.class, booking.getTravelClass());
 		choices = SelectChoices.from(flights, "flightTag", booking.getFlight());
+		passengersInDraftMode = this.repository.getPassengersInDraftMode(booking.getId());
 
-		dataset = super.unbindObject(booking, "locatorCode", "purchaseMoment", "travelClass", "price", "lastNibble");
+		dataset = super.unbindObject(booking, "locatorCode", "purchaseMoment", "travelClass", "price", "lastNibble", "draftMode");
 		dataset.put("flight", choices.getSelected().getKey());
 		dataset.put("flights", choices);
 		dataset.put("classes", classChoices);
 		dataset.put("bookingId", booking.getId());
+		if (!booking.getLastNibble().isEmpty())
+			status = false;
+		dataset.put("lastNibbleIsEmpty", status);
+		if (passengersInDraftMode.isEmpty())
+			anyInDraftMode = false;
+		dataset.put("anyInDraftMode", anyInDraftMode);
 
 		super.getResponse().addData(dataset);
 

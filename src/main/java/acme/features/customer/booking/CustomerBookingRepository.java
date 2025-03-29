@@ -1,5 +1,5 @@
 
-package acme.features.authenticated.customer.booking;
+package acme.features.customer.booking;
 
 import java.util.Collection;
 import java.util.List;
@@ -32,5 +32,8 @@ public interface CustomerBookingRepository extends AbstractRepository {
 
 	@Query("select distinct i.passenger from IsFrom i where i.booking.id = :bookingId")
 	Collection<Passenger> findPassengersFromBooking(int bookingId);
+
+	@Query("select i.passenger from IsFrom i where i.booking.id = :bookingId and i.passenger.draftMode = true")
+	Collection<Passenger> getPassengersInDraftMode(int bookingId);
 
 }
