@@ -50,8 +50,6 @@ public class FlightCrewMemberFlightAssignmentShowService extends AbstractGuiServ
 	@Override
 	public void unbind(final FlightAssignment flightAssignment) {
 		Dataset dataset;
-		int flightCrewMemberId;
-		FlightCrewMember flightCrewMember = (FlightCrewMember) super.getRequest().getPrincipal().getActiveRealm();
 		SelectChoices choices;
 		SelectChoices dutiesChoices;
 		List<Leg> legs = this.repository.findAllPlannedLegs(MomentHelper.getCurrentMoment());
@@ -64,7 +62,6 @@ public class FlightCrewMemberFlightAssignmentShowService extends AbstractGuiServ
 		dutiesChoices = SelectChoices.from(FlightCrewDuty.class, flightAssignment.getFlightCrewDuty());
 		legChoices = SelectChoices.from(legs, "flightNumber", null);
 		flightCrewMemberChoices = SelectChoices.from(flightCrewMembers, "identity.fullName", null);
-		flightCrewMemberId = super.getRequest().getPrincipal().getActiveRealm().getId();
 
 		dataset = super.unbindObject(flightAssignment, "flightCrewDuty", "lastUpdate", "assignmentStatus", "draftMode", "remarks", "leg", "flightCrewMember");
 		dataset.put("statuses", choices);

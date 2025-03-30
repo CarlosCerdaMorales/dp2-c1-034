@@ -65,7 +65,6 @@ public class FlightCrewMemberFlightAssignmentDeleteService extends AbstractGuiSe
 	@Override
 	public void unbind(final FlightAssignment flightAssignment) {
 		Dataset dataset;
-		FlightCrewMember flightCrewMember = (FlightCrewMember) super.getRequest().getPrincipal().getActiveRealm();
 		SelectChoices choices;
 		SelectChoices dutiesChoices;
 		List<Leg> legs = this.repository.findAllPlannedLegs(MomentHelper.getCurrentMoment());
