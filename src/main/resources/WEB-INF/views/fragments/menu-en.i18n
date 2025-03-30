@@ -34,6 +34,8 @@ master.menu.administrator.list-airlines = List airlines
 
 master.menu.administrator.list-airports = List airports
 
+master.menu.administrator.list-bookings = List bookings
+
 # master.menu.provider ########################################################
 
 master.menu.provider = Provider

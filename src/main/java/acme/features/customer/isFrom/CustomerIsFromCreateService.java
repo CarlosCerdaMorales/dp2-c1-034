@@ -60,10 +60,11 @@ public class CustomerIsFromCreateService extends AbstractGuiService<Customer, Is
 
 	@Override
 	public void validate(final IsFrom isFrom) {
-		//boolean confirmation;
-
-		//confirmation = super.getRequest().getData("confirmation", boolean.class);
-		//super.state(confirmation, "confirmation", "acme.validation.confirmation.message");
+		boolean notPublished = true;
+		Booking booking = isFrom.getBooking();
+		if (!booking.isDraftMode())
+			notPublished = false;
+		super.state(notPublished, "booking", "acme.validation.booking.invalid-booking-publish.message");
 	}
 
 	@Override

@@ -33,6 +33,8 @@ master.menu.administrator.list-airlines = Listado de aerolineas
 
 master.menu.administrator.list-airports = Listado de aeropuertos
 
+master.menu.administrator.list-bookings = Listado de reservas
+
 # master.menu.provider ########################################################
 
 master.menu.provider = Proveedor
