@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.validation.AbstractValidator;
 import acme.client.components.validation.Validator;
+import acme.client.helpers.MomentHelper;
 import acme.client.helpers.StringHelper;
 import acme.entities.leg.Leg;
 import acme.features.leg.LegRepository;
@@ -33,9 +34,8 @@ public class LegValidator extends AbstractValidator<ValidLeg, Leg> {
 		assert context != null;
 
 		boolean result;
-
-		if (leg == null || leg.getAircraft() == null || leg.getAirportArrival() == null || leg.getAirportDeparture() == null || leg.getFlight() == null)
-			super.state(context, false, "*", "javax.validation.constraints.NotNull.message");
+		if (leg == null || leg.getAircraft() == null)
+			super.state(context, false, "Aircraft", "acme.validation.leg.NotNull.message");
 		else {
 			{
 
@@ -50,11 +50,16 @@ public class LegValidator extends AbstractValidator<ValidLeg, Leg> {
 				super.state(context, uniqueLeg, "flightNumber", "acme.validation.leg.duplicated-flight-number.message");
 			}
 			{
+				if (MomentHelper.isAfterOrEqual(leg.getScheduledDeparture(), leg.getScheduledArrival()))
+					super.state(context, false, "scheduledDeparture", "acme.validation.leg.invalid-date.message");
+
+			}
+			{
 
 				String legFlightNumber = leg.getFlightNumber();
 
 				if (StringHelper.isBlank(legFlightNumber))
-					super.state(context, false, "flightNumber", "acme.validation.leg.flight_number.blank");
+					super.state(context, false, "flightNumber", "acme.validation.leg.flight_number.blank.message");
 
 				String IATAFlightNumberCode = legFlightNumber.substring(0, 3);
 
@@ -62,7 +67,7 @@ public class LegValidator extends AbstractValidator<ValidLeg, Leg> {
 
 				boolean validLeg = StringHelper.isEqual(IATAFlightNumberCode, IATAAirlineCode, true);
 
-				super.state(context, validLeg, "flightNumber", "acme.validation.leg.flight_number.mismatch");
+				super.state(context, validLeg, "flightNumber", "acme.validation.leg.flight_number.mismatch.message");
 
 			}
 		}

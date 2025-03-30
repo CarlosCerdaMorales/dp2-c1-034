@@ -56,7 +56,7 @@ public class ManagerFlightPublishService extends AbstractGuiService<Manager, Fli
 		List<Leg> legs = this.repository.findLegsByFlightId(flight.getId());
 		if (!legs.isEmpty())
 			canBePublish = legs.stream().allMatch(l -> !l.isDraftMode());
-		super.state(canBePublish, "*", "acme.validation.flight.cant-be-publish.message");
+		super.state(canBePublish, "flightTag", "acme.validation.flight.cant-be-publish.message");
 	}
 
 	@Override

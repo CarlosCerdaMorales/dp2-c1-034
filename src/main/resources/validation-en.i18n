@@ -26,6 +26,15 @@ acme.validation.assistanceagent.invalid-employeeCode-initials.message = The clie
 acme.validation.service.invalid-promotionCode-year.message = The last two digits do not match the current year.
 acme.validation.service.duplicated-promocode.message = The promotional code is not unique
 
+### Leg ###
+
+acme.validation.leg.duplicated-flight-number.message = This flight number is already in use
+acme.validation.leg.invalid-date.message = Invalid date
+javax.validation.leg.NotNull.message = May not be null
+acme.validation.leg.flight_number.blank.message = The flight number must not be blank
+acme.validation.leg.flight_number.mismatch.message = IATA code does not match airline's IATA code
+
+
 ### Tracking Log ###
 
 acme.validation.trackinglog.invalid-status-notresolute.message = The status must be "pending" since the resolution percentage is less than 100.

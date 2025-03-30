@@ -52,7 +52,7 @@ master.menu.customer.passenger = Mis pasajeros
 
 master.menu.manager = Gerente
 master.menu.manager.flights = Listado de vuelos
-master.menu.manager.flights = Listado de escalas
+master.menu.manager.legs = Listado de escalas
 
 
 

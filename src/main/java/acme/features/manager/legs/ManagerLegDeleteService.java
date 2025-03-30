@@ -9,7 +9,6 @@ import acme.client.components.models.Dataset;
 import acme.client.components.views.SelectChoices;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
-import acme.entities.activitylog.ActivityLog;
 import acme.entities.aircraft.Aircraft;
 import acme.entities.airport.Airport;
 import acme.entities.claim.Claim;
@@ -92,7 +91,6 @@ public class ManagerLegDeleteService extends AbstractGuiService<Manager, Leg> {
 	@Override
 	public void perform(final Leg leg) {
 		List<FlightAssignment> flightAssignments;
-		List<ActivityLog> activityLogs;
 		List<Claim> claims;
 
 		flightAssignments = this.repository.findFlightAssignmentsByLegId(leg.getId());
@@ -122,7 +120,8 @@ public class ManagerLegDeleteService extends AbstractGuiService<Manager, Leg> {
 		managerId = super.getRequest().getPrincipal().getActiveRealm().getId();
 		flights = this.flightRepository.findFlightsByManagerId(managerId);
 		flightsChoices = SelectChoices.from(flights, "flightTag", leg.getFlight());
-		aircrafts = this.repository.findAllAircraftsByManager(managerId);
+
+		aircrafts = this.repository.findAllAircraftsByManagerId(managerId);
 		aircraftChoices = SelectChoices.from(aircrafts, "registrationNumber", leg.getAircraft());
 		airports = this.repository.findAllAirports();
 		departureChoices = SelectChoices.from(airports, "airportName", leg.getAirportDeparture());

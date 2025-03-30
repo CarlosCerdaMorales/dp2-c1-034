@@ -26,6 +26,14 @@ acme.validation.assistanceagent.invalid-employeeCode-initials.message = Las inic
 acme.validation.service.invalid-promotionCode-year.message = Los dos últimos digitos no coinciden con el año actual.
 acme.validation.service.duplicated-promocode.message = El código promocional no es único
 
+### Leg ###
+
+acme.validation.leg.duplicated-flight-number.message = Número de vuelo en uso
+acme.validation.leg.flight_number.blank.message = El número de vuelo no puede ser nulo
+acme.validation.leg.flight_number.mismatch.message = El código Iata debe ser el mismo que el de la areolínea
+acme.validation.leg.invalid-date.message = Fecha invalida
+javax.validation.leg.NotNull.message = No puede ser nulo
+
 ### Tracking Log ###
 
 acme.validation.trackinglog.invalid-status-notresolute.message = El estado debe de ser pending ya que el porcentaje de resolución es menor a 100.
@@ -34,7 +42,7 @@ acme.validation.trackinglog.invalid-resolutionpercentage.message = El porcentaje
 
 ### Technician ###
 
-acme.validation.technician = Ha ocurrido un erro durante la validacion del tecnico. Revise su numero de licencia y/o numero de telefono.
+acme.validation.technician = Ha ocurrido un error durante la validación del tecnico. Revise su numero de licencia y/o número de telefono.
 acme.validation.technician.invalid-license-number-pattern.message = Patrón de numero de licencia no válido.
 acme.validation.technician.invalid-identifier-initials.message = Las iniciales del tecnico no se ven reflejadas en el identificador.
 acme.validation.technician.invalid-phone-pattern = Patrón de teléfono no válido.
@@ -57,7 +65,7 @@ acme.validation.booking.duplicated-flight.message = Ya existe una reserva relaci
 
 ### Airline ###
 
-acme.validation.airline.duplicated-iata.message = Ya existe un aerolinea con este código IATA.
+acme.validation.airline.duplicated-iata.message = Ya existe una aerolinea con este código IATA.
 
 ### Aircraft ###
 
