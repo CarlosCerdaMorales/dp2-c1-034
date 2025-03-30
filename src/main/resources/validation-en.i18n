@@ -74,11 +74,3 @@ acme.validation.flightcrewmember.duplicated-employeecode.message = There is an e
 acme.validation.flightcrewmember.invalid-employeecode-pattern.message = Employee code does not follow the expected pattern.
 acme.validation.flightcrewmember.invalid-employeecode-initials.message = Employee code first 2 letters must match the employee's initials.
 
-### Leg ###
-
-acme.validation.leg.duplicated-flight-number.message = This flight number is already in use
-acme.validation.leg.invalid-date.message = Invalid date
-javax.validation.leg.NotNull.message = May not be null
-acme.validation.leg.flight_number.blank.message = The flight number must not be blank
-acme.validation.leg.flight_number.mismatch.message = IATA code does not match airline's IATA code
-
