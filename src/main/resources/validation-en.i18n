@@ -54,6 +54,10 @@ acme.validation.airport.duplicated-iata.message = There is an existing airport w
 acme.validation.booking.duplicated-locator-code.message = There is an existing booking with this locator code
 acme.validation.booking.invalid-nibble.message = Last nibble must be formed by 4 digits
 acme.validation.booking.duplicated-flight.message = There is an existing booking related to this flight
+acme.validation.booking.invalid-nibble-publish.message = Booking can't be published if last nibble is not stored
+acme.validation.booking.invalid-passenger-publish.message = Booking can't be published if not every passenger in it is published
+acme.validation.booking.invalid-booking-publish.message = You can't add passengers to an already published booking
+acme.validation.booking.invalid-booking-flight-null.message = You must specify a flight
 
 ### Airline ###
 
@@ -74,3 +78,10 @@ acme.validation.flightcrewmember.duplicated-employeecode.message = There is an e
 acme.validation.flightcrewmember.invalid-employeecode-pattern.message = Employee code does not follow the expected pattern.
 acme.validation.flightcrewmember.invalid-employeecode-initials.message = Employee code first 2 letters must match the employee's initials.
 
+### IsFrom ###
+
+acme.validation.booking.duplicated-is-from.message = This booking is already related to this passenger
+acme.validation.booking.invalid-isFrom-passenger-null.message = You must choose a passenger
+acme.validation.booking.invalid-isFrom-booking-null.message = You must choose a booking
+acme.validation.booking.invalid-booking-isFrom-publish.message = You can't publish unless this booking is published
+acme.validation.booking.invalid-passenger-isFrom-publish.message = You can't publish unless this passenger is published
