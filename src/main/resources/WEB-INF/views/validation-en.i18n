@@ -83,5 +83,7 @@ acme.validation.flightcrewmember.invalid-employeecode-initials.message = Employe
 acme.validation.booking.duplicated-is-from.message = This booking is already related to this passenger
 acme.validation.booking.invalid-isFrom-passenger-null.message = You must choose a passenger
 acme.validation.booking.invalid-isFrom-booking-null.message = You must choose a booking
+acme.validation.booking.invalid-booking-isFrom-publish.message = You can't publish unless this booking is published
+acme.validation.booking.invalid-passenger-isFrom-publish.message = You can't publish unless this passenger is published
 
 

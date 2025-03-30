@@ -1,36 +1,36 @@
-key,locatorCode,purchaseMoment,travelClass,price,lastNibble,draftMode,key:customer,key:flight
+key,locatorCode,purchaseMoment,travelClass,lastNibble,draftMode,key:customer,key:flight
 # base entity
-booking-01,ABC123,2012/07/02 0:00,ECONOMY,EUR 500000.00,1234,false,customer-01,flight-01
+booking-01,ABC123,2012/07/02 0:00,ECONOMY,1234,false,customer-01,flight-01
 # locatorCode - variations
-booking-02,X9Y7Z8,2012/07/02 0:00,ECONOMY,EUR 500000.00,1234,false,customer-02,flight-02
-booking-03,A1B2C3D4,2012/07/02 0:00,ECONOMY,EUR 500000.00,1234,false,customer-01,flight-03
-booking-04,12345678,2012/07/02 0:00,ECONOMY,EUR 500000.00,1234,false,customer-02,flight-04
-booking-05,ABCDEFGH,2012/07/02 0:00,ECONOMY,EUR 500000.00,1234,false,customer-01,flight-04
-booking-06,A1B2C3D,2012/07/02 0:00,ECONOMY,EUR 500000.00,1234,false,customer-02,flight-05
-booking-07,X9Y8Z7W,2012/07/02 0:00,ECONOMY,EUR 500000.00,1234,false,customer-01,flight-05
+booking-02,X9Y7Z8,2012/07/02 0:00,ECONOMY,1234,false,customer-02,flight-02
+booking-03,A1B2C3D4,2012/07/02 0:00,ECONOMY,1234,false,customer-01,flight-03
+booking-04,12345678,2012/07/02 0:00,ECONOMY,1234,false,customer-02,flight-04
+booking-05,ABCDEFGH,2012/07/02 0:00,ECONOMY,1234,false,customer-01,flight-04
+booking-06,A1B2C3D,2012/07/02 0:00,ECONOMY,1234,false,customer-02,flight-05
+booking-07,X9Y8Z7W,2012/07/02 0:00,ECONOMY,1234,false,customer-01,flight-05
 # purchaseMoment - variations
-booking-08,ABC124,2000/01/01 0:00,ECONOMY,EUR 500000.00,1234,false,customer-02,flight-06
-booking-09,ABC125,2000/01/01 0:01,ECONOMY,EUR 500000.00,1234,false,customer-01,flight-07
-booking-10,ABC126,2024/12/31 23:59,ECONOMY,EUR 500000.00,1234,false,customer-02,flight-08
-booking-11,ABC127,2025/01/01 0:00,ECONOMY,EUR 500000.00,1234,false,customer-01,flight-08
+booking-08,ABC124,2000/01/01 0:00,ECONOMY,1234,false,customer-02,flight-06
+booking-09,ABC125,2000/01/01 0:01,ECONOMY,1234,false,customer-01,flight-07
+booking-10,ABC126,2024/12/31 23:59,ECONOMY,1234,false,customer-02,flight-08
+booking-11,ABC127,2025/01/01 0:00,ECONOMY,1234,false,customer-01,flight-08
 # travelClass - variations
-booking-12,ABC128,2012/07/02 0:00,BUSINESS,EUR 500000.00,1234,false,customer-02,flight-09
+booking-12,ABC128,2012/07/02 0:00,BUSINESS,1234,false,customer-02,flight-09
 # price - variations
-booking-13,ABC129,2012/07/02 0:00,ECONOMY,EUR 0.00,1234,false,customer-01,flight-10
-booking-14,ABC120,2012/07/02 0:00,ECONOMY,EUR 0.01,1234,false,customer-02,flight-10
-booking-15,ABC113,2012/07/02 0:00,ECONOMY,EUR 999999.99,1234,false,customer-01,flight-23
-booking-16,ABC133,2012/07/02 0:00,ECONOMY,EUR 1000000.00,1234,false,customer-02,flight-11
+booking-13,ABC129,2012/07/02 0:00,ECONOMY,1234,false,customer-01,flight-10
+booking-14,ABC120,2012/07/02 0:00,ECONOMY,1234,false,customer-02,flight-10
+booking-15,ABC113,2012/07/02 0:00,ECONOMY,1234,false,customer-01,flight-23
+booking-16,ABC133,2012/07/02 0:00,ECONOMY,1234,false,customer-02,flight-11
 # lastNibble - variations
-booking-17,ABC143,2012/07/02 0:00,ECONOMY,EUR 500000.00,1234,false,customer-01,flight-11
-booking-18,ABC153,2012/07/02 0:00,ECONOMY,EUR 500000.00,1411,false,customer-02,flight-15
-booking-19,ABC163,2012/07/02 0:00,ECONOMY,EUR 500000.00,1214,false,customer-01,flight-16
-booking-20,ABC173,2012/07/02 0:00,ECONOMY,EUR 500000.00,1215,false,customer-02,flight-17
-booking-21,ABC183,2012/07/02 0:00,ECONOMY,EUR 500000.00,1456,false,customer-01,flight-18
-booking-22,ABC193,2012/07/02 0:00,ECONOMY,EUR 500000.00,7621,false,customer-02,flight-18
-booking-23,ABC103,2012/07/02 0:00,ECONOMY,EUR 500000.00,6553,false,customer-01,flight-19
-booking-24,ABC223,2012/07/02 0:00,ECONOMY,EUR 500000.00,6589,false,customer-02,flight-19
-booking-25,ABC323,2012/07/02 0:00,ECONOMY,EUR 500000.00,0192,false,customer-01,flight-20
-booking-26,ABC423,2012/07/02 0:00,ECONOMY,EUR 500000.00,1239,false,customer-02,flight-21
-booking-27,ABC523,2012/07/02 0:00,ECONOMY,EUR 500000.00,5437,false,customer-01,flight-22
-booking-28,ABC623,2012/07/02 0:00,ECONOMY,EUR 500000.00,1293,false,customer-02,flight-23
-booking-29,ABC723,2012/07/02 0:00,ECONOMY,EUR 500000.00,,true,customer-01,flight-25
+booking-17,ABC143,2012/07/02 0:00,ECONOMY,1234,false,customer-01,flight-11
+booking-18,ABC153,2012/07/02 0:00,ECONOMY,1411,false,customer-02,flight-15
+booking-19,ABC163,2012/07/02 0:00,ECONOMY,1214,false,customer-01,flight-16
+booking-20,ABC173,2012/07/02 0:00,ECONOMY,1215,false,customer-02,flight-17
+booking-21,ABC183,2012/07/02 0:00,ECONOMY,1456,false,customer-01,flight-18
+booking-22,ABC193,2012/07/02 0:00,ECONOMY,7621,false,customer-02,flight-18
+booking-23,ABC103,2012/07/02 0:00,ECONOMY,6553,false,customer-01,flight-19
+booking-24,ABC223,2012/07/02 0:00,ECONOMY,6589,false,customer-02,flight-19
+booking-25,ABC323,2012/07/02 0:00,ECONOMY,0192,false,customer-01,flight-20
+booking-26,ABC423,2012/07/02 0:00,ECONOMY,1239,false,customer-02,flight-21
+booking-27,ABC523,2012/07/02 0:00,ECONOMY,5437,false,customer-01,flight-22
+booking-28,ABC623,2012/07/02 0:00,ECONOMY,1293,false,customer-02,flight-23
+booking-29,ABC723,2012/07/02 0:00,ECONOMY,,true,customer-01,flight-25
