@@ -59,7 +59,6 @@ public class CustomerBookingCreateService extends AbstractGuiService<Customer, B
 
 			booking.setFlight(flight);
 			booking.setPurchaseMoment(moment);
-			booking.setPrice(flight.getFlightCost());
 			booking.setDraftMode(true);
 		}
 	}
@@ -86,11 +85,12 @@ public class CustomerBookingCreateService extends AbstractGuiService<Customer, B
 		choices = SelectChoices.from(flights, "flightTag", booking.getFlight());
 		classes = SelectChoices.from(TravelClass.class, booking.getTravelClass());
 
-		dataset = super.unbindObject(booking, "locatorCode", "purchaseMoment", "travelClass", "price", "lastNibble", "draftMode");
+		dataset = super.unbindObject(booking, "locatorCode", "purchaseMoment", "travelClass", "lastNibble", "draftMode");
 		dataset.put("flight", choices.getSelected().getKey());
 		dataset.put("flights", choices);
 		dataset.put("classes", classes);
 		dataset.put("travelClass", classes.getSelected().getKey());
+		dataset.put("price", booking.bookingPrice());
 
 		super.getResponse().addData(dataset);
 
