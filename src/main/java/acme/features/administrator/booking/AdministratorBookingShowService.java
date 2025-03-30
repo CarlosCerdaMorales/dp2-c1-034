@@ -1,11 +1,12 @@
 
-package acme.features.customer.booking;
+package acme.features.administrator.booking;
 
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
+import acme.client.components.principals.Administrator;
 import acme.client.components.views.SelectChoices;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
@@ -15,30 +16,19 @@ import acme.entities.flight.Flight;
 import acme.realms.Customer;
 
 @GuiService
-public class CustomerBookingShowService extends AbstractGuiService<Customer, Booking> {
+public class AdministratorBookingShowService extends AbstractGuiService<Administrator, Booking> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private CustomerBookingRepository repository;
+	private AdministratorBookingRepository repository;
 
 	// AbstractGuiService interface -------------------------------------------
 
 
 	@Override
 	public void authorise() {
-		boolean status;
-		int bookingId;
-		Booking booking;
-		Customer customer;
-
-		bookingId = super.getRequest().getData("id", int.class);
-		booking = this.repository.findBookingById(bookingId);
-		customer = booking == null ? null : booking.getCustomer();
-		status = super.getRequest().getPrincipal().hasRealm(customer) && booking != null;
-
-		super.getResponse().setAuthorised(status);
-
+		super.getResponse().setAuthorised(true);
 	}
 
 	@Override
@@ -67,16 +57,19 @@ public class CustomerBookingShowService extends AbstractGuiService<Customer, Boo
 		SelectChoices choices;
 		SelectChoices classChoices;
 		Dataset dataset;
+		Customer customer;
 
 		flights = this.repository.findAllFlights();
 		classChoices = SelectChoices.from(TravelClass.class, booking.getTravelClass());
 		choices = SelectChoices.from(flights, "flightTag", booking.getFlight());
+		customer = booking.getCustomer();
 
 		dataset = super.unbindObject(booking, "locatorCode", "purchaseMoment", "travelClass", "price", "lastNibble", "draftMode");
 		dataset.put("flight", choices.getSelected().getKey());
 		dataset.put("flights", choices);
 		dataset.put("classes", classChoices);
 		dataset.put("bookingId", booking.getId());
+		dataset.put("customer", customer.getIdentifier());
 
 		super.getResponse().addData(dataset);
 

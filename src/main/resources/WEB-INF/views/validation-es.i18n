@@ -54,6 +54,9 @@ acme.validation.airport.duplicated-iata.message = Ya existe un aeropuerto con es
 acme.validation.booking.duplicated-locator-code.message = Ya existe una reserva con este código de localización
 acme.validation.booking.invalid-nibble.message = En caso de indicar los últimos dígitos, han de ser los cuatro últimos
 acme.validation.booking.duplicated-flight.message = Ya existe una reserva relacionada a este vuelo
+acme.validation.booking.invalid-nibble-publish.message = La reserva no se publicará si este campo no está completo
+acme.validation.booking.invalid-passenger-publish.message = La reserva no se publicará sin que todos sus pasajeros estén publicados
+acme.validation.booking.invalid-booking-publish.message = No se pueden añadir pasajeros a una reserva ya publicada
 
 ### Airline ###
 

@@ -12,6 +12,7 @@ import acme.client.services.GuiService;
 import acme.entities.booking.Booking;
 import acme.entities.booking.TravelClass;
 import acme.entities.flight.Flight;
+import acme.entities.passenger.Passenger;
 import acme.realms.Customer;
 
 @GuiService
@@ -64,10 +65,16 @@ public class CustomerBookingPublishService extends AbstractGuiService<Customer, 
 
 	@Override
 	public void validate(final Booking booking) {
-		//		boolean confirmation;
-		//
-		//		confirmation = super.getRequest().getData("confirmation", boolean.class);
-		//		super.state(confirmation, "confirmation", "acme.validation.confirmation.message");
+		boolean lastNibbleIn = true;
+		boolean allInDraftMode = true;
+		String lastNibble = booking.getLastNibble();
+		Collection<Passenger> passengers = this.repository.findPassengersFromBooking(booking.getId());
+		if (lastNibble.isBlank())
+			lastNibbleIn = false;
+		if (!passengers.isEmpty() && passengers.stream().anyMatch(p -> p.isDraftMode()))
+			allInDraftMode = false;
+		super.state(lastNibbleIn, "lastNibble", "acme.validation.booking.invalid-nibble-publish.message");
+		super.state(allInDraftMode, "locatorCode", "acme.validation.booking.invalid-passenger-publish.message");
 	}
 
 	@Override

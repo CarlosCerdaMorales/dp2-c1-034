@@ -1,0 +1,14 @@
+administrator.booking.list.title = Published bookings
+administrator.booking.list.locatorCode = Locator code
+administrator.booking.list.purchaseMoment = Purchase moment
+administrator.booking.list.travelClass = Travel class
+administrator.booking.list.price = Price
+
+administrator.booking.form.title = Booking
+administrator.booking.form.locatorCode = Locator Code
+administrator.booking.form.purchaseMoment = Purchase moment
+administrator.booking.form.travelClass = Travel Class
+administrator.booking.form.price = Price
+administrator.booking.form.lastNibble = Last nibble of credit card
+administrator.booking.form.flight = Flight tag
+administrator.booking.form.customer = Customer's passport
