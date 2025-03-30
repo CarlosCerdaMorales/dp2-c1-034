@@ -2,11 +2,13 @@
 package acme.features.flightCrewMember.flightAssignment;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
 import acme.client.components.views.SelectChoices;
+import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.flightassignment.AssignmentStatus;
@@ -26,13 +28,11 @@ public class FlightCrewMemberFlightAssignmentShowService extends AbstractGuiServ
 	public void authorise() {
 		boolean status;
 		int flightId;
-		FlightAssignment flightAssignment;
-		FlightCrewMember flightCrewMember;
+		Optional<FlightAssignment> flightAssignment;
 
 		flightId = super.getRequest().getData("id", int.class);
 		flightAssignment = this.repository.findFlightAssignmentById(flightId);
-		flightCrewMember = flightAssignment == null ? null : flightAssignment.getFlightCrewMember();
-		status = super.getRequest().getPrincipal().hasRealm(flightCrewMember) || flightAssignment != null && !flightAssignment.getDraftMode();
+		status = flightAssignment.isPresent();
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -43,7 +43,7 @@ public class FlightCrewMemberFlightAssignmentShowService extends AbstractGuiServ
 		int id;
 
 		id = super.getRequest().getData("id", int.class);
-		flightAssignment = this.repository.findFlightAssignmentById(id);
+		flightAssignment = this.repository.findFlightAssignmentById(id).get();
 
 		super.getBuffer().addData(flightAssignment);
 	}
@@ -54,8 +54,9 @@ public class FlightCrewMemberFlightAssignmentShowService extends AbstractGuiServ
 		FlightCrewMember flightCrewMember = (FlightCrewMember) super.getRequest().getPrincipal().getActiveRealm();
 		SelectChoices choices;
 		SelectChoices dutiesChoices;
-		List<Leg> legs = this.repository.findAllLegsFromAirline(flightCrewMember.getWorkingFor().getId());
-		List<FlightCrewMember> flightCrewMembers = this.repository.findAllFlightCrewMemberFromAirline(flightCrewMember.getWorkingFor().getId());
+		List<Leg> legs = this.repository.findAllPlannedLegs(MomentHelper.getCurrentMoment());
+		List<FlightCrewMember> flightCrewMembers = this.repository.findAllFlightCrewMembersThatAreAvailable();
+
 		SelectChoices legChoices;
 		SelectChoices flightCrewMemberChoices;
 

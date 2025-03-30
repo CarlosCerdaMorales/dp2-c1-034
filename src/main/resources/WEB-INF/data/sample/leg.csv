@@ -14,4 +14,4 @@ leg-09,ALX2315,2000/05/09 00:01,2001/03/05 00:01,DELAYED,TRUE,airport-04,airport
 leg-10,AMX2325,2000/06/10 00:01,2001/02/04 00:01,CANCELLED,TRUE,airport-23,airport-19,aircraft-11,flight-19
 leg-11,ANX2335,2000/07/11 00:01,2001/05/03 00:01,LANDED,TRUE,airport-12,airport-18,aircraft-12,flight-23
 leg-12,AOX2340,2000/08/02 00:01,2001/06/02 00:01,CANCELLED,TRUE,airport-00,airport-09,aircraft-13,flight-16
-leg-13,APX2355,2000/09/03 00:01,2001/07/01 00:01,CANCELLED,TRUE,airport-02,airport-07,aircraft-14,flight-18
+leg-13,APX2355,2025/09/03 00:01,2026/07/01 00:01,CANCELLED,TRUE,airport-02,airport-07,aircraft-14,flight-18
