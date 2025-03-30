@@ -34,29 +34,22 @@ public class BookingValidator extends AbstractValidator<ValidBooking, Booking> {
 
 		boolean result;
 
-		if (booking == null || booking.getFlight() == null || booking.getCustomer() == null)
-			super.state(context, false, "*", "javax.validation.constraints.NotNull.message");
+		if (booking == null || booking.getFlight() == null)
+			super.state(context, false, "flight", "javax.validation.constraints.NotNull.message");
 		else {
 			{
 				boolean uniqueBooking;
-				//boolean uniqueBooking1;
 				Booking existingBooking;
-				//Booking existingByCustomerAndFlight;
 
 				existingBooking = this.repository.getBookingFromLocatorCode(booking.getLocatorCode());
-				int flightId = booking.getFlight().getId();
-				int customerId = booking.getCustomer().getId();
-				//existingByCustomerAndFlight = this.repository.getBookingFromCustomerAndFlight(customerId, flightId);
 
 				uniqueBooking = existingBooking == null || existingBooking.equals(booking);
-				//uniqueBooking1 = existingByCustomerAndFlight == null || existingByCustomerAndFlight.equals(booking);
 
 				super.state(context, uniqueBooking, "locatorCode", "acme.validation.booking.duplicated-locator-code.message");
-				//super.state(context, uniqueBooking1, "flight", "acme.validation.booking.duplicated-flight.message");
 			}
 			{
 				String lastNibble = booking.getLastNibble();
-				if (!StringHelper.matches(lastNibble, "\\d{4}|"))
+				if (!StringHelper.isBlank(lastNibble) && !StringHelper.matches(lastNibble, "\\d{4}|"))
 					super.state(context, false, "lastNibble", "acme.validation.booking.invalid-nibble.message");
 			}
 		}

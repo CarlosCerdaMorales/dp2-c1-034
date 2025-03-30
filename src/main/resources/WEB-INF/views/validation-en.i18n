@@ -57,6 +57,7 @@ acme.validation.booking.duplicated-flight.message = There is an existing booking
 acme.validation.booking.invalid-nibble-publish.message = Booking can't be published if last nibble is not stored
 acme.validation.booking.invalid-passenger-publish.message = Booking can't be published if not every passenger in it is published
 acme.validation.booking.invalid-booking-publish.message = You can't add passengers to an already published booking
+acme.validation.booking.invalid-booking-flight-null.message = You must specify a flight
 
 ### Airline ###
 
@@ -80,5 +81,7 @@ acme.validation.flightcrewmember.invalid-employeecode-initials.message = Employe
 ### IsFrom ###
 
 acme.validation.booking.duplicated-is-from.message = This booking is already related to this passenger
+acme.validation.booking.invalid-isFrom-passenger-null.message = You must choose a passenger
+acme.validation.booking.invalid-isFrom-booking-null.message = You must choose a booking
 
 

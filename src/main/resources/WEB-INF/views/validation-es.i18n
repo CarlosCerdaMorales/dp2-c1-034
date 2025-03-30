@@ -57,6 +57,7 @@ acme.validation.booking.duplicated-flight.message = Ya existe una reserva relaci
 acme.validation.booking.invalid-nibble-publish.message = La reserva no se publicará si este campo no está completo
 acme.validation.booking.invalid-passenger-publish.message = La reserva no se publicará sin que todos sus pasajeros estén publicados
 acme.validation.booking.invalid-booking-publish.message = No se pueden añadir pasajeros a una reserva ya publicada
+acme.validation.booking.invalid-booking-flight-null.message = Debe especificar un vuelo
 
 ### Airline ###
 
@@ -81,3 +82,5 @@ acme.validation.flightcrewmember.invalid-employeecode-initials.message = Las dos
 ### IsFrom ###
 
 acme.validation.booking.duplicated-is-from.message = Ya existe esta reserva asociada a este pasajero
+acme.validation.booking.invalid-isFrom-passenger-null.message = Debe seleccionar un pasajero
+acme.validation.booking.invalid-isFrom-booking-null.message = Debe seleccionar una reserva
