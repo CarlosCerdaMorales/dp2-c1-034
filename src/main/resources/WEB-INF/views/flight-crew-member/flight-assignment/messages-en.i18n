@@ -15,5 +15,8 @@ flight-crew-member.flight-assignment.form.label.leg = Leg
 flight-crew-member.flight-assignment.form.label.flightCrewMember = Flight Crew Member
 
 flight-crew-member.flight-assignment.form.label.confirmation = Confirm
-flight-crew-member.flight-assignment.form.button.update = Update
+
 flight-crew-member.flight-assignment.form.button.create = Create
+flight-crew-member.flight-assignment.form.button.update = Update
+flight-crew-member.flight-assignment.form.button.delete = Delete
+flight-crew-member.flight-assignment.form.button.publish = Publish

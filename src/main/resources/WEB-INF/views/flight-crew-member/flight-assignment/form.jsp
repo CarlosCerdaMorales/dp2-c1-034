@@ -24,10 +24,14 @@
 	<acme:input-select code="flight-crew-member.flight-assignment.form.label.flightCrewMember" path="flightCrewMember" choices="${members}"/>
 	
 	
-	<jstl:choose>
-		<jstl:when test="${acme:anyOf(_command, 'show|update|delete')}">
+	<jstl:choose>	 
+ 		<jstl:when test="${_command == 'show' && draftMode == false}">
+ 		</jstl:when>	
+		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish')  && draftMode == true}">
 			<acme:input-checkbox code="flight-crew-member.flight-assignment.form.label.confirmation" path="confirmation"/>
 			<acme:submit code="flight-crew-member.flight-assignment.form.button.update" action="/flight-crew-member/flight-assignment/update"/>
+			<acme:submit code="flight-crew-member.flight-assignment.form.button.delete" action="/flight-crew-member/flight-assignment/delete"/>
+			<acme:submit code="flight-crew-member.flight-assignment.form.button.publish" action="/flight-crew-member/flight-assignment/publish"/>
 		</jstl:when>
 		<jstl:when test="${_command == 'create'}">
 			<acme:input-checkbox code="flight-crew-member.flight-assignment.form.label.confirmation" path="confirmation"/>

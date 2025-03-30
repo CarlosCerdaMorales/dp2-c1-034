@@ -16,12 +16,12 @@
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
 <acme:list>
-	<acme:list-column code="flight-crew-member.flight-assignment-uncomplete.list.label.flightCrewDuty" path="flightCrewDuty" width="20%"/>
-	<acme:list-column code="flight-crew-member.flight-assignment-uncomplete.list.label.lastUpdate" path="lastUpdate" width="20%"/>
-	<acme:list-column code="flight-crew-member.flight-assignment-uncomplete.list.label.assignmentStatus" path="assignmentStatus" width="20%"/>
+	<acme:list-column code="flight-crew-member.flight-assignment-uncompleted.list.label.flightCrewDuty" path="flightCrewDuty" width="20%"/>
+	<acme:list-column code="flight-crew-member.flight-assignment-uncompleted.list.label.lastUpdate" path="lastUpdate" width="20%"/>
+	<acme:list-column code="flight-crew-member.flight-assignment-uncompleted.list.label.assignmentStatus" path="assignmentStatus" width="20%"/>
 	<acme:list-payload path="payload"/>	
 </acme:list>
 
-<jstl:if test="${_command == 'listUncomplete'}">
-	<acme:button code="flightCrewMember.flightAssignment.list.button.create" action="/flightCrewMember/flightAssignment/create"/>
+<jstl:if test="${_command == 'list-uncompleted'}">
+	<acme:button code="flight-crew-member.flight-assignment-uncompleted.list.button.create" action="/flight-crew-member/flight-assignment-uncompleted/create"/>
 </jstl:if>
