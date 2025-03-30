@@ -51,18 +51,23 @@ public class CustomerIsFromCreateService extends AbstractGuiService<Customer, Is
 		booking = this.repository.findBookingFromId(bId);
 		passenger = this.repository.findPassengerFromId(pId);
 
-		super.bindObject(isFrom, "booking", "passenger");
+		if (booking == null)
+			super.state(false, "booking", "acme.validation.booking.invalid-booking-flight-null.message");
+		if (passenger == null)
+			super.state(false, "passenger", "acme.validation.booking.invalid-isFrom-passenger-null.message");
+		else {
+			super.bindObject(isFrom, "booking", "passenger");
 
-		isFrom.setBooking(booking);
-		isFrom.setPassenger(passenger);
-
+			isFrom.setBooking(booking);
+			isFrom.setPassenger(passenger);
+		}
 	}
 
 	@Override
 	public void validate(final IsFrom isFrom) {
 		boolean notPublished = true;
 		Booking booking = isFrom.getBooking();
-		if (!booking.isDraftMode())
+		if (booking != null && !booking.isDraftMode())
 			notPublished = false;
 		super.state(notPublished, "booking", "acme.validation.booking.invalid-booking-publish.message");
 	}

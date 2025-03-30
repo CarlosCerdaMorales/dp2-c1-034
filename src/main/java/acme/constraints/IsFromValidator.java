@@ -33,9 +33,10 @@ public class IsFromValidator extends AbstractValidator<ValidIsFrom, IsFrom> {
 
 		boolean result;
 
-		if (isFrom == null || isFrom.getBooking() == null || isFrom.getPassenger() == null)
-			super.state(context, false, "*", "javax.validation.constraints.NotNull.message");
-		else {
+		if (isFrom == null || isFrom.getBooking() == null || isFrom.getPassenger() == null) {
+			super.state(context, false, "booking", "javax.validation.constraints.NotNull.message");
+			super.state(context, false, "passenger", "javax.validation.constraints.NotNull.message");
+		} else {
 			boolean uniqueIsFrom;
 			IsFrom existingIsFrom;
 			int bookingId = isFrom.getBooking().getId();

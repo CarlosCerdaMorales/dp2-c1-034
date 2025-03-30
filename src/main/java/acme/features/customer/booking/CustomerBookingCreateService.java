@@ -52,21 +52,22 @@ public class CustomerBookingCreateService extends AbstractGuiService<Customer, B
 		flightId = super.getRequest().getData("flight", int.class);
 		flight = this.repository.findFlightById(flightId);
 
-		super.bindObject(booking, "locatorCode", "travelClass", "lastNibble");
+		if (flight == null)
+			super.state(false, "flight", "acme.validation.booking.invalid-booking-flight-null.message");
+		else {
+			super.bindObject(booking, "locatorCode", "travelClass", "lastNibble");
 
-		booking.setFlight(flight);
-		booking.setPurchaseMoment(moment);
-		booking.setPrice(flight.getFlightCost());
-		booking.setDraftMode(true);
-
+			booking.setFlight(flight);
+			booking.setPurchaseMoment(moment);
+			booking.setPrice(flight.getFlightCost());
+			booking.setDraftMode(true);
+		}
 	}
 
 	@Override
 	public void validate(final Booking booking) {
-		//boolean confirmation;
+		;
 
-		//confirmation = super.getRequest().getData("confirmation", boolean.class);
-		//super.state(confirmation, "confirmation", "acme.validation.confirmation.message");
 	}
 
 	@Override
