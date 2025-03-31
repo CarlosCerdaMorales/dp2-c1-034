@@ -63,6 +63,7 @@ master.menu.customer.is-from = Gestionar reservas
 
 master.menu.manager = Gerente
 master.menu.manager.flights = Listado de vuelos
+master.menu.manager.legs = Listado de escalas
 
 
 
