@@ -1,3 +1,15 @@
+<%--
+- form.jsp
+-
+- Copyright (C) 2012-2025 Rafael Corchuelo.
+-
+- In keeping with the traditional purpose of furthering education and research, it is
+- the policy of the copyright owner to permit non-commercial use and redistribution of
+- this software. It has been tested carefully, but it is not guaranteed for any particular
+- purposes.  The copyright owner does not offer any warranties or representations, nor do
+- they accept any liabilities with respect to them.
+--%>
+
 <%@page%>
 
 <%@taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -8,6 +20,8 @@
 	<acme:input-textbox code="flight-crew-member.activity-log.form.label.incidentType" path="incidentType"/>	
 	<acme:input-textbox code="flight-crew-member.activity-log.form.label.description" path="description"/>	
 	<acme:input-integer code="flight-crew-member.activity-log.form.label.severityLevel" path="severityLevel"/>
+	
+	
 	<jstl:choose>
 		<jstl:when test="${acme:anyOf(_command, 'show|update|publish|delete') && draftMode == true && not masterDraftMode}">
 			<acme:submit code="flight-crew-member.activity-log.form.button.update" action="/flight-crew-member/activity-log/update"/>
@@ -20,7 +34,7 @@
 		</jstl:when>
 		<jstl:when test="${_command == 'create'}">
 		<acme:input-checkbox code="flight-crew-member.flight-assignment.form.label.confirmation" path="confirmation"/>
-			<acme:submit code="flight-crew-member.activity-log.form.button.create" action="/flight-crew-member/activity-log/create?masterId=${masterId}"/>
+			<acme:submit code="flight-crew-member.activity-log.form.button.create" action="/flight-crew-member/activity-log/create"/>
 		</jstl:when>		
 	</jstl:choose>
 </acme:form>

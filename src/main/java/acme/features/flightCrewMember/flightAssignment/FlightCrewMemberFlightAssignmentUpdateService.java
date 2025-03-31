@@ -73,8 +73,8 @@ public class FlightCrewMemberFlightAssignmentUpdateService extends AbstractGuiSe
 		Dataset dataset;
 		SelectChoices choices;
 		SelectChoices dutiesChoices;
-		List<Leg> legs = this.repository.findAllPlannedLegs(MomentHelper.getCurrentMoment());
-		List<FlightCrewMember> flightCrewMembers = this.repository.findAllFlightCrewMembersThatAreAvailable();
+		List<Leg> legs = this.repository.findAllLegs();
+		List<FlightCrewMember> flightCrewMembers = this.repository.findAllFlightCrewMembers();
 
 		SelectChoices legChoices;
 		SelectChoices flightCrewMemberChoices;
@@ -83,7 +83,8 @@ public class FlightCrewMemberFlightAssignmentUpdateService extends AbstractGuiSe
 		dutiesChoices = SelectChoices.from(FlightCrewDuty.class, flightAssignment.getFlightCrewDuty());
 		legChoices = SelectChoices.from(legs, "flightNumber", flightAssignment.getLeg());
 		flightCrewMemberChoices = SelectChoices.from(flightCrewMembers, "identity.fullName", flightAssignment.getFlightCrewMember());
-		dataset = super.unbindObject(flightAssignment, "flightCrewDuty", "assignmentStatus", "draftMode", "remarks", "leg", "flightCrewMember");
+
+		dataset = super.unbindObject(flightAssignment, "flightCrewDuty", "lastUpdate", "assignmentStatus", "draftMode", "remarks", "leg", "flightCrewMember");
 		dataset.put("statuses", choices);
 		dataset.put("duties", dutiesChoices);
 		dataset.put("members", flightCrewMemberChoices);
