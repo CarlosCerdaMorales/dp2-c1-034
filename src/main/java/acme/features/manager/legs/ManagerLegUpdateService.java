@@ -11,16 +11,14 @@ import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.aircraft.Aircraft;
 import acme.entities.airport.Airport;
-import acme.entities.claim.Claim;
 import acme.entities.flight.Flight;
-import acme.entities.flightassignment.FlightAssignment;
 import acme.entities.leg.FlightStatus;
 import acme.entities.leg.Leg;
 import acme.features.manager.flights.ManagerFlightRepository;
 import acme.realms.Manager;
 
 @GuiService
-public class ManagerLegDeleteService extends AbstractGuiService<Manager, Leg> {
+public class ManagerLegUpdateService extends AbstractGuiService<Manager, Leg> {
 
 	@Autowired
 	private ManagerLegRepository	repository;
@@ -39,7 +37,7 @@ public class ManagerLegDeleteService extends AbstractGuiService<Manager, Leg> {
 		legId = super.getRequest().getData("id", int.class);
 		leg = this.repository.findLegByLegId(legId);
 		manager = leg == null ? null : leg.getFlight().getManager();
-		status = leg != null && super.getRequest().getPrincipal().hasRealm(manager);
+		status = leg != null && leg.isDraftMode() && super.getRequest().getPrincipal().hasRealm(manager);
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -90,17 +88,7 @@ public class ManagerLegDeleteService extends AbstractGuiService<Manager, Leg> {
 
 	@Override
 	public void perform(final Leg leg) {
-		List<FlightAssignment> flightAssignments;
-		List<Claim> claims;
-
-		flightAssignments = this.repository.findFlightAssignmentsByLegId(leg.getId());
-		flightAssignments.stream().forEach(f -> this.repository.deleteAll(this.repository.findActivityLogsByFlightAssignmentId(f.getId())));
-		claims = this.repository.findClaimsByLegId(leg.getId());
-		claims.stream().forEach(c -> this.repository.deleteAll(this.repository.findTrackingLogByClaimId(c.getId())));
-
-		this.repository.deleteAll(flightAssignments);
-		this.repository.deleteAll(claims);
-		this.repository.delete(leg);
+		this.repository.save(leg);
 	}
 
 	@Override
@@ -120,7 +108,6 @@ public class ManagerLegDeleteService extends AbstractGuiService<Manager, Leg> {
 		managerId = super.getRequest().getPrincipal().getActiveRealm().getId();
 		flights = this.flightRepository.findFlightsByManagerId(managerId);
 		flightsChoices = SelectChoices.from(flights, "flightTag", leg.getFlight());
-
 		aircrafts = this.repository.findAllAircraftsByManagerId(managerId);
 		aircraftChoices = SelectChoices.from(aircrafts, "registrationNumber", leg.getAircraft());
 		airports = this.repository.findAllAirports();
