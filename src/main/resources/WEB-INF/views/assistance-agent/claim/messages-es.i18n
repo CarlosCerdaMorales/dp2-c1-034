@@ -1,0 +1,31 @@
+# messages-en.i18n
+#
+# Copyright (C) 2012-2025 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+# assistance-agent.claim.list
+assistance-agent.claim.list.title = Lista de reclamaciones
+assistance-agent.claim.list.label.registration-moment =Momento del registro
+assistance-agent.claim.list.label.description =Descripción
+assistance-agent.claim.list.label.draft-mode = Modo borrador
+assistance-agent.list.label.leg = Tramo
+
+# assistance-agent.claim.form
+assistance-agent.claim.form.title = Crear una reclamación
+assistance-agent.form.label.registration-moment = Momento del registro
+assistance-agent.form.label.description = Descripción
+assistance-agent.form.label.passenger-email = Email del pasajero
+assistance-agent.form.label.claim-type = Tipo de reclamacion
+assistance-agent.form.label.draft-mode = Modo borrador
+assistance-agent.form.label.leg = Tramo 
+assistance-agent.claim.form.button.create = Crear
+assistance-agent.claim.form.button.delete = Eliminar
+assistance-agent.claim.form.button.update = Actualizar
+assistance-agent.claim.form.button.publish = Publicar
+assistance-agent.claim.form.label.confirmation = Confirmar
+

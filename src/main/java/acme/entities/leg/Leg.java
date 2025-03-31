@@ -89,8 +89,16 @@ public class Leg extends AbstractEntity {
 
 	@Transient
 	public int durationInHours() {
-		Duration duration = MomentHelper.computeDuration(this.scheduledDeparture, this.scheduledArrival);
-		return (int) duration.toHours();
+		if (this.scheduledDeparture != null && this.scheduledArrival != null) {
+			Duration duration = MomentHelper.computeDuration(this.scheduledDeparture, this.scheduledArrival);
+			return (int) duration.toHours();
+		}
+		return 0;
+	}
+
+	@Transient
+	public boolean isDraftMode() {
+		return this.getDraftMode() ? true : false;
 	}
 
 }

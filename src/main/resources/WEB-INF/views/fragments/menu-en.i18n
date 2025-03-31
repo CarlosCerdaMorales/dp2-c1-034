@@ -64,6 +64,7 @@ master.menu.customer.is-from = Booking management
 
 master.menu.manager = Manager
 master.menu.manager.flights = Flight list
+master.menu.manager.legs = Legs list
 
 # master.menu.user-account ####################################################
 
@@ -74,3 +75,7 @@ master.menu.user-account.provider-profile = Provider profile
 master.menu.user-account.become-consumer = Become a consumer
 master.menu.user-account.consumer-profile = Consumer profile
 
+# master.menu.assistanceagent ###################################################33
+master.menu.assistance-agent = Assistance agent
+master.menu.assistance-agent.list-completed-claims = Completed claims list
+master.menu.assistance-agent.list-pending-claims = Undergoing claims list

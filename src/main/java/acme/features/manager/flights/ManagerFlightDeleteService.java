@@ -13,7 +13,6 @@ import acme.entities.flight.Flight;
 import acme.entities.leg.Leg;
 import acme.features.manager.legs.ManagerLegDeleteService;
 import acme.realms.Manager;
-import acme.relationships.IsFrom;
 
 @GuiService
 public class ManagerFlightDeleteService extends AbstractGuiService<Manager, Flight> {
@@ -52,7 +51,7 @@ public class ManagerFlightDeleteService extends AbstractGuiService<Manager, Flig
 
 	@Override
 	public void bind(final Flight flight) {
-		super.bindObject(flight, "flightTag", "isSelfTransfer", "flightCost", "flightDescription", "");
+		super.bindObject(flight, "flightTag", "isSelfTransfer", "flightCost", "flightDescription");
 
 	}
 
@@ -64,7 +63,6 @@ public class ManagerFlightDeleteService extends AbstractGuiService<Manager, Flig
 	@Override
 	public void perform(final Flight flight) {
 		List<Booking> bookings;
-		List<IsFrom> bookingRelationsWithPassengers;
 		List<Leg> legs;
 
 		bookings = this.repository.findBookingsByFlightId(flight.getId());
