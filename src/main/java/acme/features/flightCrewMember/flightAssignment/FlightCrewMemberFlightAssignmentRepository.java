@@ -52,4 +52,10 @@ public interface FlightCrewMemberFlightAssignmentRepository extends AbstractRepo
 
 	@Query("select a from Leg a where  a.scheduledDeparture>:now")
 	List<Leg> findAllPlannedLegs(Date now);
+
+	@Query("select a from FlightCrewMember a ")
+	List<FlightCrewMember> findAllFlightCrewMembers();
+
+	@Query("select l from Leg l")
+	List<Leg> findAllLegs();
 }
