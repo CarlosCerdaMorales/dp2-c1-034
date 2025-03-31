@@ -67,6 +67,11 @@ public class Claim extends AbstractEntity {
 	@ManyToOne(optional = false)
 	private Leg					leg;
 
+	@Mandatory
+	@Valid
+	@Automapped
+	private Boolean				draftMode;
+
 
 	@Transient
 	public Boolean getAccepted() {
