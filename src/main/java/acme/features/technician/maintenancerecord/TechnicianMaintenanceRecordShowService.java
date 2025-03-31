@@ -63,11 +63,11 @@ public class TechnicianMaintenanceRecordShowService extends AbstractGuiService<T
 		aircrafts = this.repository.findAllAircrafts();
 		selectedAircrafts = SelectChoices.from(aircrafts, "registrationNumber", maintenanceRecord.getAircraft());
 
-		dataset = super.unbindObject(maintenanceRecord, "maintenanceMoment", "status", "nextInspectionDue", "estimatedCost", "notes");
+		dataset = super.unbindObject(maintenanceRecord, "maintenanceMoment", "status", "nextInspectionDue", "estimatedCost", "notes", "draftMode");
 
 		dataset.put("aicraft", selectedAircrafts.getSelected().getKey());
 		dataset.put("aircrafts", selectedAircrafts);
-		dataset.put("status", choices);
+		dataset.put("statuses", choices);
 
 		super.getResponse().addData(dataset);
 
