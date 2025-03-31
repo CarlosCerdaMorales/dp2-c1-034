@@ -4,7 +4,7 @@
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
 <acme:form> 
-	<acme:input-moment code="flight-crew-member.activity-log.form.label.registrationMoment" path="registrationMoment"/>
+	<acme:input-moment code="flight-crew-member.activity-log.form.label.registrationMoment" path="registrationMoment" readonly ="true"/>
 	<acme:input-textbox code="flight-crew-member.activity-log.form.label.incidentType" path="incidentType"/>	
 	<acme:input-textbox code="flight-crew-member.activity-log.form.label.description" path="description"/>	
 	<acme:input-integer code="flight-crew-member.activity-log.form.label.severityLevel" path="severityLevel"/>
@@ -19,6 +19,7 @@
 			<acme:submit code="flight-crew-member.activity-log.form.button.delete" action="/flight-crew-member/activity-log/delete"/>
 		</jstl:when>
 		<jstl:when test="${_command == 'create'}">
+		<acme:input-checkbox code="flight-crew-member.flight-assignment.form.label.confirmation" path="confirmation"/>
 			<acme:submit code="flight-crew-member.activity-log.form.button.create" action="/flight-crew-member/activity-log/create?masterId=${masterId}"/>
 		</jstl:when>		
 	</jstl:choose>
