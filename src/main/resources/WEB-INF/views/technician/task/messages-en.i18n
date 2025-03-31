@@ -23,6 +23,7 @@ technician.task.list.label.type = Type
 technician.task.list.label.description = Description
 technician.task.list.label.priority = Priority
 technician.task.form.label.estimatedDuration = Estimated Duration
+technician.task.form.label.confirmation = Confirmation
 
 technician.task.form.button.create = Create
 

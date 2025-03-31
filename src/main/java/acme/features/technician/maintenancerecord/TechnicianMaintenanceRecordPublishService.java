@@ -12,6 +12,7 @@ import acme.client.services.GuiService;
 import acme.entities.aircraft.Aircraft;
 import acme.entities.maintenancerecord.MaintenanceRecord;
 import acme.entities.maintenancerecord.MaintenanceStatus;
+import acme.entities.task.Task;
 import acme.realms.Technician;
 
 @GuiService
@@ -65,7 +66,13 @@ public class TechnicianMaintenanceRecordPublishService extends AbstractGuiServic
 	}
 	@Override
 	public void validate(final MaintenanceRecord maintenanceRecord) {
-		;
+
+		Collection<Task> tasks = this.repository.findTasksByMaintenanceRecordId(maintenanceRecord.getId());
+
+		super.state(!tasks.isEmpty(), "*", "technician.maintenance-record.form.error.zero-tasks");
+
+		boolean hasUnpublishedTask = tasks.stream().anyMatch(Task::isDraftMode);
+		super.state(!hasUnpublishedTask, "*", "technician.maintenance-record.form.error.not-all-tasks-published");
 	}
 
 	@Override

@@ -60,15 +60,18 @@ public class TechnicianMaintenanceRecordUpdateService extends AbstractGuiService
 		aircraftId = super.getRequest().getData("aircraft", int.class);
 		aircraft = this.repository.findAircraftById(aircraftId);
 
-		//Technician technician = (Technician) super.getRequest().getPrincipal().getActiveRealm();
 		super.bindObject(maintenanceRecord, "maintenanceMoment", "status", "nextInspectionDue", "estimatedCost", "notes");
 
-		//maintenanceRecord.setTechnician(technician);
 		maintenanceRecord.setAircraft(aircraft);
 	}
 	@Override
 	public void validate(final MaintenanceRecord maintenanceRecord) {
-		;
+		{
+			boolean confirmation;
+
+			confirmation = super.getRequest().getData("confirmation", boolean.class);
+			super.state(confirmation, "confirmation", "acme.validation.confirmation.message");
+		}
 	}
 
 	@Override
@@ -99,7 +102,6 @@ public class TechnicianMaintenanceRecordUpdateService extends AbstractGuiService
 
 		super.getResponse().addData(dataset);
 
-		// COMENTARIO DE PRUEBA
 	}
 
 }

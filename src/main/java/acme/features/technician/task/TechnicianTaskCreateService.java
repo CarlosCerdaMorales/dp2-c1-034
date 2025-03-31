@@ -66,6 +66,7 @@ public class TechnicianTaskCreateService extends AbstractGuiService<Technician, 
 		dataset.put("types", choices);
 		dataset.put("type", choices.getSelected().getKey());
 		dataset.put("readonly", false);
+		dataset.put("confirmation", false);
 
 		super.getResponse().addData(dataset);
 	}
