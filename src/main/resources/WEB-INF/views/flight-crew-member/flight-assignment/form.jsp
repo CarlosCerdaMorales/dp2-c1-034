@@ -26,7 +26,7 @@
 	
 	<jstl:choose>	 
  		<jstl:when test="${_command == 'show' && draftMode == false}">
- 		<acme:submit code="flight-crew-member.flight-assignment.form.button.list-logs" action="/flight-crew-member/activity-log/list?masterId=${id}"/>
+ 		<acme:button code="flight-crew-member.flight-assignment.form.button.list-logs" action="/flight-crew-member/activity-log/list?masterId=${id}"/>
  		</jstl:when>	
 		<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish')  && draftMode == true}">
 			<acme:input-checkbox code="flight-crew-member.flight-assignment.form.label.confirmation" path="confirmation"/>

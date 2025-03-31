@@ -17,4 +17,7 @@ public interface FlightCrewMemberActivityLogRepository extends AbstractRepositor
 	@Query("select a from FlightAssignment a where a.id = :id ")
 	FlightAssignment findFlightAssignmentById(int id);
 
+	@Query("select l from ActivityLog l where l.id = :id")
+	ActivityLog findActivityLogById(int id);
+
 }
