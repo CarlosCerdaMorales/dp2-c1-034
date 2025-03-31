@@ -20,7 +20,7 @@
 	<acme:input-textbox code="flight-crew-member.activity-log.form.label.incidentType" path="incidentType"/>	
 	<acme:input-textbox code="flight-crew-member.activity-log.form.label.description" path="description"/>	
 	<acme:input-integer code="flight-crew-member.activity-log.form.label.severityLevel" path="severityLevel"/>
-	
+	<acme:input-select code="flight-crew-member.activity-log.form.label.flightAssignment" path="flightAssignment" choices="${assignmentChoices}"/>
 	
 	<jstl:choose>
 		<jstl:when test="${acme:anyOf(_command, 'show|update|publish|delete') && draftMode == true && not masterDraftMode}">

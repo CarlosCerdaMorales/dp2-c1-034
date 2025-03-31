@@ -16,3 +16,4 @@ flight-crew-member.activity-log.form.button.update = Actualizar
 flight-crew-member.activity-log.form.button.publish = Publicar
 flight-crew-member.activity-log.form.button.delete = Eliminar
 flight-crew-member.activity-log.form.button.create = Crear
+flight-crew-member.activity-log.form.label.flightAssignment = Asignación de vuelo
