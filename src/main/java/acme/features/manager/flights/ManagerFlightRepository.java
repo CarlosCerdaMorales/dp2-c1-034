@@ -17,6 +17,9 @@ import acme.relationships.IsFrom;
 @Repository
 public interface ManagerFlightRepository extends AbstractRepository {
 
+	@Query("select f from Flight f")
+	public List<Flight> findAllFlights();
+
 	@Query("select f from Flight f where f.manager.id = :id")
 	public List<Flight> findManagerFlightsByManagerId(int id);
 
