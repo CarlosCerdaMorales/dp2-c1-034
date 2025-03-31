@@ -64,6 +64,7 @@ master.menu.customer.is-from = Booking management
 
 master.menu.manager = Manager
 master.menu.manager.flights = Flight list
+master.menu.manager.legs = Legs list
 
 # master.menu.user-account ####################################################
 

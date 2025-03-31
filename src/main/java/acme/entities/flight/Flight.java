@@ -121,11 +121,11 @@ public class Flight extends AbstractEntity {
 		List<Leg> legs = repository.legsDuringFlight(this.getId());
 
 		if (legs.isEmpty())
-			return false;
+			return true;
 
 		List<Leg> draftModeLegs = legs.stream().filter(l -> l.getDraftMode().equals(true)).collect(Collectors.toList());
 
-		return draftModeLegs.size() != 0;
+		return !(draftModeLegs.size() == 0);
 	}
 
 }

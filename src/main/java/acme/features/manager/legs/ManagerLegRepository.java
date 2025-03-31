@@ -22,6 +22,18 @@ public interface ManagerLegRepository extends AbstractRepository {
 	@Query("select l from Leg l where l.id = :id ")
 	public Leg findLegByLegId(int id);
 
+	@Query("select a from Aircraft a")
+	public List<Aircraft> findAllAircrafts();
+
+	@Query("select l from Leg l where l.flight.manager.id = :id ")
+	public List<Leg> findManagerLegsByManagerId(int id);
+
+	@Query("SELECT l FROM Leg l WHERE l.aircraft.airline.id IN (SELECT m.airline.id FROM Manager m WHERE m.id = :id)")
+	public List<Leg> findManagerLegsByManager(int id);
+
+	@Query("select l from Leg l where l.flight.manager.id = :id order by l.scheduledDeparture ")
+	public List<Leg> findManagerLegsByManagerIOrderedByMoment(int id);
+
 	@Query("select f from Flight f where f.id = :id")
 	public Flight findFlightByFlightId(int id);
 
@@ -46,7 +58,10 @@ public interface ManagerLegRepository extends AbstractRepository {
 	@Query("select a from Airport a")
 	public List<Airport> findAllAirports();
 
-	@Query("select l.aircraft from Leg l where l.flight.manager.id = :id")
+	@Query("select distinct l.aircraft from Leg l where l.flight.manager.id = :id")
 	public List<Aircraft> findAllAircraftsByManagerId(int id);
+
+	@Query("select a from Aircraft a where a.airline.id = (select m.airline.id from Manager m where m.id = :id)")
+	public List<Aircraft> findAllAircraftsByManager(int id);
 
 }
