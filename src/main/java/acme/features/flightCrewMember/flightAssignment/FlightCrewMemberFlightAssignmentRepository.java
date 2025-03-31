@@ -58,4 +58,7 @@ public interface FlightCrewMemberFlightAssignmentRepository extends AbstractRepo
 
 	@Query("select l from FlightCrewMember l")
 	List<FlightCrewMember> findAllFlightCrewMembers();
+
+	@Query("select l from Leg l where l.flightNumber = :flightNumber")
+	Optional<Leg> findLegByFlightNumber(String flightNumber);
 }

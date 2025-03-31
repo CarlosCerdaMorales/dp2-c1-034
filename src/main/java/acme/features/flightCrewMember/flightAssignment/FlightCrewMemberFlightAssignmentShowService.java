@@ -31,6 +31,7 @@ public class FlightCrewMemberFlightAssignmentShowService extends AbstractGuiServ
 
 		flightId = super.getRequest().getData("id", int.class);
 		flightAssignment = this.repository.findFlightAssignmentById(flightId);
+
 		status = flightAssignment.isPresent();
 
 		super.getResponse().setAuthorised(status);

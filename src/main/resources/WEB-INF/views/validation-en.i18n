@@ -86,4 +86,7 @@ acme.validation.booking.invalid-isFrom-booking-null.message = You must choose a 
 acme.validation.booking.invalid-booking-isFrom-publish.message = You can't publish unless this booking is published
 acme.validation.booking.invalid-passenger-isFrom-publish.message = You can't publish unless this passenger is published
 
+### Leg ###
 
+acme.validation.leg-complete.message = This leg has already been completed
+acme.validation.member-available.message = This member is not available
