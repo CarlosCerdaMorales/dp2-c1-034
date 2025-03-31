@@ -17,14 +17,12 @@ technician.maintenance-record.list.label.nextInspectionDue = Próxima Inspecció
 
 technician.maintenance-record.list.button.create = Crear
 
-technician.maintenance-record.form.title = Information del informe
-
 technician.maintenance-record.list.label.status = Estado
 technician.maintenance-record.list.label.maintenanceMoment = Fecha de mantenimiento
 technician.maintenance-record.list.label.nextInspectionDue = Próxima inspección
 technician.maintenance-record.form.label.estimatedCost = Coste estimado
 technician.maintenance-record.form.label.notes = Notas
-technician.maintenance-record.list.label.aircraft = Avión
+technician.maintenance-record.form.label.aircraft = Avión
 technician.maintenance-record.form.label.confirmation = Confimación
 
 technician.maintenance-record.form.button.create = Crear

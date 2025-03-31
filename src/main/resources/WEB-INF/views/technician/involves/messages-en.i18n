@@ -1,0 +1,30 @@
+# messages-en.i18n
+#
+# Copyright (C) 2012-2025 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+technician.involves.list.title = Linked tasks details
+technician.involves.form.title = Linked tasks list
+
+technician.involves.list.label.maintenanceRecord = Maintenance Record
+technician.involves.list.label.maintenanceMoment = Task
+
+technician.involves.list.button.create = Create
+
+technician.involves.form.label.aircraft = Aircrfaft associated
+technician.involves.form.label.task = Task
+
+technician.involves.form.button.create = Create		
+technician.involves.form.button.update = Update
+technician.involves.form.button.delete = Delete
+technician.involves.form.button.link = Link
+technician.involves.form.button.unlink = Unlink
+
+
+
+
