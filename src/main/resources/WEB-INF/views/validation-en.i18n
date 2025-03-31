@@ -90,3 +90,5 @@ acme.validation.booking.invalid-passenger-isFrom-publish.message = You can't pub
 
 acme.validation.leg-complete.message = This leg has already been completed
 acme.validation.member-available.message = This member is not available
+acme.validation.pilot.message = The leg selected already has a pilot
+acme.validation.co-pilot.message = The leg selected already has a co-pilot
