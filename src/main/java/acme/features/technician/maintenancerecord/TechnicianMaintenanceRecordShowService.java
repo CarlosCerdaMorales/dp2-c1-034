@@ -69,6 +69,7 @@ public class TechnicianMaintenanceRecordShowService extends AbstractGuiService<T
 		dataset.put("aircrafts", selectedAircrafts);
 		dataset.put("statuses", choices);
 		dataset.put("confirmation", false);
+		dataset.put("maintenanceRecordId", maintenanceRecord.getId());
 
 		super.getResponse().addData(dataset);
 
