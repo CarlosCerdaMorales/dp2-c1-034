@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
 import acme.client.components.views.SelectChoices;
-import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.flightassignment.AssignmentStatus;
@@ -32,6 +31,7 @@ public class FlightCrewMemberFlightAssignmentShowService extends AbstractGuiServ
 
 		flightId = super.getRequest().getData("id", int.class);
 		flightAssignment = this.repository.findFlightAssignmentById(flightId);
+
 		status = flightAssignment.isPresent();
 
 		super.getResponse().setAuthorised(status);
@@ -52,16 +52,16 @@ public class FlightCrewMemberFlightAssignmentShowService extends AbstractGuiServ
 		Dataset dataset;
 		SelectChoices choices;
 		SelectChoices dutiesChoices;
-		List<Leg> legs = this.repository.findAllPlannedLegs(MomentHelper.getCurrentMoment());
-		List<FlightCrewMember> flightCrewMembers = this.repository.findAllFlightCrewMembersThatAreAvailable();
+		List<Leg> legs = this.repository.findAllLegs();
+		List<FlightCrewMember> flightCrewMembers = this.repository.findAllFlightCrewMembers();
 
 		SelectChoices legChoices;
 		SelectChoices flightCrewMemberChoices;
 
 		choices = SelectChoices.from(AssignmentStatus.class, flightAssignment.getAssignmentStatus());
 		dutiesChoices = SelectChoices.from(FlightCrewDuty.class, flightAssignment.getFlightCrewDuty());
-		legChoices = SelectChoices.from(legs, "flightNumber", null);
-		flightCrewMemberChoices = SelectChoices.from(flightCrewMembers, "identity.fullName", null);
+		legChoices = SelectChoices.from(legs, "flightNumber", flightAssignment.getLeg());
+		flightCrewMemberChoices = SelectChoices.from(flightCrewMembers, "identity.fullName", flightAssignment.getFlightCrewMember());
 
 		dataset = super.unbindObject(flightAssignment, "flightCrewDuty", "lastUpdate", "assignmentStatus", "draftMode", "remarks", "leg", "flightCrewMember");
 		dataset.put("statuses", choices);

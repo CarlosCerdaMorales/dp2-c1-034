@@ -15,6 +15,7 @@ import acme.entities.flightassignment.AssignmentStatus;
 import acme.entities.flightassignment.FlightAssignment;
 import acme.entities.flightassignment.FlightCrewDuty;
 import acme.entities.leg.Leg;
+import acme.realms.flightcrewmember.AvailabilityStatus;
 import acme.realms.flightcrewmember.FlightCrewMember;
 
 @GuiService
@@ -56,7 +57,29 @@ public class FlightCrewMemberFlightAssignmentPublishService extends AbstractGuiS
 
 	@Override
 	public void validate(final FlightAssignment flightAssignment) {
-		;
+		boolean confirmation;
+		Leg leg;
+		FlightCrewMember member;
+		boolean isCompleted;
+		boolean alreadyHasPilot;
+		boolean alreadyHasCoPilot;
+		boolean availableMember;
+
+		leg = super.getRequest().getData("leg", Leg.class);
+		FlightCrewDuty duty = super.getRequest().getData("flightCrewDuty", FlightCrewDuty.class);
+		List<FlightAssignment> flightsWithPilots = this.repository.findFlightAssignmentByLegAndPilotDuty(leg.getId());
+		List<FlightAssignment> flightsWithCoPilots = this.repository.findFlightAssignmentByLegAndCoPilotDuty(leg.getId());
+		member = super.getRequest().getData("flightCrewMember", FlightCrewMember.class);
+		isCompleted = leg.getScheduledDeparture().after(MomentHelper.getCurrentMoment());
+		confirmation = super.getRequest().getData("confirmation", boolean.class);
+		availableMember = member.getAvailabilityStatus().equals(AvailabilityStatus.AVAILABLE);
+		alreadyHasPilot = flightsWithPilots.isEmpty() && duty.equals(FlightCrewDuty.PILOT);
+		alreadyHasCoPilot = flightsWithCoPilots.isEmpty() && duty.equals(FlightCrewDuty.CO_PILOT);
+		super.state(!alreadyHasPilot, "flightCrewDuty", "acme.validation.pilot.message");
+		super.state(!alreadyHasCoPilot, "flightCrewDuty", "acme.validation.co-pilot.message");
+		super.state(availableMember, "flightCrewMember", "acme.validation.member-available.message");
+		super.state(confirmation, "confirmation", "acme.validation.confirmation.message");
+		super.state(isCompleted, "leg", "acme.validation.leg-complete.message");
 	}
 
 	@Override
@@ -70,8 +93,8 @@ public class FlightCrewMemberFlightAssignmentPublishService extends AbstractGuiS
 		Dataset dataset;
 		SelectChoices choices;
 		SelectChoices dutiesChoices;
-		List<Leg> legs = this.repository.findAllPlannedLegs(MomentHelper.getCurrentMoment());
-		List<FlightCrewMember> flightCrewMembers = this.repository.findAllFlightCrewMembersThatAreAvailable();
+		List<Leg> legs = this.repository.findAllLegs();
+		List<FlightCrewMember> flightCrewMembers = this.repository.findAllFlightCrewMembers();
 
 		SelectChoices legChoices;
 		SelectChoices flightCrewMemberChoices;

@@ -86,3 +86,10 @@ acme.validation.booking.invalid-isFrom-passenger-null.message = Debe seleccionar
 acme.validation.booking.invalid-isFrom-booking-null.message = Debe seleccionar una reserva
 acme.validation.booking.invalid-booking-isFrom-publish.message = No podrá publicar hasta que esta reserva esté publicada
 acme.validation.booking.invalid-passenger-isFrom-publish.message = No podrá publicar hasta que este pasajero esté publicado
+
+### Leg ###
+
+acme.validation.leg-complete.message = Esta escala ya ha sido completada
+acme.validation.member-available.message = Este miembro no esta disponible
+acme.validation.pilot.message = La escala seleccionada ya tiene un piloto
+acme.validation.co-pilot.message = La escala seleccionada ya tiene un co-piloto
