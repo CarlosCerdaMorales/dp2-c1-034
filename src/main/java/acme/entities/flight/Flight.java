@@ -4,7 +4,6 @@ package acme.entities.flight;
 import java.beans.Transient;
 import java.util.Date;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -115,17 +114,20 @@ public class Flight extends AbstractEntity {
 		return destination;
 	}
 
-	@Transient
-	public boolean isDraftMode() {
-		FlightRepository repository = SpringHelper.getBean(FlightRepository.class);
-		List<Leg> legs = repository.legsDuringFlight(this.getId());
-
-		if (legs.isEmpty())
-			return true;
-
-		List<Leg> draftModeLegs = legs.stream().filter(l -> l.getDraftMode().equals(true)).collect(Collectors.toList());
-
-		return !(draftModeLegs.size() == 0);
-	}
+	/**
+	 * @Transient
+	 *            public boolean isDraftMode() {
+	 *            FlightRepository repository = SpringHelper.getBean(FlightRepository.class);
+	 *            List<Leg> legs = repository.legsDuringFlight(this.getId());
+	 * 
+	 *            if (legs.isEmpty())
+	 *            return true;
+	 * 
+	 *            if (!legs.stream().allMatch(Leg::isDraftMode))
+	 *            return
+	 * 
+	 *            return !legs.stream().allMatch(Leg::isDraftMode);
+	 *            }
+	 **/
 
 }
