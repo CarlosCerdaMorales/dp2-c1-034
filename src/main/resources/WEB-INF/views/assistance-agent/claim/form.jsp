@@ -26,5 +26,3 @@
 		</jstl:when>	
 	</jstl:choose>
 </acme:form>
-
-<acme:button code="administrator.aicraft.list.button.create" action="/assistance-agent/tracking-log/create?masterId=${id}"/>
