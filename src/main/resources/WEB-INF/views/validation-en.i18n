@@ -88,7 +88,18 @@ acme.validation.booking.invalid-passenger-isFrom-publish.message = You can't pub
 
 ### Leg ###
 
+acme.validation.leg.NotNull.message = May not be null
+acme.validation.leg.duplicated-flight-number.message = Flight number already in use
+acme.validation.leg.invalid-date.message = Invalid date
+acme.validation.leg.flight_number.blank.message = Incomplete flight number 
+acme.validation.leg.flight_number.mismatch.message = Incorrect Iata code
+acme.validation.leg.invalid-leg-not-null.message = Incorrect data
+
 acme.validation.leg-complete.message = This leg has already been completed
 acme.validation.member-available.message = This member is not available
 acme.validation.pilot.message = The leg selected already has a pilot
 acme.validation.co-pilot.message = The leg selected already has a co-pilot
+
+### Flight ###
+
+acme.validation.flight.cant-be-publish.message= All legs must be publish
