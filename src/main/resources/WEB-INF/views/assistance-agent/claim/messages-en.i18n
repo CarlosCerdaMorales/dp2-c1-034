@@ -28,5 +28,6 @@ assistance-agent.claim.form.button.delete = Delete
 assistance-agent.claim.form.button.update = Update
 assistance-agent.claim.form.button.publish = Publish
 assistance-agent.claim.form.label.confirmation = Confirm
+assistance-agent.claim.form.button.tracking-log = Show tracking logs
 
 
