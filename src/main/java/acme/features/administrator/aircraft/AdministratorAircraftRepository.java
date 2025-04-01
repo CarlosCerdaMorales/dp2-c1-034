@@ -12,7 +12,7 @@ import acme.entities.aircraft.Aircraft;
 import acme.entities.airline.Airline;
 
 @Repository
-public interface AircraftRepository extends AbstractRepository {
+public interface AdministratorAircraftRepository extends AbstractRepository {
 
 	@Query("select a from Aircraft a where a.registrationNumber = :registrationNumber")
 	Aircraft findAircraftByRegistrationNumber(String registrationNumber);

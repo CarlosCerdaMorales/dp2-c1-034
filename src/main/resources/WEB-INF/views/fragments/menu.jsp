@@ -67,6 +67,12 @@
 			<acme:menu-suboption code="master.menu.customer.passenger" action="/customer/passenger/list"/>
 			<acme:menu-suboption code="master.menu.customer.is-from" action="/customer/is-from/list"/>
 		</acme:menu-option>
+		
+		<acme:menu-option code="master.menu.technician" access="hasRealm('Technician')">
+			<acme:menu-suboption code="master.menu.technician.task" action="/technician/task/list"/>
+			<acme:menu-suboption code="master.menu.technician.maintenance-record" action="/technician/maintenance-record/list"/>
+		</acme:menu-option>
+		
 	</acme:menu-left>
 
 	<acme:menu-right>		

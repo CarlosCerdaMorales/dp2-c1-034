@@ -67,6 +67,13 @@ master.menu.manager.legs = Listado de escalas
 
 
 
+# master.menu.customer ##########################################################
+
+master.menu.technician = Técnico
+master.menu.technician.dashboard = Dashboard
+master.menu.technician.task = Mis tareas
+master.menu.technician.maintenance-record = Mis informes de mantenimiento
+
 # master.menu.user-account ####################################################
 
 master.menu.user-account = Cuenta
