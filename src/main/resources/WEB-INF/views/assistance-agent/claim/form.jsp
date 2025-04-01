@@ -20,6 +20,11 @@
 		<jstl:when test="${_command == 'create'}">
 			<acme:input-checkbox code="assistance-agent.claim.form.label.confirmation" path="confirmation"/>
 			<acme:submit code="assistance-agent.claim.form.button.create" action="/assistance-agent/claim/create"/>
-		</jstl:when>		
+		</jstl:when>	
+			<jstl:when test="${_command == 'show'}">
+			<acme:button code="assistance-agent.claim.form.button.tracking-log" action="/assistance-agent/tracking-log/list?masterId=${id}"/>			
+		</jstl:when>	
 	</jstl:choose>
 </acme:form>
+
+<acme:button code="administrator.aicraft.list.button.create" action="/assistance-agent/tracking-log/create?masterId=${id}"/>
