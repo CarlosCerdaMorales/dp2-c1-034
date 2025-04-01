@@ -14,6 +14,7 @@ technician.maintenance-record.form.title = Detalles del informe de mantenimiento
 technician.maintenance-record.list.label.status = Estado
 technician.maintenance-record.list.label.maintenanceMoment = Fecha de mantenimiento
 technician.maintenance-record.list.label.nextInspectionDue = Próxima Inspección 
+technician.maintenance-record.list.label.aircraft = Avión
 
 technician.maintenance-record.list.button.create = Crear
 

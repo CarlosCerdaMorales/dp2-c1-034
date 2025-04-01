@@ -11,13 +11,16 @@
 technician.involves.list.title = Detalles de tareas asociadas
 technician.involves.form.title = Lista de tareas asociadas
 
-technician.involves.list.label.maintenanceRecord = Registro de mantenimiento
-technician.involves.list.label.maintenanceMoment = Tarea
+technician.involves.list.label.maintenanceRecord-aircraft = Avión registrado
+technician.involves.list.label.maintenanceRecord-maintenanceMoment = Fecha de mantenimiento
+technician.involves.list.label.task.type = Tipo de tarea
 
 technician.involves.list.button.create = Crear
 
 technician.involves.form.label.aircraft = Avión asociado
 technician.involves.form.label.task = Tarea
+technician.maintenance-record.form.show.involves = Associated tasks
+
 
 technician.involves.form.button.create = Crear		
 technician.involves.form.button.update = Actualizar

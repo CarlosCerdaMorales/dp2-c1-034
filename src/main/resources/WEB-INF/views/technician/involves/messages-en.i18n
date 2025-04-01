@@ -11,13 +11,15 @@
 technician.involves.list.title = Linked tasks details
 technician.involves.form.title = Linked tasks list
 
-technician.involves.list.label.maintenanceRecord = Maintenance Record
-technician.involves.list.label.maintenanceMoment = Task
+technician.involves.list.label.maintenanceRecord-aircraft = Recorded aircraft
+technician.involves.list.label.maintenanceRecord-maintenanceMoment = Maintenance moment
+technician.involves.list.label.task.type = Task type
 
 technician.involves.list.button.create = Create
 
-technician.involves.form.label.aircraft = Aircrfaft associated
+technician.involves.form.label.aircraft = Associated aircraft
 technician.involves.form.label.task = Task
+technician.maintenance-record.form.show.involves = Associated tasks
 
 technician.involves.form.button.create = Create		
 technician.involves.form.button.update = Update
