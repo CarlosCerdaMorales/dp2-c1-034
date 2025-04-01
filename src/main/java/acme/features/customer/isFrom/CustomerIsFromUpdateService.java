@@ -31,7 +31,7 @@ public class CustomerIsFromUpdateService extends AbstractGuiService<Customer, Is
 		isFromId = super.getRequest().getData("id", int.class);
 		isFrom = this.repository.findById(isFromId);
 		customer = isFrom == null ? null : isFrom.getBooking().getCustomer();
-		status = isFrom != null && isFrom.isDraftMode() && super.getRequest().getPrincipal().hasRealm(customer);
+		status = isFrom != null && super.getRequest().getPrincipal().hasRealm(customer);
 
 		super.getResponse().setAuthorised(status);
 

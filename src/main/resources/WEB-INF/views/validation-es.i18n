@@ -58,6 +58,7 @@ acme.validation.booking.invalid-nibble-publish.message = La reserva no se public
 acme.validation.booking.invalid-passenger-publish.message = La reserva no se publicará sin que todos sus pasajeros estén publicados
 acme.validation.booking.invalid-booking-publish.message = No se pueden añadir pasajeros a una reserva ya publicada
 acme.validation.booking.invalid-booking-flight-null.message = Debe especificar un vuelo
+acme.validation.booking.invalid-passenger-number-publish.message = No podrá publicar una reserva sin pasajeros
 
 ### Airline ###
 

@@ -58,7 +58,6 @@ master.menu.customer = Customer
 master.menu.customer.dashboard = Dashboard
 master.menu.customer.booking = My bookings
 master.menu.customer.passenger = My passengers
-master.menu.customer.is-from = Booking management
 
 # master.menu.manager ##########################################################
 
