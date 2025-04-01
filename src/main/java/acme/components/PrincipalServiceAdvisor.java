@@ -1,8 +1,7 @@
 
-package acme.features.principal.service;
+package acme.components;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
@@ -20,7 +19,7 @@ public class PrincipalServiceAdvisor {
 		Service result;
 
 		try {
-			result = this.repository.findRandomService(PageRequest.of(0, 1)).getContent().get(0);
+			result = this.repository.findRandomService();
 		} catch (final Throwable oops) {
 			result = null;
 		}
