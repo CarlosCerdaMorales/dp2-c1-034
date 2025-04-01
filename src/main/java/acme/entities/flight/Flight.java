@@ -49,6 +49,11 @@ public class Flight extends AbstractEntity {
 	@ValidMoney
 	private Money				flightCost;
 
+	@Mandatory
+	@Valid
+	@Automapped
+	private Boolean				draftMode;
+
 	@Optional
 	@ValidString(max = 255)
 	@Automapped
@@ -88,7 +93,7 @@ public class Flight extends AbstractEntity {
 	public Integer getLayovers() {
 		FlightRepository repository = SpringHelper.getBean(FlightRepository.class);
 		List<Leg> listOfLegs = repository.legsDuringFlight(this.getId());
-		return listOfLegs.size() - 1;
+		return listOfLegs.size();
 	}
 
 	@Transient
@@ -108,5 +113,21 @@ public class Flight extends AbstractEntity {
 			destination = listOfLegs.get(listOfLegs.size() - 1).getAirportArrival();
 		return destination;
 	}
+
+	/**
+	 * @Transient
+	 *            public boolean isDraftMode() {
+	 *            FlightRepository repository = SpringHelper.getBean(FlightRepository.class);
+	 *            List<Leg> legs = repository.legsDuringFlight(this.getId());
+	 * 
+	 *            if (legs.isEmpty())
+	 *            return true;
+	 * 
+	 *            if (!legs.stream().allMatch(Leg::isDraftMode))
+	 *            return
+	 * 
+	 *            return !legs.stream().allMatch(Leg::isDraftMode);
+	 *            }
+	 **/
 
 }

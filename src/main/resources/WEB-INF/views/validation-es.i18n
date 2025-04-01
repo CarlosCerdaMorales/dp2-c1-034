@@ -51,8 +51,13 @@ acme.validation.airport.duplicated-iata.message = Ya existe un aeropuerto con es
 
 ### Booking ###
 
-acme.validation.booking.duplicated-locator-code.message = Ya existe una reserva con este código de localización.
-acme.validation.booking.invalid-nibble.message = En caso de indicar los últimos dígitos, han de ser los cuatro últimos.
+acme.validation.booking.duplicated-locator-code.message = Ya existe una reserva con este código de localización
+acme.validation.booking.invalid-nibble.message = En caso de indicar los últimos dígitos, han de ser los cuatro últimos
+acme.validation.booking.duplicated-flight.message = Ya existe una reserva relacionada a este vuelo
+acme.validation.booking.invalid-nibble-publish.message = La reserva no se publicará si este campo no está completo
+acme.validation.booking.invalid-passenger-publish.message = La reserva no se publicará sin que todos sus pasajeros estén publicados
+acme.validation.booking.invalid-booking-publish.message = No se pueden añadir pasajeros a una reserva ya publicada
+acme.validation.booking.invalid-booking-flight-null.message = Debe especificar un vuelo
 
 ### Airline ###
 
@@ -61,3 +66,30 @@ acme.validation.airline.duplicated-iata.message = Ya existe un aerolinea con est
 ### Aircraft ###
 
 acme.validation.aircraft.invalid-registration-number = Ya existe un avion con este numero de registro.
+
+### Passenger ###
+
+acme.validation.passenger.duplicated-passport.message = Ya existe un pasajero con este pasaporte
+acme.validation.passenger.invalid-passport-pattern.message = El patrón del pasaporte no coincide con el exigido
+
+
+### FlightCrewMember ###
+
+acme.validation.flightcrewmember.duplicated-employeecode.message = Ya existe un miembro del staff de vuelo con este código de empleado.
+acme.validation.flightcrewmember.invalid-employeecode-pattern.message = El código de empleado tiene una estructura inválida.
+acme.validation.flightcrewmember.invalid-employeecode-initials.message = Las dos primeras letras del código de empleado debe coincidir con las iniciales del empleado.
+
+### IsFrom ###
+
+acme.validation.booking.duplicated-is-from.message = Ya existe esta reserva asociada a este pasajero
+acme.validation.booking.invalid-isFrom-passenger-null.message = Debe seleccionar un pasajero
+acme.validation.booking.invalid-isFrom-booking-null.message = Debe seleccionar una reserva
+acme.validation.booking.invalid-booking-isFrom-publish.message = No podrá publicar hasta que esta reserva esté publicada
+acme.validation.booking.invalid-passenger-isFrom-publish.message = No podrá publicar hasta que este pasajero esté publicado
+
+### Leg ###
+
+acme.validation.leg-complete.message = Esta escala ya ha sido completada
+acme.validation.member-available.message = Este miembro no esta disponible
+acme.validation.pilot.message = La escala seleccionada ya tiene un piloto
+acme.validation.co-pilot.message = La escala seleccionada ya tiene un co-piloto

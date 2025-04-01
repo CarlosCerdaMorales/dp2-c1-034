@@ -32,6 +32,10 @@ master.menu.administrator.list-aircrafts = List aircrafts
 
 master.menu.administrator.list-airlines = List airlines
 
+master.menu.administrator.list-airports = List airports
+
+master.menu.administrator.list-bookings = List bookings
+
 # master.menu.provider ########################################################
 
 master.menu.provider = Provider
@@ -42,11 +46,25 @@ master.menu.provider.favourite-link = Favourite link
 master.menu.consumer = Consumer
 master.menu.consumer.favourite-link = Favourite link
 
+# master.menu.flightCrewMember ##################################################
+
+master.menu.flight-crew-member = Flight Crew Member
+master.menu.flight-crew-member.flight-assignment = List Flight Assignments With Complete Legs
+master.menu.flight-crew-member.flight-assignment-uncompleted = List Flight Assignments With Uncomplete Legs
+
 # master.menu.customer ##########################################################
 
 master.menu.customer = Customer
 master.menu.customer.dashboard = Dashboard
 master.menu.customer.booking = My bookings
+master.menu.customer.passenger = My passengers
+master.menu.customer.is-from = Booking management
+
+# master.menu.manager ##########################################################
+
+master.menu.manager = Manager
+master.menu.manager.flights = Flight list
+master.menu.manager.legs = Legs list
 
 # master.menu.customer ##########################################################
 
@@ -64,3 +82,7 @@ master.menu.user-account.provider-profile = Provider profile
 master.menu.user-account.become-consumer = Become a consumer
 master.menu.user-account.consumer-profile = Consumer profile
 
+# master.menu.assistanceagent ###################################################33
+master.menu.assistance-agent = Assistance agent
+master.menu.assistance-agent.list-completed-claims = Completed claims list
+master.menu.assistance-agent.list-pending-claims = Undergoing claims list

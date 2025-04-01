@@ -1,0 +1,14 @@
+administrator.booking.list.title = Reservas publicadas
+administrator.booking.list.locatorCode = Código de localización
+administrator.booking.list.purchaseMoment = Momento de compra
+administrator.booking.list.travelClass = Clase
+administrator.booking.list.price = Precio
+
+administrator.booking.form.title = Reserva
+administrator.booking.form.locatorCode = Código de localización
+administrator.booking.form.purchaseMoment = Momento de compra
+administrator.booking.form.travelClass = Clase
+administrator.booking.form.price = Precio
+administrator.booking.form.lastNibble = Últimos cuatro dígitos de tarjeta de crédito
+administrator.booking.form.flight = Etiqueta de vuelo
+administrator.booking.form.customer = Pasaporte del cliente

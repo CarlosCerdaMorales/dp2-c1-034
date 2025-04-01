@@ -1,0 +1,5 @@
+customer.is-from.list.title = Manage bookings
+customer.is-from.form.title = Booking
+customer.is-from.list.button.create = Add passengers to bookings
+customer.is-from.form.update = Update data
+customer.is-from.form.publish = Publish

@@ -1,17 +1,17 @@
-key,flightNumber,scheduledDeparture,scheduledArrival,flightStatus,key:airportDeparture,key:airportArrival,key:aircraft,key:flight
+key,flightNumber,scheduledDeparture,scheduledArrival,flightStatus,draftMode,key:airportDeparture,key:airportArrival,key:aircraft,key:flight
 # Base entity
-leg-00,ABX2345,2000/01/01 00:01,2000/01/02 00:01,ON_TIME,airport-00,airport-01,aircraft-01,flight-01
+leg-00,ABX2345,2000/01/01 00:01,2000/01/02 00:01,ON_TIME,TRUE,airport-00,airport-01,aircraft-01,flight-01
 # Variations
-leg-01,ACX2346,2000/01/02 00:01,2001/01/03 00:01,DELAYED,airport-00,airport-01,aircraft-02,flight-01
-leg-02,AEX2347,2001/01/04 00:01,2001/05/04 00:01,CANCELLED,airport-00,airport-01,aircraft-03,flight-01
-leg-03,AFX2348,2000/01/11 00:01,2001/02/12 00:01,LANDED,airport-02,airport-05,aircraft-04,flight-03
-leg-04,AGX2349,2000/09/04 00:01,2001/10/10 00:01,ON_TIME,airport-02,airport-07,aircraft-05,flight-04
-leg-05,CLX2341,2000/09/05 00:01,2001/11/09 00:01,DELAYED,airport-05,airport-07,aircraft-06,flight-07
-leg-06,COX2342,2000/02/06 00:01,2001/08/08 00:01,CANCELLED,airport-12,airport-09,aircraft-07,flight-08
-leg-07,AJX2343,2000/03/07 00:01,2001/07/07 00:01,LANDED,airport-23,airport-16,aircraft-08,flight-02
-leg-08,AKX2344,2000/04/08 00:01,2001/06/06 00:01,ON_TIME,airport-00,airport-20,aircraft-09,flight-15
-leg-09,ALX2315,2000/05/09 00:01,2001/03/05 00:01,DELAYED,airport-04,airport-09,aircraft-10,flight-18
-leg-10,AMX2325,2000/06/10 00:01,2001/02/04 00:01,CANCELLED,airport-23,airport-19,aircraft-11,flight-19
-leg-11,ANX2335,2000/07/11 00:01,2001/05/03 00:01,LANDED,airport-12,airport-18,aircraft-12,flight-23
-leg-12,AOX2340,2000/08/02 00:01,2001/06/02 00:01,CANCELLED,airport-00,airport-09,aircraft-13,flight-16
-leg-13,APX2355,2000/09/03 00:01,2001/07/01 00:01,CANCELLED,airport-02,airport-07,aircraft-14,flight-18
+leg-01,ACX2346,2000/01/02 00:01,2001/01/03 00:01,DELAYED,TRUE,airport-00,airport-01,aircraft-02,flight-01
+leg-02,AEX2347,2001/01/04 00:01,2001/05/04 00:01,CANCELLED,TRUE,airport-00,airport-01,aircraft-03,flight-01
+leg-03,AFX2348,2000/01/11 00:01,2001/02/12 00:01,LANDED,TRUE,airport-02,airport-05,aircraft-04,flight-03
+leg-04,AGX2349,2000/09/04 00:01,2001/10/10 00:01,ON_TIME,TRUE,airport-02,airport-07,aircraft-05,flight-04
+leg-05,CLX2341,2000/09/05 00:01,2001/11/09 00:01,DELAYED,TRUE,airport-05,airport-07,aircraft-06,flight-07
+leg-06,COX2342,2000/02/06 00:01,2001/08/08 00:01,CANCELLED,TRUE,airport-12,airport-09,aircraft-07,flight-08
+leg-07,AJX2343,2000/03/07 00:01,2001/07/07 00:01,LANDED,TRUE,airport-23,airport-16,aircraft-08,flight-02
+leg-08,AKX2344,2000/04/08 00:01,2001/06/06 00:01,ON_TIME,TRUE,airport-00,airport-20,aircraft-09,flight-15
+leg-09,ALX2315,2000/05/09 00:01,2001/03/05 00:01,DELAYED,TRUE,airport-04,airport-09,aircraft-10,flight-18
+leg-10,AMX2325,2000/06/10 00:01,2001/02/04 00:01,CANCELLED,TRUE,airport-23,airport-19,aircraft-11,flight-19
+leg-11,ANX2335,2000/07/11 00:01,2001/05/03 00:01,LANDED,TRUE,airport-12,airport-18,aircraft-12,flight-23
+leg-12,AOX2340,2000/08/02 00:01,2001/06/02 00:01,CANCELLED,TRUE,airport-00,airport-09,aircraft-13,flight-16
+leg-13,APX2355,2025/09/03 00:01,2026/07/01 00:01,CANCELLED,TRUE,airport-02,airport-07,aircraft-14,flight-18

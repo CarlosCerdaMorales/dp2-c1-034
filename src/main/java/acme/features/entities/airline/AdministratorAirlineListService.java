@@ -15,7 +15,7 @@ import acme.entities.airline.Airline;
 public class AdministratorAirlineListService extends AbstractGuiService<Administrator, Airline> {
 
 	@Autowired
-	private AirlineRepository repository;
+	private AdministratorAirlineRepository repository;
 
 
 	@Override

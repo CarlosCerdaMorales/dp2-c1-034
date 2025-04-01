@@ -1,0 +1,33 @@
+# messages-en.i18n
+#
+# Copyright (C) 2012-2025 Rafael Corchuelo.
+#
+# In keeping with the traditional purpose of furthering education and research, it is
+# the policy of the copyright owner to permit non-commercial use and redistribution of
+# this software. It has been tested carefully, but it is not guaranteed for any particular
+# purposes.  The copyright owner does not offer any warranties or representations, nor do
+# they accept any liabilities with respect to them.
+
+# assistance-agent.claim.list
+assistance-agent.claim.list.title = List of Claims
+assistance-agent.claim.list.label.registration-moment = Registration Moment
+assistance-agent.claim.list.label.description = Description
+assistance-agent.claim.list.label.draft-mode = Draft Mode
+assistance-agent.list.label.leg = Segment
+
+# assistance-agent.claim.form
+assistance-agent.claim.form.title = Create a Claim
+assistance-agent.form.label.registration-moment = Registration Moment
+assistance-agent.form.label.description = Description
+assistance-agent.form.label.passenger-email = Passenger Email
+assistance-agent.form.label.claim-type = Claim Type
+assistance-agent.form.label.draft-mode = Draft Mode
+assistance-agent.form.label.leg = Segment
+assistance-agent.claim.form.button.create = Create
+assistance-agent.claim.form.button.delete = Delete
+assistance-agent.claim.form.button.update = Update
+assistance-agent.claim.form.button.publish = Publish
+assistance-agent.claim.form.label.confirmation = Confirm
+assistance-agent.claim.form.button.tracking-log = Show tracking logs
+
+
