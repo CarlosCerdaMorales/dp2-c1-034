@@ -38,6 +38,11 @@ public class CustomerPassengerListService extends AbstractGuiService<Customer, P
 		else {
 			bookingId = super.getRequest().getData("bookingId", int.class);
 			passengers = this.repository.findPassengersFromBooking(bookingId);
+			super.getResponse().addGlobal("bookingId", bookingId);
+			if (super.getRequest().hasData("draftMode")) {
+				boolean draftMode = super.getRequest().getData("draftMode", boolean.class);
+				super.getResponse().addGlobal("draftMode", draftMode);
+			}
 		}
 		super.getBuffer().addData(passengers);
 	}
@@ -49,6 +54,7 @@ public class CustomerPassengerListService extends AbstractGuiService<Customer, P
 		dataset = super.unbindObject(passenger, "fullName", "email", "passport", "dateOfBirth", "specialNeeds");
 
 		super.getResponse().addData(dataset);
+
 	}
 
 }

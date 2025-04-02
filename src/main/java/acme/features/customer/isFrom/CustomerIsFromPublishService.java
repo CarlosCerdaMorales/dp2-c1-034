@@ -31,7 +31,7 @@ public class CustomerIsFromPublishService extends AbstractGuiService<Customer, I
 		isFromId = super.getRequest().getData("id", int.class);
 		isFrom = this.repository.findById(isFromId);
 		customer = isFrom == null ? null : isFrom.getBooking().getCustomer();
-		status = isFrom != null && isFrom.isDraftMode() && super.getRequest().getPrincipal().hasRealm(customer);
+		status = isFrom != null && super.getRequest().getPrincipal().hasRealm(customer);
 
 		super.getResponse().setAuthorised(status);
 
@@ -85,7 +85,6 @@ public class CustomerIsFromPublishService extends AbstractGuiService<Customer, I
 
 	@Override
 	public void perform(final IsFrom isFrom) {
-		isFrom.setDraftMode(false);
 		this.repository.save(isFrom);
 	}
 
