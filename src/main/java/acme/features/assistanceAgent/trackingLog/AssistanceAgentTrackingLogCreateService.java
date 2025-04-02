@@ -1,16 +1,19 @@
 
 package acme.features.assistanceAgent.trackingLog;
 
+import java.util.Collection;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
+import acme.client.components.views.SelectChoices;
 import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.claim.Claim;
 import acme.entities.trackinglog.TrackingLog;
+import acme.entities.trackinglog.TrackingLogStatus;
 import acme.realms.AssistanceAgent;
 
 @GuiService
@@ -38,12 +41,10 @@ public class AssistanceAgentTrackingLogCreateService extends AbstractGuiService<
 		Claim claim;
 		Date moment = MomentHelper.getCurrentMoment();
 		int masterId;
-
 		masterId = super.getRequest().getData("masterId", int.class);
 
 		claim = this.repository.findClaimByMasterId(masterId);
 		super.bindObject(tr, "stepUndergoing", "resolutionPercentage", "status", "resolution");
-		System.out.println("claim1" + claim);
 		tr.setLastUpdateMoment(moment);
 		tr.setDraftMode(true);
 		tr.setClaim(claim);
@@ -57,7 +58,14 @@ public class AssistanceAgentTrackingLogCreateService extends AbstractGuiService<
 	@Override
 	public void validate(final TrackingLog tr) {
 		boolean confirmation;
-
+		Claim claim;
+		int masterId;
+		masterId = super.getRequest().getData("masterId", int.class);
+		Collection<TrackingLog> trackingLogs;
+		claim = this.repository.findClaimByMasterId(masterId);
+		trackingLogs = this.repository.findTrackingLogsByMasterId(claim.getId());
+		if (trackingLogs.stream().anyMatch(t -> t.getDraftMode()) || claim.getDraftMode())
+			super.state(false, "draftMode", "acme.validation.trackingLog-draftmode.message");
 		confirmation = super.getRequest().getData("confirmation", boolean.class);
 		super.state(confirmation, "confirmation", "acme.validation.confirmation.message");
 	}
@@ -67,6 +75,9 @@ public class AssistanceAgentTrackingLogCreateService extends AbstractGuiService<
 		Dataset dataset;
 		int masterId;
 		Claim claim;
+		SelectChoices choicesStatus;
+
+		choicesStatus = SelectChoices.from(TrackingLogStatus.class, trackingLog.getStatus());
 		masterId = super.getRequest().getData("masterId", int.class);
 		claim = this.repository.findClaimByMasterId(masterId);
 		dataset = super.unbindObject(trackingLog, "stepUndergoing", "resolutionPercentage", "status", "resolution");
@@ -74,6 +85,7 @@ public class AssistanceAgentTrackingLogCreateService extends AbstractGuiService<
 		dataset.put("confirmation", false);
 		dataset.put("readonly", false);
 		dataset.put("draftMode", true);
+		dataset.put("statuses", choicesStatus);
 		super.getResponse().addData(dataset);
 
 	}

@@ -6,11 +6,13 @@ import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
+import acme.client.components.views.SelectChoices;
 import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.claim.Claim;
 import acme.entities.trackinglog.TrackingLog;
+import acme.entities.trackinglog.TrackingLogStatus;
 import acme.realms.AssistanceAgent;
 
 @GuiService
@@ -53,9 +55,8 @@ public class AssistanceAgentTrackingLogUpdateService extends AbstractGuiService<
 
 		claim = this.repository.findClaimByMasterId(masterId);
 		super.bindObject(tr, "stepUndergoing", "resolutionPercentage", "status", "resolution");
-		System.out.println("claim1" + claim);
 		tr.setLastUpdateMoment(moment);
-		tr.setDraftMode(true);
+		tr.setDraftMode(tr.getDraftMode());
 		tr.setClaim(claim);
 	}
 
@@ -77,13 +78,15 @@ public class AssistanceAgentTrackingLogUpdateService extends AbstractGuiService<
 		Dataset dataset;
 		int masterId;
 		Claim claim;
+		SelectChoices choicesStatus;
+
+		choicesStatus = SelectChoices.from(TrackingLogStatus.class, trackingLog.getStatus());
 		masterId = super.getRequest().getData("masterId", int.class);
-		System.out.println("claim" + masterId);
 		claim = this.repository.findClaimByMasterId(masterId);
-		System.out.println("claim" + claim);
 		dataset = super.unbindObject(trackingLog, "stepUndergoing", "resolutionPercentage", "status", "resolution");
 		dataset.put("claim", claim);
-		dataset.put("draftMode", true);
+		dataset.put("draftMode", trackingLog.getDraftMode());
+		dataset.put("statuses", choicesStatus);
 		super.getResponse().addData(dataset);
 
 	}
