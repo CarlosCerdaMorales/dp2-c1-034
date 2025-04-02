@@ -6,7 +6,7 @@
 <acme:form>
 	<acme:input-textarea code="assistance-agent.form.label.description" path="description"/>
 	<acme:input-textbox code="assistance-agent.form.label.passenger-email" path="passengerEmail"/>
-	<acme:input-textbox code="assistance-agent.form.label.claim-type" path="claimType"/>
+	<acme:input-select code="assistance-agent.form.label.claim-type" path="claimType" choices="${claimTypes}"/>
 	
 	<acme:input-select code="assistance-agent.form.label.leg" path="leg" choices="${legs}"/>
 	
@@ -26,3 +26,4 @@
 		</jstl:when>	
 	</jstl:choose>
 </acme:form>
+
