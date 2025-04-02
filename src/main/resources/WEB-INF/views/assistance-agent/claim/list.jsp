@@ -22,4 +22,4 @@
 	<acme:list-payload path="payload"/>
 </acme:list>
 
-<acme:button code="administrator.aicraft.list.button.create" action="/assistance-agent/claim/create"/>
+<acme:button code="assistance-agent.claim.form.button.create" action="/assistance-agent/claim/create"/>

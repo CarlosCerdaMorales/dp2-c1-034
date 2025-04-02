@@ -62,10 +62,21 @@ public class AssistanceAgentTrackingLogCreateService extends AbstractGuiService<
 		int masterId;
 		masterId = super.getRequest().getData("masterId", int.class);
 		Collection<TrackingLog> trackingLogs;
+		Collection<TrackingLog> trackingLogs100percentage;
+
 		claim = this.repository.findClaimByMasterId(masterId);
 		trackingLogs = this.repository.findTrackingLogsByMasterId(claim.getId());
+		trackingLogs100percentage = this.repository.findTrackingLogs100PercentageByMasterId(claim.getId());
+
 		if (trackingLogs.stream().anyMatch(t -> t.getDraftMode()) || claim.getDraftMode())
-			super.state(false, "draftMode", "acme.validation.trackingLog-draftmode.message");
+			super.state(false, "confirmation", "acme.validation.trackingLog-draftmode.message");
+
+		if (trackingLogs100percentage.size() >= 2)
+			super.state(false, "confirmation", "acme.validation.resolution-percentage.message");
+
+		if (trackingLogs100percentage.size() == 1 && tr.getResolutionPercentage() < 100)
+			super.state(false, "confirmation", "acme.validation.resolution-percentage2.message");
+
 		confirmation = super.getRequest().getData("confirmation", boolean.class);
 		super.state(confirmation, "confirmation", "acme.validation.confirmation.message");
 	}
