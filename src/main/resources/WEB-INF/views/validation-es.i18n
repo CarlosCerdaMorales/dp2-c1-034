@@ -89,7 +89,18 @@ acme.validation.booking.invalid-passenger-isFrom-publish.message = No podrá pub
 
 ### Leg ###
 
+acme.validation.leg.NotNull.message = No puede ser nulo
+acme.validation.leg.duplicated-flight-number.message = Número de vuelo en uso
+acme.validation.leg.invalid-date.message = Fecha invalida
+acme.validation.leg.flight_number.blank.message = Número de vuelo incompleto
+acme.validation.leg.flight_number.mismatch.message = Código iata incorrecto
+acme.validation.leg.invalid-leg-not-null.message = Datos incorrectos
+
 acme.validation.leg-complete.message = Esta escala ya ha sido completada
 acme.validation.member-available.message = Este miembro no esta disponible
 acme.validation.pilot.message = La escala seleccionada ya tiene un piloto
 acme.validation.co-pilot.message = La escala seleccionada ya tiene un co-piloto
+
+### Flight ###
+
+acme.validation.flight.cant-be-publish.message = Todas las escalas deben estar publicadas
