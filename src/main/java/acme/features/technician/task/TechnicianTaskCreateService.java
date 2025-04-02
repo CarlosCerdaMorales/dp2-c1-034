@@ -42,6 +42,8 @@ public class TechnicianTaskCreateService extends AbstractGuiService<Technician, 
 	@Override
 	public void bind(final Task task) {
 
+		assert task != null;
+
 		Technician technician = (Technician) super.getRequest().getPrincipal().getActiveRealm();
 		super.bindObject(task, "type", "description", "priority", "estimatedDuration");
 		task.setTechnician(technician);
@@ -66,7 +68,6 @@ public class TechnicianTaskCreateService extends AbstractGuiService<Technician, 
 		dataset.put("types", choices);
 		dataset.put("type", choices.getSelected().getKey());
 		dataset.put("readonly", false);
-		dataset.put("confirmation", false);
 
 		super.getResponse().addData(dataset);
 	}

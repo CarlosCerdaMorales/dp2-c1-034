@@ -34,13 +34,16 @@ public class MaintenanceRecordValidator extends AbstractValidator<ValidMaintenan
 		boolean result;
 
 		if (maintenanceRecord == null)
-			super.state(context, false, "null", "javax.validation.constraints.NotNull.message");
+			super.state(context, false, "*", "javax.validation.constraints.NotNull.message");
 
 		else {
+
 			Date nextInspectionDue = maintenanceRecord.getNextInspectionDue();
 			Date maintenanceMoment = maintenanceRecord.getMaintenanceMoment();
-			if (!MomentHelper.isAfter(nextInspectionDue, maintenanceMoment))
-				super.state(context, false, "nextInspectionDue", "{acme.validation.nextInspection.invalid-future-date}");
+			if (nextInspectionDue != null && maintenanceMoment != null)
+				if (!MomentHelper.isAfter(nextInspectionDue, maintenanceMoment))
+					super.state(context, false, "nextInspectionDue", "{acme.validation.nextInspection.invalid-future-date}");
+
 		}
 		result = !super.hasErrors(context);
 

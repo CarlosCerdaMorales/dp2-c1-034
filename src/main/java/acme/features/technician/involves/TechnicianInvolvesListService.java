@@ -38,7 +38,6 @@ public class TechnicianInvolvesListService extends AbstractGuiService<Technician
 
 		maintenanceRecordId = super.getRequest().getData("id", int.class);
 
-		System.out.println("comentario" + maintenanceRecordId);
 		maintenanceRecord = this.repository.findMaintenanceRecordById(maintenanceRecordId);
 
 		involves = this.repository.findInvolvesByMaintenanceRecord(maintenanceRecord);
@@ -49,20 +48,21 @@ public class TechnicianInvolvesListService extends AbstractGuiService<Technician
 	@Override
 	public void unbind(final Involves involves) {
 		Dataset dataset;
-		Collection<MaintenanceRecord> mrs;
-		//		Collection<Tasks> tasks;
-		//
-		//		int technicianId = super.getRequest().getPrincipal().getActiveRealm().getId();
-		//
-		//		mrs = this.repository.findMaintenanceRecordByTechnicianId(technicianId);
-		//		tasks = this.repository.findAllTasks();
-
 		int maintenanceRecordId;
+		final boolean showCreate;
 
-		maintenanceRecordId = super.getRequest().getData("id", int.class);
+		dataset = super.unbindObject(involves, "maintenanceRecord.aircraft.registrationNumber", "maintenanceRecord.maintenanceMoment", "task.type");
 
-		dataset = super.unbindObject(involves, "maintenanceRecord.aircraft.registrationNumber", "maintenanceRecord.maintenanceMoment", "task.type", "");
-		dataset.put("maintenanceRecordId", involves.getMaintenanceRecord().getId());
+		maintenanceRecordId = super.getRequest().getData("maintenanceRecordId", int.class);
+
+		MaintenanceRecord maintenanceRecord;
+		maintenanceRecord = involves.getMaintenanceRecord();
+		showCreate = maintenanceRecord.isDraftMode() && super.getRequest().getPrincipal().hasRealm(maintenanceRecord.getTechnician());
+
+		//dataset.put("maintenanceRecordId", involves.getMaintenanceRecord().getId());
+
+		super.getResponse().addGlobal("maintenanceRecordId", maintenanceRecordId);
+		super.getResponse().addGlobal("showCreate", showCreate);
 
 		super.getResponse().addData(dataset);
 	}
