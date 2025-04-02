@@ -93,3 +93,14 @@ acme.validation.leg-complete.message = Esta escala ya ha sido completada
 acme.validation.member-available.message = Este miembro no esta disponible
 acme.validation.pilot.message = La escala seleccionada ya tiene un piloto
 acme.validation.co-pilot.message = La escala seleccionada ya tiene un co-piloto
+
+### Task and MaintenanceRecord
+acme.validation.money.min = El precio estimado ha de ser como mínimo 0
+acme.validation.text.length.255 = El texto tiene que tener un máximo de 255 caracteres
+acme.validation.text.length.1-255 = El texto tiene que tener un mínimo de 1 carácter y un máximo de 255 caracteres
+acme.validation.task.priority = La prioridad ha de ser un entero entre 0 y 10
+acme.validation.task.duration = La duración ha de estar entre 0 y 1000
+
+
+ 
+

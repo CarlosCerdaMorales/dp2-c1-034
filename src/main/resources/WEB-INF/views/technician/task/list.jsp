@@ -22,6 +22,11 @@
 	<acme:list-payload path="payload"/>	
 </acme:list>
 
-<jstl:if test="${_command == 'list'}">
+<jstl:if test="${empty maintenanceRecordId}">
 	<acme:button code="technician.task.form.button.create" action="/technician/task/create"/>
 </jstl:if>
+
+<jstl:if test="${draftMode == true}">
+	<acme:button code="technician.involves.list.button.create" action="/technician/involves/create?maintenanceRecordId=${maintenanceRecordId}"/>
+</jstl:if>
+<p>Maintenance id = ${maintenanceRecordId}</p>

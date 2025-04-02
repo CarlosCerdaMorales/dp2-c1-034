@@ -51,12 +51,12 @@ public class MaintenanceRecord extends AbstractEntity {
 	private Date				nextInspectionDue;
 
 	@Mandatory
-	@ValidMoney(min = 0)
+	@ValidMoney(min = 0, message = "{acme.validation.money.min}")
 	@Automapped
 	private Money				estimatedCost;
 
 	@Optional
-	@ValidString(max = 255)
+	@ValidString(max = 255, message = "{acme.validation.text.length.255}")
 	@Automapped
 	private String				notes;
 
