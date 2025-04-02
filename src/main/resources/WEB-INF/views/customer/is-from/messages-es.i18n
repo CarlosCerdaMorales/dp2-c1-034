@@ -1,5 +1,5 @@
 customer.is-from.list.title = Gestión de reservas
 customer.is-from.form.title = Reserva
-customer.is-from.list.button.create = Añadir pasajeros a reservas
+customer.is-from.list.button.create = Añadir pasajeros
 customer.is-from.form.update = Actualizar datos
 customer.is-from.form.publish = Publicar

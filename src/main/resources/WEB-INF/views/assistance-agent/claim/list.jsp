@@ -19,9 +19,6 @@
 	<acme:list-column code="assistance-agent.claim.list.label.registration-moment" path="registrationMoment"/>
  	<acme:list-column code="assistance-agent.claim.list.label.description" path="description"/>
 	<acme:list-column code="assistance-agent.claim.list.label.draft-mode" path="draftMode"/>
-	<jstl:if test="${_command == 'undergoing-list'}">
-		<acme:list-column code="assistance-agent.list.label.leg" path="leg" width="10%"/>
-	</jstl:if>
 	<acme:list-payload path="payload"/>
 </acme:list>
 
