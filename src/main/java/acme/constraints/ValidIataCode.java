@@ -19,7 +19,7 @@ import javax.validation.constraints.Pattern;
 @Pattern(regexp = "^[A-Z]{3}$")
 public @interface ValidIataCode {
 
-	String message() default "{acme.validation.iatacode.message}";
+	String message() default "{acme.validation.validiatacode}";
 
 	Class<?>[] groups() default {};
 

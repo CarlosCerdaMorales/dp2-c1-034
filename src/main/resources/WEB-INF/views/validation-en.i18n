@@ -48,6 +48,7 @@ acme.validation.nextInspection.invalid-future-date = Invalid next inspection dat
 ### Airport ###
 
 acme.validation.airport.duplicated-iata.message = There is an existing airport with this IATA Code.
+acme.validation.validiatacode = This is not a valid IATA code
 
 ### Booking ###
 
