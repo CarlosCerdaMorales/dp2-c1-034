@@ -27,6 +27,5 @@
 </jstl:if>
 
 <jstl:if test="${draftMode == true}">
-	<acme:button code="technician.involves.list.button.create" action="/technician/involves/create?maintenanceRecordId=${maintenanceRecordId}"/>
+	<acme:button code="technician.task.form.button.create" action="/technician/involves/create?maintenanceRecordId=${maintenanceRecordId}"/>
 </jstl:if>
-<p>Maintenance id = ${maintenanceRecordId}</p>

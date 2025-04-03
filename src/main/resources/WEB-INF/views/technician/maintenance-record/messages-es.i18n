@@ -31,8 +31,8 @@ technician.maintenance-record.form.button.create = Crear
 technician.maintenance-record.form.button.update = Actualizar
 technician.maintenance-record.form.button.delete = Eliminar
 technician.maintenance-record.form.button.publish = Publicar
-technician.maintenance-record.form.button.publish = Publish
-technician.maintenance-record.form.button.publish = Eliminar
+technician.maintenance-record.form.show.involves = Tareas asociadas
+technician.maintenance-record.form.error.not-all-tasks-published = Todas las tareas deben estar publicadas 
 
 
 

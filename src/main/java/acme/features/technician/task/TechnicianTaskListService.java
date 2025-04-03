@@ -38,6 +38,8 @@ public class TechnicianTaskListService extends AbstractGuiService<Technician, Ta
 			tasks = this.repository.findTasksByTechnicianId(technicianId);
 		else {
 			maintenanceRecordId = super.getRequest().getData("maintenanceRecordId", int.class);
+			super.getResponse().addGlobal("maintenanceRecordId", maintenanceRecordId);
+
 			maintenanceRecord = this.repository.findMaintenanceRecordById(maintenanceRecordId);
 			super.getResponse().addGlobal("maintenanceRecordId", maintenanceRecordId);
 			if (super.getRequest().hasData("draftMode")) {
@@ -45,6 +47,7 @@ public class TechnicianTaskListService extends AbstractGuiService<Technician, Ta
 				super.getResponse().addGlobal("draftMode", draftMode);
 			}
 			tasks = this.repository.findInvolvesByMaintenanceRecord(maintenanceRecord);
+
 		}
 		super.getBuffer().addData(tasks);
 	}

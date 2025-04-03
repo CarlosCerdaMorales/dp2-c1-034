@@ -54,7 +54,7 @@ public class TechnicianMaintenanceRecordCreateService extends AbstractGuiService
 	}
 	@Override
 	public void validate(final MaintenanceRecord maintenanceRecord) {
-
+		;
 	}
 	@Override
 	public void perform(final MaintenanceRecord maintenanceRecord) {
