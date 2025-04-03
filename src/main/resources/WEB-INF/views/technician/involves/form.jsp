@@ -16,17 +16,22 @@
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
 <acme:form>
+	<%--
 	<acme:input-textbox code="technician.involves.form.label.aircraft" path="aircraftRegistrationNumber" readonly="true"/>
 	<acme:input-select code="technician.involves.form.label.task" path="task" choices="${tasks}" />
 	<acme:hidden-data path="maintenanceRecordId"/>
+	--%>
+	
+	<acme:input-select code="technician.involves.form.task" path="task" choices="${tasks}"/>
 	
 	<jstl:choose>
 		<jstl:when test="${_command == 'create'}">
-			<acme:submit code="technician.involves.form.button.link" action="/technician/involves/create" />
+			<acme:submit code="technician.involves.form.button.create" action="/technician/involves/create?maintenanceRecord=${maintenanceRecordId}" />
 		</jstl:when>
 		
-		<jstl:when test="${_command == 'delete'}">
-			<acme:submit code="technician.involves.form.button.unlink" action="/technician/involves/delete" />
+		<jstl:when test="${acme:anyOf(_command, 'show|update|delete')}">
+			<acme:submit code="technician.involves.form.button.update" action="/technician/involves/update" />
+			<acme:submit code="technician.involves.form.button.delete" action="/technician/involves/delete" />
 		</jstl:when>
 	</jstl:choose>
 </acme:form>

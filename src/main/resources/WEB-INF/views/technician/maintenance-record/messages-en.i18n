@@ -32,8 +32,9 @@ technician.maintenance-record.form.button.create = Create
 technician.maintenance-record.form.button.update = Update
 technician.maintenance-record.form.button.delete = Delete
 technician.maintenance-record.form.button.publish = Publish
-technician.maintenance-record.form.button.delete = Delete
+
+technician.maintenance-record.form.error.not-all-tasks-published = All taks must be published 
 
 
 
-
+technician.maintenance-record.form.show.involves = Associated tasks
