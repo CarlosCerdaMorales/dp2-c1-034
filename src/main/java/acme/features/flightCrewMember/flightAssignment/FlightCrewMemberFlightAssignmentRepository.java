@@ -67,4 +67,22 @@ public interface FlightCrewMemberFlightAssignmentRepository extends AbstractRepo
 
 	@Query("select l from FlightAssignment l where l.leg.id = :id and l.flightCrewDuty = 'CO_PILOT'")
 	List<FlightAssignment> findFlightAssignmentByLegAndCoPilotDuty(int id);
+
+	@Query("select a from FlightAssignment a where a.leg.scheduledDeparture>:now and  a.draftMode = false")
+	List<FlightAssignment> findUncompletedFlightAssignmentsThatArePublished(Date now);
+
+	@Query("select a from FlightAssignment a where a.leg.scheduledArrival<:now and  a.draftMode = false")
+	List<FlightAssignment> findCompletedFlightAssignmentsThatArePublished(Date now);
+
+	@Query("select a from FlightAssignment a where a.leg.scheduledArrival<:now and a.flightCrewMember.id=:id and a.draftMode = true")
+	List<FlightAssignment> findCompletedFlightAssignmentsByFlightCrewMember(Date now, int id);
+
+	@Query("select a from FlightAssignment a where a.leg.scheduledDeparture>:now and a.flightCrewMember.id=:id and a.draftMode = true")
+	List<FlightAssignment> findUncompletedFlightAssignmentsByFlightCrewMember(Date now, int id);
+
+	@Query("select l from Leg l where l.draftMode = true")
+	List<Leg> findAllPublishedLegs();
+
+	@Query("select a  from FlightAssignment a where a.flightCrewMember.id = :id and a.leg.scheduledDeparture< :arrival and a.leg.scheduledArrival> :departure ")
+	List<FlightAssignment> findFlightAssignmentsByFlightCrewMemberDuring(int id, Date departure, Date arrival);
 }

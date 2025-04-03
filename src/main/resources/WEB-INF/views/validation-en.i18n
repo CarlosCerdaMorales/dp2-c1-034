@@ -88,7 +88,7 @@ acme.validation.booking.invalid-isFrom-booking-null.message = You must choose a 
 acme.validation.booking.invalid-booking-isFrom-publish.message = You can't publish unless this booking is published
 acme.validation.booking.invalid-passenger-isFrom-publish.message = You can't publish unless this passenger is published
 
-### Leg ###
+### Flight Crew Member ###
 
 acme.validation.leg.NotNull.message = May not be null
 acme.validation.leg.duplicated-flight-number.message = Flight number already in use
@@ -108,14 +108,15 @@ acme.validation.leg-complete.message = This leg has already been completed
 acme.validation.member-available.message = This member is not available
 acme.validation.pilot.message = The leg selected already has a pilot
 acme.validation.co-pilot.message = The leg selected already has a co-pilot
+acme.validation.overlapping.message = This leg overlaps with other assignments.
 
 ## Flight ###
 
 acme.validation.flight.cant-be-publish.message= All legs must be publish
-
 ### Task and MaintenanceRecord
 acme.validation.money.min = The minimun cost is 0
 acme.validation.text.length.255 = The text must have less than 256 characters
 acme.validation.text.length.1-255 = The text must have at least one character and at most 255
 acme.validation.task.priority = The priority must be a whole number between 0 and 10
 acme.validation.task.duration = The duration must be between 0 and 1000
+

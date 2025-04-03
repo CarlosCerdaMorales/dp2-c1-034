@@ -60,23 +60,30 @@ public class FlightCrewMemberFlightAssignmentPublishService extends AbstractGuiS
 		boolean confirmation;
 		Leg leg;
 		FlightCrewMember member;
+		List<FlightAssignment> OverlappingFlightAssignments;
 		boolean isCompleted;
 		boolean alreadyHasPilot;
 		boolean alreadyHasCoPilot;
 		boolean availableMember;
-
+		boolean alreadyOccupied;
+		member = super.getRequest().getData("flightCrewMember", FlightCrewMember.class);
 		leg = super.getRequest().getData("leg", Leg.class);
+		confirmation = super.getRequest().getData("confirmation", boolean.class);
+
+		OverlappingFlightAssignments = this.repository.findFlightAssignmentsByFlightCrewMemberDuring(member.getId(), leg.getScheduledDeparture(), leg.getScheduledArrival());
 		FlightCrewDuty duty = super.getRequest().getData("flightCrewDuty", FlightCrewDuty.class);
 		List<FlightAssignment> flightsWithPilots = this.repository.findFlightAssignmentByLegAndPilotDuty(leg.getId());
 		List<FlightAssignment> flightsWithCoPilots = this.repository.findFlightAssignmentByLegAndCoPilotDuty(leg.getId());
-		member = super.getRequest().getData("flightCrewMember", FlightCrewMember.class);
+
 		isCompleted = leg.getScheduledDeparture().after(MomentHelper.getCurrentMoment());
-		confirmation = super.getRequest().getData("confirmation", boolean.class);
+		alreadyOccupied = OverlappingFlightAssignments.isEmpty();
 		availableMember = member.getAvailabilityStatus().equals(AvailabilityStatus.AVAILABLE);
 		alreadyHasPilot = flightsWithPilots.isEmpty() && duty.equals(FlightCrewDuty.PILOT);
 		alreadyHasCoPilot = flightsWithCoPilots.isEmpty() && duty.equals(FlightCrewDuty.CO_PILOT);
+
 		super.state(!alreadyHasPilot, "flightCrewDuty", "acme.validation.pilot.message");
 		super.state(!alreadyHasCoPilot, "flightCrewDuty", "acme.validation.co-pilot.message");
+		super.state(alreadyOccupied, "leg", "acme.validation.overlapping.message");
 		super.state(availableMember, "flightCrewMember", "acme.validation.member-available.message");
 		super.state(confirmation, "confirmation", "acme.validation.confirmation.message");
 		super.state(isCompleted, "leg", "acme.validation.leg-complete.message");

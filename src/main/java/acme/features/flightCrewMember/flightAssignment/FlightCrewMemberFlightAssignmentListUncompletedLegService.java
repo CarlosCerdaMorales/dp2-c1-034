@@ -27,9 +27,12 @@ public class FlightCrewMemberFlightAssignmentListUncompletedLegService extends A
 	@Override
 	public void load() {
 		List<FlightAssignment> flightAssignments;
+		List<FlightAssignment> myFlightAssignments;
+		FlightCrewMember flightCrewMember = (FlightCrewMember) super.getRequest().getPrincipal().getActiveRealm();
 
-		flightAssignments = this.repository.findUncompletedFlightAssignments(MomentHelper.getCurrentMoment());
-
+		flightAssignments = this.repository.findUncompletedFlightAssignmentsThatArePublished(MomentHelper.getCurrentMoment());
+		myFlightAssignments = this.repository.findUncompletedFlightAssignmentsByFlightCrewMember(MomentHelper.getCurrentMoment(), flightCrewMember.getId());
+		flightAssignments.addAll(myFlightAssignments);
 		super.getBuffer().addData(flightAssignments);
 	}
 

@@ -73,7 +73,7 @@ public class FlightCrewMemberFlightAssignmentUpdateService extends AbstractGuiSe
 		Dataset dataset;
 		SelectChoices choices;
 		SelectChoices dutiesChoices;
-		List<Leg> legs = this.repository.findAllLegs();
+		List<Leg> legs = this.repository.findAllPublishedLegs();
 		List<FlightCrewMember> flightCrewMembers = this.repository.findAllFlightCrewMembers();
 
 		SelectChoices legChoices;
