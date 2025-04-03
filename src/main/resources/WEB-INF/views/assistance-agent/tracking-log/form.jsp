@@ -16,7 +16,8 @@
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
 <acme:form>
-	<acme:input-textbox code="assistance-agent.tracking-log.form.last-update-moment" path="stepUndergoing"/>
+<acme:input-textbox code="assistance-agent.tracking-log.form.last-last-update-moment" path="lastUpdateMoment"/>
+	<acme:input-textbox code="assistance-agent.tracking-log.form.last-step-undergoing" path="stepUndergoing"/>
  	<acme:input-double code="assistance-agent.tracking-log.form.resolution-percentage" path="resolutionPercentage"/>
 	<acme:input-select code="assistance-agent.tracking-log.form.label.status" path="status" choices="${statuses}"/>
 	<acme:input-textbox code="assistance-agent.tracking-log.form.label.resolution" path="resolution"/>
