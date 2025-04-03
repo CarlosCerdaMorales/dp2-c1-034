@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import acme.client.components.validation.AbstractValidator;
 import acme.client.components.validation.Validator;
 import acme.entities.airline.Airline;
-import acme.features.entities.airline.AdministratorAirlineRepository;
+import acme.features.administrator.airline.AdministratorAirlineRepository;
 
 @Validator
 public class AirlineValidator extends AbstractValidator<ValidAirline, Airline> {
@@ -33,7 +33,7 @@ public class AirlineValidator extends AbstractValidator<ValidAirline, Airline> {
 
 		boolean result;
 
-		if (Airline == null)
+		if (Airline == null || Airline.getIata() == null)
 			super.state(context, false, "*", "javax.validation.constraints.NotNull.message");
 		else {
 			boolean uniqueAirline;

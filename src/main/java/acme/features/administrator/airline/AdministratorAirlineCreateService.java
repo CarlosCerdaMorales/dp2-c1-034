@@ -1,5 +1,5 @@
 
-package acme.features.entities.airline;
+package acme.features.administrator.airline;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -40,6 +40,14 @@ public class AdministratorAirlineCreateService extends AbstractGuiService<Admini
 
 	@Override
 	public void validate(final Airline airline) {
+
+		boolean uniqueIata;
+		Airline existingAirline;
+
+		existingAirline = this.repository.findAirlineByIATACode(airline.getIata());
+		uniqueIata = existingAirline == null || existingAirline.equals(airline);
+		super.state(uniqueIata, "iata", "acme.validation.airline.duplicated-iata.message");
+
 		boolean confirmation;
 
 		confirmation = super.getRequest().getData("confirmation", boolean.class);
@@ -54,12 +62,14 @@ public class AdministratorAirlineCreateService extends AbstractGuiService<Admini
 	@Override
 	public void unbind(final Airline airline) {
 		Dataset dataset;
-		SelectChoices choices;
+		SelectChoices typeChoices;
 
-		choices = SelectChoices.from(AirlineType.class, airline.getType());
+		typeChoices = SelectChoices.from(AirlineType.class, airline.getType());
 
-		dataset = super.unbindObject(airline, "name", "iata", "website", "type", "foundationMoment", "email", "phoneNumber");
-		dataset.put("statuses", choices);
+		dataset = super.unbindObject(airline, "name", "iata", "website", "foundationMoment", "email", "phoneNumber");
+
+		dataset.put("type", typeChoices.getSelected().getKey());
+		dataset.put("types", typeChoices);
 
 		super.getResponse().addData(dataset);
 	}
