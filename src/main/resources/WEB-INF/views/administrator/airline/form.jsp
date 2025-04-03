@@ -19,7 +19,7 @@
 	<acme:input-textbox code="administrator.airline.form.label.name" path="name"/>
 	<acme:input-textbox code="administrator.airline.form.label.iata" path="iata"/>
 	<acme:input-textbox code="administrator.airline.form.label.website" path="website"/>
-	<acme:input-select code="administrator.airline.form.label.type" path="type" choices="${statuses}"/>
+	<acme:input-select code="administrator.airline.form.label.type" path="type" choices="${types}"/>
 	<acme:input-textbox code="administrator.airline.form.label.foundationMoment" path="foundationMoment"/>
 	<acme:input-textbox code="administrator.airline.form.label.email" path="email"/>
 	<acme:input-textbox code="administrator.airline.form.label.phoneNumber" path="phoneNumber"/>
@@ -28,7 +28,6 @@
 		<jstl:when test="${acme:anyOf(_command, 'show|update|delete')}">
 		<acme:input-checkbox code="administrator.airline.form.label.confirmation" path="confirmation"/>
 			<acme:submit code="administrator.airline.form.button.update" action="/administrator/airline/update"/>
-			<acme:submit code="administrator.airline.form.button.delete" action="/administrator/airline/delete"/>
 		</jstl:when>
 		<jstl:when test="${_command == 'create'}">
 				<acme:input-checkbox code="administrator.airline.form.label.confirmation" path="confirmation"/>

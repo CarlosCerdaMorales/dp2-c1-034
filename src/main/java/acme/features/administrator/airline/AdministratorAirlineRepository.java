@@ -1,5 +1,5 @@
 
-package acme.features.entities.airline;
+package acme.features.administrator.airline;
 
 import java.util.List;
 
