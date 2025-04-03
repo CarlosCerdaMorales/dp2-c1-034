@@ -9,13 +9,12 @@ import acme.client.components.models.Dataset;
 import acme.client.components.views.SelectChoices;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
-import acme.entities.booking.Booking;
 import acme.entities.passenger.Passenger;
 import acme.realms.Customer;
 import acme.relationships.IsFrom;
 
 @GuiService
-public class CustomerIsFromUpdateService extends AbstractGuiService<Customer, IsFrom> {
+public class CustomerIsFromDeleteService extends AbstractGuiService<Customer, IsFrom> {
 
 	@Autowired
 	private CustomerIsFromRepository repository;
@@ -34,7 +33,6 @@ public class CustomerIsFromUpdateService extends AbstractGuiService<Customer, Is
 		status = isFrom != null && super.getRequest().getPrincipal().hasRealm(customer);
 
 		super.getResponse().setAuthorised(status);
-
 	}
 
 	@Override
@@ -50,54 +48,33 @@ public class CustomerIsFromUpdateService extends AbstractGuiService<Customer, Is
 
 	@Override
 	public void bind(final IsFrom isFrom) {
-		int bId;
-		int pId;
-		Booking booking;
-		Passenger passenger;
-
-		bId = super.getRequest().getData("booking", int.class);
-		pId = super.getRequest().getData("passenger", int.class);
-		booking = this.repository.findBookingFromId(bId);
-		passenger = this.repository.findPassengerFromId(pId);
-
-		super.bindObject(isFrom, "booking", "passenger");
-
-		isFrom.setBooking(booking);
-		isFrom.setPassenger(passenger);
-
+		;
 	}
 
 	@Override
 	public void validate(final IsFrom isFrom) {
-		//		boolean confirmation;
-		//
-		//		confirmation = super.getRequest().getData("confirmation", boolean.class);
-		//		super.state(confirmation, "confirmation", "acme.validation.confirmation.message");
+		;
 	}
 
 	@Override
 	public void perform(final IsFrom isFrom) {
-		this.repository.save(isFrom);
+		this.repository.delete(isFrom);
 	}
 
 	@Override
 	public void unbind(final IsFrom isFrom) {
-		Collection<Booking> bookings;
 		Collection<Passenger> passengers;
-		SelectChoices books;
 		SelectChoices passs;
 		Dataset dataset;
 		int customerId = super.getRequest().getPrincipal().getActiveRealm().getId();
 
-		bookings = this.repository.findBookingsFromCustomerId(customerId);
-		passengers = this.repository.findPassengersFromCustomerId(customerId);
-		books = SelectChoices.from(bookings, "locatorCode", isFrom.getBooking());
+		passengers = this.repository.restOfPassengers(isFrom.getBooking().getId(), customerId);
 		passs = SelectChoices.from(passengers, "passport", isFrom.getPassenger());
-		dataset = super.unbindObject(isFrom, "booking", "passenger", "draftMode");
-		dataset.put("booking", books.getSelected().getKey());
-		dataset.put("bookings", books);
+		dataset = super.unbindObject(isFrom);
 		dataset.put("passenger", passs.getSelected().getKey());
 		dataset.put("passengers", passs);
+		dataset.put("booking", isFrom.getBooking());
+		dataset.put("bookingId", isFrom.getBooking().getId());
 
 		super.getResponse().addData(dataset);
 
