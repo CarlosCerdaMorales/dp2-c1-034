@@ -1,5 +1,5 @@
 <%--
-- form.jsp
+- list.jsp
 -
 - Copyright (C) 2012-2025 Rafael Corchuelo.
 -
@@ -25,5 +25,5 @@
 </acme:list>
 
 <jstl:if test="${_command == 'list'}">
-	<acme:button code="administrator.aicraft.list.button.create" action="/administrator/aircraft/create"/>
+	<acme:button code="administrator.aircraft.list.button.create" action="/administrator/aircraft/create"/>
 </jstl:if>

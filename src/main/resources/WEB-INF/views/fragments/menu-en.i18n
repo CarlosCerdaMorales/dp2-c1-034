@@ -58,13 +58,19 @@ master.menu.customer = Customer
 master.menu.customer.dashboard = Dashboard
 master.menu.customer.booking = My bookings
 master.menu.customer.passenger = My passengers
-master.menu.customer.is-from = Booking management
 
 # master.menu.manager ##########################################################
 
 master.menu.manager = Manager
 master.menu.manager.flights = Flight list
 master.menu.manager.legs = Legs list
+
+# master.menu.customer ##########################################################
+
+master.menu.technician = Technician
+master.menu.technician.dashboard = Dashboard
+master.menu.technician.task = My tasks
+master.menu.technician.maintenance-record = My Maintenance records
 
 # master.menu.user-account ####################################################
 

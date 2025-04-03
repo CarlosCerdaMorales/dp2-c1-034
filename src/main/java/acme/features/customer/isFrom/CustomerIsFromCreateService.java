@@ -33,34 +33,29 @@ public class CustomerIsFromCreateService extends AbstractGuiService<Customer, Is
 	@Override
 	public void load() {
 		IsFrom isFrom;
+		Booking booking;
+		int bId;
+
+		bId = super.getRequest().getData("bookingId", int.class);
+		booking = this.repository.findBookingFromId(bId);
 
 		isFrom = new IsFrom();
+		isFrom.setBooking(booking);
 
 		super.getBuffer().addData(isFrom);
 	}
 
 	@Override
 	public void bind(final IsFrom isFrom) {
-		int bId;
 		int pId;
-		Booking booking;
+
 		Passenger passenger;
 
-		bId = super.getRequest().getData("booking", int.class);
 		pId = super.getRequest().getData("passenger", int.class);
-		booking = this.repository.findBookingFromId(bId);
+
 		passenger = this.repository.findPassengerFromId(pId);
 
-		if (booking == null)
-			super.state(false, "booking", "acme.validation.booking.invalid-booking-flight-null.message");
-		if (passenger == null)
-			super.state(false, "passenger", "acme.validation.booking.invalid-isFrom-passenger-null.message");
-		else {
-			super.bindObject(isFrom, "booking", "passenger");
-
-			isFrom.setBooking(booking);
-			isFrom.setPassenger(passenger);
-		}
+		isFrom.setPassenger(passenger);
 	}
 
 	@Override
@@ -79,22 +74,18 @@ public class CustomerIsFromCreateService extends AbstractGuiService<Customer, Is
 
 	@Override
 	public void unbind(final IsFrom isFrom) {
-		Collection<Booking> bookings;
 		Collection<Passenger> passengers;
-		SelectChoices books;
 		SelectChoices passs;
 		Dataset dataset;
 		int customerId = super.getRequest().getPrincipal().getActiveRealm().getId();
 
-		bookings = this.repository.findBookingsFromCustomerId(customerId);
-		passengers = this.repository.findPassengersFromCustomerId(customerId);
-		books = SelectChoices.from(bookings, "locatorCode", isFrom.getBooking());
+		passengers = this.repository.restOfPassengers(isFrom.getBooking().getId(), customerId);
 		passs = SelectChoices.from(passengers, "passport", isFrom.getPassenger());
-		dataset = super.unbindObject(isFrom, "booking", "passenger", "draftMode");
-		dataset.put("booking", books.getSelected().getKey());
-		dataset.put("bookings", books);
+		dataset = super.unbindObject(isFrom);
 		dataset.put("passenger", passs.getSelected().getKey());
 		dataset.put("passengers", passs);
+		dataset.put("booking", isFrom.getBooking());
+		dataset.put("bookingId", isFrom.getBooking().getId());
 
 		super.getResponse().addData(dataset);
 

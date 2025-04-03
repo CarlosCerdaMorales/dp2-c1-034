@@ -74,20 +74,24 @@ public class Claim extends AbstractEntity {
 
 
 	@Transient
-	public Boolean getAccepted() {
+	public ClaimStatus getAccepted() {
 		TrackingLogRepository repository = SpringHelper.getBean(TrackingLogRepository.class);
 		List<TrackingLog> listLastTr = repository.findLatestTrackingLogByClaim(this.getId());
-		TrackingLog lastTr = listLastTr.get(0);
-		Boolean res = false;
+		TrackingLog lastTr;
+		ClaimStatus res = ClaimStatus.PENDING;
 
-		if (lastTr == null)
-			res = null;
-		else if (lastTr.getStatus() == TrackingLogStatus.ACCEPTED)
-			res = true;
-		else if (lastTr.getStatus() == TrackingLogStatus.REJECTED)
-			res = false;
+		if (listLastTr.isEmpty())
+			lastTr = null;
 		else
-			res = null;
+			lastTr = listLastTr.get(0);
+
+		if (lastTr == null) {
+		} else if (lastTr.getStatus() == TrackingLogStatus.ACCEPTED)
+			res = ClaimStatus.ACCEPTED;
+		else if (lastTr.getStatus() == TrackingLogStatus.REJECTED)
+			res = ClaimStatus.REJECTED;
+		else {
+		}
 		return res;
 	}
 

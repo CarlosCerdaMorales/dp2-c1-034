@@ -1,31 +1,37 @@
 
-package acme.features.administrator.aircraft;
+package acme.features.technician.task;
 
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import acme.client.components.principals.Administrator;
 import acme.client.controllers.AbstractGuiController;
 import acme.client.controllers.GuiController;
-import acme.entities.aircraft.Aircraft;
+import acme.entities.task.Task;
+import acme.realms.Technician;
 
 @GuiController
-public class AircraftController extends AbstractGuiController<Administrator, Aircraft> {
+public class TechnicianTaskController extends AbstractGuiController<Technician, Task> {
 
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private AircraftListService		listService;
+	private TechnicianTaskListService		listService;
 
 	@Autowired
-	private AircraftShowService		showService;
+	private TechnicianTaskShowService		showService;
 
 	@Autowired
-	private AircraftCreateService	createService;
+	private TechnicianTaskCreateService		createService;
 
 	@Autowired
-	private AircraftUpdateService	updateService;
+	private TechnicianTaskUpdateService		updateService;
+
+	@Autowired
+	private TechnicianTaskDeleteService		deleteService;
+
+	@Autowired
+	private TechnicianTaskPublishService	publishService;
 
 	// Constructors -----------------------------------------------------------
 
@@ -36,6 +42,9 @@ public class AircraftController extends AbstractGuiController<Administrator, Air
 		super.addBasicCommand("show", this.showService);
 		super.addBasicCommand("create", this.createService);
 		super.addBasicCommand("update", this.updateService);
+		super.addBasicCommand("delete", this.deleteService);
+
+		super.addCustomCommand("publish", "update", this.publishService);
 	}
 
 }

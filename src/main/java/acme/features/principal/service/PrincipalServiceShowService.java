@@ -2,12 +2,11 @@
 package acme.features.principal.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 
 import acme.client.components.models.Dataset;
 import acme.client.components.principals.Authenticated;
 import acme.client.services.AbstractGuiService;
+import acme.components.ServiceRepository;
 import acme.entities.service.Service;
 
 public class PrincipalServiceShowService extends AbstractGuiService<Authenticated, Service> {
@@ -23,10 +22,10 @@ public class PrincipalServiceShowService extends AbstractGuiService<Authenticate
 
 	@Override
 	public void load() {
-		Page<Service> randomService;
+		Service randomService;
 
-		randomService = this.repository.findRandomService(PageRequest.of(0, 1));
-		super.getBuffer().addData(randomService.getContent().get(0));
+		randomService = this.repository.findRandomService();
+		super.getBuffer().addData(randomService);
 	}
 
 	@Override

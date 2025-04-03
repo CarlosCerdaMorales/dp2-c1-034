@@ -34,7 +34,7 @@ public class LegValidator extends AbstractValidator<ValidLeg, Leg> {
 		assert context != null;
 
 		boolean result;
-		if (leg == null || leg.getAircraft() == null)
+		if (leg == null || leg.getAircraft() == null || leg.getScheduledArrival() == null || leg.getScheduledDeparture() == null)
 			super.state(context, false, "Aircraft", "acme.validation.leg.NotNull.message");
 		else {
 			{

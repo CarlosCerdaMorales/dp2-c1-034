@@ -22,11 +22,13 @@ assistance-agent.form.label.description = Description
 assistance-agent.form.label.passenger-email = Passenger Email
 assistance-agent.form.label.claim-type = Claim Type
 assistance-agent.form.label.draft-mode = Draft Mode
+assistance-agent.form.label.status = Status
 assistance-agent.form.label.leg = Segment
 assistance-agent.claim.form.button.create = Create
 assistance-agent.claim.form.button.delete = Delete
 assistance-agent.claim.form.button.update = Update
 assistance-agent.claim.form.button.publish = Publish
 assistance-agent.claim.form.label.confirmation = Confirm
+assistance-agent.claim.form.button.tracking-log = Show tracking logs
 
 
