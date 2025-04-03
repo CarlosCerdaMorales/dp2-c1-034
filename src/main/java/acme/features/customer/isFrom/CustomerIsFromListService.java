@@ -30,9 +30,9 @@ public class CustomerIsFromListService extends AbstractGuiService<Customer, IsFr
 	@Override
 	public void load() {
 		Collection<IsFrom> isFrom;
-		int customerId = super.getRequest().getPrincipal().getActiveRealm().getId();
+		int bookingId = super.getRequest().getData("bookingId", int.class);
 
-		isFrom = this.repository.findIsFromByCustomerId(customerId);
+		isFrom = this.repository.findIsFromByBookingId(bookingId);
 		super.getBuffer().addData(isFrom);
 
 	}

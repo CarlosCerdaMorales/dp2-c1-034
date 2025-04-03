@@ -79,7 +79,7 @@ public class CustomerIsFromCreateService extends AbstractGuiService<Customer, Is
 		Dataset dataset;
 		int customerId = super.getRequest().getPrincipal().getActiveRealm().getId();
 
-		passengers = this.repository.findPassengersFromCustomerId(customerId);
+		passengers = this.repository.restOfPassengers(isFrom.getBooking().getId(), customerId);
 		passs = SelectChoices.from(passengers, "passport", isFrom.getPassenger());
 		dataset = super.unbindObject(isFrom);
 		dataset.put("passenger", passs.getSelected().getKey());

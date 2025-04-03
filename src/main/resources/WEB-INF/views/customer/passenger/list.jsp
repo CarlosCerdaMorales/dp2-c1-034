@@ -14,4 +14,5 @@
 
 <jstl:if test="${draftMode == true}">
 	<acme:button code="customer.is-from.list.button.create" action="/customer/is-from/create?bookingId=${bookingId}"/>
+	<acme:button code="customer.is-from.list.button.delete" action="/customer/is-from/list?bookingId=${bookingId}"/>
 </jstl:if>
