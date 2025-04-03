@@ -71,6 +71,7 @@ public class AssistanceAgentClaimShowService extends AbstractGuiService<Assistan
 		dataset.put("legs", selectedLeg);
 		dataset.put("leg", selectedLeg.getSelected().getKey());
 		dataset.put("claimTypes", choicesType);
+		dataset.put("status", claim.getAccepted());
 		super.getResponse().addData(dataset);
 
 	}

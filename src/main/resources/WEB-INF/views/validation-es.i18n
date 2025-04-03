@@ -59,6 +59,7 @@ acme.validation.booking.invalid-passenger-publish.message = La reserva no se pub
 acme.validation.booking.invalid-booking-publish.message = No se pueden añadir pasajeros a una reserva ya publicada
 acme.validation.booking.invalid-booking-flight-null.message = Debe especificar un vuelo
 acme.validation.booking.invalid-passenger-number-publish.message = No podrá publicar una reserva sin pasajeros
+acme.validation.booking.invalid-passenger-number-publish.message = No podrá publicar una reserva sin pasajeros
 
 ### Airline ###
 
@@ -89,6 +90,13 @@ acme.validation.booking.invalid-booking-isFrom-publish.message = No podrá publi
 acme.validation.booking.invalid-passenger-isFrom-publish.message = No podrá publicar hasta que este pasajero esté publicado
 
 ### Leg ###
+
+acme.validation.leg.NotNull.message = No puede ser nulo
+acme.validation.leg.duplicated-flight-number.message = Número de vuelo en uso
+acme.validation.leg.invalid-date.message = Fecha invalida
+acme.validation.leg.flight_number.blank.message = Número de vuelo incompleto
+acme.validation.leg.flight_number.mismatch.message = Código iata incorrecto
+acme.validation.leg.invalid-leg-not-null.message = Datos incorrectos
 
 acme.validation.leg.NotNull.message = No puede ser nulo
 acme.validation.leg.duplicated-flight-number.message = Número de vuelo en uso
