@@ -48,6 +48,7 @@ acme.validation.nextInspection.invalid-future-date = Fecha de proxima inspeccion
 ### Airport ###
 
 acme.validation.airport.duplicated-iata.message = Ya existe un aeropuerto con este código IATA.
+acme.validation.validiatacode = Este código IATA no es válido
 
 ### Booking ###
 
@@ -115,13 +116,19 @@ acme.validation.overlapping.message = Ya se está realizando una asignación en 
 
 acme.validation.flight.cant-be-publish.message = Todas las escalas deben estar publicadas
 
-
 ### Task and MaintenanceRecord
+
 acme.validation.money.min = El precio estimado ha de ser como mínimo 0
 acme.validation.text.length.255 = El texto tiene que tener un máximo de 255 caracteres
 acme.validation.text.length.1-255 = El texto tiene que tener un mínimo de 1 carácter y un máximo de 255 caracteres
 acme.validation.task.priority = La prioridad ha de ser un entero entre 0 y 10
 acme.validation.task.duration = La duración ha de estar entre 0 y 1000
 
+### Aircraft
+acme.validation.text.length.1-50 = El texto debe tener entre 1 y 50 caracteres
+acme.validation.text.length.1-255 = El texto debe estar entre 1 y 255
+acme.validation.number.range.1-255 = El número debe estar entre 1 y 255
+acme.validation.number.range.2000-5000 = El número debe estar entre 2000 y 5000
+acme.validation.text.length.255 = El texto debe tener como máximo 255 caracteres
 
  

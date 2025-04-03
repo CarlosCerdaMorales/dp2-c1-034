@@ -20,5 +20,3 @@ flight-crew-member.flight-assignment.form.button.create = Create
 flight-crew-member.flight-assignment.form.button.update = Update
 flight-crew-member.flight-assignment.form.button.delete = Delete
 flight-crew-member.flight-assignment.form.button.publish = Publish
-
-acme.validation.range = Must be between 0 and 10

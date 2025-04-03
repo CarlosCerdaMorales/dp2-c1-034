@@ -48,6 +48,7 @@ acme.validation.nextInspection.invalid-future-date = Invalid next inspection dat
 ### Airport ###
 
 acme.validation.airport.duplicated-iata.message = There is an existing airport with this IATA Code.
+acme.validation.validiatacode = This is not a valid IATA code
 
 ### Booking ###
 
@@ -113,10 +114,18 @@ acme.validation.overlapping.message = This leg overlaps with other assignments.
 ## Flight ###
 
 acme.validation.flight.cant-be-publish.message= All legs must be publish
+
 ### Task and MaintenanceRecord
+
 acme.validation.money.min = The minimun cost is 0
 acme.validation.text.length.255 = The text must have less than 256 characters
 acme.validation.text.length.1-255 = The text must have at least one character and at most 255
 acme.validation.task.priority = The priority must be a whole number between 0 and 10
 acme.validation.task.duration = The duration must be between 0 and 1000
 
+### Aircraft
+acme.validation.text.length.1-50 = The text must have at least one character and at most 50
+acme.validation.text.length.1-255 = The text must have at least one character and at most 50
+acme.validation.number.range.1-255 = The number must be between 1 and 255
+acme.validation.number.range.2000-5000 = The number must be between 2000 and 5000
+acme.validation.text.length.255 = The text must have at most 255 characteres
