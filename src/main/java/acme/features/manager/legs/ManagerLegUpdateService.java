@@ -84,7 +84,6 @@ public class ManagerLegUpdateService extends AbstractGuiService<Manager, Leg> {
 	@Override
 	public void unbind(final Leg leg) {
 		SelectChoices statusChoices;
-		SelectChoices flightsChoices;
 		SelectChoices aircraftChoices;
 		SelectChoices departureChoices;
 		SelectChoices arrivalChoices;

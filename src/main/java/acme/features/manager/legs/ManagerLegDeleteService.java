@@ -15,17 +15,13 @@ import acme.entities.claim.Claim;
 import acme.entities.flightassignment.FlightAssignment;
 import acme.entities.leg.FlightStatus;
 import acme.entities.leg.Leg;
-import acme.features.manager.flights.ManagerFlightRepository;
 import acme.realms.Manager;
 
 @GuiService
 public class ManagerLegDeleteService extends AbstractGuiService<Manager, Leg> {
 
 	@Autowired
-	private ManagerLegRepository	repository;
-
-	@Autowired
-	private ManagerFlightRepository	flightRepository;
+	private ManagerLegRepository repository;
 
 
 	@Override
