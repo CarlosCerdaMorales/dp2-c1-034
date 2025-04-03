@@ -12,7 +12,6 @@ import acme.client.services.GuiService;
 import acme.entities.aircraft.Aircraft;
 import acme.entities.airport.Airport;
 import acme.entities.claim.Claim;
-import acme.entities.flight.Flight;
 import acme.entities.flightassignment.FlightAssignment;
 import acme.entities.leg.FlightStatus;
 import acme.entities.leg.Leg;
@@ -57,17 +56,13 @@ public class ManagerLegDeleteService extends AbstractGuiService<Manager, Leg> {
 
 	@Override
 	public void bind(final Leg leg) {
-		int flightId;
 		int aircraftId;
 		int airportArrivalId;
 		int airportDepartureId;
-		Flight flight;
 		Aircraft aircraft;
 		Airport departure;
 		Airport arrival;
 
-		flightId = super.getRequest().getData("flight", int.class);
-		flight = this.repository.findFlightByFlightId(flightId);
 		aircraftId = super.getRequest().getData("aircraft", int.class);
 		aircraft = this.repository.findAircraftByAircraftId(aircraftId);
 		airportArrivalId = super.getRequest().getData("airportArrival", int.class);
@@ -76,7 +71,6 @@ public class ManagerLegDeleteService extends AbstractGuiService<Manager, Leg> {
 		arrival = this.repository.findAirportByAirportId(airportDepartureId);
 
 		super.bindObject(leg, "flightNumber", "scheduledDeparture", "scheduledArrival", "flightStatus");
-		leg.setFlight(flight);
 		leg.setAircraft(aircraft);
 		leg.setAirportDeparture(departure);
 		leg.setAirportArrival(arrival);
@@ -106,20 +100,16 @@ public class ManagerLegDeleteService extends AbstractGuiService<Manager, Leg> {
 	@Override
 	public void unbind(final Leg leg) {
 		SelectChoices statusChoices;
-		SelectChoices flightsChoices;
 		SelectChoices aircraftChoices;
 		SelectChoices departureChoices;
 		SelectChoices arrivalChoices;
 		Dataset dataset;
-		List<Flight> flights;
 		List<Aircraft> aircrafts;
 		List<Airport> airports;
 		int managerId;
 
 		statusChoices = SelectChoices.from(FlightStatus.class, leg.getFlightStatus());
 		managerId = super.getRequest().getPrincipal().getActiveRealm().getId();
-		flights = this.flightRepository.findFlightsByManagerId(managerId);
-		flightsChoices = SelectChoices.from(flights, "flightTag", leg.getFlight());
 
 		aircrafts = this.repository.findAllAircraftsByManagerId(managerId);
 		aircraftChoices = SelectChoices.from(aircrafts, "registrationNumber", leg.getAircraft());
@@ -130,8 +120,6 @@ public class ManagerLegDeleteService extends AbstractGuiService<Manager, Leg> {
 		dataset = super.unbindObject(leg, "flightNumber", "scheduledDeparture", "scheduledArrival", "flightStatus", "draftMode");
 		dataset.put("duration", leg.durationInHours());
 		dataset.put("statuses", statusChoices);
-		dataset.put("flight", flightsChoices.getSelected().getKey());
-		dataset.put("flights", flightsChoices);
 		dataset.put("aircraft", aircraftChoices.getSelected().getKey());
 		dataset.put("aircrafts", aircraftChoices);
 		dataset.put("airportDeparture", departureChoices.getSelected().getKey());

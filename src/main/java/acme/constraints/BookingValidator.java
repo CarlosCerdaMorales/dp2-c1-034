@@ -34,8 +34,8 @@ public class BookingValidator extends AbstractValidator<ValidBooking, Booking> {
 
 		boolean result;
 
-		if (booking == null || booking.getFlight() == null)
-			super.state(context, false, "flight", "javax.validation.constraints.NotNull.message");
+		if (booking == null)
+			super.state(context, false, "*", "javax.validation.constraints.NotNull.message");
 		else {
 			{
 				boolean uniqueBooking;

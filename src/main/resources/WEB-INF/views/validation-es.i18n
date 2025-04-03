@@ -58,6 +58,7 @@ acme.validation.booking.invalid-nibble-publish.message = La reserva no se public
 acme.validation.booking.invalid-passenger-publish.message = La reserva no se publicará sin que todos sus pasajeros estén publicados
 acme.validation.booking.invalid-booking-publish.message = No se pueden añadir pasajeros a una reserva ya publicada
 acme.validation.booking.invalid-booking-flight-null.message = Debe especificar un vuelo
+acme.validation.booking.invalid-passenger-number-publish.message = No podrá publicar una reserva sin pasajeros
 
 ### Airline ###
 
@@ -89,8 +90,19 @@ acme.validation.booking.invalid-passenger-isFrom-publish.message = No podrá pub
 
 ### Flight Crew member ###
 
+acme.validation.leg.NotNull.message = No puede ser nulo
+acme.validation.leg.duplicated-flight-number.message = Número de vuelo en uso
+acme.validation.leg.invalid-date.message = Fecha invalida
+acme.validation.leg.flight_number.blank.message = Número de vuelo incompleto
+acme.validation.leg.flight_number.mismatch.message = Código iata incorrecto
+acme.validation.leg.invalid-leg-not-null.message = Datos incorrectos
+
 acme.validation.leg-complete.message = Esta escala ya ha sido completada
 acme.validation.member-available.message = Este miembro no esta disponible
 acme.validation.pilot.message = La escala seleccionada ya tiene un piloto
 acme.validation.co-pilot.message = La escala seleccionada ya tiene un co-piloto
 acme.validation.overlapping.message = Ya se está realizando una asignación en las fechas de esta escala.
+
+### Flight ###
+
+acme.validation.flight.cant-be-publish.message = Todas las escalas deben estar publicadas

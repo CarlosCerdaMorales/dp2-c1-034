@@ -57,7 +57,6 @@ master.menu.customer = Cliente
 master.menu.customer.dashboard = Panel del cliente
 master.menu.customer.booking = Mis reservas
 master.menu.customer.passenger = Mis pasajeros
-master.menu.customer.is-from = Gestionar reservas
 
 # master.menu.manager ##########################################################
 
@@ -66,6 +65,13 @@ master.menu.manager.flights = Listado de vuelos
 master.menu.manager.legs = Listado de escalas
 
 
+
+# master.menu.customer ##########################################################
+
+master.menu.technician = Técnico
+master.menu.technician.dashboard = Dashboard
+master.menu.technician.task = Mis tareas
+master.menu.technician.maintenance-record = Mis informes de mantenimiento
 
 # master.menu.user-account ####################################################
 

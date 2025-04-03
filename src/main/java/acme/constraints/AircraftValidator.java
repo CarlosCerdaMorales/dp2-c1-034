@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import acme.client.components.validation.AbstractValidator;
 import acme.client.components.validation.Validator;
 import acme.entities.aircraft.Aircraft;
-import acme.features.administrator.aircraft.AircraftRepository;
+import acme.features.administrator.aircraft.AdministratorAircraftRepository;
 
 @Validator
 public class AircraftValidator extends AbstractValidator<ValidAircraft, Aircraft> {
@@ -16,7 +16,7 @@ public class AircraftValidator extends AbstractValidator<ValidAircraft, Aircraft
 	// Internal state ---------------------------------------------------------
 
 	@Autowired
-	private AircraftRepository repository;
+	private AdministratorAircraftRepository repository;
 
 	// ConstraintValidator interface ------------------------------------------
 

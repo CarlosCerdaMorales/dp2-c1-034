@@ -4,7 +4,6 @@ package acme.entities.flight;
 import java.beans.Transient;
 import java.util.Date;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -100,7 +99,7 @@ public class Flight extends AbstractEntity {
 	@Transient
 	public Airport getDeparture() {
 		FlightRepository repository = SpringHelper.getBean(FlightRepository.class);
-		List<Leg> listOfLegs = repository.legsDuringFlight(this.getId());
+		List<Leg> listOfLegs = repository.legsDuringFlightOrderBySchedule(this.getId());
 		Leg firstLeg = listOfLegs.stream().findFirst().orElse(null);
 		return firstLeg != null ? firstLeg.getAirportDeparture() : null;
 	}
@@ -108,24 +107,27 @@ public class Flight extends AbstractEntity {
 	@Transient
 	public Airport getArrival() {
 		FlightRepository repository = SpringHelper.getBean(FlightRepository.class);
-		List<Leg> listOfLegs = repository.legsDuringFlight(this.getId());
+		List<Leg> listOfLegs = repository.legsDuringFlightOrderBySchedule(this.getId());
 		Airport destination = null;
 		if (!listOfLegs.isEmpty())
 			destination = listOfLegs.get(listOfLegs.size() - 1).getAirportArrival();
 		return destination;
 	}
 
-	@Transient
-	public boolean isDraftMode() {
-		FlightRepository repository = SpringHelper.getBean(FlightRepository.class);
-		List<Leg> legs = repository.legsDuringFlight(this.getId());
-
-		if (legs.isEmpty())
-			return true;
-
-		List<Leg> draftModeLegs = legs.stream().filter(l -> l.getDraftMode().equals(true)).collect(Collectors.toList());
-
-		return !(draftModeLegs.size() == 0);
-	}
+	/**
+	 * @Transient
+	 *            public boolean isDraftMode() {
+	 *            FlightRepository repository = SpringHelper.getBean(FlightRepository.class);
+	 *            List<Leg> legs = repository.legsDuringFlight(this.getId());
+	 * 
+	 *            if (legs.isEmpty())
+	 *            return true;
+	 * 
+	 *            if (!legs.stream().allMatch(Leg::isDraftMode))
+	 *            return
+	 * 
+	 *            return !legs.stream().allMatch(Leg::isDraftMode);
+	 *            }
+	 **/
 
 }

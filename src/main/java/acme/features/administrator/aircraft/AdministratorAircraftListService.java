@@ -12,11 +12,11 @@ import acme.client.services.GuiService;
 import acme.entities.aircraft.Aircraft;
 
 @GuiService
-public class AircraftListService extends AbstractGuiService<Administrator, Aircraft> {
+public class AdministratorAircraftListService extends AbstractGuiService<Administrator, Aircraft> {
 
 	// Internal state ---------------------------------------------------------
 	@Autowired
-	private AircraftRepository repository;
+	private AdministratorAircraftRepository repository;
 
 
 	// AbstractGuiService interface -------------------------------------------
