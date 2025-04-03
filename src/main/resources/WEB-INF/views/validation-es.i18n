@@ -59,6 +59,7 @@ acme.validation.booking.invalid-passenger-publish.message = La reserva no se pub
 acme.validation.booking.invalid-booking-publish.message = No se pueden añadir pasajeros a una reserva ya publicada
 acme.validation.booking.invalid-booking-flight-null.message = Debe especificar un vuelo
 acme.validation.booking.invalid-passenger-number-publish.message = No podrá publicar una reserva sin pasajeros
+acme.validation.booking.invalid-passenger-number-publish.message = No podrá publicar una reserva sin pasajeros
 
 ### Airline ###
 
@@ -97,6 +98,13 @@ acme.validation.leg.flight_number.blank.message = Número de vuelo incompleto
 acme.validation.leg.flight_number.mismatch.message = Código iata incorrecto
 acme.validation.leg.invalid-leg-not-null.message = Datos incorrectos
 
+acme.validation.leg.NotNull.message = No puede ser nulo
+acme.validation.leg.duplicated-flight-number.message = Número de vuelo en uso
+acme.validation.leg.invalid-date.message = Fecha invalida
+acme.validation.leg.flight_number.blank.message = Número de vuelo incompleto
+acme.validation.leg.flight_number.mismatch.message = Código iata incorrecto
+acme.validation.leg.invalid-leg-not-null.message = Datos incorrectos
+
 acme.validation.leg-complete.message = Esta escala ya ha sido completada
 acme.validation.member-available.message = Este miembro no esta disponible
 acme.validation.pilot.message = La escala seleccionada ya tiene un piloto
@@ -106,3 +114,14 @@ acme.validation.overlapping.message = Ya se está realizando una asignación en 
 ### Flight ###
 
 acme.validation.flight.cant-be-publish.message = Todas las escalas deben estar publicadas
+
+
+### Task and MaintenanceRecord
+acme.validation.money.min = El precio estimado ha de ser como mínimo 0
+acme.validation.text.length.255 = El texto tiene que tener un máximo de 255 caracteres
+acme.validation.text.length.1-255 = El texto tiene que tener un mínimo de 1 carácter y un máximo de 255 caracteres
+acme.validation.task.priority = La prioridad ha de ser un entero entre 0 y 10
+acme.validation.task.duration = La duración ha de estar entre 0 y 1000
+
+
+ 

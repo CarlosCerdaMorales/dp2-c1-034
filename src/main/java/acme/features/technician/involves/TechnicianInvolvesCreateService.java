@@ -32,27 +32,29 @@ public class TechnicianInvolvesCreateService extends AbstractGuiService<Technici
 
 	@Override
 	public void load() {
-		Involves Involves;
+		Involves involves;
 		Integer maintenanceRecordId;
 		MaintenanceRecord maintenanceRecord;
 
 		maintenanceRecordId = super.getRequest().getData("maintenanceRecordId", int.class);
 		maintenanceRecord = this.repository.findMaintenanceRecordById(maintenanceRecordId);
 
-		Involves = new Involves();
-		Involves.setMaintenanceRecord(maintenanceRecord);
-		super.getBuffer().addData(Involves);
+		involves = new Involves();
+		involves.setMaintenanceRecord(maintenanceRecord);
+		super.getBuffer().addData(involves);
 
 	}
 
 	@Override
 	public void bind(final Involves involves) {
 
-		int maintenanceRecordId = super.getRequest().getData("maintenanceRecordId", int.class);
-		MaintenanceRecord maintenanceRecord = this.repository.findMaintenanceRecordById(maintenanceRecordId);
+		int taskId;
+		Task task;
 
-		involves.setMaintenanceRecord(maintenanceRecord);
-		super.bindObject(involves, "task");
+		taskId = super.getRequest().getData("task", int.class);
+		task = this.repository.findTaskById(taskId);
+
+		involves.setTask(task);
 
 	}
 
@@ -71,27 +73,25 @@ public class TechnicianInvolvesCreateService extends AbstractGuiService<Technici
 
 	@Override
 	public void unbind(final Involves involves) {
-		Technician technician;
 		Collection<Task> tasks;
-
+		Dataset dataset;
+		SelectChoices choices;
 		int maintenanceRecordId;
 		MaintenanceRecord maintenanceRecord;
 
-		SelectChoices choices;
-		Dataset dataset;
+		Technician technician = (Technician) super.getRequest().getPrincipal().getActiveRealm();
 
-		technician = (Technician) super.getRequest().getPrincipal().getActiveRealm();
 		maintenanceRecordId = super.getRequest().getData("maintenanceRecordId", int.class);
 		maintenanceRecord = this.repository.findMaintenanceRecordById(maintenanceRecordId);
 
 		tasks = this.repository.findValidTasksToLink(maintenanceRecord, technician);
 		choices = SelectChoices.from(tasks, "description", involves.getTask());
 
-		dataset = super.unbindObject(involves, "maintenanceRecord");
+		dataset = super.unbindObject(involves);
 		dataset.put("maintenanceRecordId", involves.getMaintenanceRecord().getId());
+		dataset.put("maintenanceRecord", involves.getMaintenanceRecord());
 		dataset.put("task", choices.getSelected().getKey());
 		dataset.put("tasks", choices);
-		dataset.put("aircraftRegistrationNumber", involves.getMaintenanceRecord().getAircraft().getRegistrationNumber());
 
 		super.getResponse().addData(dataset);
 

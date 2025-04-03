@@ -49,7 +49,6 @@ public class ManagerLegCreateService extends AbstractGuiService<Manager, Leg> {
 
 	@Override
 	public void bind(final Leg leg) {
-		int flightId;
 		int aircraftId;
 		int departureId;
 		int arrivalId;
@@ -88,12 +87,10 @@ public class ManagerLegCreateService extends AbstractGuiService<Manager, Leg> {
 	@Override
 	public void unbind(final Leg leg) {
 		SelectChoices statusChoices;
-		SelectChoices flightsChoices;
 		SelectChoices aircraftChoices;
 		SelectChoices departureChoices;
 		SelectChoices arrivalChoices;
 		Dataset dataset;
-		List<Flight> flights;
 		List<Aircraft> aircrafts;
 		List<Airport> airports;
 		int managerId;
