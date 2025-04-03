@@ -22,6 +22,7 @@ assistance-agent.form.label.description = Descripción
 assistance-agent.form.label.passenger-email = Email del pasajero
 assistance-agent.form.label.claim-type = Tipo de reclamacion
 assistance-agent.form.label.draft-mode = Modo borrador
+assistance-agent.form.label.status = Estado
 assistance-agent.form.label.leg = Tramo 
 assistance-agent.claim.form.button.create = Crear
 assistance-agent.claim.form.button.delete = Eliminar

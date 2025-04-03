@@ -7,6 +7,10 @@
 	<acme:input-textarea code="assistance-agent.form.label.description" path="description"/>
 	<acme:input-textbox code="assistance-agent.form.label.passenger-email" path="passengerEmail"/>
 	<acme:input-select code="assistance-agent.form.label.claim-type" path="claimType" choices="${claimTypes}"/>
+	<jstl:if  test="${acme:anyOf(_command, 'show|update|publish') }">
+		<acme:input-textarea code="assistance-agent.form.label.status" path="status" readonly="true"/>
+	</jstl:if>
+	
 	
 	<acme:input-select code="assistance-agent.form.label.leg" path="leg" choices="${legs}"/>
 	
