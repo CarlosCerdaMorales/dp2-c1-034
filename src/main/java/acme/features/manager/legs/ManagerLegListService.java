@@ -1,6 +1,7 @@
 
 package acme.features.manager.legs;
 
+import java.util.Collection;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import acme.client.components.models.Dataset;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
+import acme.entities.flight.Flight;
 import acme.entities.leg.Leg;
 import acme.realms.Manager;
 
@@ -25,14 +27,12 @@ public class ManagerLegListService extends AbstractGuiService<Manager, Leg> {
 
 	@Override
 	public void load() {
-		List<Leg> managerLegs;
-		int managerId;
+		int flightId;
 
-		managerId = super.getRequest().getPrincipal().getActiveRealm().getId();
+		flightId = super.getRequest().getData("flightId", int.class);
+		List<Leg> legs = this.repository.findAllLegsByFlightId(flightId);
 
-		managerLegs = this.repository.findManagerLegsByManagerIOrderedByMoment(managerId);
-
-		super.getBuffer().addData(managerLegs);
+		super.getBuffer().addData(legs);
 	}
 
 	@Override
@@ -42,8 +42,18 @@ public class ManagerLegListService extends AbstractGuiService<Manager, Leg> {
 		dataset = super.unbindObject(leg, "flightNumber", "scheduledDeparture");
 		dataset.put("airportDeparture", leg.getAirportDeparture().getAirportName());
 		dataset.put("airportArrival", leg.getAirportArrival().getAirportName());
+		dataset.put("flight", leg.getFlight());
 
 		super.getResponse().addData(dataset);
+	}
+
+	@Override
+	public void unbind(final Collection<Leg> legs) {
+		Integer flightId = super.getRequest().getData("flightId", int.class);
+		super.getResponse().addGlobal("flightId", flightId);
+
+		Flight flight = this.repository.findFlightByFlightId(flightId);
+		super.getResponse().addGlobal("flightDraftMode", flight.getDraftMode());
 	}
 
 }

@@ -64,4 +64,7 @@ public interface ManagerLegRepository extends AbstractRepository {
 	@Query("select a from Aircraft a where a.airline.id = (select m.airline.id from Manager m where m.id = :id)")
 	public List<Aircraft> findAllAircraftsByManager(int id);
 
+	@Query("select l from Leg l where l.flight.id = :id order by l.scheduledDeparture")
+	public List<Leg> findAllLegsByFlightId(int id);
+
 }

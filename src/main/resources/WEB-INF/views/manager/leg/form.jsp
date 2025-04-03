@@ -9,7 +9,6 @@
 	<acme:input-moment code="manager.leg.form.label.scheduledArrival" path="scheduledArrival"/>
 	<acme:input-double code="manager.leg.form.label.duration" path="duration" readonly="true"/>
 	<acme:input-select code="manager.leg.form.label.flightStatus" path="flightStatus" choices="${statuses}"/>
-	<acme:input-select code="manager.leg.form.label.flight" path="flight" choices="${flights}"/>
 	<acme:input-select code="manager.leg.form.label.aircraft" path="aircraft" choices="${aircrafts}"/>
 	<acme:input-select code="manager.leg.form.label.airportDeparture" path="airportDeparture" choices="${airportDepartures}"/>
 	<acme:input-select code="manager.leg.form.label.airportArrival" path="airportArrival" choices="${airportArrivals}"/>
@@ -21,7 +20,7 @@
 			<acme:submit code="manager.leg.form.button.publish" action="/manager/leg/publish"/>
 		</jstl:when>
 		<jstl:when test="${_command == 'create'}">
-			<acme:submit code="manager.leg.form.button.create" action="/manager/leg/create"/>
+			<acme:submit code="manager.leg.form.button.create" action="/manager/leg/create?flightId=${flightId}"/>
 		</jstl:when>	
 	</jstl:choose>
 </acme:form>
