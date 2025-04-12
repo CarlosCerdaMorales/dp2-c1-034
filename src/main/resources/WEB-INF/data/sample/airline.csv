@@ -27,11 +27,11 @@ airline-20,acme@lorem-ipsum.org,2012/07/02 0:00,XTX,<script>alert(‘Hacked!’)
 airline-53,acme@lorem-ipsum.org,2012/07/02 0:00,XRX,' or 'A' = 'A,123456,LOW_COST,http://lorem.com/ipsum
 # website variations
 airline-21,acme@lorem-ipsum.org,2012/07/02 0:00,SJX, consectetur adipiscin,123456,LOW_COST,http://lorem.com/ipsum
-airline-22,acme@lorem-ipsum.org,2012/07/02 0:00,SLX,Lorem ipsum dolor sit amet,123456,LOW_COST,ftp://a
-airline-23,a@b.e,2012/07/02 0:00,SDX,Lorem ipsum dolor sit amet,123456,LOW_COST,ftp://a.b
+airline-22,acme@lorem-ipsum.org,2012/07/02 0:00,SLX,Lorem ipsum dolor sit amet,123456,LOW_COST,https://a.b
+airline-23,a@b.e,2012/07/02 0:00,SDX,Lorem ipsum dolor sit amet,123456,LOW_COST,https://a.b
 airline-24,a@b.es,2012/07/02 0:00,UIX,Lorem ipsum dolor sit amet,123456,LOW_COST,"http://www.lorem-ipsum.org/dolor/sit/amet,/consectetur/adipiscing/elit,/sed/do/eiusmod/tempor/incididunt/ut/labore/et/dolore/magna/aliqua/Ut/enim/ad/minim/veniam/quis/nostrud/exercitation/ullamco/laboris/nisi/ut/aliquip/ex/ea/commodo/consequat/duis/aute/"
 airline-25,lorem-ipsum@dolor.sit.amet.consectetur.adipiscing.elit.sed.do.eiusmod.tempor.incididunt.ut.labore.et.dolore.magna.aliqua.Ut.enim.ad.minim.veniam.quis.nostrud.exercitation.ullamco.laboris.nisi.ut.aliquip.ex.ea.commodo.consequat.duis.aute.irure.doloris.edu,2012/07/02 0:00,BEX,Lorem ipsum dolor sit amet,123456,LOW_COST,https://www.lorem-ipsum.org
-airline-26,lorem-ipsum@dolor.sit.amet.consectetur.adipiscing.elit.sed.do.eiusmod.tempor.incididunt.ut.labore.et.dolore.magna.aliqua.Ut.enim.ad.minim.veniam.quis.nostrud.exercitation.ullamco.laboris.nisi.ut.aliquip.ex.ea.commodo.consequat.duis.aute.irure.dolor.es.org,2012/07/02 0:00,FJX,Lorem ipsum dolor sit amet,123456,LOW_COST,ftp://www.lorem-ipsum.org
+airline-26,lorem-ipsum@dolor.sit.amet.consectetur.adipiscing.elit.sed.do.eiusmod.tempor.incididunt.ut.labore.et.dolore.magna.aliqua.Ut.enim.ad.minim.veniam.quis.nostrud.exercitation.ullamco.laboris.nisi.ut.aliquip.ex.ea.commodo.consequat.duis.aute.irure.dolor.es.org,2012/07/02 0:00,FJX,Lorem ipsum dolor sit amet,123456,LOW_COST,https://www.lorem-ipsum.org
 airline-27,acme@lorem-ipsum.org,2012/07/02 0:00,BLX,Lorem ipsum dolor sit amet,123456,LOW_COST,http://www.lorem-ipsum.org/dolor/sit.html
 airline-28,acme@lorem-ipsum.org,2012/07/02 0:00,MMM,Lorem ipsum dolor sit amet,123456,LOW_COST,http://www.lorem-ipsum.org/dolor/sit.html#dolor
 airline-29,a@b.e,2012/07/02 0:00,OIX,Lorem ipsum dolor sit amet,123456,LOW_COST,http://example.org?a=1&b=2
