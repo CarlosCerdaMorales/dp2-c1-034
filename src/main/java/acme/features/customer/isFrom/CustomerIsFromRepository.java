@@ -29,7 +29,7 @@ public interface CustomerIsFromRepository extends AbstractRepository {
 	@Query("select p from Passenger p where p.customer.id = :id")
 	Collection<Passenger> findPassengersFromCustomerId(int id);
 
-	@Query("select p from Passenger p where p.customer.id = :customerId and p not in (select i.passenger from IsFrom i where i.booking.id in (select b.id from Booking b where b.id = :bookingId and b.customer.id = :customerId))")
+	@Query("select p from Passenger p where p.draftMode = false and p.customer.id = :customerId and p not in (select i.passenger from IsFrom i where i.booking.id in (select b.id from Booking b where b.id = :bookingId and b.customer.id = :customerId))")
 	Collection<Passenger> restOfPassengers(int bookingId, int customerId);
 
 	@Query("select b from Booking b where b.id = :id")
