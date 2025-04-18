@@ -64,6 +64,7 @@
 		<acme:menu-option code="master.menu.customer" access="hasRealm('Customer')">
 			<acme:menu-suboption code="master.menu.customer.booking" action="/customer/booking/list"/>
 			<acme:menu-suboption code="master.menu.customer.passenger" action="/customer/passenger/list"/>
+			<acme:menu-suboption code="master.menu.customer.dashboard" action="/customer/customer-dashboard/show"/>
 		</acme:menu-option>
 		
 		<acme:menu-option code="master.menu.technician" access="hasRealm('Technician')">
