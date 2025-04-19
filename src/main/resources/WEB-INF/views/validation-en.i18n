@@ -122,6 +122,8 @@ acme.validation.text.length.255 = The text must have less than 256 characters
 acme.validation.text.length.1-255 = The text must have at least one character and at most 255
 acme.validation.task.priority = The priority must be a whole number between 0 and 10
 acme.validation.task.duration = The duration must be between 0 and 1000
+acme.validation.involves.invalid-involves-publish.message = You can't add tasks to an already published record
+
 
 ### Aircraft
 acme.validation.text.length.1-50 = The text must have at least one character and at most 50
