@@ -27,7 +27,18 @@ public class TechnicianInvolvesCreateService extends AbstractGuiService<Technici
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status;
+		int mrId;
+		MaintenanceRecord mr;
+		Technician technician;
+
+		mrId = super.getRequest().getData("maintenanceRecordId", int.class);
+		mr = this.repository.findMaintenanceRecordById(mrId);
+
+		technician = mr == null ? null : mr.getTechnician();
+		status = mr != null && mr.isDraftMode() && this.getRequest().getPrincipal().hasRealm(technician);
+
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
@@ -52,15 +63,21 @@ public class TechnicianInvolvesCreateService extends AbstractGuiService<Technici
 		Task task;
 
 		taskId = super.getRequest().getData("task", int.class);
+
 		task = this.repository.findTaskById(taskId);
 
 		involves.setTask(task);
+		super.bindObject(involves);
 
 	}
 
 	@Override
 	public void validate(final Involves involves) {
-		;
+		boolean notPublished = true;
+		MaintenanceRecord mr = involves.getMaintenanceRecord();
+		if (mr != null && !mr.isDraftMode())
+			notPublished = false;
+		super.state(notPublished, "booking", "acme.validation.involves.invalid-involves-publish.message");
 	}
 
 	@Override
@@ -69,7 +86,6 @@ public class TechnicianInvolvesCreateService extends AbstractGuiService<Technici
 		this.repository.save(involves);
 
 	}
-	//comentario de prueba
 
 	@Override
 	public void unbind(final Involves involves) {
@@ -92,6 +108,8 @@ public class TechnicianInvolvesCreateService extends AbstractGuiService<Technici
 		dataset.put("maintenanceRecord", involves.getMaintenanceRecord());
 		dataset.put("task", choices.getSelected().getKey());
 		dataset.put("tasks", choices);
+
+		dataset.put("masterId", super.getRequest().getData("masterId", int.class));
 
 		super.getResponse().addData(dataset);
 
