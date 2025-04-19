@@ -71,6 +71,8 @@ master.menu.technician = Technician
 master.menu.technician.dashboard = Dashboard
 master.menu.technician.task = My tasks
 master.menu.technician.maintenance-record = My Maintenance records
+master.menu.technician.alltask = All tasks
+master.menu.technician.allmaintenance-record = All maintenance records
 
 # master.menu.user-account ####################################################
 

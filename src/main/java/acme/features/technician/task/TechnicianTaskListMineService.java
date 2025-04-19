@@ -13,7 +13,7 @@ import acme.entities.task.Task;
 import acme.realms.Technician;
 
 @GuiService
-public class TechnicianTaskListService extends AbstractGuiService<Technician, Task> {
+public class TechnicianTaskListMineService extends AbstractGuiService<Technician, Task> {
 
 	// Internal state ---------------------------------------------------------
 	@Autowired
@@ -32,10 +32,10 @@ public class TechnicianTaskListService extends AbstractGuiService<Technician, Ta
 		int maintenanceRecordId;
 		boolean draftMode;
 		MaintenanceRecord maintenanceRecord;
-		// int technicianId = super.getRequest().getPrincipal().getActiveRealm().getId();
+		int technicianId = super.getRequest().getPrincipal().getActiveRealm().getId();
 
 		if (super.getRequest().getData().isEmpty())
-			tasks = this.repository.findPublishedTasks();
+			tasks = this.repository.findTasksByTechnicianId(technicianId);
 		else {
 			maintenanceRecordId = super.getRequest().getData("maintenanceRecordId", int.class);
 			super.getResponse().addGlobal("maintenanceRecordId", maintenanceRecordId);

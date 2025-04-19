@@ -19,6 +19,9 @@ public class TechnicianTaskController extends AbstractGuiController<Technician, 
 	private TechnicianTaskListService		listService;
 
 	@Autowired
+	private TechnicianTaskListMineService	listMineService;
+
+	@Autowired
 	private TechnicianTaskShowService		showService;
 
 	@Autowired
@@ -43,6 +46,8 @@ public class TechnicianTaskController extends AbstractGuiController<Technician, 
 		super.addBasicCommand("create", this.createService);
 		super.addBasicCommand("update", this.updateService);
 		super.addBasicCommand("delete", this.deleteService);
+
+		super.addCustomCommand("list-mine", "list", this.listMineService);
 
 		super.addCustomCommand("publish", "update", this.publishService);
 	}
