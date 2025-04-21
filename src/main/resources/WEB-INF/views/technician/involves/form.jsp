@@ -26,10 +26,10 @@
 	
 	<jstl:choose>
 		<jstl:when test="${_command == 'create'}">
-			<acme:submit code="technician.involves.form.button.create" action="/technician/involves/create?maintenanceRecord=${maintenanceRecordId}" />
+			<acme:submit code="technician.involves.form.button.create" action="/technician/involves/create?maintenanceRecordId=${maintenanceRecordId}" />
 		</jstl:when>
 		
-		<jstl:when test="${acme:anyOf(_command, 'show|update|delete')}">
+		<jstl:when test="${acme:anyOf(_command, 'show|delete')}">
 			<acme:submit code="technician.involves.form.button.delete" action="/technician/involves/delete" />
 		</jstl:when>
 	</jstl:choose>

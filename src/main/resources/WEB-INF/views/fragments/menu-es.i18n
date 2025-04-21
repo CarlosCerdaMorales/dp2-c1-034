@@ -64,9 +64,7 @@ master.menu.manager = Gerente
 master.menu.manager.flights = Listado de vuelos
 master.menu.manager.legs = Listado de escalas
 
-
-
-# master.menu.customer ##########################################################
+# master.menu.technician ##########################################################
 
 master.menu.technician = Técnico
 master.menu.technician.dashboard = Dashboard
@@ -74,7 +72,7 @@ master.menu.technician.task = Mis tareas
 master.menu.technician.maintenance-record = Mis informes de mantenimiento
 master.menu.technician.alltask = All tasks
 master.menu.technician.allmaintenance-record = All maintenance records
-
+master.menu.technician.show-dashboard = Dashboard
 # master.menu.user-account ####################################################
 
 master.menu.user-account = Cuenta

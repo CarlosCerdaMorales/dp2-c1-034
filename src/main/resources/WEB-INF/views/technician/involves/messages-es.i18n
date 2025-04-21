@@ -22,9 +22,9 @@ technician.involves.form.label.task = Tarea
 technician.maintenance-record.form.show.involves = Associated tasks
 
 
-technician.involves.form.button.create = Crear		
+technician.involves.form.button.create = Añadir tareas		
 technician.involves.form.button.update = Actualizar
-technician.involves.form.button.delete = Eliminar
+technician.involves.form.button.delete = Eliminar tareas
 technician.involves.form.button.link = Asociar
 technician.involves.form.button.unlink = Desasociar
 

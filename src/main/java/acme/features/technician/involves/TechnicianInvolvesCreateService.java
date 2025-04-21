@@ -77,7 +77,7 @@ public class TechnicianInvolvesCreateService extends AbstractGuiService<Technici
 		MaintenanceRecord mr = involves.getMaintenanceRecord();
 		if (mr != null && !mr.isDraftMode())
 			notPublished = false;
-		super.state(notPublished, "booking", "acme.validation.involves.invalid-involves-publish.message");
+		super.state(notPublished, "maintenanceRecord", "acme.validation.involves.invalid-involves-publish.message");
 	}
 
 	@Override
