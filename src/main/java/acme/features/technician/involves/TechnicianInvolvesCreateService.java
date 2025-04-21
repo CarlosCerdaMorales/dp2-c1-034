@@ -109,7 +109,7 @@ public class TechnicianInvolvesCreateService extends AbstractGuiService<Technici
 		dataset.put("task", choices.getSelected().getKey());
 		dataset.put("tasks", choices);
 
-		dataset.put("masterId", super.getRequest().getData("masterId", int.class));
+		dataset.put("maintenanceRecordId", super.getRequest().getData("maintenanceRecordId", int.class));
 
 		super.getResponse().addData(dataset);
 
