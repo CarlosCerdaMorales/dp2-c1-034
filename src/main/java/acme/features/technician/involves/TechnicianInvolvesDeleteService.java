@@ -27,15 +27,12 @@ public class TechnicianInvolvesDeleteService extends AbstractGuiService<Technici
 	@Override
 	public void authorise() {
 		boolean status;
-		int mrId;
-		MaintenanceRecord mr;
-		Technician technician;
+		int maintenanceRecordId;
+		MaintenanceRecord maintenanceRecord;
 
-		mrId = super.getRequest().getData("id", int.class);
-		mr = this.repository.findMaintenanceRecordById(mrId);
-
-		technician = mr == null ? null : mr.getTechnician();
-		status = mr != null && mr.isDraftMode() && this.getRequest().getPrincipal().hasRealm(technician);
+		maintenanceRecordId = super.getRequest().getData("maintenanceRecordId", int.class);
+		maintenanceRecord = this.repository.findMaintenanceRecordById(maintenanceRecordId);
+		status = maintenanceRecord != null && super.getRequest().getPrincipal().hasRealm(maintenanceRecord.getTechnician());
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -61,16 +58,20 @@ public class TechnicianInvolvesDeleteService extends AbstractGuiService<Technici
 
 	@Override
 	public void validate(final Involves involves) {
+		Collection<Task> tasks;
+		tasks = this.repository.findValidTasksToUnlink(involves.getMaintenanceRecord());
 
-		Task task = super.getRequest().getData("task", Task.class);
-		super.state(task != null, "task", "technician.involves.form.error.no-task-to-unlink");
+		int taskId = super.getRequest().getData("task", int.class);
+		Task task = this.repository.findTaskById(taskId);
+		super.state(task != null && tasks.contains(task), "task", "technician.involves.form.error.no-task-to-unlink");
 	}
 
 	@Override
 	public void perform(final Involves involves) {
-		Task task = super.getRequest().getData("task", Task.class);
-		int maintenanceRecordId = super.getRequest().getData("maintenanceRecordId", int.class);
-		MaintenanceRecord maintenanceRecord = this.repository.findMaintenanceRecordById(maintenanceRecordId);
+		int taskId = super.getRequest().getData("task", int.class);
+
+		Task task = this.repository.findTaskById(taskId);
+		MaintenanceRecord maintenanceRecord = involves.getMaintenanceRecord();
 
 		this.repository.delete(this.repository.findInvolvesByMaintenanceRecordAndTask(maintenanceRecord, task));
 

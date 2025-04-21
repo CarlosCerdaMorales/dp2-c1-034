@@ -30,7 +30,7 @@
 		</jstl:when>
 		
 		<jstl:when test="${acme:anyOf(_command, 'show|delete')}">
-			<acme:submit code="technician.involves.form.button.delete" action="/technician/involves/delete" />
+			<acme:submit code="technician.involves.form.button.delete"  action="/technician/involves/delete?maintenanceRecordId=${maintenanceRecordId}"/>
 		</jstl:when>
 	</jstl:choose>
 </acme:form>
