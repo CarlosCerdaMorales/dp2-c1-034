@@ -1,10 +1,10 @@
 key,flightNumber,scheduledDeparture,scheduledArrival,flightStatus,draftMode,key:airportDeparture,key:airportArrival,key:aircraft,key:flight
 # Base entity
-leg-00,ABX2345,2000/01/01 00:01,2000/01/02 00:01,ON_TIME,TRUE,airport-00,airport-01,aircraft-01,flight-01
+leg-00,ABX2345,2000/01/01 00:01,2000/01/02 00:01,ON_TIME,FALSE,airport-00,airport-01,aircraft-01,flight-01
 # Variations
 leg-01,ACX2346,2000/01/02 00:01,2000/01/03 00:01,DELAYED,FALSE,airport-00,airport-01,aircraft-02,flight-01
-leg-02,AEX2347,2000/01/04 00:01,2000/05/04 00:01,CANCELLED,TRUE,airport-00,airport-01,aircraft-03,flight-01
-leg-03,AFX2348,2000/01/11 00:01,2000/02/12 00:01,LANDED,TRUE,airport-02,airport-05,aircraft-04,flight-03
+leg-02,AEX2347,2000/01/04 00:01,2000/05/04 00:01,CANCELLED,FALSE,airport-00,airport-01,aircraft-03,flight-01
+leg-03,AFX2348,2000/01/11 00:01,2000/02/12 00:01,LANDED,FALSE,airport-02,airport-05,aircraft-04,flight-03
 leg-04,AGX2349,2000/09/04 00:01,2000/10/10 00:01,ON_TIME,TRUE,airport-02,airport-07,aircraft-05,flight-04
 leg-05,CLX2341,2000/09/05 00:01,2000/11/09 00:01,DELAYED,TRUE,airport-05,airport-07,aircraft-06,flight-07
 leg-06,COX2342,2000/02/06 00:01,2000/08/08 00:01,CANCELLED,TRUE,airport-12,airport-09,aircraft-07,flight-08
@@ -15,3 +15,7 @@ leg-10,AMX2325,2000/06/10 00:01,2001/02/04 00:01,CANCELLED,TRUE,airport-23,airpo
 leg-11,ANX2335,2000/07/11 00:01,2001/05/03 00:01,LANDED,TRUE,airport-12,airport-18,aircraft-12,flight-23
 leg-12,AOX2340,2026/03/02 00:01,2026/06/02 00:01,CANCELLED,TRUE,airport-00,airport-09,aircraft-13,flight-16
 leg-13,APX2355,2025/09/03 00:01,2026/07/01 00:01,CANCELLED,FALSE,airport-02,airport-07,aircraft-14,flight-18
+leg-14,ABX2346,2026/09/03 00:01,2027/07/01 00:01,CANCELLED,FALSE,airport-00,airport-01,aircraft-01,flight-18
+leg-15,ACX2347,2028/01/02 00:01,2028/01/03 00:01,DELAYED,FALSE,airport-00,airport-01,aircraft-02,flight-01
+leg-16,AEX2348,2028/01/04 00:01,2028/05/04 00:01,CANCELLED,FALSE,airport-00,airport-01,aircraft-03,flight-01
+leg-17,AFX2349,2028/01/11 00:01,2028/02/12 00:01,LANDED,FALSE,airport-02,airport-05,aircraft-04,flight-03
