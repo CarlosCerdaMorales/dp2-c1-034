@@ -80,7 +80,7 @@ public interface FlightCrewMemberFlightAssignmentRepository extends AbstractRepo
 	@Query("select a from FlightAssignment a where a.leg.scheduledDeparture>:now and a.flightCrewMember.id=:id and a.draftMode = true")
 	List<FlightAssignment> findUncompletedFlightAssignmentsByFlightCrewMember(Date now, int id);
 
-	@Query("select l from Leg l where l.draftMode = true")
+	@Query("select l from Leg l where l.draftMode = FALSE")
 	List<Leg> findAllPublishedLegs();
 
 	@Query("select a  from FlightAssignment a where a.flightCrewMember.id = :id and a.leg.scheduledDeparture< :arrival and a.leg.scheduledArrival> :departure ")
