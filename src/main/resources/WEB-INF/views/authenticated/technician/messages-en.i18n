@@ -1,0 +1,12 @@
+# messages-en.i18n
+
+authenticated.technician.form.title = Technician
+
+authenticated.technician.form.label.phoneNumber = Phone number
+authenticated.technician.form.label.specialisation = Specialisation
+authenticated.technician.form.label.annualHealthTestPassed = Have you passed health check?
+authenticated.technician.form.label.yearsExperience = Years of experience
+authenticated.technician.form.label.certifications = Certifications
+
+authenticated.technician.form.button.create = Become a technician
+authenticated.technician.form.button.update = Update
