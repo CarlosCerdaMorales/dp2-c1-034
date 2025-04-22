@@ -35,7 +35,7 @@ public class FlightCrewMemberActivityLogListService extends AbstractGuiService<F
 	public void load() {
 		List<ActivityLog> logs;
 		int masterId = super.getRequest().getData("masterId", int.class);
-		logs = this.repository.findLogsByFlightAssignment(masterId);
+		logs = this.repository.findPublishedLogsByFlightAssignment(masterId);
 		super.getResponse().addGlobal("masterId", masterId);
 		super.getBuffer().addData(logs);
 	}

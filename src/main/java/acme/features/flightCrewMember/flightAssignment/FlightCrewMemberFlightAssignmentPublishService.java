@@ -87,6 +87,14 @@ public class FlightCrewMemberFlightAssignmentPublishService extends AbstractGuiS
 		super.state(availableMember, "flightCrewMember", "acme.validation.member-available.message");
 		super.state(confirmation, "confirmation", "acme.validation.confirmation.message");
 		super.state(isCompleted, "leg", "acme.validation.leg-complete.message");
+
+		boolean isLegPublished;
+		boolean isLegFromMyAirline;
+
+		isLegPublished = !leg.isDraftMode();
+		isLegFromMyAirline = leg.getAircraft().getAirline().equals(member.getWorkingFor());
+		super.state(isLegPublished, "leg", "acme.validation.leg-unpublished.message");
+		super.state(isLegFromMyAirline, "leg", "acme.validation.leg-unvalid.message");
 	}
 
 	@Override
@@ -101,19 +109,16 @@ public class FlightCrewMemberFlightAssignmentPublishService extends AbstractGuiS
 		SelectChoices choices;
 		SelectChoices dutiesChoices;
 		List<Leg> legs = this.repository.findAllAirlinePublishedLegs(flightAssignment.getFlightCrewMember().getWorkingFor());
-		List<FlightCrewMember> flightCrewMembers = this.repository.findAllFlightCrewMembers();
 
 		SelectChoices legChoices;
-		SelectChoices flightCrewMemberChoices;
 
 		choices = SelectChoices.from(AssignmentStatus.class, flightAssignment.getAssignmentStatus());
 		dutiesChoices = SelectChoices.from(FlightCrewDuty.class, flightAssignment.getFlightCrewDuty());
 		legChoices = SelectChoices.from(legs, "flightNumber", flightAssignment.getLeg());
-		flightCrewMemberChoices = SelectChoices.from(flightCrewMembers, "identity.fullName", flightAssignment.getFlightCrewMember());
+
 		dataset = super.unbindObject(flightAssignment, "flightCrewDuty", "assignmentStatus", "draftMode", "remarks", "leg", "flightCrewMember");
 		dataset.put("statuses", choices);
 		dataset.put("duties", dutiesChoices);
-		dataset.put("members", flightCrewMemberChoices);
 		dataset.put("legs", legChoices);
 		super.getResponse().addData(dataset);
 	}

@@ -20,3 +20,6 @@ flight-crew-member.flight-assignment.form.button.create = Create
 flight-crew-member.flight-assignment.form.button.update = Update
 flight-crew-member.flight-assignment.form.button.delete = Delete
 flight-crew-member.flight-assignment.form.button.publish = Publish
+
+acme.validation.leg-unpublished.message = This leg is not valid
+acme.validation.leg-unvalid.message = This leg does not belong to your airline

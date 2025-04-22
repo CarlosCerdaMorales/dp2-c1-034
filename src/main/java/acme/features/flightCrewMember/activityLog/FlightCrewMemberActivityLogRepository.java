@@ -11,8 +11,11 @@ import acme.entities.flightassignment.FlightAssignment;
 
 public interface FlightCrewMemberActivityLogRepository extends AbstractRepository {
 
-	@Query("select l from ActivityLog l where l.flightAssignment.id = :id")
-	List<ActivityLog> findLogsByFlightAssignment(int id);
+	@Query("select l from ActivityLog l where l.flightAssignment.id = :id and l.draftMode = true")
+	List<ActivityLog> findPublishedLogsByFlightAssignment(int id);
+
+	@Query("select l from ActivityLog l where l.flightAssignment.id = :id and l.flightAssignment.flightCrewMember.id = :memberId")
+	List<ActivityLog> findMyLogsByFlightAssignment(int id, int memberId);
 
 	@Query("select a from FlightAssignment a where a.id = :id ")
 	FlightAssignment findFlightAssignmentById(int id);

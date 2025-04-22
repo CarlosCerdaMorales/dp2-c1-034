@@ -19,3 +19,6 @@ flight-crew-member.flight-assignment.form.button.create = Crear
 flight-crew-member.flight-assignment.form.button.update = Actualizar
 flight-crew-member.flight-assignment.form.button.delete = Borrar
 flight-crew-member.flight-assignment.form.button.publish = Publicar
+
+acme.validation.leg-unpublished.message = Esta escala no es válida
+acme.validation.leg-unvalid.message = Esta escala no pertenece a su aerolínea

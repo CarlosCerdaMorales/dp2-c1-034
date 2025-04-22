@@ -57,8 +57,18 @@ public class FlightCrewMemberFlightAssignmentUpdateService extends AbstractGuiSe
 	@Override
 	public void validate(final FlightAssignment flightAssignment) {
 		boolean confirmation;
+		boolean isLegPublished;
+		boolean isLegFromMyAirline;
+		Leg leg;
+
+		FlightCrewMember member = (FlightCrewMember) super.getRequest().getPrincipal().getActiveRealm();
 
 		confirmation = super.getRequest().getData("confirmation", boolean.class);
+		leg = super.getRequest().getData("leg", Leg.class);
+		isLegPublished = !leg.isDraftMode();
+		isLegFromMyAirline = leg.getAircraft().getAirline().equals(member.getWorkingFor());
+		super.state(isLegPublished, "leg", "acme.validation.leg-unpublished.message");
+		super.state(isLegFromMyAirline, "leg", "acme.validation.leg-unvalid.message");
 		super.state(confirmation, "confirmation", "acme.validation.confirmation.message");
 	}
 
@@ -74,20 +84,16 @@ public class FlightCrewMemberFlightAssignmentUpdateService extends AbstractGuiSe
 		SelectChoices choices;
 		SelectChoices dutiesChoices;
 		List<Leg> legs = this.repository.findAllAirlinePublishedLegs(flightAssignment.getFlightCrewMember().getWorkingFor());
-		List<FlightCrewMember> flightCrewMembers = this.repository.findAllFlightCrewMembers();
 
 		SelectChoices legChoices;
-		SelectChoices flightCrewMemberChoices;
 
 		choices = SelectChoices.from(AssignmentStatus.class, flightAssignment.getAssignmentStatus());
 		dutiesChoices = SelectChoices.from(FlightCrewDuty.class, flightAssignment.getFlightCrewDuty());
 		legChoices = SelectChoices.from(legs, "flightNumber", flightAssignment.getLeg());
-		flightCrewMemberChoices = SelectChoices.from(flightCrewMembers, "identity.fullName", flightAssignment.getFlightCrewMember());
 
 		dataset = super.unbindObject(flightAssignment, "flightCrewDuty", "lastUpdate", "assignmentStatus", "draftMode", "remarks", "leg", "flightCrewMember");
 		dataset.put("statuses", choices);
 		dataset.put("duties", dutiesChoices);
-		dataset.put("members", flightCrewMemberChoices);
 		dataset.put("legs", legChoices);
 		super.getResponse().addData(dataset);
 	}
