@@ -45,7 +45,8 @@ public class TrackingLogValidator extends AbstractValidator<ValidTrackingLog, Tr
 
 			TrackingLogRepository repository = SpringHelper.getBean(TrackingLogRepository.class);
 			List<TrackingLog> listLastTr = repository.findLatestTrackingLogByClaim(trLog.getClaim().getId());
-			listLastTr.add(trLog);
+			if (!listLastTr.contains(trLog))
+				listLastTr.add(trLog);
 			IntStream st = IntStream.range(0, listLastTr.size() - 1);
 			Boolean estaOrdenada = st.allMatch(i -> listLastTr.get(i).getResolutionPercentage() <= listLastTr.get(i + 1).getResolutionPercentage());
 			if (!estaOrdenada)
