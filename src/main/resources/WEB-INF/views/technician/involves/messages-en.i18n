@@ -21,9 +21,9 @@ technician.involves.form.label.aircraft = Associated aircraft
 technician.involves.form.label.task = Task
 technician.maintenance-record.form.show.involves = Associated tasks
 
-technician.involves.form.button.create = Create		
+technician.involves.form.button.create = Add tasks		
 technician.involves.form.button.update = Update
-technician.involves.form.button.delete = Delete
+technician.involves.form.button.delete = Delete taks
 technician.involves.form.button.link = Link
 technician.involves.form.button.unlink = Unlink
 technician.involves.form.task = Tasks

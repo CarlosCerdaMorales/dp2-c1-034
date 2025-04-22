@@ -12,7 +12,7 @@ import acme.entities.maintenancerecord.MaintenanceRecord;
 import acme.realms.Technician;
 
 @GuiService
-public class TechnicianMaintenanceRecordListService extends AbstractGuiService<Technician, MaintenanceRecord> {
+public class TechnicianMaintenanceRecordListMineService extends AbstractGuiService<Technician, MaintenanceRecord> {
 
 	// Internal state ---------------------------------------------------------
 	@Autowired
@@ -27,11 +27,11 @@ public class TechnicianMaintenanceRecordListService extends AbstractGuiService<T
 
 	@Override
 	public void load() {
-		// int technicianId;
+		int technicianId;
 		Collection<MaintenanceRecord> mr;
 
-		// technicianId = super.getRequest().getPrincipal().getActiveRealm().getId();
-		mr = this.repository.findPublishedMaintenaceRecord();
+		technicianId = super.getRequest().getPrincipal().getActiveRealm().getId();
+		mr = this.repository.findAllMaintenanceRecordByTechnicianId(technicianId);
 
 		super.getBuffer().addData(mr);
 	}

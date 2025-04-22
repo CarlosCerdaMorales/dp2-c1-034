@@ -123,6 +123,7 @@ acme.validation.text.length.255 = El texto tiene que tener un máximo de 255 car
 acme.validation.text.length.1-255 = El texto tiene que tener un mínimo de 1 carácter y un máximo de 255 caracteres
 acme.validation.task.priority = La prioridad ha de ser un entero entre 0 y 10
 acme.validation.task.duration = La duración ha de estar entre 0 y 1000
+acme.validation.involves.invalid-involves-publish.message = No se pueden añadir tareas a un registro ya publicado
 
 ### Aircraft
 acme.validation.text.length.1-50 = El texto debe tener entre 1 y 50 caracteres

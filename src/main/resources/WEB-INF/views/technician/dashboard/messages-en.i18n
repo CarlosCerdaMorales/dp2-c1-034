@@ -1,0 +1,24 @@
+# messages-en.i18n
+
+technician.dashboard.form.title = Technician dashboard
+
+technician.dashboard.form.title.general-indicators = General indicators
+
+technician.dashboard.form.label.number-maintenance-status.completed = Maintenances completed
+technician.dashboard.form.label.number-maintenance-status.pending = Maintenances pending
+technician.dashboard.form.label.number-maintenance-status.progress = Maintenances in progress
+
+technician.dashboard.form.label.nearest-next-inspection =  Nearest next inspection
+technician.dashboard.form.label.most-tasks-aircarfts = Aircrafts with most tasks
+
+authenticated.technician.form.title = Technician
+
+technician.dashboard.form.label.cost-statistics.avg = Cost average
+technician.dashboard.form.label.cost-statistics.max = Cost maximum
+technician.dashboard.form.label.cost-statistics.min = Cost minimum
+technician.dashboard.form.label.cost-statistics.dev = Cost standard deviation
+
+technician.dashboard.form.label.duration-statistics.avg = Duration average
+technician.dashboard.form.label.duration-statistics.max = Duration maximum
+technician.dashboard.form.label.duration-statistics.min = Duration minimum
+technician.dashboard.form.label.duration-statistics.dev = Duration standard deviation

@@ -68,8 +68,13 @@
 		</acme:menu-option>
 		
 		<acme:menu-option code="master.menu.technician" access="hasRealm('Technician')">
-			<acme:menu-suboption code="master.menu.technician.task" action="/technician/task/list"/>
-			<acme:menu-suboption code="master.menu.technician.maintenance-record" action="/technician/maintenance-record/list"/>
+			<acme:menu-suboption code="master.menu.technician.task" action="/technician/task/list-mine"/>
+			<acme:menu-suboption code="master.menu.technician.maintenance-record" action="/technician/maintenance-record/list-mine"/>
+			
+			<acme:menu-suboption code="master.menu.technician.alltask" action="/technician/task/list"/>
+			<acme:menu-suboption code="master.menu.technician.allmaintenance-record" action="/technician/maintenance-record/list"/>
+		
+			<acme:menu-suboption code="master.menu.technician.show-dashboard" action="/technician/dashboard/show" />
 		</acme:menu-option>
 		
 	</acme:menu-left>
@@ -81,6 +86,8 @@
 			<acme:menu-suboption code="master.menu.user-account.provider-profile" action="/authenticated/provider/update" access="hasRealm('Provider')"/>
 			<acme:menu-suboption code="master.menu.user-account.become-consumer" action="/authenticated/consumer/create" access="!hasRealm('Consumer')"/>
 			<acme:menu-suboption code="master.menu.user-account.consumer-profile" action="/authenticated/consumer/update" access="hasRealm('Consumer')"/>
+			<acme:menu-suboption code="master.menu.user-account.become-technician" action="/authenticated/technician/create" access="!hasRealm('Technician')"/>
+			<acme:menu-suboption code="master.menu.user-account.technician-profile" action="/authenticated/technician/update" access="hasRealm('Technician')"/>
 		</acme:menu-option>
 	</acme:menu-right>
 </acme:menu-bar>
