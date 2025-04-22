@@ -47,17 +47,9 @@ public class AssistanceAgentTrackingLogPublishService extends AbstractGuiService
 
 	@Override
 	public void bind(final TrackingLog tr) {
-		Claim claim;
 		Date moment = MomentHelper.getCurrentMoment();
-		int masterId;
-
-		masterId = super.getRequest().getData("masterId", int.class);
-
-		claim = this.repository.findClaimByMasterId(masterId);
 		super.bindObject(tr, "stepUndergoing", "resolutionPercentage", "status", "resolution");
 		tr.setLastUpdateMoment(moment);
-		tr.setDraftMode(tr.getDraftMode());
-		tr.setClaim(claim);
 	}
 
 	@Override
@@ -77,16 +69,12 @@ public class AssistanceAgentTrackingLogPublishService extends AbstractGuiService
 	@Override
 	public void unbind(final TrackingLog trackingLog) {
 		Dataset dataset;
-		int masterId;
-		Claim claim;
 		SelectChoices choicesStatus;
 
 		choicesStatus = SelectChoices.from(TrackingLogStatus.class, trackingLog.getStatus());
-		masterId = super.getRequest().getData("masterId", int.class);
-		claim = this.repository.findClaimByMasterId(masterId);
-		dataset = super.unbindObject(trackingLog, "stepUndergoing", "resolutionPercentage", "status", "resolution");
-		dataset.put("claim", claim);
-		dataset.put("draftMode", trackingLog.getDraftMode());
+		dataset = super.unbindObject(trackingLog, "stepUndergoing", "resolutionPercentage", "status", "resolution", "draftMode", "lastUpdateMoment");
+
+		dataset.put("masterId", trackingLog.getClaim().getId());
 		dataset.put("statuses", choicesStatus);
 		super.getResponse().addData(dataset);
 
