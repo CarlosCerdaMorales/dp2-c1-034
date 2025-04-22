@@ -18,6 +18,7 @@ import acme.client.components.validation.ValidEmail;
 import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidString;
 import acme.client.helpers.SpringHelper;
+import acme.constraints.ValidClaim;
 import acme.entities.leg.Leg;
 import acme.entities.trackinglog.TrackingLog;
 import acme.entities.trackinglog.TrackingLogRepository;
@@ -29,6 +30,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+@ValidClaim
 public class Claim extends AbstractEntity {
 
 	// Serialisation identifier -----------------------------------------------
