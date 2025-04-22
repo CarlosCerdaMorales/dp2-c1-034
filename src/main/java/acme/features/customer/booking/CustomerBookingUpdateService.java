@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
 import acme.client.components.views.SelectChoices;
+import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.booking.Booking;
@@ -51,16 +52,21 @@ public class CustomerBookingUpdateService extends AbstractGuiService<Customer, B
 
 	@Override
 	public void bind(final Booking booking) {
-		int flightId;
-		Flight flight;
+		int flightId = super.getRequest().getData("flight", int.class);
 
-		flightId = super.getRequest().getData("flight", int.class);
-		flight = this.repository.findFlightById(flightId);
+		Flight flight = this.repository.findFlightById(flightId);
+		Collection<Flight> myFlights = this.repository.findAllFlights();
 
-		super.bindObject(booking, "locatorCode", "travelClass", "lastNibble");
+		if (flight == null && flightId != 0)
+			throw new RuntimeException("Flight not found: " + flightId);
+
+		if (flight != null && !myFlights.contains(flight))
+			throw new RuntimeException("This flight is not published: " + flightId);
+
 		booking.setFlight(flight);
+		super.bindObject(booking, "locatorCode", "travelClass", "lastNibble");
+		booking.setPurchaseMoment(MomentHelper.getCurrentMoment());
 		booking.setDraftMode(true);
-
 	}
 
 	@Override

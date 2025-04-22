@@ -71,7 +71,7 @@ public class Booking extends AbstractEntity {
 
 	@Optional
 	@Valid
-	@ManyToOne
+	@ManyToOne(optional = false)
 	private Flight				flight;
 
 	// Derivated attributes ------------------------------------------
