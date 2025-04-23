@@ -2,8 +2,8 @@ key,fullName,email,passport,dateOfBirth,specialNeeds,key:customer,draftMode
 # base entity
 passenger-01,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*","acme@lorem-ipsum.org",D8N4SWRTZ,2012/07/05 0:00,"Lorem ipsum dolor sit ame",customer-01,true
 # fullName - variations
-passenger-02,"L","acme@lorem-ipsum.org",D8N4SWRTA,2012/07/05 0:00,"Lorem ipsum dolor sit ame",customer-02,false
-passenger-03,"Lo","acme@lorem-ipspatrium.org",D8N4SWRTB,2012/07/05 0:00,"Lorem ipsum dolor sit ame",customer-01,false
+passenger-02,"L","acme@lorem-ipsum.org",D8N4SWRTA,2012/07/05 0:00,"Lorem ipsum dolor sit ame",customer-01,false
+passenger-03,"Lo","acme@lorem-ipspatrium.org",D8N4SWRTB,2012/07/05 0:00,"Lorem ipsum dolor sit ame",customer-02,false
 passenger-04,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor","acme@lorem-ipsum.org",D8N4SWRTC,2012/07/05 0:00,"Lorem ipsum dolor sit ame",customer-02,true
 passenger-05,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor*","acme@lorem-ipsum.org",D8N4SWRTD,2012/07/05 0:00,"Lorem ipsum dolor sit ame",customer-01,true
 passenger-06,"โลเร็ม อิปซัม","acme@lorem-ipsum.org",D8N4SWRTE,2012/07/05 0:00,"Lorem ipsum dolor sit ame",customer-02,true

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import acme.client.components.models.Dataset;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
+import acme.entities.booking.Booking;
 import acme.entities.passenger.Passenger;
 import acme.realms.Customer;
 
@@ -24,7 +25,14 @@ public class CustomerPassengerListService extends AbstractGuiService<Customer, P
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean authorised = true;
+		if (!super.getRequest().getData().isEmpty()) {
+			int customerId = super.getRequest().getPrincipal().getActiveRealm().getId();
+			int bookingId = super.getRequest().getData("bookingId", int.class);
+			Booking booking = this.repository.findBookingById(bookingId);
+			authorised = booking.getCustomer().getId() == customerId;
+		}
+		super.getResponse().setAuthorised(authorised);
 	}
 
 	@Override
@@ -39,10 +47,9 @@ public class CustomerPassengerListService extends AbstractGuiService<Customer, P
 			bookingId = super.getRequest().getData("bookingId", int.class);
 			passengers = this.repository.findPassengersFromBooking(bookingId);
 			super.getResponse().addGlobal("bookingId", bookingId);
-			if (super.getRequest().hasData("draftMode")) {
-				boolean draftMode = super.getRequest().getData("draftMode", boolean.class);
-				super.getResponse().addGlobal("draftMode", draftMode);
-			}
+			Booking booking = this.repository.findBookingById(bookingId);
+			boolean draftMode = booking.isDraftMode();
+			super.getResponse().addGlobal("draftMode", draftMode);
 		}
 		super.getBuffer().addData(passengers);
 	}
