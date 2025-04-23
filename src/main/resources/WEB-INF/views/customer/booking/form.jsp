@@ -22,6 +22,7 @@
 			<acme:button code="customer.booking.form.show.passengers" action="/customer/passenger/list?bookingId=${bookingId}"/>
 			<acme:submit code="customer.booking.form.button.publish" action="/customer/booking/publish"/>
 			<acme:submit code="customer.booking.form.button.update" action="/customer/booking/update"/>
+			<acme:submit code="customer.booking.form.button.delete" action="/customer/booking/delete"/>
 		</jstl:when>		
 	</jstl:choose>
 </acme:form>
