@@ -2,6 +2,7 @@
 package acme.features.manager.legs;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -11,6 +12,7 @@ import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.aircraft.Aircraft;
 import acme.entities.airport.Airport;
+import acme.entities.flight.Flight;
 import acme.entities.leg.FlightStatus;
 import acme.entities.leg.Leg;
 import acme.realms.Manager;
@@ -24,15 +26,27 @@ public class ManagerLegPublishService extends AbstractGuiService<Manager, Leg> {
 
 	@Override
 	public void authorise() {
-		boolean status;
+		int managerId;
 		int legId;
-		Leg leg;
-		Manager manager;
+		boolean status = true;
 
+		managerId = super.getRequest().getPrincipal().getActiveRealm().getId();
 		legId = super.getRequest().getData("id", int.class);
-		leg = this.repository.findLegByLegId(legId);
-		manager = leg == null ? null : leg.getFlight().getManager();
-		status = leg != null && leg.isDraftMode() && super.getRequest().getPrincipal().hasRealm(manager);
+
+		if (!this.repository.findByLegId(legId).isPresent())
+			throw new RuntimeException("No leg with id: " + legId);
+
+		Optional<Leg> optionalLeg = this.repository.findByLegId(legId);
+
+		if (optionalLeg.isPresent()) {
+			Leg leg = optionalLeg.get();
+			Optional<Flight> flight = this.repository.findByIdAndManagerId(leg.getFlight().getId(), managerId);
+
+			if (flight.isEmpty())
+				status = false;
+			if (!leg.isDraftMode())
+				status = false;
+		}
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -43,6 +57,8 @@ public class ManagerLegPublishService extends AbstractGuiService<Manager, Leg> {
 		int id;
 
 		id = super.getRequest().getData("id", int.class);
+		if (!this.repository.findByLegId(id).isPresent())
+			throw new RuntimeException("No leg with id: " + id);
 		leg = this.repository.findLegByLegId(id);
 
 		super.getBuffer().addData(leg);
@@ -51,24 +67,50 @@ public class ManagerLegPublishService extends AbstractGuiService<Manager, Leg> {
 	@Override
 	public void bind(final Leg leg) {
 		int aircraftId;
-		int airportArrivalId;
-		int airportDepartureId;
+		int departureId;
+		int arrivalId;
+		int managerId;
 		Aircraft aircraft;
 		Airport departure;
 		Airport arrival;
+		List<Aircraft> aircrafts;
+		List<Airport> airports;
 
+		managerId = super.getRequest().getPrincipal().getActiveRealm().getId();
 		aircraftId = super.getRequest().getData("aircraft", int.class);
 		aircraft = this.repository.findAircraftByAircraftId(aircraftId);
-		airportArrivalId = super.getRequest().getData("airportArrival", int.class);
-		departure = this.repository.findAirportByAirportId(airportArrivalId);
-		airportDepartureId = super.getRequest().getData("airportDeparture", int.class);
-		arrival = this.repository.findAirportByAirportId(airportDepartureId);
+
+		departureId = super.getRequest().getData("airportDeparture", int.class);
+		departure = this.repository.findAirportByAirportId(departureId);
+
+		arrivalId = super.getRequest().getData("airportArrival", int.class);
+		arrival = this.repository.findAirportByAirportId(arrivalId);
+
+		aircrafts = this.repository.findAllAircraftsByManagerId(managerId);
+		airports = this.repository.findAllAirports();
+
+		if (aircraft == null && aircraftId != 0)
+			throw new RuntimeException("Aircraft not found: " + aircraftId);
+
+		if (aircraft != null && !aircrafts.contains(aircraft))
+			throw new RuntimeException("This Aircraft is not published: " + aircraftId);
+
+		if (departure == null && departureId != 0)
+			throw new RuntimeException("Airport not found: " + departureId);
+
+		if (departure != null && !airports.contains(departure))
+			throw new RuntimeException("This Airport is not published: " + departureId);
+
+		if (arrival == null && arrivalId != 0)
+			throw new RuntimeException("Airport not found: " + arrivalId);
+
+		if (arrival != null && !airports.contains(arrival))
+			throw new RuntimeException("This Airport is not published: " + arrivalId);
 
 		super.bindObject(leg, "flightNumber", "scheduledDeparture", "scheduledArrival", "flightStatus");
 		leg.setAircraft(aircraft);
 		leg.setAirportDeparture(departure);
 		leg.setAirportArrival(arrival);
-		leg.durationInHours();
 	}
 
 	@Override

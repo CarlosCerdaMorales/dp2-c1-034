@@ -2,7 +2,9 @@
 package acme.features.manager.legs;
 
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -11,18 +13,33 @@ import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.flight.Flight;
 import acme.entities.leg.Leg;
+import acme.features.manager.flights.ManagerFlightRepository;
 import acme.realms.Manager;
 
 @GuiService
 public class ManagerLegListService extends AbstractGuiService<Manager, Leg> {
 
 	@Autowired
-	private ManagerLegRepository repository;
+	private ManagerLegRepository	repository;
+
+	@Autowired
+	private ManagerFlightRepository	flightRepository;
 
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status = false;
+		Integer flightId = super.getRequest().getData("flightId", int.class);
+
+		if (this.flightRepository.findFlightById(flightId) == null)
+			throw new RuntimeException("No flight with id: " + flightId);
+		Integer managerId = super.getRequest().getPrincipal().getActiveRealm().getId();
+		Optional<Flight> optionalFlight = this.repository.findByIdAndManagerId(flightId, managerId);
+
+		if (optionalFlight.isPresent())
+			status = true;
+
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
@@ -30,7 +47,11 @@ public class ManagerLegListService extends AbstractGuiService<Manager, Leg> {
 		int flightId;
 
 		flightId = super.getRequest().getData("flightId", int.class);
+		Integer managerId = super.getRequest().getPrincipal().getActiveRealm().getId();
+		if (this.repository.findByIdAndManagerId(flightId, managerId).isEmpty())
+			throw new RuntimeException("No flight with id: " + flightId);
 		List<Leg> legs = this.repository.findAllLegsByFlightId(flightId);
+		legs.sort(Comparator.comparing(Leg::getScheduledDeparture));
 
 		super.getBuffer().addData(legs);
 	}
