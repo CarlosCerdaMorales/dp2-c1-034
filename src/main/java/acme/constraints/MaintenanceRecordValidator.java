@@ -40,10 +40,14 @@ public class MaintenanceRecordValidator extends AbstractValidator<ValidMaintenan
 
 			Date nextInspectionDue = maintenanceRecord.getNextInspectionDue();
 			Date maintenanceMoment = maintenanceRecord.getMaintenanceMoment();
-			if (nextInspectionDue != null && maintenanceMoment != null)
+			if (nextInspectionDue != null && maintenanceMoment != null) {
+				if (MomentHelper.isPast(nextInspectionDue))
+					super.state(context, false, "nextInspectionDue", "{acme.validation.nextInspection.invalid-must-be-future}");
+				if (!MomentHelper.isPresentOrPast(maintenanceMoment))
+					super.state(context, false, "maintenanceMoment", "{acme.validation.maintenanceMoment.invalid-date}");
 				if (!MomentHelper.isAfter(nextInspectionDue, maintenanceMoment))
 					super.state(context, false, "nextInspectionDue", "{acme.validation.nextInspection.invalid-future-date}");
-
+			}
 		}
 		result = !super.hasErrors(context);
 

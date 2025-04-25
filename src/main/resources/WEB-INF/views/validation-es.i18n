@@ -44,6 +44,8 @@ acme.validation.technician.duplicated-identifier.message = Ya existe un tecnico 
 
 acme.validation.maintenancerecord = Maintenance record invalido.
 acme.validation.nextInspection.invalid-future-date = Fecha de proxima inspeccion invalida debido a que no ocurre después de la fecha de mantenimiento.
+acme.validation.nextInspection.invalid-must-be-future = La fecha de próxima inspección debe ser futura.
+acme.validation.maintenanceMoment.invalid-date = La fecha de mantenimiento no puede ser futura.
 
 ### Airport ###
 
