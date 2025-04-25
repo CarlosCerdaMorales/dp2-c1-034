@@ -25,7 +25,19 @@ public class TechnicianMaintenanceRecordCreateService extends AbstractGuiService
 	// AbstractGuiService interface -------------------------------------------
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status = true;
+		if (super.getRequest().getMethod().equals("POST")) {
+			int mrId;
+			MaintenanceRecord mr;
+			Technician technician;
+
+			mrId = super.getRequest().getData("id", int.class);
+			mr = this.repository.findMaintenanceRecordById(mrId);
+
+			technician = mr == null ? null : mr.getTechnician();
+			status = mr != null && mr.isDraftMode() && this.getRequest().getPrincipal().hasRealm(technician);
+		}
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
