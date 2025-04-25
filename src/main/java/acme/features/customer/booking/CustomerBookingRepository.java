@@ -11,6 +11,7 @@ import acme.client.repositories.AbstractRepository;
 import acme.entities.booking.Booking;
 import acme.entities.flight.Flight;
 import acme.entities.passenger.Passenger;
+import acme.relationships.IsFrom;
 
 @Repository
 public interface CustomerBookingRepository extends AbstractRepository {
@@ -35,5 +36,8 @@ public interface CustomerBookingRepository extends AbstractRepository {
 
 	@Query("select i.passenger from IsFrom i where i.booking.id = :bookingId and i.passenger.draftMode = true")
 	Collection<Passenger> getPassengersInDraftMode(int bookingId);
+
+	@Query("select i from IsFrom i where i.booking.id = :id")
+	Collection<IsFrom> getIsFromBookingId(int id);
 
 }
