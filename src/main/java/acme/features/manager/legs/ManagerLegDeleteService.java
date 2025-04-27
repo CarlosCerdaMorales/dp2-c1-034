@@ -2,6 +2,7 @@
 package acme.features.manager.legs;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -12,6 +13,7 @@ import acme.client.services.GuiService;
 import acme.entities.aircraft.Aircraft;
 import acme.entities.airport.Airport;
 import acme.entities.claim.Claim;
+import acme.entities.flight.Flight;
 import acme.entities.flightassignment.FlightAssignment;
 import acme.entities.leg.FlightStatus;
 import acme.entities.leg.Leg;
@@ -26,17 +28,66 @@ public class ManagerLegDeleteService extends AbstractGuiService<Manager, Leg> {
 
 	@Override
 	public void authorise() {
-		boolean status;
+		int managerId;
 		int legId;
-		Leg leg;
-		Manager manager;
+		boolean status = true;
+		int aircraftId;
+		int departureId;
+		int arrivalId;
+		Aircraft aircraft;
+		Airport departure;
+		Airport arrival;
+		List<Aircraft> aircrafts;
+		List<Airport> airports;
 
+		managerId = super.getRequest().getPrincipal().getActiveRealm().getId();
 		legId = super.getRequest().getData("id", int.class);
-		leg = this.repository.findLegByLegId(legId);
-		manager = leg == null ? null : leg.getFlight().getManager();
-		status = leg != null && super.getRequest().getPrincipal().hasRealm(manager);
+
+		if (!this.repository.findByLegId(legId).isPresent())
+			throw new RuntimeException("No leg with id: " + legId);
+
+		Optional<Leg> optionalLeg = this.repository.findByLegId(legId);
+
+		if (optionalLeg.isPresent()) {
+			Leg leg = optionalLeg.get();
+			Optional<Flight> flight = this.repository.findByIdAndManagerId(leg.getFlight().getId(), managerId);
+
+			if (flight.isEmpty())
+				status = false;
+
+		}
+		aircraftId = super.getRequest().getData("aircraft", int.class);
+		aircraft = this.repository.findAircraftByAircraftId(aircraftId);
+		aircrafts = this.repository.findAllAircraftsByManagerId(managerId);
+
+		if (aircraft == null && aircraftId != 0)
+			status = false;
+
+		if (aircraft != null && !aircrafts.contains(aircraft))
+			status = false;
+
+		departureId = super.getRequest().getData("airportDeparture", int.class);
+		departure = this.repository.findAirportByAirportId(departureId);
+
+		arrivalId = super.getRequest().getData("airportArrival", int.class);
+		arrival = this.repository.findAirportByAirportId(arrivalId);
+
+		airports = this.repository.findAllAirports();
+
+		if (departure == null && departureId != 0)
+			status = false;
+
+		if (departure != null && !airports.contains(departure))
+			status = false;
+
+		if (arrival == null && arrivalId != 0)
+			status = false;
+
+		if (arrival != null && !airports.contains(arrival))
+			status = false;
 
 		super.getResponse().setAuthorised(status);
+
 	}
 
 	@Override
@@ -53,24 +104,25 @@ public class ManagerLegDeleteService extends AbstractGuiService<Manager, Leg> {
 	@Override
 	public void bind(final Leg leg) {
 		int aircraftId;
-		int airportArrivalId;
-		int airportDepartureId;
+		int departureId;
+		int arrivalId;
 		Aircraft aircraft;
 		Airport departure;
 		Airport arrival;
 
 		aircraftId = super.getRequest().getData("aircraft", int.class);
 		aircraft = this.repository.findAircraftByAircraftId(aircraftId);
-		airportArrivalId = super.getRequest().getData("airportArrival", int.class);
-		departure = this.repository.findAirportByAirportId(airportArrivalId);
-		airportDepartureId = super.getRequest().getData("airportDeparture", int.class);
-		arrival = this.repository.findAirportByAirportId(airportDepartureId);
+
+		departureId = super.getRequest().getData("airportDeparture", int.class);
+		departure = this.repository.findAirportByAirportId(departureId);
+
+		arrivalId = super.getRequest().getData("airportArrival", int.class);
+		arrival = this.repository.findAirportByAirportId(arrivalId);
 
 		super.bindObject(leg, "flightNumber", "scheduledDeparture", "scheduledArrival", "flightStatus");
 		leg.setAircraft(aircraft);
 		leg.setAirportDeparture(departure);
 		leg.setAirportArrival(arrival);
-		leg.durationInHours();
 	}
 
 	@Override
