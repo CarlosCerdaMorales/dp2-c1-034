@@ -35,7 +35,10 @@ public class CustomerBookingShowService extends AbstractGuiService<Customer, Boo
 		bookingId = super.getRequest().getData("id", int.class);
 		booking = this.repository.findBookingById(bookingId);
 		customer = booking == null ? null : booking.getCustomer();
-		status = super.getRequest().getPrincipal().hasRealm(customer) && booking != null;
+		if (customer == null)
+			status = false;
+		else
+			status = super.getRequest().getPrincipal().hasRealm(customer) && booking != null;
 
 		super.getResponse().setAuthorised(status);
 

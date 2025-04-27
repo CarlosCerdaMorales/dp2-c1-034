@@ -73,8 +73,6 @@ public class CustomerIsFromDeleteService extends AbstractGuiService<Customer, Is
 		dataset = super.unbindObject(isFrom);
 		dataset.put("passenger", passs.getSelected().getKey());
 		dataset.put("passengers", passs);
-		dataset.put("booking", isFrom.getBooking());
-		dataset.put("bookingId", isFrom.getBooking().getId());
 
 		super.getResponse().addData(dataset);
 

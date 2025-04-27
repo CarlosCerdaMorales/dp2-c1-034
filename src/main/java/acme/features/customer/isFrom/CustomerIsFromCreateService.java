@@ -31,11 +31,16 @@ public class CustomerIsFromCreateService extends AbstractGuiService<Customer, Is
 		int customerId = this.getRequest().getPrincipal().getActiveRealm().getId();
 		int bookingId = super.getRequest().getData("bookingId", int.class);
 		Booking booking = this.repository.findBookingFromId(bookingId);
-		boolean draftMode = booking.isDraftMode();
-		if (booking.getCustomer().getId() != customerId)
+		if (booking == null || booking.getCustomer().getId() != customerId || !booking.isDraftMode())
 			authorised = false;
-		else if (draftMode == false)
-			authorised = false;
+		else if (super.getRequest().getMethod().equals("POST")) {
+			int pId = super.getRequest().getData("passenger", int.class);
+			Passenger passenger = this.repository.findPassengerFromId(pId);
+			Collection<Passenger> myPassengers = this.repository.findPublishedPassengersFromCustomerId(customerId);
+
+			if (passenger == null && pId != 0 || passenger != null && !myPassengers.contains(passenger))
+				authorised = false;
+		}
 		super.getResponse().setAuthorised(authorised);
 	}
 
@@ -56,19 +61,11 @@ public class CustomerIsFromCreateService extends AbstractGuiService<Customer, Is
 
 	@Override
 	public void bind(final IsFrom isFrom) {
-		int customerId = super.getRequest().getPrincipal().getActiveRealm().getId();
 		int pId = super.getRequest().getData("passenger", int.class);
 
 		Passenger passenger = this.repository.findPassengerFromId(pId);
-		Collection<Passenger> myPassengers = this.repository.findPublishedPassengersFromCustomerId(customerId);
 
-		if (passenger == null && pId != 0)
-			throw new RuntimeException("Passenger not found: " + pId);
-
-		if (passenger != null && !myPassengers.contains(passenger))
-			throw new RuntimeException("This passenger is not yours or is not published: " + pId);
-		else
-			isFrom.setPassenger(passenger);
+		isFrom.setPassenger(passenger);
 	}
 
 	@Override
