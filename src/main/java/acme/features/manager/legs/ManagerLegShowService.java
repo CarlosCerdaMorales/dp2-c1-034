@@ -48,8 +48,6 @@ public class ManagerLegShowService extends AbstractGuiService<Manager, Leg> {
 
 			if (flight.isEmpty())
 				status = false;
-			//if(leg.isDraftMode())
-			//	status = true;
 		}
 
 		super.getResponse().setAuthorised(status);

@@ -32,23 +32,63 @@ public class ManagerLegCreateService extends AbstractGuiService<Manager, Leg> {
 	@Override
 	public void authorise() {
 		boolean authorized = true;
+		int aircraftId;
+		int departureId;
+		int arrivalId;
+		Aircraft aircraft;
+		Airport departure;
+		Airport arrival;
+		List<Aircraft> aircrafts;
+		List<Airport> airports;
+		String metodo = super.getRequest().getMethod();
 
 		Integer flightId = super.getRequest().getData("flightId", int.class);
 
 		if (this.flightRepository.findFlightById(flightId) == null)
 			throw new RuntimeException("No flight with id: " + flightId);
 
-		/**
-		 * NO SE SI LO DEL DRAFTMODE SE HACE PARA FLIGHTS
-		 * Flight flight = this.flightRepository.findFlightById(flightId);
-		 * if (!flight.getDraftMode())
-		 * authorized = false;l
-		 **/
+		Flight flight = this.flightRepository.findFlightById(flightId);
+		if (!flight.getDraftMode())
+			authorized = false;
+
 		Integer managerId = super.getRequest().getPrincipal().getActiveRealm().getId();
 		Optional<Flight> optionalFlight = this.repository.findByIdAndManagerId(flightId, managerId);
 
 		if (optionalFlight.isEmpty())
 			authorized = false;
+
+		if (metodo.equals("POST")) {
+			aircraftId = super.getRequest().getData("aircraft", int.class);
+			aircraft = this.repository.findAircraftByAircraftId(aircraftId);
+			aircrafts = this.repository.findAllAircraftsByManagerId(managerId);
+
+			if (aircraft == null && aircraftId != 0)
+				authorized = false;
+
+			if (aircraft != null && !aircrafts.contains(aircraft))
+				authorized = false;
+
+			departureId = super.getRequest().getData("airportDeparture", int.class);
+			departure = this.repository.findAirportByAirportId(departureId);
+
+			arrivalId = super.getRequest().getData("airportArrival", int.class);
+			arrival = this.repository.findAirportByAirportId(arrivalId);
+
+			airports = this.repository.findAllAirports();
+
+			if (departure == null && departureId != 0)
+				authorized = false;
+
+			if (departure != null && !airports.contains(departure))
+				authorized = false;
+
+			if (arrival == null && arrivalId != 0)
+				authorized = false;
+
+			if (arrival != null && !airports.contains(arrival))
+				authorized = false;
+
+		}
 
 		super.getResponse().setAuthorised(authorized);
 	}
@@ -59,8 +99,6 @@ public class ManagerLegCreateService extends AbstractGuiService<Manager, Leg> {
 		Flight flight;
 
 		Integer flightId = super.getRequest().getData("flightId", int.class);
-		if (this.flightRepository.findFlightById(flightId) == null)
-			throw new RuntimeException("No flight with id: " + flightId);
 		flight = this.flightRepository.findFlightById(flightId);
 
 		leg = new Leg();
@@ -75,14 +113,10 @@ public class ManagerLegCreateService extends AbstractGuiService<Manager, Leg> {
 		int aircraftId;
 		int departureId;
 		int arrivalId;
-		int managerId;
 		Aircraft aircraft;
 		Airport departure;
 		Airport arrival;
-		List<Aircraft> aircrafts;
-		List<Airport> airports;
 
-		managerId = super.getRequest().getPrincipal().getActiveRealm().getId();
 		aircraftId = super.getRequest().getData("aircraft", int.class);
 		aircraft = this.repository.findAircraftByAircraftId(aircraftId);
 
@@ -91,27 +125,6 @@ public class ManagerLegCreateService extends AbstractGuiService<Manager, Leg> {
 
 		arrivalId = super.getRequest().getData("airportArrival", int.class);
 		arrival = this.repository.findAirportByAirportId(arrivalId);
-
-		aircrafts = this.repository.findAllAircraftsByManagerId(managerId);
-		airports = this.repository.findAllAirports();
-
-		if (aircraft == null && aircraftId != 0)
-			throw new RuntimeException("Aircraft not found: " + aircraftId);
-
-		if (aircraft != null && !aircrafts.contains(aircraft))
-			throw new RuntimeException("This Aircraft is not published: " + aircraftId);
-
-		if (departure == null && departureId != 0)
-			throw new RuntimeException("Airport not found: " + departureId);
-
-		if (departure != null && !airports.contains(departure))
-			throw new RuntimeException("This Airport is not published: " + departureId);
-
-		if (arrival == null && arrivalId != 0)
-			throw new RuntimeException("Airport not found: " + arrivalId);
-
-		if (arrival != null && !airports.contains(arrival))
-			throw new RuntimeException("This Airport is not published: " + arrivalId);
 
 		super.bindObject(leg, "flightNumber", "scheduledDeparture", "scheduledArrival", "flightStatus");
 		leg.setAircraft(aircraft);

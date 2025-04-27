@@ -20,7 +20,8 @@ public class ManagerFlightCreateService extends AbstractGuiService<Manager, Flig
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean authorized = true;
+		super.getResponse().setAuthorised(authorized);
 	}
 
 	@Override

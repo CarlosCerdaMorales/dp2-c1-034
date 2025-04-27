@@ -48,8 +48,6 @@ public class ManagerLegListService extends AbstractGuiService<Manager, Leg> {
 
 		flightId = super.getRequest().getData("flightId", int.class);
 		Integer managerId = super.getRequest().getPrincipal().getActiveRealm().getId();
-		if (this.repository.findByIdAndManagerId(flightId, managerId).isEmpty())
-			throw new RuntimeException("No flight with id: " + flightId);
 		List<Leg> legs = this.repository.findAllLegsByFlightId(flightId);
 		legs.sort(Comparator.comparing(Leg::getScheduledDeparture));
 
