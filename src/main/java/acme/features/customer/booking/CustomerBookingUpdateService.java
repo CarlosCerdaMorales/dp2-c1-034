@@ -25,16 +25,24 @@ public class CustomerBookingUpdateService extends AbstractGuiService<Customer, B
 
 	@Override
 	public void authorise() {
-		boolean status;
+		boolean status = true;
 		int bookingId;
 		Booking booking;
 		Customer customer;
+		if (super.getRequest().hasData("flight")) {
+			int flightId = super.getRequest().getData("flight", int.class);
 
-		bookingId = super.getRequest().getData("id", int.class);
-		booking = this.repository.findBookingById(bookingId);
-		customer = booking == null ? null : booking.getCustomer();
-		status = booking != null && booking.isDraftMode() && super.getRequest().getPrincipal().hasRealm(customer);
+			Flight flight = this.repository.findFlightById(flightId);
+			Collection<Flight> allFlights = this.repository.findAllFlights();
 
+			if (flight == null && flightId != 0 || flight != null && !allFlights.contains(flight))
+				status = false;
+		} else {
+			bookingId = super.getRequest().getData("id", int.class);
+			booking = this.repository.findBookingById(bookingId);
+			customer = booking == null ? null : booking.getCustomer();
+			status = booking != null && booking.isDraftMode() && super.getRequest().getPrincipal().hasRealm(customer);
+		}
 		super.getResponse().setAuthorised(status);
 
 	}
@@ -55,13 +63,6 @@ public class CustomerBookingUpdateService extends AbstractGuiService<Customer, B
 		int flightId = super.getRequest().getData("flight", int.class);
 
 		Flight flight = this.repository.findFlightById(flightId);
-		Collection<Flight> myFlights = this.repository.findAllFlights();
-
-		if (flight == null && flightId != 0)
-			throw new RuntimeException("Flight not found: " + flightId);
-
-		if (flight != null && !myFlights.contains(flight))
-			throw new RuntimeException("This flight is not published: " + flightId);
 
 		booking.setFlight(flight);
 		super.bindObject(booking, "locatorCode", "travelClass", "lastNibble");

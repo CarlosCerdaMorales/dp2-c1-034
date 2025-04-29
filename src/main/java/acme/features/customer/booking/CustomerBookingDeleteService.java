@@ -28,7 +28,7 @@ public class CustomerBookingDeleteService extends AbstractGuiService<Customer, B
 
 	@Override
 	public void authorise() {
-		boolean status;
+		boolean status = true;
 		int bookingId;
 		Booking booking;
 		Customer customer;
