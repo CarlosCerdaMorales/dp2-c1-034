@@ -12,22 +12,23 @@ import acme.client.services.GuiService;
 import acme.entities.booking.Booking;
 import acme.entities.booking.TravelClass;
 import acme.entities.flight.Flight;
+import acme.features.customer.isFrom.CustomerIsFromDeleteService;
 import acme.realms.Customer;
+import acme.relationships.IsFrom;
 
 @GuiService
-public class CustomerBookingShowService extends AbstractGuiService<Customer, Booking> {
-
-	// Internal state ---------------------------------------------------------
+public class CustomerBookingDeleteService extends AbstractGuiService<Customer, Booking> {
 
 	@Autowired
-	private CustomerBookingRepository repository;
+	private CustomerBookingRepository	repository;
 
-	// AbstractGuiService interface -------------------------------------------
+	@Autowired
+	private CustomerIsFromDeleteService	service;
 
 
 	@Override
 	public void authorise() {
-		boolean status;
+		boolean status = true;
 		int bookingId;
 		Booking booking;
 		Customer customer;
@@ -35,10 +36,7 @@ public class CustomerBookingShowService extends AbstractGuiService<Customer, Boo
 		bookingId = super.getRequest().getData("id", int.class);
 		booking = this.repository.findBookingById(bookingId);
 		customer = booking == null ? null : booking.getCustomer();
-		if (customer == null)
-			status = false;
-		else
-			status = super.getRequest().getPrincipal().hasRealm(customer) && booking != null;
+		status = super.getRequest().getPrincipal().hasRealm(customer) && booking != null && booking.isDraftMode();
 
 		super.getResponse().setAuthorised(status);
 
@@ -57,29 +55,41 @@ public class CustomerBookingShowService extends AbstractGuiService<Customer, Boo
 	}
 
 	@Override
+	public void bind(final Booking booking) {
+		;
+	}
+
+	@Override
 	public void validate(final Booking booking) {
-		//		boolean confirmation;
-		//
-		//		confirmation = super.getRequest().getData("confirmation", boolean.class);
-		//		super.state(confirmation, "confirmation", "acme.validation.confirmation.message");
+		;
+	}
+
+	@Override
+	public void perform(final Booking booking) {
+		Collection<IsFrom> isFroms;
+
+		isFroms = this.repository.getIsFromBookingId(booking.getId());
+		isFroms.stream().forEach(i -> this.service.perform(i));
+
+		this.repository.delete(booking);
 	}
 
 	@Override
 	public void unbind(final Booking booking) {
 		Collection<Flight> flights;
 		SelectChoices choices;
-		SelectChoices classChoices;
+		SelectChoices classes;
 		Dataset dataset;
 
 		flights = this.repository.findAllFlights();
-		classChoices = SelectChoices.from(TravelClass.class, booking.getTravelClass());
 		choices = SelectChoices.from(flights, "flightTag", booking.getFlight());
+		classes = SelectChoices.from(TravelClass.class, booking.getTravelClass());
 
 		dataset = super.unbindObject(booking, "locatorCode", "purchaseMoment", "travelClass", "lastNibble", "draftMode");
 		dataset.put("flight", choices.getSelected().getKey());
 		dataset.put("flights", choices);
-		dataset.put("classes", classChoices);
-		dataset.put("bookingId", booking.getId());
+		dataset.put("classes", classes);
+		dataset.put("travelClass", classes.getSelected().getKey());
 		dataset.put("price", booking.bookingPrice());
 
 		super.getResponse().addData(dataset);

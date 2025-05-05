@@ -30,46 +30,41 @@ public class LegValidator extends AbstractValidator<ValidLeg, Leg> {
 
 	@Override
 	public boolean isValid(final Leg leg, final ConstraintValidatorContext context) {
-
 		assert context != null;
 
-		boolean result;
-		if (leg == null || leg.getAircraft() == null || leg.getScheduledArrival() == null || leg.getScheduledDeparture() == null)
-			super.state(context, false, "Aircraft", "acme.validation.leg.NotNull.message");
-		else {
-			{
+		boolean result = true;
 
-				boolean uniqueLeg;
+		if (leg == null)
+			return true;
 
-				Leg existingLeg;
+		if (leg.getFlightNumber() != null) {
+			boolean uniqueLeg;
+			Leg existingLeg;
+			existingLeg = this.repository.getLegFromFlightNumber(leg.getFlightNumber());
+			uniqueLeg = existingLeg == null || existingLeg.equals(leg);
+			super.state(context, uniqueLeg, "flightNumber", "acme.validation.leg.duplicated-flight-number.message");
+		}
 
-				existingLeg = this.repository.getLegFromFlightNumber(leg.getFlightNumber());
+		if (leg.getScheduledDeparture() != null && leg.getScheduledArrival() != null)
+			if (MomentHelper.isAfterOrEqual(leg.getScheduledDeparture(), leg.getScheduledArrival()))
+				super.state(context, false, "scheduledDeparture", "acme.validation.leg.invalid-date.message");
 
-				uniqueLeg = existingLeg == null || existingLeg.equals(leg);
-
-				super.state(context, uniqueLeg, "flightNumber", "acme.validation.leg.duplicated-flight-number.message");
-			}
-			{
-				if (MomentHelper.isAfterOrEqual(leg.getScheduledDeparture(), leg.getScheduledArrival()))
-					super.state(context, false, "scheduledDeparture", "acme.validation.leg.invalid-date.message");
-
-			}
-			{
-
-				String legFlightNumber = leg.getFlightNumber();
-
-				if (StringHelper.isBlank(legFlightNumber))
-					super.state(context, false, "flightNumber", "acme.validation.leg.flight_number.blank.message");
-
-				String IATAFlightNumberCode = legFlightNumber.substring(0, 3);
-
-				String IATAAirlineCode = leg.getAircraft().getAirline().getIata();
-
-				boolean validLeg = StringHelper.isEqual(IATAFlightNumberCode, IATAAirlineCode, true);
-
-				super.state(context, validLeg, "flightNumber", "acme.validation.leg.flight_number.mismatch.message");
-
-			}
+		if (leg.getAircraft() != null && leg.getFlightNumber() != null && leg.getFlightNumber().length() >= 3) {
+			String legFlightNumber = leg.getFlightNumber();
+			//if (StringHelper.isBlank(legFlightNumber))
+			//	super.state(context, false, "flightNumber", "acme.validation.leg.flight_number.blank.message");
+			String IATAFlightNumberCode = legFlightNumber.substring(0, 3);
+			String IATAAirlineCode = leg.getAircraft().getAirline().getIata();
+			boolean validLeg = StringHelper.isEqual(IATAFlightNumberCode, IATAAirlineCode, true);
+			super.state(context, validLeg, "flightNumber", "acme.validation.leg.flight_number.mismatch.message");
+		}
+		if (leg.getFlight() != null && leg.getScheduledDeparture() != null && leg.getScheduledArrival() != null) {
+			boolean isLegOverlapping = this.repository.isLegOverlapping(leg.getId(), leg.getFlight().getId(), leg.getScheduledDeparture(), leg.getScheduledArrival());
+			super.state(context, !isLegOverlapping, "scheduledDeparture", "acme.validation.leg.overlapping-legs.message");
+		}
+		if (leg.getAirportDeparture() != null && leg.getAirportArrival() != null) {
+			boolean sameAirport = leg.getAirportDeparture().getId() == leg.getAirportArrival().getId();
+			super.state(context, !sameAirport, "airportDeparture", "acme.validation.leg.not-same-airport.message");
 		}
 
 		result = !super.hasErrors(context);

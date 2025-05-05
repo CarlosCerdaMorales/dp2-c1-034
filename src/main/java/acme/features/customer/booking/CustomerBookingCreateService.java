@@ -28,7 +28,21 @@ public class CustomerBookingCreateService extends AbstractGuiService<Customer, B
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		String metodo = super.getRequest().getMethod();
+		boolean authorised = true;
+		if (metodo.equals("POST")) {
+			int flightId = super.getRequest().getData("flight", int.class);
+
+			Flight flight = this.repository.findFlightById(flightId);
+			Collection<Flight> allFlights = this.repository.findAllFlights();
+
+			if (flight == null && flightId != 0)
+				authorised = false;
+
+			else if (flight != null && !allFlights.contains(flight))
+				authorised = false;
+		}
+		super.getResponse().setAuthorised(authorised);
 	}
 
 	@Override
@@ -47,13 +61,6 @@ public class CustomerBookingCreateService extends AbstractGuiService<Customer, B
 		int flightId = super.getRequest().getData("flight", int.class);
 
 		Flight flight = this.repository.findFlightById(flightId);
-		Collection<Flight> myFlights = this.repository.findAllFlights();
-
-		if (flight == null && flightId != 0)
-			throw new RuntimeException("Flight not found: " + flightId);
-
-		if (flight != null && !myFlights.contains(flight))
-			throw new RuntimeException("This flight is not published: " + flightId);
 
 		booking.setFlight(flight);
 		super.bindObject(booking, "locatorCode", "travelClass", "lastNibble");

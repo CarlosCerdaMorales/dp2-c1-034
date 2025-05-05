@@ -94,21 +94,19 @@ acme.validation.booking.invalid-booking-isFrom-publish.message = No podrá publi
 acme.validation.booking.invalid-passenger-isFrom-publish.message = No podrá publicar hasta que este pasajero esté publicado
 acme.validation.isfrom.invalid-passenger-create.message = No podrá elegir un pasajero que no sea suyo y que no esté publicado
 
+### leg
+
+acme.validation.leg.NotNull.message = No puede ser nulo
+acme.validation.leg.duplicated-flight-number.message = Número de vuelo en uso
+acme.validation.leg.invalid-date.message = Fecha invalida
+acme.validation.leg.flight_number.blank.message = Número de vuelo incompleto
+acme.validation.leg.flight_number.mismatch.message = Código iata incorrecto
+acme.validation.leg.invalid-leg-not-null.message = Datos incorrectos
+acme.validation.leg.overlapping-legs.message = Transbordo superpuesto
+acme.validation.flight.aircraft-under-maintenance.message = Areonave inoperativa
+acme.validation.leg.not-same-airport.message = Areopuerto de llegada e ida no pueden ser el mismo
+
 ### Flight Crew member ###
-
-acme.validation.leg.NotNull.message = No puede ser nulo
-acme.validation.leg.duplicated-flight-number.message = Número de vuelo en uso
-acme.validation.leg.invalid-date.message = Fecha invalida
-acme.validation.leg.flight_number.blank.message = Número de vuelo incompleto
-acme.validation.leg.flight_number.mismatch.message = Código iata incorrecto
-acme.validation.leg.invalid-leg-not-null.message = Datos incorrectos
-
-acme.validation.leg.NotNull.message = No puede ser nulo
-acme.validation.leg.duplicated-flight-number.message = Número de vuelo en uso
-acme.validation.leg.invalid-date.message = Fecha invalida
-acme.validation.leg.flight_number.blank.message = Número de vuelo incompleto
-acme.validation.leg.flight_number.mismatch.message = Código iata incorrecto
-acme.validation.leg.invalid-leg-not-null.message = Datos incorrectos
 
 acme.validation.leg-complete.message = Esta escala ya ha sido completada
 acme.validation.member-available.message = Este miembro no esta disponible
@@ -119,6 +117,8 @@ acme.validation.overlapping.message = Ya se está realizando una asignación en 
 ### Flight ###
 
 acme.validation.flight.cant-be-publish.message = Todas las escalas deben estar publicadas
+acme.validation.invalid-currency.message = Divisa invalida
+acme.validation.flight.zero-legs.message = Al menos una escala para poder publicar
 
 ### Task and MaintenanceRecord
 
@@ -135,5 +135,6 @@ acme.validation.text.length.1-255 = El texto debe estar entre 1 y 255
 acme.validation.number.range.1-255 = El número debe estar entre 1 y 255
 acme.validation.number.range.2000-5000 = El número debe estar entre 2000 y 5000
 acme.validation.text.length.255 = El texto debe tener como máximo 255 caracteres
+
 
  
