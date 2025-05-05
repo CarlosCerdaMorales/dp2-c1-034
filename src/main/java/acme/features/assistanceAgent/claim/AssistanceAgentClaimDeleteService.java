@@ -25,7 +25,40 @@ public class AssistanceAgentClaimDeleteService extends AbstractGuiService<Assist
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		Claim claim;
+		int claimId;
+		int userAccountId;
+		int assistanceAgentId;
+		int ownerId;
+		boolean res = true;
+		boolean isClaimCreator;
+		boolean isAssistanceAgent;
+		int legId;
+		Leg leg;
+		Collection<Leg> publishedLegs;
+		ClaimType type;
+		String metodo = super.getRequest().getMethod();
+		if (metodo.equals("GET")) {
+			isAssistanceAgent = super.getRequest().getPrincipal().hasRealmOfType(AssistanceAgent.class);
+			claimId = super.getRequest().getData("id", int.class);
+			userAccountId = super.getRequest().getPrincipal().getAccountId();
+			assistanceAgentId = this.repository.findAssistanceAgentIdByUserAccountId(userAccountId);
+			ownerId = this.repository.findAssistanceAgentIdByClaimId(claimId);
+			claim = this.repository.findClaimById(claimId);
+			isClaimCreator = assistanceAgentId == ownerId;
+
+			res = claim != null && isAssistanceAgent && isClaimCreator;
+		} else {
+			type = super.getRequest().getData("claimType", ClaimType.class);
+			legId = super.getRequest().getData("leg", int.class);
+			leg = this.repository.findLegById(legId);
+			publishedLegs = this.repository.findAllPublishedLegs();
+			System.out.println(leg);
+			if (!(type instanceof ClaimType) || !publishedLegs.contains(leg))
+				res = false;
+
+		}
+		super.getResponse().setAuthorised(res);
 	}
 
 	@Override
@@ -61,7 +94,6 @@ public class AssistanceAgentClaimDeleteService extends AbstractGuiService<Assist
 	@Override
 	public void validate(final Claim claim) {
 		boolean confirmation;
-
 		confirmation = super.getRequest().getData("confirmation", boolean.class);
 		super.state(confirmation, "confirmation", "acme.validation.confirmation.message");
 	}
@@ -82,7 +114,7 @@ public class AssistanceAgentClaimDeleteService extends AbstractGuiService<Assist
 		SelectChoices choicesType;
 
 		choicesType = SelectChoices.from(ClaimType.class, claim.getClaimType());
-		legs = this.repository.findAllLegs();
+		legs = this.repository.findAllPublishedLegs();
 		selectedLeg = SelectChoices.from(legs, "flightNumber", claim.getLeg());
 		dataset = super.unbindObject(claim, "registrationMoment", "passengerEmail", "description", "claimType");
 		dataset.put("legs", selectedLeg);

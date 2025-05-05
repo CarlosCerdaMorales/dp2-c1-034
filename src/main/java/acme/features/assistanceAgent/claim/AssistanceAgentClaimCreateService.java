@@ -26,7 +26,27 @@ public class AssistanceAgentClaimCreateService extends AbstractGuiService<Assist
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		String metodo = super.getRequest().getMethod();
+		ClaimType type;
+		int legId;
+		Leg leg;
+		Collection<Leg> publishedLegs;
+		boolean res = true;
+		boolean isAssistanceAgent;
+
+		isAssistanceAgent = super.getRequest().getPrincipal().hasRealmOfType(AssistanceAgent.class);
+		if (metodo.equals("POST")) {
+			type = super.getRequest().getData("claimType", ClaimType.class);
+			legId = super.getRequest().getData("leg", int.class);
+			leg = this.repository.findLegById(legId);
+			publishedLegs = this.repository.findAllPublishedLegs();
+			if (!(type instanceof ClaimType) || !publishedLegs.contains(leg))
+				res = false;
+
+		} else
+			res = isAssistanceAgent;
+
+		super.getResponse().setAuthorised(res);
 	}
 
 	@Override
@@ -59,6 +79,11 @@ public class AssistanceAgentClaimCreateService extends AbstractGuiService<Assist
 		claim.setDraftMode(true);
 		claim.setLeg(leg);
 
+		Collection<Leg> publishedLegs;
+		publishedLegs = this.repository.findAllPublishedLegs();
+		if (!publishedLegs.contains(claim.getLeg()))
+			super.getResponse().setAuthorised(false);
+
 	}
 
 	@Override
@@ -70,7 +95,6 @@ public class AssistanceAgentClaimCreateService extends AbstractGuiService<Assist
 	@Override
 	public void validate(final Claim claim) {
 		boolean confirmation;
-
 		confirmation = super.getRequest().getData("confirmation", boolean.class);
 		super.state(confirmation, "confirmation", "acme.validation.confirmation.message");
 	}
@@ -82,12 +106,13 @@ public class AssistanceAgentClaimCreateService extends AbstractGuiService<Assist
 		SelectChoices selectedLeg;
 		Collection<Leg> legs;
 		choicesType = SelectChoices.from(ClaimType.class, claim.getClaimType());
-		legs = this.repository.findAllLegs();
+		legs = this.repository.findAllPublishedLegs();
 		selectedLeg = SelectChoices.from(legs, "flightNumber", claim.getLeg());
 		dataset = super.unbindObject(claim, "passengerEmail", "description", "claimType");
 		dataset.put("legs", selectedLeg);
 		dataset.put("leg", selectedLeg.getSelected().getKey());
 		dataset.put("claimTypes", choicesType);
+		dataset.put("claimType", choicesType.getSelected().getKey());
 		dataset.put("draftMode", true);
 		dataset.put("confirmation", false);
 		dataset.put("readonly", false);

@@ -25,20 +25,14 @@ public interface AssistanceAgentClaimRepository extends AbstractRepository {
 	@Query("select c from Claim c where c.assistanceAgent.id = :assistanceAgentId")
 	Collection<Claim> findClaimsByAssistanceAgentId(int assistanceAgentId);
 
-	@Query("select c from Claim c where c.assistanceAgent.id = :assistanceAgentId and exists ( select t  from TrackingLog t  where t.claim.id = c.id  and (t.status <> 'REJECTED' or t.status <> 'ACCEPTED') )")
-	Collection<Claim> findCompletedClaimsByAssistanceAgentId(int assistanceAgentId);
-
-	@Query("select c from Claim c where c.assistanceAgent.id = :assistanceAgentId and not exists ( select t  from TrackingLog t  where t.claim.id = c.id  and t.status in ('REJECTED' ,'ACCEPTED') ) ")
-	Collection<Claim> findUndergoingClaimsByAssistanceAgentId(int assistanceAgentId);
-
 	@Query("select c.assistanceAgent.id from Claim c where c.id = :claimId")
 	Integer findAssistanceAgentIdByClaimId(int claimId);
 
 	@Query("select a from AssistanceAgent a where a.userAccount.id = :userAccountId")
 	AssistanceAgent findAssistanceAgentByUserAccountId(int userAccountId);
 
-	@Query("select l from Leg l")
-	Collection<Leg> findAllLegs();
+	@Query("select l from Leg l where l.draftMode = false")
+	Collection<Leg> findAllPublishedLegs();
 
 	@Query("select l from Leg l where l.id = :legId")
 	Leg findLegById(int legId);
