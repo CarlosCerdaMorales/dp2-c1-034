@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import acme.client.repositories.AbstractRepository;
 import acme.entities.activitylog.ActivityLog;
 import acme.entities.flightassignment.FlightAssignment;
+import acme.entities.leg.Leg;
 
 public interface FlightCrewMemberActivityLogRepository extends AbstractRepository {
 
@@ -28,5 +29,7 @@ public interface FlightCrewMemberActivityLogRepository extends AbstractRepositor
 
 	@Query("select a from FlightAssignment a where a.flightCrewMember.id = :id")
 	List<FlightAssignment> findAllFlightAssignmentsByFlightCrewMemberId(int id);
+
+	Leg findLegById();
 
 }
