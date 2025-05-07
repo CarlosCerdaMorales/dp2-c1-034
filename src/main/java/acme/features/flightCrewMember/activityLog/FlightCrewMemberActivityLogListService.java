@@ -1,6 +1,7 @@
 
 package acme.features.flightCrewMember.activityLog;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,9 +34,16 @@ public class FlightCrewMemberActivityLogListService extends AbstractGuiService<F
 
 	@Override
 	public void load() {
-		List<ActivityLog> logs;
+		List<ActivityLog> logs = new ArrayList<>();
+		List<ActivityLog> memberLogs;
+		List<ActivityLog> publishedLogs;
 		int masterId = super.getRequest().getData("masterId", int.class);
-		logs = this.repository.findLogsByFlightAssignment(masterId);
+		int memberId = super.getRequest().getPrincipal().getActiveRealm().getId();
+
+		publishedLogs = this.repository.findPublishedLogsByFlightAssignment(masterId);
+		memberLogs = this.repository.findMyLogsByFlightAssignment(masterId, memberId);
+		logs.addAll(publishedLogs);
+		logs.addAll(memberLogs);
 		super.getResponse().addGlobal("masterId", masterId);
 		super.getBuffer().addData(logs);
 	}
