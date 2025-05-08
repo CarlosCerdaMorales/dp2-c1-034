@@ -112,7 +112,7 @@ acme.validation.leg-complete.message = Esta escala ya ha sido completada
 acme.validation.member-available.message = Este miembro no esta disponible
 acme.validation.pilot.message = La escala seleccionada ya tiene un piloto
 acme.validation.co-pilot.message = La escala seleccionada ya tiene un co-piloto
-acme.validation.overlapping.message = Ya se está realizando una asignación en las fechas de esta escala.
+acme.validation.overlapping.message = Ya se está realizando una asignación en las fechas de esta escala
 
 ### Flight ###
 

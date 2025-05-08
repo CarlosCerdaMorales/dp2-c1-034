@@ -25,10 +25,12 @@ public class FlightCrewMemberActivityLogUpdateService extends AbstractGuiService
 		boolean status;
 		ActivityLog log;
 		int logId;
+		FlightCrewMember member;
 
 		logId = super.getRequest().getData("id", int.class);
 		log = this.repository.findActivityLogById(logId);
-		status = log.isDraftMode();
+		member = log == null ? null : log.getFlightAssignment().getFlightCrewMember();
+		status = log.isDraftMode() && log != null && super.getRequest().getPrincipal().hasRealm(member);
 		super.getResponse().setAuthorised(status);
 	}
 
@@ -62,6 +64,8 @@ public class FlightCrewMemberActivityLogUpdateService extends AbstractGuiService
 	public void unbind(final ActivityLog activityLog) {
 		Dataset dataset;
 		List<FlightAssignment> assignments;
+		int memberId = super.getRequest().getPrincipal().getActiveRealm().getId();
+		FlightCrewMember member = this.repository.findFlightCrewMemberById(memberId).get();
 		assignments = this.repository.findAllFlightAssignments();
 
 		SelectChoices assignmentChoices;
@@ -71,6 +75,7 @@ public class FlightCrewMemberActivityLogUpdateService extends AbstractGuiService
 		dataset.put("assignmentChoices", assignmentChoices);
 		dataset.put("masterId", activityLog.getFlightAssignment().getId());
 		dataset.put("masterDraftMode", activityLog.getFlightAssignment().isDraftMode());
+		dataset.put("myAssignment", activityLog.getFlightAssignment().getFlightCrewMember().equals(member));
 
 		super.getResponse().addData(dataset);
 	}

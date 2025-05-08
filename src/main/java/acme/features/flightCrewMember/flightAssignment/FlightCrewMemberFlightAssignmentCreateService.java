@@ -25,7 +25,22 @@ public class FlightCrewMemberFlightAssignmentCreateService extends AbstractGuiSe
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		String metodo = super.getRequest().getMethod();
+		boolean authorised = true;
+		int memberId = super.getRequest().getPrincipal().getActiveRealm().getId();
+		FlightCrewMember member = this.repository.findFlightCrewMemberById(memberId).get();
+
+		if (metodo.equals("POST")) {
+			int legId = super.getRequest().getData("leg", int.class);
+
+			Leg leg = this.repository.findLegById(legId).get();
+			List<Leg> allLegs = this.repository.findAllLegs();
+
+			if (leg == null && legId != 0 || leg != null && !allLegs.contains(leg) || leg != null && !leg.getAircraft().getAirline().equals(member.getWorkingFor()))
+				authorised = false;
+		}
+		super.getResponse().setAuthorised(authorised);
+
 	}
 
 	@Override
