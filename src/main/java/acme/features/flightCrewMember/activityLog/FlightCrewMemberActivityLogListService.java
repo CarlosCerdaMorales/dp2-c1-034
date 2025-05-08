@@ -39,12 +39,17 @@ public class FlightCrewMemberActivityLogListService extends AbstractGuiService<F
 		List<ActivityLog> publishedLogs;
 		int masterId = super.getRequest().getData("masterId", int.class);
 		int memberId = super.getRequest().getPrincipal().getActiveRealm().getId();
-
+		;
+		FlightAssignment assignment = this.repository.findFlightAssignmentById(masterId);
+		boolean myAssignment = false;
+		if (assignment.getFlightCrewMember().getId() == memberId)
+			myAssignment = true;
 		publishedLogs = this.repository.findPublishedLogsByFlightAssignment(masterId);
 		memberLogs = this.repository.findMyLogsByFlightAssignment(masterId, memberId);
 		logs.addAll(publishedLogs);
 		logs.addAll(memberLogs);
 		super.getResponse().addGlobal("masterId", masterId);
+		super.getResponse().addGlobal("myAssignment", myAssignment);
 		super.getBuffer().addData(logs);
 	}
 	@Override
@@ -55,8 +60,12 @@ public class FlightCrewMemberActivityLogListService extends AbstractGuiService<F
 	@Override
 	public void unbind(final ActivityLog log) {
 		Dataset dataset;
+		int memberId = super.getRequest().getPrincipal().getActiveRealm().getId();
+		FlightCrewMember member = this.repository.findFlightCrewMemberById(memberId).get();
 
 		dataset = super.unbindObject(log, "incidentType", "description", "severityLevel");
+		dataset.put("myAssignment", log.getFlightAssignment().getFlightCrewMember().equals(member));
 		super.getResponse().addData(dataset);
+
 	}
 }
