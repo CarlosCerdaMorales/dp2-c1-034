@@ -2,6 +2,7 @@
 package acme.entities.claim;
 
 import java.beans.Transient;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
@@ -85,7 +86,7 @@ public class Claim extends AbstractEntity {
 		if (listLastTr.isEmpty())
 			lastTr = null;
 		else
-			lastTr = listLastTr.get(0);
+			lastTr = listLastTr.stream().max(Comparator.comparing(TrackingLog::getResolutionPercentage)).orElse(null);
 
 		if (lastTr == null) {
 		} else if (lastTr.getStatus() == TrackingLogStatus.ACCEPTED)
