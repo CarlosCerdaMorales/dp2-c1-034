@@ -27,22 +27,28 @@ public class AssistanceAgentClaimCreateService extends AbstractGuiService<Assist
 	@Override
 	public void authorise() {
 		String metodo = super.getRequest().getMethod();
-		ClaimType type;
+		String type;
 		int legId;
 		Leg leg;
 		Collection<Leg> publishedLegs;
 		boolean res = true;
 		boolean isAssistanceAgent;
+		boolean correctEnum = false;
+		boolean correctLeg = true;
 
 		isAssistanceAgent = super.getRequest().getPrincipal().hasRealmOfType(AssistanceAgent.class);
 		if (metodo.equals("POST")) {
-			type = super.getRequest().getData("claimType", ClaimType.class);
+			type = super.getRequest().getData("claimType", String.class);
 			legId = super.getRequest().getData("leg", int.class);
 			leg = this.repository.findLegById(legId);
 			publishedLegs = this.repository.findAllPublishedLegs();
-			if (!(type instanceof ClaimType) || !publishedLegs.contains(leg))
-				res = false;
+			for (ClaimType t : ClaimType.values())
+				if (t.name().equals(type))
+					correctEnum = true;
+			if (!publishedLegs.contains(leg))
+				correctLeg = false;
 
+			res = correctEnum && correctLeg;
 		} else
 			res = isAssistanceAgent;
 
