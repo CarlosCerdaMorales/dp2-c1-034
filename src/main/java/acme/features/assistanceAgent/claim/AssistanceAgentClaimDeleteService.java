@@ -36,8 +36,10 @@ public class AssistanceAgentClaimDeleteService extends AbstractGuiService<Assist
 		int legId;
 		Leg leg;
 		Collection<Leg> publishedLegs;
-		ClaimType type;
+		String type;
 		String metodo = super.getRequest().getMethod();
+		boolean correctEnum = false;
+		boolean correctLeg = true;
 		if (metodo.equals("GET")) {
 			isAssistanceAgent = super.getRequest().getPrincipal().hasRealmOfType(AssistanceAgent.class);
 			claimId = super.getRequest().getData("id", int.class);
@@ -49,14 +51,17 @@ public class AssistanceAgentClaimDeleteService extends AbstractGuiService<Assist
 
 			res = claim != null && isAssistanceAgent && isClaimCreator;
 		} else {
-			type = super.getRequest().getData("claimType", ClaimType.class);
+			type = super.getRequest().getData("claimType", String.class);
 			legId = super.getRequest().getData("leg", int.class);
 			leg = this.repository.findLegById(legId);
 			publishedLegs = this.repository.findAllPublishedLegs();
-			System.out.println(leg);
-			if (!(type instanceof ClaimType) || !publishedLegs.contains(leg))
-				res = false;
+			for (ClaimType t : ClaimType.values())
+				if (t.name().equals(type))
+					correctEnum = true;
+			if (!publishedLegs.contains(leg))
+				correctLeg = false;
 
+			res = correctEnum && correctLeg;
 		}
 		super.getResponse().setAuthorised(res);
 	}
