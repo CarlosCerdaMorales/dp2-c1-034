@@ -25,7 +25,26 @@ public class AssistanceAgentTrackingLogCreateService extends AbstractGuiService<
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean res;
+		boolean isAssistanceAgent;
+		String metodo = super.getRequest().getMethod();
+		boolean correctEnum = false;
+		String status;
+
+		if (metodo.equals("GET")) {
+			isAssistanceAgent = super.getRequest().getPrincipal().hasRealmOfType(AssistanceAgent.class);
+
+			res = isAssistanceAgent;
+
+		} else {
+			status = super.getRequest().getData("status", String.class);
+			correctEnum = false;
+			for (TrackingLogStatus s : TrackingLogStatus.values())
+				if (s.name().equals(status))
+					correctEnum = true;
+			res = correctEnum;
+		}
+		super.getResponse().setAuthorised(res);
 	}
 
 	@Override
