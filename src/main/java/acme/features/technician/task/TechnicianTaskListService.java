@@ -23,7 +23,20 @@ public class TechnicianTaskListService extends AbstractGuiService<Technician, Ta
 	// AbstractGuiService interface -------------------------------------------
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		int mrId;
+		MaintenanceRecord mr;
+		Technician technician;
+		boolean status;
+
+		mrId = super.getRequest().getData("maintenanceRecordId", int.class);
+		if (mrId == -1)
+			super.getResponse().setAuthorised(true);
+		else {
+			mr = this.repository.findMaintenanceRecordById(mrId);
+			technician = mr == null ? null : mr.getTechnician();
+			status = mr != null && technician != null && super.getRequest().getPrincipal().hasRealm(technician);
+			super.getResponse().setAuthorised(status);
+		}
 	}
 
 	@Override
