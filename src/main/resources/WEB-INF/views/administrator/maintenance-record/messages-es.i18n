@@ -1,0 +1,21 @@
+############ General #############
+administrator.maintenance-record.form.title = Detalles del informe:
+administrator.maintenance-record.list.title = Lista de informes: 
+
+############ List ################
+administrator.maintenance-record.list.label.date = Fecha
+administrator.maintenance-record.list.label.maintenanceStatus = Estado
+administrator.maintenance-record.list.label.nextInspection = Próxima inspección
+administrator.maintenance-record.list.label.aircraft = Avión
+
+########## Form #################
+administrator.maintenance-record.form.label.date = Fecha
+administrator.maintenance-record.form.label.maintenanceStatus = Estado
+administrator.maintenance-record.form.label.nextInspection = Próxima inspección
+administrator.maintenance-record.form.label.estimatedCost = Coste estimado
+administrator.maintenance-record.form.label.notes = Notas
+administrator.maintenance-record.form.label.aircraft = Avión
+administrator.maintenance-record.form.label.confirmation = Confirma que el informe es correcto
+
+########### Buttons ###############
+administrator.maintenance-record.form.button.tasks = Tareas
