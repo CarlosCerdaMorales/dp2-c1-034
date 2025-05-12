@@ -2,6 +2,7 @@
 package acme.features.assistanceAgent.claim;
 
 import java.util.Collection;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -9,6 +10,7 @@ import acme.client.components.models.Dataset;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.claim.Claim;
+import acme.entities.claim.ClaimStatus;
 import acme.realms.AssistanceAgent;
 
 @GuiService
@@ -28,12 +30,14 @@ public class AssistanceAgentClaimCompletedListService extends AbstractGuiService
 	@Override
 	public void load() {
 		Collection<Claim> claims;
+		Collection<Claim> completedClaims;
 		int userAccountId;
 		int assistanceAgentId;
 		userAccountId = super.getRequest().getPrincipal().getAccountId();
 		assistanceAgentId = this.repository.findAssistanceAgentIdByUserAccountId(userAccountId);
-		claims = this.repository.findCompletedClaimsByAssistanceAgentId(assistanceAgentId);
-		super.getBuffer().addData(claims);
+		claims = this.repository.findClaimsByAssistanceAgentId(assistanceAgentId);
+		completedClaims = claims.stream().filter(tr -> tr.getAccepted() == ClaimStatus.ACCEPTED || tr.getAccepted() == ClaimStatus.REJECTED).collect(Collectors.toList());
+		super.getBuffer().addData(completedClaims);
 	}
 
 	@Override

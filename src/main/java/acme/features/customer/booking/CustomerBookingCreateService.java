@@ -2,7 +2,6 @@
 package acme.features.customer.booking;
 
 import java.util.Collection;
-import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -29,7 +28,21 @@ public class CustomerBookingCreateService extends AbstractGuiService<Customer, B
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		String metodo = super.getRequest().getMethod();
+		boolean authorised = true;
+		if (metodo.equals("POST")) {
+			int flightId = super.getRequest().getData("flight", int.class);
+
+			Flight flight = this.repository.findFlightById(flightId);
+			Collection<Flight> allFlights = this.repository.findAllFlights();
+
+			if (flight == null && flightId != 0)
+				authorised = false;
+
+			else if (flight != null && !allFlights.contains(flight))
+				authorised = false;
+		}
+		super.getResponse().setAuthorised(authorised);
 	}
 
 	@Override
@@ -45,19 +58,14 @@ public class CustomerBookingCreateService extends AbstractGuiService<Customer, B
 
 	@Override
 	public void bind(final Booking booking) {
-		int flightId;
-		Flight flight;
-		Date moment = MomentHelper.getCurrentMoment();
+		int flightId = super.getRequest().getData("flight", int.class);
 
-		flightId = super.getRequest().getData("flight", int.class);
-		flight = this.repository.findFlightById(flightId);
-
-		super.bindObject(booking, "locatorCode", "travelClass", "lastNibble");
+		Flight flight = this.repository.findFlightById(flightId);
 
 		booking.setFlight(flight);
-		booking.setPurchaseMoment(moment);
+		super.bindObject(booking, "locatorCode", "travelClass", "lastNibble");
+		booking.setPurchaseMoment(MomentHelper.getCurrentMoment());
 		booking.setDraftMode(true);
-
 	}
 
 	@Override

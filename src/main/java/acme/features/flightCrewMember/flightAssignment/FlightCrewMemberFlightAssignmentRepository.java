@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import acme.client.repositories.AbstractRepository;
 import acme.entities.activitylog.ActivityLog;
+import acme.entities.airline.Airline;
 import acme.entities.flightassignment.FlightAssignment;
 import acme.entities.leg.Leg;
 import acme.realms.flightcrewmember.FlightCrewMember;
@@ -80,9 +81,9 @@ public interface FlightCrewMemberFlightAssignmentRepository extends AbstractRepo
 	@Query("select a from FlightAssignment a where a.leg.scheduledDeparture>:now and a.flightCrewMember.id=:id and a.draftMode = true")
 	List<FlightAssignment> findUncompletedFlightAssignmentsByFlightCrewMember(Date now, int id);
 
-	@Query("select l from Leg l where l.draftMode = true")
-	List<Leg> findAllPublishedLegs();
+	@Query("select l from Leg l where l.draftMode = FALSE and l.aircraft.airline = :airline")
+	List<Leg> findAllAirlinePublishedLegs(Airline airline);
 
-	@Query("select a  from FlightAssignment a where a.flightCrewMember.id = :id and a.leg.scheduledDeparture< :arrival and a.leg.scheduledArrival> :departure ")
+	@Query("select a  from FlightAssignment a where a.flightCrewMember.id = :id and a.leg.scheduledDeparture< :arrival and a.leg.scheduledArrival> :departure and a.draftMode = false")
 	List<FlightAssignment> findFlightAssignmentsByFlightCrewMemberDuring(int id, Date departure, Date arrival);
 }

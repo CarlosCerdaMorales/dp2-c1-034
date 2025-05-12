@@ -27,7 +27,7 @@ public class TrackingLogValidator extends AbstractValidator<ValidTrackingLog, Tr
 		boolean result;
 
 		if (trLog == null || trLog.getResolutionPercentage() == null)
-			super.state(context, false, "null", "javax.validation.constraints.NotNull.message");
+			super.state(context, false, "resolutionPercentage", "javax.validation.constraints.NotNull.message");
 
 		else {
 			Double resolutionPercentage = trLog.getResolutionPercentage();
@@ -37,19 +37,21 @@ public class TrackingLogValidator extends AbstractValidator<ValidTrackingLog, Tr
 			{
 				if (resolutionPercentage < 100) {
 					if (status == TrackingLogStatus.ACCEPTED || status == TrackingLogStatus.REJECTED)
-						super.state(context, false, "status", "acme.validation.trackinglog.invalid-status-notresolute.message = El estado debe de ser pending ya que el porcentaje de resolución es menor a 100.");
+						super.state(context, false, "status", "acme.validation.trackinglog.invalid-status-notresolute.message");
 
 				} else if (status == TrackingLogStatus.PENDING || resolution == null || StringHelper.isBlank(resolution) || StringHelper.isEqual("", resolution, true))
-					super.state(context, false, "status", "acme.validation.trackinglog.invalid-status-resolute.message = El estado no debe de ser pending o debe de existir el mensaje de resolución.");
+					super.state(context, false, "status", "acme.validation.trackinglog.invalid-status-resolute.message");
 			}
+
+			TrackingLogRepository repository = SpringHelper.getBean(TrackingLogRepository.class);
+			List<TrackingLog> listLastTr = repository.findLatestTrackingLogByClaim(trLog.getClaim().getId());
+			if (!listLastTr.contains(trLog))
+				listLastTr.add(trLog);
+			IntStream st = IntStream.range(0, listLastTr.size() - 1);
+			Boolean estaOrdenada = st.allMatch(i -> listLastTr.get(i).getResolutionPercentage() <= listLastTr.get(i + 1).getResolutionPercentage());
+			if (!estaOrdenada)
+				super.state(context, false, "resolutionPercentage", "acme.validation.trackinglog.invalid-resolutionpercentage.message");
 		}
-
-		TrackingLogRepository repository = SpringHelper.getBean(TrackingLogRepository.class);
-		List<TrackingLog> listLastTr = repository.findLatestTrackingLogByClaim(trLog.getClaim().getId());
-		Boolean estaOrdenada = IntStream.range(0, listLastTr.size() - 1).allMatch(i -> listLastTr.get(i).getResolutionPercentage() >= listLastTr.get(i + 1).getResolutionPercentage());
-
-		if (!estaOrdenada)
-			super.state(context, false, "resolutionpercentage", "");
 
 		result = !super.hasErrors(context);
 		return result;

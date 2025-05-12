@@ -2,6 +2,7 @@
 package acme.entities.claim;
 
 import java.beans.Transient;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
@@ -18,6 +19,7 @@ import acme.client.components.validation.ValidEmail;
 import acme.client.components.validation.ValidMoment;
 import acme.client.components.validation.ValidString;
 import acme.client.helpers.SpringHelper;
+import acme.constraints.ValidClaim;
 import acme.entities.leg.Leg;
 import acme.entities.trackinglog.TrackingLog;
 import acme.entities.trackinglog.TrackingLogRepository;
@@ -29,6 +31,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+@ValidClaim
 public class Claim extends AbstractEntity {
 
 	// Serialisation identifier -----------------------------------------------
@@ -83,7 +86,7 @@ public class Claim extends AbstractEntity {
 		if (listLastTr.isEmpty())
 			lastTr = null;
 		else
-			lastTr = listLastTr.get(0);
+			lastTr = listLastTr.stream().max(Comparator.comparing(TrackingLog::getResolutionPercentage)).orElse(null);
 
 		if (lastTr == null) {
 		} else if (lastTr.getStatus() == TrackingLogStatus.ACCEPTED)

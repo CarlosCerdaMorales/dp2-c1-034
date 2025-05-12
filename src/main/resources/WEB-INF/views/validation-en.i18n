@@ -31,6 +31,9 @@ acme.validation.service.duplicated-promocode.message = The promotional code is n
 acme.validation.trackinglog.invalid-status-notresolute.message = The status must be "pending" since the resolution percentage is less than 100.
 acme.validation.trackinglog.invalid-status-resolute.message = The status must not be "pending" or a resolution message must exist.
 acme.validation.trackinglog.invalid-resolutionpercentage.message = The resolution percentage must always be increasing.
+### Claimm ###
+
+acme.validation.claim.invalid-leg.message = Claim must be created after the leg's scheduled arrival
 
 ### Technician ###
 
@@ -51,6 +54,7 @@ acme.validation.maintenanceMoment.invalid-date = Maintenance moment can not be a
 
 acme.validation.airport.duplicated-iata.message = There is an existing airport with this IATA Code.
 acme.validation.validiatacode = This is not a valid IATA code
+
 
 ### Booking ###
 
@@ -90,32 +94,33 @@ acme.validation.booking.invalid-isFrom-passenger-null.message = You must choose 
 acme.validation.booking.invalid-isFrom-booking-null.message = You must choose a booking
 acme.validation.booking.invalid-booking-isFrom-publish.message = You can't publish unless this booking is published
 acme.validation.booking.invalid-passenger-isFrom-publish.message = You can't publish unless this passenger is published
+acme.validation.isfrom.invalid-passenger-create.message = You can't add a passenger which is not yours and is not published
+
+### LEG
+
+acme.validation.leg.overlapping-legs.message = This leg overlapps other legs
+acme.validation.flight.aircraft-under-maintenance.message = Aircraft under maintenance
+acme.validation.leg.NotNull.message = May not be null
+acme.validation.leg.duplicated-flight-number.message = Flight number already in use
+acme.validation.leg.invalid-date.message = Invalid date
+acme.validation.leg.flight_number.blank.message = Incomplete flight number 
+acme.validation.leg.flight_number.mismatch.message = Incorrect Iata code
+acme.validation.leg.invalid-leg-not-null.message = Incorrect data
+acme.validation.leg.not-same-airport.message = Arrival and departure airports cannot be the same airport
 
 ### Flight Crew Member ###
-
-acme.validation.leg.NotNull.message = May not be null
-acme.validation.leg.duplicated-flight-number.message = Flight number already in use
-acme.validation.leg.invalid-date.message = Invalid date
-acme.validation.leg.flight_number.blank.message = Incomplete flight number 
-acme.validation.leg.flight_number.mismatch.message = Incorrect Iata code
-acme.validation.leg.invalid-leg-not-null.message = Incorrect data
-
-acme.validation.leg.NotNull.message = May not be null
-acme.validation.leg.duplicated-flight-number.message = Flight number already in use
-acme.validation.leg.invalid-date.message = Invalid date
-acme.validation.leg.flight_number.blank.message = Incomplete flight number 
-acme.validation.leg.flight_number.mismatch.message = Incorrect Iata code
-acme.validation.leg.invalid-leg-not-null.message = Incorrect data
 
 acme.validation.leg-complete.message = This leg has already been completed
 acme.validation.member-available.message = This member is not available
 acme.validation.pilot.message = The leg selected already has a pilot
 acme.validation.co-pilot.message = The leg selected already has a co-pilot
-acme.validation.overlapping.message = This leg overlaps with other assignments.
+acme.validation.overlapping.message = This leg overlaps with other assignments
 
 ## Flight ###
 
 acme.validation.flight.cant-be-publish.message= All legs must be publish
+acme.validation.invalid-currency.message = Invalid currency
+acme.validation.flight.zero-legs.message = For publishing must have at least one leg 
 
 ### Task and MaintenanceRecord
 

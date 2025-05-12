@@ -9,6 +9,7 @@ import acme.client.components.validation.AbstractValidator;
 import acme.client.components.validation.Validator;
 import acme.client.helpers.StringHelper;
 import acme.entities.booking.Booking;
+import acme.entities.flight.Flight;
 import acme.features.booking.BookingRepository;
 
 @Validator
@@ -51,6 +52,11 @@ public class BookingValidator extends AbstractValidator<ValidBooking, Booking> {
 				String lastNibble = booking.getLastNibble();
 				if (!StringHelper.isBlank(lastNibble) && !StringHelper.matches(lastNibble, "\\d{4}|"))
 					super.state(context, false, "lastNibble", "acme.validation.booking.invalid-nibble.message");
+			}
+			{
+				Flight flight = booking.getFlight();
+				if (flight == null)
+					super.state(context, false, "flight", "javax.validation.constraints.NotNull.message");
 			}
 		}
 

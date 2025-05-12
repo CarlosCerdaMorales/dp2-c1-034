@@ -16,7 +16,9 @@
 <%@taglib prefix="acme" uri="http://acme-framework.org/"%>
 
 <acme:form>
-<acme:input-textbox code="assistance-agent.tracking-log.form.last-last-update-moment" path="lastUpdateMoment"/>
+	<jstl:if test="${acme:anyOf(_command, 'show|update|delete|publish') && draftMode}">
+		<acme:input-textbox code="assistance-agent.tracking-log.form.last-update-moment" path="lastUpdateMoment" readonly="true"/>
+	</jstl:if>
 	<acme:input-textbox code="assistance-agent.tracking-log.form.last-step-undergoing" path="stepUndergoing"/>
  	<acme:input-double code="assistance-agent.tracking-log.form.resolution-percentage" path="resolutionPercentage"/>
 	<acme:input-select code="assistance-agent.tracking-log.form.label.status" path="status" choices="${statuses}"/>
@@ -29,9 +31,9 @@
 	</jstl:when>	
 			<jstl:when test="${acme:anyOf(_command, 'show|update|delete|publish') && draftMode}">
 			<acme:input-checkbox code="assistance-agent.claim.form.label.confirmation" path="confirmation"/>
-			<acme:submit code="assistance-agent.claim.form.button.update" action="/assistance-agent/tracking-log/update?masterId=${masterId}"/>
-			<acme:submit code="assistance-agent.claim.form.button.delete" action="/assistance-agent/tracking-log/delete?masterId=${masterId}"/>
-			<acme:submit code="assistance-agent.claim.form.button.publish" action="/assistance-agent/tracking-log/publish?masterId=${masterId}"/>
+			<acme:submit code="assistance-agent.claim.form.button.update" action="/assistance-agent/tracking-log/update"/>
+			<acme:submit code="assistance-agent.claim.form.button.delete" action="/assistance-agent/tracking-log/delete"/>
+			<acme:submit code="assistance-agent.claim.form.button.publish" action="/assistance-agent/tracking-log/publish"/>
 	</jstl:when>
 	
 </jstl:choose>
