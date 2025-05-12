@@ -63,10 +63,10 @@ public interface FlightCrewMemberFlightAssignmentRepository extends AbstractRepo
 	@Query("select l from Leg l where l.flightNumber = :flightNumber")
 	Optional<Leg> findLegByFlightNumber(String flightNumber);
 
-	@Query("select l from FlightAssignment l where l.leg.id = :id and l.flightCrewDuty = 'PILOT'")
+	@Query("select l from FlightAssignment l where l.leg.id = :id and l.flightCrewDuty = 'PILOT' and l.draftMode = false")
 	List<FlightAssignment> findFlightAssignmentByLegAndPilotDuty(int id);
 
-	@Query("select l from FlightAssignment l where l.leg.id = :id and l.flightCrewDuty = 'CO_PILOT'")
+	@Query("select l from FlightAssignment l where l.leg.id = :id and l.flightCrewDuty = 'CO_PILOT' and l.draftMode = false")
 	List<FlightAssignment> findFlightAssignmentByLegAndCoPilotDuty(int id);
 
 	@Query("select a from FlightAssignment a where a.leg.scheduledDeparture>:now and  a.draftMode = false")

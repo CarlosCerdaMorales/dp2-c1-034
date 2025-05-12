@@ -2,7 +2,6 @@
 package acme.features.flightCrewMember.activityLog;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.data.jpa.repository.Query;
 
@@ -32,5 +31,5 @@ public interface FlightCrewMemberActivityLogRepository extends AbstractRepositor
 	List<FlightAssignment> findAllFlightAssignmentsByFlightCrewMemberId(int id);
 
 	@Query("select l from FlightCrewMember l where l.id = :id")
-	Optional<FlightCrewMember> findFlightCrewMemberById(int id);
+	FlightCrewMember findFlightCrewMemberById(int id);
 }
