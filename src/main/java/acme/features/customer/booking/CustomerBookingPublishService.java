@@ -31,6 +31,11 @@ public class CustomerBookingPublishService extends AbstractGuiService<Customer, 
 		Booking booking;
 		Customer customer;
 
+		bookingId = super.getRequest().getData("id", int.class);
+		booking = this.repository.findBookingById(bookingId);
+		customer = booking == null ? null : booking.getCustomer();
+		status = booking != null && booking.isDraftMode() && super.getRequest().getPrincipal().hasRealm(customer);
+
 		if (super.getRequest().hasData("flight")) {
 			int flightId = super.getRequest().getData("flight", int.class);
 
@@ -42,12 +47,6 @@ public class CustomerBookingPublishService extends AbstractGuiService<Customer, 
 
 		}
 
-		else {
-			bookingId = super.getRequest().getData("id", int.class);
-			booking = this.repository.findBookingById(bookingId);
-			customer = booking == null ? null : booking.getCustomer();
-			status = booking != null && booking.isDraftMode() && super.getRequest().getPrincipal().hasRealm(customer);
-		}
 		super.getResponse().setAuthorised(status);
 
 	}
