@@ -41,4 +41,8 @@ public interface TechnicianInvolvesRepository extends AbstractRepository {
 
 	@Query("select i from Involves i where i.id=:id")
 	Involves findInvolvesById(int id);
+
+	@Query("select t from Task t where t not in (select i.task from Involves i where "//
+		+ "i.maintenanceRecord.id = :recordId) and (t.draftMode = false or t.technician.id = :technicianId)")
+	Collection<Task> findAllSelectableTasks(final int technicianId, final int recordId);
 }

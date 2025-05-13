@@ -24,18 +24,18 @@ public class TechnicianTaskShowService extends AbstractGuiService<Technician, Ta
 
 	@Override
 	public void authorise() {
-		// boolean status;
-		//		int taskId;
-		//		Task task;
-		// Technician technician;
+		boolean status;
+		int taskId;
+		Task task;
+		Technician technician;
 
-		//		taskId = super.getRequest().getData("id", int.class);
-		//		task = this.repository.findTaskById(taskId);
-		//
-		//		technician = task == null ? null : task.getTechnician();
-		//		status = task != null && super.getRequest().getPrincipal().hasRealm(technician);
+		taskId = super.getRequest().getData("id", int.class);
+		task = this.repository.findTaskById(taskId);
 
-		super.getResponse().setAuthorised(true);
+		technician = task == null ? null : task.getTechnician();
+		status = task != null && (task.isDraftMode() == false || super.getRequest().getPrincipal().hasRealm(technician));
+
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
