@@ -1,6 +1,7 @@
 
 package acme.features.assistanceAgent.trackingLog;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Date;
 
@@ -28,7 +29,7 @@ public class AssistanceAgentTrackingLogCreateService extends AbstractGuiService<
 		boolean res;
 		boolean isAssistanceAgent;
 		String metodo = super.getRequest().getMethod();
-		boolean correctEnum = false;
+		boolean correctEnum = true;
 		String status;
 
 		if (metodo.equals("GET")) {
@@ -38,13 +39,13 @@ public class AssistanceAgentTrackingLogCreateService extends AbstractGuiService<
 
 		} else {
 			status = super.getRequest().getData("status", String.class);
-			correctEnum = false;
-			for (TrackingLogStatus s : TrackingLogStatus.values())
-				if (s.name().equals(status))
-					correctEnum = true;
+			if (!Arrays.toString(TrackingLogStatus.values()).concat("0").contains(status))
+				correctEnum = false;
 			res = correctEnum;
 		}
+
 		super.getResponse().setAuthorised(res);
+
 	}
 
 	@Override
@@ -91,11 +92,13 @@ public class AssistanceAgentTrackingLogCreateService extends AbstractGuiService<
 			super.state(false, "confirmation", "acme.validation.trackingLog-draftmode.message");
 
 		if (trackingLogs100percentage.size() >= 2)
-			super.state(false, "confirmation", "acme.validation.resolution-percentage.message");
+			super.state(false, "resolutionPercentage", "acme.validation.resolution-percentage.message");
 
 		if (trackingLogs100percentage.size() == 1 && tr.getResolutionPercentage() < 100)
-			super.state(false, "confirmation", "acme.validation.resolution-percentage2.message");
-
+			super.state(false, "resolutionPercentage", "acme.validation.resolution-percentage2.message");
+		if (!trackingLogs100percentage.isEmpty())
+			if (trackingLogs100percentage.stream().toList().get(0).getStatus() != tr.getStatus())
+				super.state(false, "status", "acme.validation.resolution-percentage3.message");
 		confirmation = super.getRequest().getData("confirmation", boolean.class);
 		super.state(confirmation, "confirmation", "acme.validation.confirmation.message");
 	}

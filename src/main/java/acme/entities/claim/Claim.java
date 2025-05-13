@@ -79,7 +79,7 @@ public class Claim extends AbstractEntity {
 	@Transient
 	public ClaimStatus getAccepted() {
 		TrackingLogRepository repository = SpringHelper.getBean(TrackingLogRepository.class);
-		List<TrackingLog> listLastTr = repository.findLatestTrackingLogByClaim(this.getId());
+		List<TrackingLog> listLastTr = repository.findLatestTrackingLogByClaim2(this.getId());
 		TrackingLog lastTr;
 		ClaimStatus res = ClaimStatus.PENDING;
 
