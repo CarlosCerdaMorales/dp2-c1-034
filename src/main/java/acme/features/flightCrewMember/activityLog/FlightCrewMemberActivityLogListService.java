@@ -61,7 +61,7 @@ public class FlightCrewMemberActivityLogListService extends AbstractGuiService<F
 	public void unbind(final ActivityLog log) {
 		Dataset dataset;
 		int memberId = super.getRequest().getPrincipal().getActiveRealm().getId();
-		FlightCrewMember member = this.repository.findFlightCrewMemberById(memberId).get();
+		FlightCrewMember member = this.repository.findFlightCrewMemberById(memberId);
 
 		dataset = super.unbindObject(log, "incidentType", "description", "severityLevel");
 		dataset.put("myAssignment", log.getFlightAssignment().getFlightCrewMember().equals(member));
