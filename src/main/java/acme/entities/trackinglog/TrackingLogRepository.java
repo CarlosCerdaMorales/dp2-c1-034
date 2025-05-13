@@ -11,6 +11,10 @@ import acme.client.repositories.AbstractRepository;
 @Repository
 public interface TrackingLogRepository extends AbstractRepository {
 
-	@Query("SELECT t FROM TrackingLog t WHERE t.claim.id = :claimId")
+	@Query("SELECT t FROM TrackingLog t WHERE t.claim.id = :claimId AND t.resolutionPercentage <> 100.00")
 	List<TrackingLog> findLatestTrackingLogByClaim(Integer claimId);
+
+	@Query("SELECT t FROM TrackingLog t WHERE t.claim.id = :claimId")
+	List<TrackingLog> findLatestTrackingLogByClaim2(Integer claimId);
+
 }

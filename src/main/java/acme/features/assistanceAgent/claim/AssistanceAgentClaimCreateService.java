@@ -1,6 +1,7 @@
 
 package acme.features.assistanceAgent.claim;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Date;
 
@@ -33,8 +34,9 @@ public class AssistanceAgentClaimCreateService extends AbstractGuiService<Assist
 		Collection<Leg> publishedLegs;
 		boolean res = true;
 		boolean isAssistanceAgent;
-		boolean correctEnum = false;
+		boolean correctEnum = true;
 		boolean correctLeg = true;
+		boolean alreadyExists = true;
 
 		isAssistanceAgent = super.getRequest().getPrincipal().hasRealmOfType(AssistanceAgent.class);
 		if (metodo.equals("POST")) {
@@ -42,15 +44,14 @@ public class AssistanceAgentClaimCreateService extends AbstractGuiService<Assist
 			legId = super.getRequest().getData("leg", int.class);
 			leg = this.repository.findLegById(legId);
 			publishedLegs = this.repository.findAllPublishedLegs();
-			for (ClaimType t : ClaimType.values())
-				if (t.name().equals(type))
-					correctEnum = true;
-			if (!publishedLegs.contains(leg))
+			if (!Arrays.toString(ClaimType.values()).concat("0").contains(type))
+				correctEnum = false;
+			if (!publishedLegs.contains(leg) && legId != 0)
 				correctLeg = false;
 
-			res = correctEnum && correctLeg;
+			res = correctEnum && correctLeg && alreadyExists;
 		} else
-			res = isAssistanceAgent;
+			res = isAssistanceAgent && alreadyExists;
 
 		super.getResponse().setAuthorised(res);
 	}
@@ -84,11 +85,6 @@ public class AssistanceAgentClaimCreateService extends AbstractGuiService<Assist
 		claim.setAssistanceAgent(assistanceAgent);
 		claim.setDraftMode(true);
 		claim.setLeg(leg);
-
-		Collection<Leg> publishedLegs;
-		publishedLegs = this.repository.findAllPublishedLegs();
-		if (!publishedLegs.contains(claim.getLeg()))
-			super.getResponse().setAuthorised(false);
 
 	}
 

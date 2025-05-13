@@ -48,7 +48,7 @@ public class TrackingLogValidator extends AbstractValidator<ValidTrackingLog, Tr
 			if (!listLastTr.contains(trLog))
 				listLastTr.add(trLog);
 			IntStream st = IntStream.range(0, listLastTr.size() - 1);
-			Boolean estaOrdenada = st.allMatch(i -> listLastTr.get(i).getResolutionPercentage() <= listLastTr.get(i + 1).getResolutionPercentage());
+			Boolean estaOrdenada = st.allMatch(i -> listLastTr.get(i).getResolutionPercentage() < listLastTr.get(i + 1).getResolutionPercentage());
 			if (!estaOrdenada)
 				super.state(context, false, "resolutionPercentage", "acme.validation.trackinglog.invalid-resolutionpercentage.message");
 		}
