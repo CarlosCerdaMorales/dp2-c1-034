@@ -31,22 +31,25 @@ public class CustomerBookingPublishService extends AbstractGuiService<Customer, 
 		Booking booking;
 		Customer customer;
 
-		bookingId = super.getRequest().getData("id", int.class);
-		booking = this.repository.findBookingById(bookingId);
-		customer = booking == null ? null : booking.getCustomer();
-		status = booking != null && booking.isDraftMode() && super.getRequest().getPrincipal().hasRealm(customer);
+		if (!super.getRequest().hasData("id"))
+			status = false;
+		else {
+			bookingId = super.getRequest().getData("id", int.class);
+			booking = this.repository.findBookingById(bookingId);
+			customer = booking == null ? null : booking.getCustomer();
+			status = booking != null && booking.isDraftMode() && super.getRequest().getPrincipal().hasRealm(customer);
 
-		if (super.getRequest().hasData("flight")) {
-			int flightId = super.getRequest().getData("flight", int.class);
+			if (super.getRequest().hasData("flight")) {
+				int flightId = super.getRequest().getData("flight", int.class);
 
-			Flight flight = this.repository.findFlightById(flightId);
-			Collection<Flight> allFlights = this.repository.findAllFlights();
+				Flight flight = this.repository.findFlightById(flightId);
+				Collection<Flight> allFlights = this.repository.findAllFlights();
 
-			if (flight == null && flightId != 0 || flight != null && !allFlights.contains(flight))
-				status = false;
+				if (flight == null && flightId != 0 || flight != null && !allFlights.contains(flight))
+					status = false;
 
+			}
 		}
-
 		super.getResponse().setAuthorised(status);
 
 	}
