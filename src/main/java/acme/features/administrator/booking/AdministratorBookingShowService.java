@@ -28,8 +28,21 @@ public class AdministratorBookingShowService extends AbstractGuiService<Administ
 
 	@Override
 	public void authorise() {
-		//TODO 
-		super.getResponse().setAuthorised(true);
+		boolean status = true;
+		int bookingId;
+		Booking booking;
+
+		if (super.getRequest().getMethod().equals("GET")) {
+			bookingId = super.getRequest().getData("id", int.class);
+			booking = this.repository.findBookingById(bookingId);
+			Collection<Booking> publisheds = this.repository.findAllPublishedBookings();
+
+			if (bookingId != 0 && booking == null || booking != null && !publisheds.contains(booking))
+				status = false;
+
+			super.getResponse().setAuthorised(status);
+		}
+
 	}
 
 	@Override
@@ -46,10 +59,7 @@ public class AdministratorBookingShowService extends AbstractGuiService<Administ
 
 	@Override
 	public void validate(final Booking booking) {
-		//		boolean confirmation;
-		//
-		//		confirmation = super.getRequest().getData("confirmation", boolean.class);
-		//		super.state(confirmation, "confirmation", "acme.validation.confirmation.message");
+		;
 	}
 
 	@Override
@@ -65,12 +75,13 @@ public class AdministratorBookingShowService extends AbstractGuiService<Administ
 		choices = SelectChoices.from(flights, "flightTag", booking.getFlight());
 		customer = booking.getCustomer();
 
-		dataset = super.unbindObject(booking, "locatorCode", "purchaseMoment", "travelClass", "price", "lastNibble", "draftMode");
+		dataset = super.unbindObject(booking, "locatorCode", "purchaseMoment", "travelClass", "lastNibble", "draftMode");
 		dataset.put("flight", choices.getSelected().getKey());
 		dataset.put("flights", choices);
 		dataset.put("classes", classChoices);
 		dataset.put("bookingId", booking.getId());
 		dataset.put("customer", customer.getIdentifier());
+		dataset.put("price", booking.bookingPrice());
 
 		super.getResponse().addData(dataset);
 

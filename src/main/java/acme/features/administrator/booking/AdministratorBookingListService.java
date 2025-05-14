@@ -24,7 +24,6 @@ public class AdministratorBookingListService extends AbstractGuiService<Administ
 
 	@Override
 	public void authorise() {
-		// TODO
 		super.getResponse().setAuthorised(true);
 	}
 
@@ -42,8 +41,8 @@ public class AdministratorBookingListService extends AbstractGuiService<Administ
 	public void unbind(final Booking booking) {
 		Dataset dataset;
 
-		dataset = super.unbindObject(booking, "locatorCode", "purchaseMoment", "price", "travelClass");
-
+		dataset = super.unbindObject(booking, "locatorCode", "purchaseMoment", "travelClass");
+		dataset.put("price", booking.bookingPrice());
 		super.getResponse().addData(dataset);
 	}
 
