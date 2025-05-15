@@ -36,10 +36,7 @@ public class CustomerBookingCreateService extends AbstractGuiService<Customer, B
 			Flight flight = this.repository.findFlightById(flightId);
 			Collection<Flight> allFlights = this.repository.findAllFlights();
 
-			if (flight == null && flightId != 0)
-				authorised = false;
-
-			else if (flight != null && !allFlights.contains(flight))
+			if (flight == null && flightId != 0 || flight != null && !allFlights.contains(flight))
 				authorised = false;
 		}
 		super.getResponse().setAuthorised(authorised);
@@ -100,19 +97,5 @@ public class CustomerBookingCreateService extends AbstractGuiService<Customer, B
 		super.getResponse().addData(dataset);
 
 	}
-
-	/*
-	 * private String generateLocatorCode() {
-	 * String CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-	 * SecureRandom RANDOM = new SecureRandom();
-	 * int length = 6 + RANDOM.nextInt(3); // Longitud entre 6 y 8
-	 * StringBuilder codigo = new StringBuilder(length);
-	 * 
-	 * for (int i = 0; i < length; i++)
-	 * codigo.append(CHARACTERS.charAt(RANDOM.nextInt(CHARACTERS.length())));
-	 * 
-	 * return codigo.toString();
-	 * }
-	 */
 
 }
