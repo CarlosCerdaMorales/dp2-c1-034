@@ -109,6 +109,7 @@ acme.validation.leg.invalid-leg-not-null.message = Datos incorrectos
 acme.validation.leg.overlapping-legs.message = Transbordo superpuesto
 acme.validation.flight.aircraft-under-maintenance.message = Areonave inoperativa
 acme.validation.leg.not-same-airport.message = Areopuerto de llegada e ida no pueden ser el mismo
+acme.validation.leg.past-date.message = Fecha debe ser futura
 
 ### Flight Crew member ###
 

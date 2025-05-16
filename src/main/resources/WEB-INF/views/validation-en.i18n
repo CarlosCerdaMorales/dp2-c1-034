@@ -109,6 +109,7 @@ acme.validation.leg.flight_number.blank.message = Incomplete flight number
 acme.validation.leg.flight_number.mismatch.message = Incorrect Iata code
 acme.validation.leg.invalid-leg-not-null.message = Incorrect data
 acme.validation.leg.not-same-airport.message = Arrival and departure airports cannot be the same airport
+acme.validation.leg.past-date.message = Date must be in the future 
 
 ### Flight Crew Member ###
 

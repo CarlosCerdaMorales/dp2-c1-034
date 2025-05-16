@@ -38,52 +38,68 @@ public class ManagerLegPublishService extends AbstractGuiService<Manager, Leg> {
 		List<Aircraft> aircrafts;
 		List<Airport> airports;
 
-		managerId = super.getRequest().getPrincipal().getActiveRealm().getId();
-		legId = super.getRequest().getData("id", int.class);
+		if (!super.getRequest().hasData("id"))
+			status = false;
+		else {
 
-		if (!this.repository.findByLegId(legId).isPresent())
-			throw new RuntimeException("No leg with id: " + legId);
+			managerId = super.getRequest().getPrincipal().getActiveRealm().getId();
+			legId = super.getRequest().getData("id", int.class);
 
-		Optional<Leg> optionalLeg = this.repository.findByLegId(legId);
-
-		if (optionalLeg.isPresent()) {
-			Leg leg = optionalLeg.get();
-			Optional<Flight> flight = this.repository.findByIdAndManagerId(leg.getFlight().getId(), managerId);
-
-			if (flight.isEmpty())
+			if (!this.repository.findByLegId(legId).isPresent())
 				status = false;
 
+			Optional<Leg> optionalLeg = this.repository.findByLegId(legId);
+
+			if (optionalLeg.isEmpty())
+				status = false;
+			else {
+				Leg leg = optionalLeg.get();
+
+				if (!leg.isDraftMode())
+					status = false;
+				else {
+					Optional<Flight> flight = this.repository.findByIdAndManagerId(leg.getFlight().getId(), managerId);
+					if (flight.isEmpty())
+						status = false;
+
+					if (!super.getRequest().hasData("aircraft")) {
+						aircraftId = super.getRequest().getData("aircraft", int.class);
+						aircraft = this.repository.findAircraftByAircraftId(aircraftId);
+						aircrafts = this.repository.findAllAircraftsByManagerId(managerId);
+
+						if (aircraft == null && aircraftId != 0)
+							status = false;
+
+						if (aircraft != null && !aircrafts.contains(aircraft))
+							status = false;
+					}
+
+					airports = this.repository.findAllAirports();
+
+					if (!super.getRequest().hasData("airportDeparture")) {
+						departureId = super.getRequest().getData("airportDeparture", int.class);
+						departure = this.repository.findAirportByAirportId(departureId);
+
+						if (departure == null && departureId != 0)
+							status = false;
+
+						if (departure != null && !airports.contains(departure))
+							status = false;
+					}
+
+					if (!super.getRequest().hasData("airportArrival")) {
+						arrivalId = super.getRequest().getData("airportArrival", int.class);
+						arrival = this.repository.findAirportByAirportId(arrivalId);
+
+						if (arrival == null && arrivalId != 0)
+							status = false;
+
+						if (arrival != null && !airports.contains(arrival))
+							status = false;
+					}
+				}
+			}
 		}
-		aircraftId = super.getRequest().getData("aircraft", int.class);
-		aircraft = this.repository.findAircraftByAircraftId(aircraftId);
-		aircrafts = this.repository.findAllAircraftsByManagerId(managerId);
-
-		if (aircraft == null && aircraftId != 0)
-			status = false;
-
-		if (aircraft != null && !aircrafts.contains(aircraft))
-			status = false;
-
-		departureId = super.getRequest().getData("airportDeparture", int.class);
-		departure = this.repository.findAirportByAirportId(departureId);
-
-		arrivalId = super.getRequest().getData("airportArrival", int.class);
-		arrival = this.repository.findAirportByAirportId(arrivalId);
-
-		airports = this.repository.findAllAirports();
-
-		if (departure == null && departureId != 0)
-			status = false;
-
-		if (departure != null && !airports.contains(departure))
-			status = false;
-
-		if (arrival == null && arrivalId != 0)
-			status = false;
-
-		if (arrival != null && !airports.contains(arrival))
-			status = false;
-
 		super.getResponse().setAuthorised(status);
 	}
 
