@@ -30,19 +30,16 @@ public class ManagerLegListService extends AbstractGuiService<Manager, Leg> {
 	public void authorise() {
 		boolean status = false;
 
-		if (!super.getRequest().hasData("id"))
+		Integer flightId = super.getRequest().getData("flightId", int.class);
+
+		if (this.flightRepository.findFlightById(flightId) == null)
 			status = false;
-		else {
-			Integer flightId = super.getRequest().getData("flightId", int.class);
+		Integer managerId = super.getRequest().getPrincipal().getActiveRealm().getId();
+		Optional<Flight> optionalFlight = this.repository.findByIdAndManagerId(flightId, managerId);
 
-			if (this.flightRepository.findFlightById(flightId) == null)
-				status = false;
-			Integer managerId = super.getRequest().getPrincipal().getActiveRealm().getId();
-			Optional<Flight> optionalFlight = this.repository.findByIdAndManagerId(flightId, managerId);
+		if (optionalFlight.isPresent())
+			status = true;
 
-			if (optionalFlight.isPresent())
-				status = true;
-		}
 		super.getResponse().setAuthorised(status);
 	}
 
@@ -51,7 +48,6 @@ public class ManagerLegListService extends AbstractGuiService<Manager, Leg> {
 		int flightId;
 
 		flightId = super.getRequest().getData("flightId", int.class);
-		Integer managerId = super.getRequest().getPrincipal().getActiveRealm().getId();
 		List<Leg> legs = this.repository.findAllLegsByFlightId(flightId);
 		legs.sort(Comparator.comparing(Leg::getScheduledDeparture));
 
