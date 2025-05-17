@@ -101,9 +101,11 @@ public class AssistanceAgentClaimPublishService extends AbstractGuiService<Assis
 	@Override
 	public void validate(final Claim claim) {
 		boolean confirmation;
-
 		confirmation = super.getRequest().getData("confirmation", boolean.class);
+
 		super.state(confirmation, "confirmation", "acme.validation.confirmation.message");
+		super.state(claim.getDraftMode(), "*", "acme.validation.claim.invalid-draftmode.message");
+
 	}
 
 	@Override

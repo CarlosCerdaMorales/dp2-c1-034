@@ -81,24 +81,25 @@ public class AssistanceAgentTrackingLogCreateService extends AbstractGuiService<
 		Claim claim;
 		int masterId;
 		masterId = super.getRequest().getData("masterId", int.class);
-		Collection<TrackingLog> trackingLogs;
+
 		Collection<TrackingLog> trackingLogs100percentage;
 
 		claim = this.repository.findClaimByMasterId(masterId);
-		trackingLogs = this.repository.findTrackingLogsByMasterId(claim.getId());
 		trackingLogs100percentage = this.repository.findTrackingLogs100PercentageByMasterId(claim.getId());
+		TrackingLog trMaxPercentage = this.repository.findTopByClaimIdOrderByResolutionPercentageDesc(tr.getClaim().getId()).stream().toList().get(0);
 
-		if (trackingLogs.stream().anyMatch(t -> t.getDraftMode()) || claim.getDraftMode())
-			super.state(false, "confirmation", "acme.validation.trackingLog-draftmode.message");
+		if (tr.getResolutionPercentage() <= trMaxPercentage.getResolutionPercentage() && trackingLogs100percentage.isEmpty())
+			super.state(false, "resolutionPercentage", "acme.validation.trackinglog.invalid-resolutionpercentage.message");
+		if (claim.getDraftMode())
+			super.state(false, "*", "acme.validation.trackingLog-draftmode.message");
 
 		if (trackingLogs100percentage.size() >= 2)
-			super.state(false, "resolutionPercentage", "acme.validation.resolution-percentage.message");
+			super.state(false, "resolutionPercentage", "acme.validation.trackinglog.invalid-resolutionpercentage-two100.message");
 
-		if (trackingLogs100percentage.size() == 1 && tr.getResolutionPercentage() < 100)
-			super.state(false, "resolutionPercentage", "acme.validation.resolution-percentage2.message");
-		if (!trackingLogs100percentage.isEmpty())
-			if (trackingLogs100percentage.stream().toList().get(0).getStatus() != tr.getStatus())
-				super.state(false, "status", "acme.validation.resolution-percentage3.message");
+		if (!trackingLogs100percentage.isEmpty() && tr.getResolutionPercentage() < 100)
+			super.state(false, "resolutionPercentage", "acme.validation.trackinglog.invalid-resolution-percentage2.message");
+		if (!trackingLogs100percentage.isEmpty() && trackingLogs100percentage.stream().toList().get(0).getStatus() != tr.getStatus())
+			super.state(false, "status", "acme.validation.trackinglog.invalid-resolution-percentage3.message");
 		confirmation = super.getRequest().getData("confirmation", boolean.class);
 		super.state(confirmation, "confirmation", "acme.validation.confirmation.message");
 	}

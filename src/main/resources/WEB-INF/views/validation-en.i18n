@@ -29,13 +29,18 @@ acme.validation.service.duplicated-promocode.message = The promotional code is n
 ### Tracking Log ###
 
 acme.validation.trackinglog.invalid-status-notresolute.message = The status must be "pending" since the resolution percentage is less than 100
-acme.validation.trackinglog.invalid-status-resolute.message = The status must not be "pending" or a resolution message must exist
-acme.validation.resolution-percentage.message = The resolution percentage must always be increasing
-acme.validation.resolution-percentage2.message = Resolution percentage must be 100
-acme.validation.resolution-percentage3.message = Status must the same as the previous tracking log 
-### Claimm ###
+acme.validation.trackinglog.invalid-status.message = The status can't be "pending" if resolution percentage is 100
+acme.validation.trackinglog.invalid-resolution.message = Resolution can't be null if the status is accepted or rejected
+acme.validation.trackinglog.invalid-resolutionpercentage.message = The resolution percentage must always be increasing
+acme.validation.trackinglog.invalid-resolutionpercentage-two100.message = Already exist two tracking logs with 100 resolution percentage
+acme.validation.trackinglog.invalid-resolution-percentage2.message = Resolution percentage must be 100
+acme.validation.trackinglog.invalid-resolution-percentage3.message = Status must the same as the previous tracking log
+acme.validation.trackingLog-draftmode.message = Claim must be published
 
-acme.validation.claim.invalid-leg.message = Claim must be created after the leg's scheduled arrival
+### Claim ###
+acme.validation.claim.invalid-leg-date.message = Claim must be created after the leg's scheduled arrival
+acme.validation.claim.invalid-leg-draftmode.message = Leg must be published
+acme.validation.claim.invalid-draftmode.message = Claim is already published
 
 ### Technician ###
 

@@ -33,4 +33,8 @@ public interface AssistanceAgentTrackingLogRepository extends AbstractRepository
 
 	@Query("select tr from TrackingLog tr where tr.claim.id = :masterId and tr.resolutionPercentage = 100")
 	Collection<TrackingLog> findTrackingLogs100PercentageByMasterId(int masterId);
+
+	@Query("select tr from TrackingLog tr where tr.claim.id = :masterId order by tr.resolutionPercentage desc")
+	Collection<TrackingLog> findTopByClaimIdOrderByResolutionPercentageDesc(int masterId);
+
 }
