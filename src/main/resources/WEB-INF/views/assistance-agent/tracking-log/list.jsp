@@ -21,5 +21,6 @@
 	<acme:list-column code="assistance-agent.tracking-log.label.resolution-percentage" path="resolutionPercentage"/>
 	<acme:list-payload path="payload"/>
 </acme:list>
-
-<acme:button code="assistance-agent.tracking-log.list.button.create" action="/assistance-agent/tracking-log/create?masterId=${masterId}"/>
+<jstl:if test="${claimCompleted == true}">
+	<acme:button code="assistance-agent.tracking-log.list.button.create" action="/assistance-agent/tracking-log/create?masterId=${masterId}"/>
+</jstl:if>	

@@ -105,6 +105,7 @@ public class AssistanceAgentClaimDeleteService extends AbstractGuiService<Assist
 		boolean confirmation;
 		confirmation = super.getRequest().getData("confirmation", boolean.class);
 		super.state(confirmation, "confirmation", "acme.validation.confirmation.message");
+		super.state(claim.getDraftMode(), "*", "acme.validation.claim.invalid-draftmode.message");
 	}
 
 	@Override

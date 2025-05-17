@@ -46,19 +46,23 @@ public class AssistanceAgentTrackingLogListService extends AbstractGuiService<As
 		dataset = super.unbindObject(tr, "lastUpdateMoment", "status", "resolutionPercentage");
 		Claim claim;
 		int masterId;
+
 		masterId = super.getRequest().getData("masterId", int.class);
 		claim = this.repository.findClaimByMasterId(masterId);
 		dataset.put("claim", claim);
+
 		super.getResponse().addData(dataset);
 	}
 
 	@Override
 	public void unbind(final Collection<TrackingLog> trackingLog) {
 		int masterId;
-		Claim claim;
-		masterId = super.getRequest().getData("masterId", int.class);
-		claim = this.repository.findClaimByMasterId(masterId);
+		boolean claimCompleted = true;
 
+		super.getResponse().addGlobal("claimCompleted", claimCompleted);
+		masterId = super.getRequest().getData("masterId", int.class);
+		if (this.repository.findTrackingLogs100PercentageByMasterId(masterId).size() >= 2)
+			claimCompleted = false;
 		super.getResponse().addGlobal("masterId", masterId);
 	}
 
