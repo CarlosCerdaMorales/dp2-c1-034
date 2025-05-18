@@ -1,0 +1,15 @@
+############ General ##############
+administrator.task.form.title = Detalles de la tarea: 
+administrator.task.list.title = Lista de tareas: 
+
+############ List ################
+administrator.task.list.label.type = Tipo
+administrator.task.list.label.description = Descripción
+administrator.task.list.label.priority = Prioridad
+administrator.task.list.label.estimatedDuration = Duración estimada
+
+########## Form #################
+administrator.task.form.label.type = Tipo
+administrator.task.form.label.description = Descripción
+administrator.task.form.label.priority = PrioridadPrioridad
+administrator.task.form.label.estimatedDuration = Duración estimada

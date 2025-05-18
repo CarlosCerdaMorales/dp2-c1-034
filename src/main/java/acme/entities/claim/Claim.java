@@ -2,7 +2,6 @@
 package acme.entities.claim;
 
 import java.beans.Transient;
-import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
@@ -79,22 +78,21 @@ public class Claim extends AbstractEntity {
 	@Transient
 	public ClaimStatus getAccepted() {
 		TrackingLogRepository repository = SpringHelper.getBean(TrackingLogRepository.class);
-		List<TrackingLog> listLastTr = repository.findLatestTrackingLogByClaim(this.getId());
+		List<TrackingLog> listLastTr = repository.findLatestTrackingLogPublishedByClaim(this.getId());
 		TrackingLog lastTr;
 		ClaimStatus res = ClaimStatus.PENDING;
 
 		if (listLastTr.isEmpty())
 			lastTr = null;
 		else
-			lastTr = listLastTr.stream().max(Comparator.comparing(TrackingLog::getResolutionPercentage)).orElse(null);
+			lastTr = listLastTr.get(0);
 
 		if (lastTr == null) {
 		} else if (lastTr.getStatus() == TrackingLogStatus.ACCEPTED)
 			res = ClaimStatus.ACCEPTED;
 		else if (lastTr.getStatus() == TrackingLogStatus.REJECTED)
 			res = ClaimStatus.REJECTED;
-		else {
-		}
+
 		return res;
 	}
 

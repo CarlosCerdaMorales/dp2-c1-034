@@ -28,12 +28,19 @@ acme.validation.service.duplicated-promocode.message = El código promocional no
 
 ### Tracking Log ###
 
-acme.validation.trackinglog.invalid-status-notresolute.message = El estado debe de ser pending ya que el porcentaje de resolución es menor a 100.
-acme.validation.trackinglog.invalid-status-resolute.message = El estado no debe de ser pending o debe de existir el mensaje de resolución.
-acme.validation.trackinglog.invalid-resolutionpercentage.message = El porcentaje de resolución debe de ser siempre creciente.
+acme.validation.trackinglog.invalid-status-notresolute.message = El estado debe de ser pending ya que el porcentaje de resolución es menor a 100
+acme.validation.trackinglog.invalid-status.message = El estado no debe de ser 'pendiente' si el porcentaje de resolución es 100.
+acme.validation.trackinglog.invalid-resolution.message = La resolución no puede ser nula si el estado es aceptado o rechazado.
+acme.validation.trackinglog.invalid-resolutionpercentage.message = El porcentaje de resolución debe de ser siempre creciente
+acme.validation.trackinglog.invalid-resolutionpercentage-two100.message = Ya existen dos registros de seguimiento con porcentaje de resolución a 100
+acme.validation.trackinglog.resolution-percentage2.message = El porcentaje debe de ser 100
+acme.validation.trackinglog.resolution-percentage3.message = El estado debe de ser el mismo que el del anterior registro de seguimiento
+acme.validation.trackingLog-draftmode.message = La reclamación debe de estar publicada
 
 ### Claim ###
-acme.validation.claim.invalid-leg.message = La fecha de llegada del tramo debe de ser anterior a la fecha de creacion de la reclamación
+acme.validation.claim.invalid-leg-date.message = La fecha de llegada del tramo debe de ser anterior a la fecha de creacion de la reclamación
+acme.validation.claim.invalid-leg-draftmode.message = El tramo debe de estar publicado
+acme.validation.claim.invalid-draftmode.message = La reclamación esta publicada
 
 ### Technician ###
 
@@ -47,6 +54,8 @@ acme.validation.technician.duplicated-identifier.message = Ya existe un tecnico 
 
 acme.validation.maintenancerecord = Maintenance record invalido.
 acme.validation.nextInspection.invalid-future-date = Fecha de proxima inspeccion invalida debido a que no ocurre después de la fecha de mantenimiento.
+acme.validation.nextInspection.invalid-must-be-future = La fecha de próxima inspección debe ser futura.
+acme.validation.maintenanceMoment.invalid-date = La fecha de mantenimiento no puede ser futura.
 
 ### Airport ###
 
@@ -105,6 +114,7 @@ acme.validation.leg.invalid-leg-not-null.message = Datos incorrectos
 acme.validation.leg.overlapping-legs.message = Transbordo superpuesto
 acme.validation.flight.aircraft-under-maintenance.message = Areonave inoperativa
 acme.validation.leg.not-same-airport.message = Areopuerto de llegada e ida no pueden ser el mismo
+acme.validation.leg.past-date.message = Fecha debe ser futura
 
 ### Flight Crew member ###
 
@@ -112,7 +122,7 @@ acme.validation.leg-complete.message = Esta escala ya ha sido completada
 acme.validation.member-available.message = Este miembro no esta disponible
 acme.validation.pilot.message = La escala seleccionada ya tiene un piloto
 acme.validation.co-pilot.message = La escala seleccionada ya tiene un co-piloto
-acme.validation.overlapping.message = Ya se está realizando una asignación en las fechas de esta escala.
+acme.validation.overlapping.message = Ya se está realizando una asignación en las fechas de esta escala
 
 ### Flight ###
 

@@ -1,0 +1,20 @@
+############ General #############
+administrator.maintenance-record.form.title = Record Detail:
+administrator.maintenance-record.list.title = Records List: 
+
+############ List ################
+administrator.maintenance-record.list.label.date = Date
+administrator.maintenance-record.list.label.maintenanceStatus = Status
+administrator.maintenance-record.list.label.nextInspection = Next inspection
+administrator.maintenance-record.list.label.aircraft = Aircraft
+
+########## Form #################
+administrator.maintenance-record.form.label.date = Date
+administrator.maintenance-record.form.label.maintenanceStatus = Status
+administrator.maintenance-record.form.label.nextInspection = Next inspection
+administrator.maintenance-record.form.label.estimatedCost = Estimated cost
+administrator.maintenance-record.form.label.notes = Notes
+administrator.maintenance-record.form.label.aircraft = Aircraft
+
+########### Buttons ###############
+administrator.maintenance-record.form.button.tasks = Tasks

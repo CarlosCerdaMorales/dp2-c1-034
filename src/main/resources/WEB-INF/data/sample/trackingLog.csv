@@ -2,7 +2,7 @@ key,lastUpdateMoment,stepUndergoing,resolutionPercentage,status,resolution,draft
 # Base entity
 trackinglog-01,2023/08/15 12:45,"Lorem ipsum dolor sit ame",10,PENDING,null,false,claim-01
 # stepUndergoing - variations
-trackinglog-02,2023/08/15 12:46,"L",10,PENDING,null,false,claim-01
+trackinglog-02,2023/08/15 12:46,"L",11,PENDING,null,false,claim-01
 trackinglog-03,2023/08/15 12:47,"Lo",20,PENDING,null,true,claim-01
 trackinglog-04,2023/08/15 12:48,"Lorem ipsum dolor sit amet, consectetur adipiscin",30,PENDING,null,false,claim-01
 trackinglog-05,2023/08/15 12:49,"Lorem ipsum dolor sit amet, consectetur adipiscing",40,PENDING,null,false,claim-01
@@ -15,7 +15,7 @@ trackinglog-10,2023/08/15 12:54,"' or 'A' = 'A ",90,PENDING,null,false,claim-01
 trackinglog-11,2023/08/15 12:55,"Lorem ipsum dolor sit ame",0,PENDING,null,false,claim-02
 trackinglog-12,2023/08/15 12:56,"Lorem ipsum dolor sit ame",1,PENDING,null,false,claim-02
 trackinglog-13,2023/08/15 12:57,"Lorem ipsum dolor sit ame",99,PENDING,null,false,claim-02
-trackinglog-14,2023/08/15 12:58,"Lorem ipsum dolor sit ame",100,REJECTED,"Claim rejected, invalid format",false,claim-01
+trackinglog-14,2023/08/15 12:58,"Lorem ipsum dolor sit ame",100,REJECTED,"Claim rejected, invalid format",true,claim-01
 # status - variations (REJECTED and PENDING already proved)
 trackinglog-15,2023/08/15 12:59,"Lorem ipsum dolor sit ame",100,ACCEPTED,"Doors problem solved",false,claim-02
 # resolution - variations
@@ -29,7 +29,19 @@ trackinglog-22,2023/08/15 13:07,"Lorem ipsum dolor sit ame",22,PENDING,"洛伦·
 trackinglog-23,2023/08/15 13:08,"Lorem ipsum dolor sit ame",24,PENDING,"<marquee>Hacked</marquee>",false,claim-03
 trackinglog-24,2023/08/15 13:09,"Lorem ipsum dolor sit ame",26,PENDING,"<script>alert(‘Hacked!’);</script>",false,claim-03
 trackinglog-26,2023/08/15 13:10,"Lorem ipsum dolor sit ame",28,PENDING,"' or 'A' = 'A ",false,claim-03
-trackinglog-27,2023/08/15 13:11,"Lorem ipsum dolor sit ame",30,PENDING,"",true,claim-03
+trackinglog-27,2023/08/15 13:11,"Lorem ipsum dolor sit ame",100,REJECTED,"L",true,claim-03
+#lastUpdateMoment - variations
+trackinglog-28,2012/07/02 0:00,"Lorem ipsum dolor sit ame",10,PENDING,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",false,claim-12
+trackinglog-29,2000/01/01 0:00,"Lorem ipsum dolor sit ame",12,PENDING,"L",false,claim-12
+trackinglog-30,2000/01/01 0:01,"Lorem ipsum dolor sit ame",14,PENDING,"Lo",false,claim-12
+trackinglog-31,2024/12/31 23:59,"Lorem ipsum dolor sit ame",16,PENDING,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor",false,claim-12
+trackinglog-32,2025/01/01 0:00,"Lorem ipsum dolor sit ame",18,PENDING,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut enim ad minim veniam? Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor*",false,claim-12
+trackinglog-33,2023/08/16 12:59,"Lorem ipsum dolor sit ame",100,ACCEPTED,"Doors problem solved",false,claim-02
+trackinglog-34,2025/01/01 0:00,"Lorem ipsum dolor sit ame",80,PENDING,"Doors problem solved",false,claim-06
+trackinglog-35,2025/01/01 0:00,"Lorem ipsum dolor sit ame",100,ACCEPTED,"Doors problem solved",false,claim-06
+trackinglog-36,2025/01/01 0:00,"Lorem ipsum dolor sit ame",100,ACCEPTED,"Doors problem solved",true,claim-06
+trackinglog-37,2025/01/01 0:00,"Lorem ipsum dolor sit ame",20,PENDING,"Doors problem solved",true,claim-07
+trackinglog-38,2025/01/01 0:00,"Lorem ipsum dolor sit ame",25,PENDING,"Doors problem solved",false,claim-15
 
 
 

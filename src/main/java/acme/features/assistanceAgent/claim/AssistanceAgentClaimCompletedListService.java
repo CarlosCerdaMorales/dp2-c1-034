@@ -1,8 +1,8 @@
 
 package acme.features.assistanceAgent.claim;
 
+import java.util.ArrayList;
 import java.util.Collection;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -30,14 +30,22 @@ public class AssistanceAgentClaimCompletedListService extends AbstractGuiService
 	@Override
 	public void load() {
 		Collection<Claim> claims;
-		Collection<Claim> completedClaims;
+		Collection<Claim> completedClaims = new ArrayList<>();
 		int userAccountId;
 		int assistanceAgentId;
+
 		userAccountId = super.getRequest().getPrincipal().getAccountId();
 		assistanceAgentId = this.repository.findAssistanceAgentIdByUserAccountId(userAccountId);
 		claims = this.repository.findClaimsByAssistanceAgentId(assistanceAgentId);
-		completedClaims = claims.stream().filter(tr -> tr.getAccepted() == ClaimStatus.ACCEPTED || tr.getAccepted() == ClaimStatus.REJECTED).collect(Collectors.toList());
+
+		for (Claim claim : claims) {
+			ClaimStatus status = claim.getAccepted();
+			if (status == ClaimStatus.ACCEPTED || status == ClaimStatus.REJECTED)
+				completedClaims.add(claim);
+		}
+
 		super.getBuffer().addData(completedClaims);
+
 	}
 
 	@Override

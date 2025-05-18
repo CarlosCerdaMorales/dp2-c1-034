@@ -34,20 +34,24 @@ public class ManagerLegShowService extends AbstractGuiService<Manager, Leg> {
 		int legId;
 		boolean status = true;
 
-		managerId = super.getRequest().getPrincipal().getActiveRealm().getId();
-		legId = super.getRequest().getData("id", int.class);
+		if (!super.getRequest().hasData("id"))
+			status = false;
+		else {
+			managerId = super.getRequest().getPrincipal().getActiveRealm().getId();
+			legId = super.getRequest().getData("id", int.class);
 
-		if (!this.repository.findByLegId(legId).isPresent())
-			throw new RuntimeException("No leg with id: " + legId);
-
-		Optional<Leg> optionalLeg = this.repository.findByLegId(legId);
-
-		if (optionalLeg.isPresent()) {
-			Leg leg = optionalLeg.get();
-			Optional<Flight> flight = this.repository.findByIdAndManagerId(leg.getFlight().getId(), managerId);
-
-			if (flight.isEmpty())
+			if (!this.repository.findByLegId(legId).isPresent())
 				status = false;
+
+			Optional<Leg> optionalLeg = this.repository.findByLegId(legId);
+
+			if (optionalLeg.isPresent()) {
+				Leg leg = optionalLeg.get();
+				Optional<Flight> flight = this.repository.findByIdAndManagerId(leg.getFlight().getId(), managerId);
+
+				if (flight.isEmpty())
+					status = false;
+			}
 		}
 
 		super.getResponse().setAuthorised(status);

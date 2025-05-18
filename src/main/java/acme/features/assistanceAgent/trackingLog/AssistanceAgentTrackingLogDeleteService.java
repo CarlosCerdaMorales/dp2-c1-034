@@ -10,7 +10,6 @@ import acme.client.components.views.SelectChoices;
 import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
-import acme.entities.claim.Claim;
 import acme.entities.trackinglog.TrackingLog;
 import acme.entities.trackinglog.TrackingLogStatus;
 import acme.realms.AssistanceAgent;
@@ -24,13 +23,28 @@ public class AssistanceAgentTrackingLogDeleteService extends AbstractGuiService<
 
 	@Override
 	public void authorise() {
-		boolean status;
 		int trId;
-		Claim claim;
+		TrackingLog tr;
+		int userAccountId;
+		int assistanceAgentId;
+		int ownerId;
+		boolean isTrackingLogCreator;
+		boolean res;
+		boolean isAssistanceAgent;
+
 		trId = super.getRequest().getData("id", int.class);
-		claim = this.repository.findClaimByTrackingLogId(trId);
-		status = super.getRequest().getPrincipal().hasRealmOfType(AssistanceAgent.class) && claim != null;
-		super.getResponse().setAuthorised(status);
+		tr = this.repository.findTrackingLogById(trId);
+
+		isAssistanceAgent = super.getRequest().getPrincipal().hasRealmOfType(AssistanceAgent.class);
+		userAccountId = super.getRequest().getPrincipal().getAccountId();
+		assistanceAgentId = this.repository.findAssistanceAgentIdByUserAccountId(userAccountId);
+
+		ownerId = this.repository.findAssistanceAgentIdByTrackingLogId(trId);
+		isTrackingLogCreator = assistanceAgentId == ownerId;
+
+		res = tr != null && isAssistanceAgent && isTrackingLogCreator && tr.getDraftMode();
+
+		super.getResponse().setAuthorised(res);
 
 	}
 

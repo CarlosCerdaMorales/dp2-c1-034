@@ -5,7 +5,7 @@ flight-assignment-01,PILOT,2012/07/02 0:00,CONFIRMED,Lorem ipsum dolor sit amet 
 flight-assignment-02,CO_PILOT,2012/07/02 0:00,CONFIRMED,Lorem ipsum dolor sit amet consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,leg-01,flight-crew-member-02,true
 flight-assignment-03,CABIN_ATTENDANT,2012/07/02 0:00,CONFIRMED,Lorem ipsum dolor sit amet consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,leg-02,flight-crew-member-03,true
 flight-assignment-04,LEAD_ATTENDANT,2012/07/02 0:00,CONFIRMED,Lorem ipsum dolor sit amet consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,leg-03,flight-crew-member-04,true
-flight-assignment-05,PILOT,2012/07/02 0:00,CONFIRMED,Lorem ipsum dolor sit amet consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,leg-00,flight-crew-member-01,true
+flight-assignment-05,PILOT,2012/07/02 0:00,CONFIRMED,Lorem ipsum dolor sit amet consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,leg-14,flight-crew-member-01,true
 # lastUpdate - standard variations
 flight-assignment-06,PILOT,2012/07/02 00:00,CONFIRMED,Lorem ipsum dolor sit amet consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,leg-00,flight-crew-member-01,true
 flight-assignment-07,PILOT,2024/12/31 00:00,CONFIRMED,Lorem ipsum dolor sit amet consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*,leg-00,flight-crew-member-01,true
@@ -27,3 +27,4 @@ flight-assignment-20,PILOT,2012/07/02 0:00,CONFIRMED,洛伦·伊普森,leg-00,fl
 flight-assignment-21,PILOT,2012/07/02 0:00,CONFIRMED,لوريم إيبسوم,leg-00,flight-crew-member-01,true
 flight-assignment-22,PILOT,2012/07/02 0:00,CONFIRMED,โลเร็ม อิปซัม,leg-00,flight-crew-member-01,true
 flight-assignment-23,PILOT,2012/07/02 0:00,CONFIRMED,' or 'A' = 'A ,leg-00,flight-crew-member-01,true
+flight-assignment-24,PILOT,2012/07/02 0:00,CONFIRMED,' or 'A' = 'A ,leg-18,flight-crew-member-01,true

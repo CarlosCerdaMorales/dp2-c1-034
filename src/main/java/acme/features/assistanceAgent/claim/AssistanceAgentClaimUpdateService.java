@@ -38,6 +38,10 @@ public class AssistanceAgentClaimUpdateService extends AbstractGuiService<Assist
 		String metodo = super.getRequest().getMethod();
 		boolean correctEnum = false;
 		boolean correctLeg = true;
+
+		claimId = super.getRequest().getData("id", int.class);
+		claim = this.repository.findClaimById(claimId);
+
 		if (metodo.equals("GET")) {
 			isAssistanceAgent = super.getRequest().getPrincipal().hasRealmOfType(AssistanceAgent.class);
 			claimId = super.getRequest().getData("id", int.class);
@@ -47,7 +51,7 @@ public class AssistanceAgentClaimUpdateService extends AbstractGuiService<Assist
 			claim = this.repository.findClaimById(claimId);
 			isClaimCreator = assistanceAgentId == ownerId;
 
-			res = claim != null && isAssistanceAgent && isClaimCreator;
+			res = claim != null && isAssistanceAgent && isClaimCreator && claim.getDraftMode();
 		} else {
 			type = super.getRequest().getData("claimType", String.class);
 			legId = super.getRequest().getData("leg", int.class);
@@ -59,7 +63,7 @@ public class AssistanceAgentClaimUpdateService extends AbstractGuiService<Assist
 			if (!publishedLegs.contains(leg))
 				correctLeg = false;
 
-			res = correctEnum && correctLeg;
+			res = correctEnum && correctLeg && claim.getDraftMode();
 		}
 		super.getResponse().setAuthorised(res);
 	}
@@ -102,9 +106,15 @@ public class AssistanceAgentClaimUpdateService extends AbstractGuiService<Assist
 	@Override
 	public void validate(final Claim claim) {
 		boolean confirmation;
+		boolean invalidLegDate = true;
+
+		if (claim.getRegistrationMoment().before(claim.getLeg().getScheduledArrival()))
+			invalidLegDate = false;
 
 		confirmation = super.getRequest().getData("confirmation", boolean.class);
 		super.state(confirmation, "confirmation", "acme.validation.confirmation.message");
+		super.state(invalidLegDate, "leg", "acme.validation.claim.invalid-leg-date.message");
+		super.state(claim.getDraftMode(), "*", "acme.validation.claim.invalid-draftmode.message");
 	}
 
 	@Override

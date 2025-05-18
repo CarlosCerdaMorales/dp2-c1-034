@@ -37,8 +37,9 @@ public class CustomerIsFromCreateService extends AbstractGuiService<Customer, Is
 			int pId = super.getRequest().getData("passenger", int.class);
 			Passenger passenger = this.repository.findPassengerFromId(pId);
 			Collection<Passenger> myPassengers = this.repository.findPublishedPassengersFromCustomerId(customerId);
+			Collection<Passenger> fromBooking = this.repository.restOfPassengers(bookingId, customerId);
 
-			if (passenger == null && pId != 0 || passenger != null && !myPassengers.contains(passenger))
+			if (passenger == null && pId != 0 || passenger != null && !myPassengers.contains(passenger) || !fromBooking.contains(passenger))
 				authorised = false;
 		}
 		super.getResponse().setAuthorised(authorised);

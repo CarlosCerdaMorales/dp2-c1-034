@@ -16,6 +16,9 @@ public interface AssistanceAgentTrackingLogRepository extends AbstractRepository
 	@Query("select a.id from AssistanceAgent a where a.userAccount.id = :userAccountId")
 	Integer findAssistanceAgentIdByUserAccountId(int userAccountId);
 
+	@Query("select t.claim.assistanceAgent.id from TrackingLog t where t.id = :trId")
+	Integer findAssistanceAgentIdByTrackingLogId(int trId);
+
 	@Query("select tr from TrackingLog tr where tr.claim.id = :masterId")
 	Collection<TrackingLog> findTrackingLogsByMasterId(int masterId);
 
@@ -27,6 +30,11 @@ public interface AssistanceAgentTrackingLogRepository extends AbstractRepository
 
 	@Query("select tr.claim from TrackingLog tr where tr.id = :trId")
 	Claim findClaimByTrackingLogId(int trId);
+
 	@Query("select tr from TrackingLog tr where tr.claim.id = :masterId and tr.resolutionPercentage = 100")
 	Collection<TrackingLog> findTrackingLogs100PercentageByMasterId(int masterId);
+
+	@Query("select tr from TrackingLog tr where tr.claim.id = :masterId order by tr.resolutionPercentage desc")
+	Collection<TrackingLog> findTopByClaimIdOrderByResolutionPercentageDesc(int masterId);
+
 }

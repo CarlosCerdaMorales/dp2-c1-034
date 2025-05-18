@@ -29,10 +29,11 @@ public class ManagerLegListService extends AbstractGuiService<Manager, Leg> {
 	@Override
 	public void authorise() {
 		boolean status = false;
+
 		Integer flightId = super.getRequest().getData("flightId", int.class);
 
 		if (this.flightRepository.findFlightById(flightId) == null)
-			throw new RuntimeException("No flight with id: " + flightId);
+			status = false;
 		Integer managerId = super.getRequest().getPrincipal().getActiveRealm().getId();
 		Optional<Flight> optionalFlight = this.repository.findByIdAndManagerId(flightId, managerId);
 
@@ -47,7 +48,6 @@ public class ManagerLegListService extends AbstractGuiService<Manager, Leg> {
 		int flightId;
 
 		flightId = super.getRequest().getData("flightId", int.class);
-		Integer managerId = super.getRequest().getPrincipal().getActiveRealm().getId();
 		List<Leg> legs = this.repository.findAllLegsByFlightId(flightId);
 		legs.sort(Comparator.comparing(Leg::getScheduledDeparture));
 
