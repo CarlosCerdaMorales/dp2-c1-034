@@ -97,8 +97,14 @@ public class AssistanceAgentClaimCreateService extends AbstractGuiService<Assist
 	@Override
 	public void validate(final Claim claim) {
 		boolean confirmation;
+		boolean invalidLegDate = true;
+
+		if (claim.getRegistrationMoment().before(claim.getLeg().getScheduledArrival()))
+			invalidLegDate = false;
+
 		confirmation = super.getRequest().getData("confirmation", boolean.class);
 		super.state(confirmation, "confirmation", "acme.validation.confirmation.message");
+		super.state(invalidLegDate, "leg", "acme.validation.claim.invalid-leg-date.message");
 	}
 
 	@Override
@@ -117,7 +123,6 @@ public class AssistanceAgentClaimCreateService extends AbstractGuiService<Assist
 		dataset.put("claimType", choicesType.getSelected().getKey());
 		dataset.put("draftMode", true);
 		dataset.put("confirmation", false);
-		dataset.put("readonly", false);
 
 		super.getResponse().addData(dataset);
 
