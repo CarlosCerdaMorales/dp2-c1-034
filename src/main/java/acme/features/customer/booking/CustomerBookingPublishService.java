@@ -80,21 +80,17 @@ public class CustomerBookingPublishService extends AbstractGuiService<Customer, 
 	@Override
 	public void validate(final Booking booking) {
 		boolean lastNibbleIn = true;
-		boolean allInDraftMode = true;
 		boolean hasPassengers = true;
 		boolean hasFlight = true;
 		String lastNibble = booking.getLastNibble();
 		Collection<Passenger> passengers = this.repository.findPassengersFromBooking(booking.getId());
 		if (lastNibble.isBlank())
 			lastNibbleIn = false;
-		if (!passengers.isEmpty() && passengers.stream().anyMatch(p -> p.isDraftMode()))
-			allInDraftMode = false;
 		if (passengers.isEmpty())
 			hasPassengers = false;
 		if (booking.getFlight() == null)
 			hasFlight = false;
 		super.state(lastNibbleIn, "lastNibble", "acme.validation.booking.invalid-nibble-publish.message");
-		super.state(allInDraftMode, "*", "acme.validation.booking.invalid-passenger-publish.message");
 		super.state(hasPassengers, "*", "acme.validation.booking.invalid-passenger-number-publish.message");
 		super.state(hasFlight, "*", "acme.validation.booking.invalid-booking-flight-null.message");
 	}
