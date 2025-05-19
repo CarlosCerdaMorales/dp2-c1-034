@@ -30,16 +30,14 @@ public class TechnicianInvolvesDeleteService extends AbstractGuiService<Technici
 		int mrId;
 		MaintenanceRecord mr;
 
-		String method = super.getRequest().getMethod();
-
 		mrId = super.getRequest().getData("maintenanceRecordId", int.class);
 		mr = this.repository.findMaintenanceRecordById(mrId);
 		status = mr != null && super.getRequest().getPrincipal().hasRealm(mr.getTechnician());
 
-		if (method.equals("POST")) {
+		if (super.getRequest().hasData("task")) {
 			int taskId = super.getRequest().getData("task", int.class);
 			Task task = this.repository.findTaskById(taskId);
-			Collection<Task> available = this.repository.findAllSelectableTasks(taskId, mrId);
+			Collection<Task> available = this.repository.findValidTasksToUnlink(mr);
 
 			if (task == null && taskId != 0)
 				status = false;
