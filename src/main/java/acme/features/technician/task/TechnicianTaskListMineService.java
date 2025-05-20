@@ -42,8 +42,8 @@ public class TechnicianTaskListMineService extends AbstractGuiService<Technician
 
 			maintenanceRecord = this.repository.findMaintenanceRecordById(maintenanceRecordId);
 			super.getResponse().addGlobal("maintenanceRecordId", maintenanceRecordId);
-			if (super.getRequest().hasData("draftMode")) {
-				draftMode = super.getRequest().getData("draftMode", boolean.class);
+			if (maintenanceRecord != null) {
+				draftMode = maintenanceRecord.isDraftMode();
 				super.getResponse().addGlobal("draftMode", draftMode);
 			}
 			tasks = this.repository.findInvolvesByMaintenanceRecord(maintenanceRecord);

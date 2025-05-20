@@ -38,12 +38,12 @@ public class TechnicianInvolvesCreateService extends AbstractGuiService<Technici
 		mr = this.repository.findMaintenanceRecordById(mrId);
 
 		technician = mr == null ? null : mr.getTechnician();
-		status = mr != null && mr.isDraftMode() && this.getRequest().getPrincipal().hasRealm(technician);
+		status = mr != null && mr.isDraftMode() && super.getRequest().getPrincipal().hasRealm(technician);
 
 		if (method.equals("POST")) {
 			int taskId = super.getRequest().getData("task", int.class);
 			Task task = this.repository.findTaskById(taskId);
-			Collection<Task> available = this.repository.findAllSelectableTasks(taskId, mrId);
+			Collection<Task> available = this.repository.findValidTasksToLink(mr, technician);
 
 			if (task == null && taskId != 0)
 				status = false;
