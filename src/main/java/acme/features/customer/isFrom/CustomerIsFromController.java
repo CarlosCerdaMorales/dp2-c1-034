@@ -15,14 +15,9 @@ public class CustomerIsFromController extends AbstractGuiController<Customer, Is
 
 	// Internal state ---------------------------------------------------------
 
-	@Autowired
-	private CustomerIsFromListService	listService;
 	//
 	@Autowired
 	private CustomerIsFromCreateService	createService;
-	//
-	@Autowired
-	private CustomerIsFromShowService	showService;
 
 	@Autowired
 	private CustomerIsFromDeleteService	deleteService;
@@ -32,9 +27,7 @@ public class CustomerIsFromController extends AbstractGuiController<Customer, Is
 
 	@PostConstruct
 	protected void initialise() {
-		super.addBasicCommand("list", this.listService);
 		super.addBasicCommand("create", this.createService);
-		super.addBasicCommand("show", this.showService);
 		super.addBasicCommand("delete", this.deleteService);
 	}
 
