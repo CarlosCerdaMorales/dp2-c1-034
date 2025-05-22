@@ -37,6 +37,7 @@ public class Task extends AbstractEntity {
 
 	@Mandatory
 	@ValidNumber(min = 0, max = 10, integer = 2, message = "{acme.validation.task.priority}")
+	@Automapped
 	private Integer				priority;
 
 	@Mandatory
