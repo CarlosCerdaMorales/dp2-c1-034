@@ -4,12 +4,12 @@ task-01,MAINTENANCE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Se
 # Task type variations
 task-02,INSPECTION,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",5,500.00,true,technician-01
 task-03,REPAIR,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",5,500.00,true,technician-01
-task-04,SYSTEM_CHECK,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",5,500.00,true,technician-01
+task-04,SYSTEM_CHECK,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",5,500.00,false,technician-01
 # Priority variations
-task-05,MAINTENANCE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",0,500.00,true,technician-01
-task-06,INSPECTION,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",1,500.00,true,technician-01
-task-07,REPAIR,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",10,500.00,true,technician-01
-task-08,SYSTEM_CHECK,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",6,500.00,true,technician-01
+task-05,MAINTENANCE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",0,500.00,false,technician-01
+task-06,INSPECTION,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",1,500.00,false,technician-01
+task-07,REPAIR,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",10,500.00,false,technician-01
+task-08,SYSTEM_CHECK,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",6,500.00,false,technician-01
 # Estimated duration variations
 task-09,MAINTENANCE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",5,0.00,false,technician-01
 task-10,INSPECTION,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",5,0.01,false,technician-01
@@ -33,5 +33,5 @@ task-25,REPAIR,Sensor calibration for autopilot accuracy.,5,3.5,false,technician
 task-26,SYSTEM_CHECK,Black box system diagnostics.,6,2.8,false,technician-02
 task-27,MAINTENANCE,Emergency fix on wing de-icing system.,9,7.5,false,technician-02
 task-28,INSPECTION,Cargo door mechanical check.,4,1.8,false,technician-02
-task-29,REPAIR,Navigation system update and recalibration.,8,5.5,true,technician-02
-task-30,SYSTEM_CHECK,Hydraulic pressure stress test.,5,4.7,true,technician-02
+task-29,REPAIR,Navigation system update and recalibration.,8,5.5,false,technician-02
+task-30,SYSTEM_CHECK,Hydraulic pressure stress test.,5,4.7,false,technician-02
