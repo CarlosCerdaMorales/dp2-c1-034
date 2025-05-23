@@ -16,10 +16,7 @@ technician.task.list.label.priority = Prioridad
 technician.task.list.label.estimatedDuration = Estimated Duration
 
 technician.task.list.button.create = Crear
-
-technician.task.list.label.type = Tipo
-technician.task.list.label.priority = Prioridad
-technician.task.list.label.description = Descripción
+technician.task.list.button.delete = Eliminar
 
 technician.task.form.label.type = Tipo
 technician.task.form.label.priority = Prioridad

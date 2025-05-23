@@ -1,9 +1,6 @@
 administrator.passenger.list.title = Passengers
-administrator.passenger.list.fullName = Full name
-administrator.passenger.list.email = Email
 administrator.passenger.list.passport = Passport
 administrator.passenger.list.dateOfBirth = Date of Birth
-administrator.passenger.list.specialNeeds = Special Needs
 
 administrator.passenger.form.title = Passenger Information
 administrator.passenger.form.fullName = Full Name

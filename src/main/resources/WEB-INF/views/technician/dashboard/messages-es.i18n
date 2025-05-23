@@ -11,8 +11,6 @@ technician.dashboard.form.label.number-maintenance-status.progress = Mantenimien
 technician.dashboard.form.label.nearest-next-inspection = Próxima inspección más cercana
 technician.dashboard.form.label.most-tasks-aircarfts = Aeronaves con más tareas
 
-authenticated.technician.form.title = Técnico
-
 technician.dashboard.form.label.cost-statistics.avg = Media de coste
 technician.dashboard.form.label.cost-statistics.max = Máximo de coste
 technician.dashboard.form.label.cost-statistics.min = Mínimo de coste

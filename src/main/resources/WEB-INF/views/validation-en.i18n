@@ -81,7 +81,6 @@ acme.validation.booking.invalid-passenger-publish.message = Booking can't be pub
 acme.validation.booking.invalid-booking-publish.message = You can't add passengers to an already published booking
 acme.validation.booking.invalid-booking-flight-null.message = You must specify a flight
 acme.validation.booking.invalid-passenger-number-publish.message = You can't publish a booking without passengers
-acme.validation.booking.invalid-passenger-number-publish.message = You can't publish a booking without passengers
 
 ### Airline ###
 
