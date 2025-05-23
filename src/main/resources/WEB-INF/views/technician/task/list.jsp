@@ -23,7 +23,7 @@
 </acme:list>
 
 <jstl:if test="${empty maintenanceRecordId}">
-	<acme:button code="technician.task.form.button.create" action="/technician/task/create"/>
+	<acme:button code="technician.task.list.button.create" action="/technician/task/create"/>
 </jstl:if>
 
 <jstl:if test="${draftMode == true}">

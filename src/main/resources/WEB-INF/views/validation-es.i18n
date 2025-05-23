@@ -61,10 +61,11 @@ acme.validation.nextInspection.invalid-future-date = Fecha de proxima inspeccion
 acme.validation.nextInspection.invalid-must-be-future = La fecha de próxima inspección debe ser futura.
 acme.validation.maintenanceMoment.invalid-date = La fecha de mantenimiento no puede ser futura.
 
-### Task and MaintenanceRecord
+### Task and involves ###
 acme.validation.task.priority = La prioridad ha de ser un entero entre 0 y 10
 acme.validation.task.duration = La duración ha de estar entre 0 y 1000
 acme.validation.involves.invalid-involves-publish.message = No se pueden añadir tareas a un registro ya publicado
+acme.validation.involves.no-task-to-unlink = No hay tareas asociadas a este record
 
 ### Airport ###
 acme.validation.airport.duplicated-iata.message = Ya existe un aeropuerto con este código IATA.
