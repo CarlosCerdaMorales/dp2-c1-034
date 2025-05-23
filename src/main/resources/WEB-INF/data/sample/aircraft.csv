@@ -34,4 +34,4 @@ aircraft-26,لوريم إيبسوم,REG-6890,127,26000,ACTIVE,"Lorem ipsum dolor
 aircraft-27,洛伦·伊普森,REG-9468,127,26000,UNDER_MAINTENANCE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airline-02
 aircraft-28,<marquee>Hacked</marquee>,REG-0022,127,26000,ACTIVE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airline-03
 aircraft-29,<script>alert(‘Hacked!’);</script>,REG-6891,127,26000,ACTIVE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airline-04
-aircraft-,' or 'A' = 'A,REG-9469,127,26000,UNDER_MAINTENANCE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airline-05
+aircraft-30,' or 'A' = 'A,REG-9469,127,26000,UNDER_MAINTENANCE,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",airline-05
