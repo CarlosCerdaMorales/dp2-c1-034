@@ -9,6 +9,7 @@ import acme.client.components.models.Dataset;
 import acme.client.components.views.SelectChoices;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
+import acme.entities.booking.Booking;
 import acme.entities.passenger.Passenger;
 import acme.realms.Customer;
 import acme.relationships.IsFrom;
@@ -22,15 +23,21 @@ public class CustomerIsFromDeleteService extends AbstractGuiService<Customer, Is
 
 	@Override
 	public void authorise() {
-		boolean status;
-		int isFromId;
-		IsFrom isFrom;
-		Customer customer;
+		boolean status = true;
+		int customerId = this.getRequest().getPrincipal().getActiveRealm().getId();
+		int bookingId = super.getRequest().getData("bookingId", int.class);
+		Booking booking = this.repository.findBookingFromId(bookingId);
+		if (booking == null || booking.getCustomer().getId() != customerId || !booking.isDraftMode())
+			status = false;
 
-		isFromId = super.getRequest().getData("id", int.class);
-		isFrom = this.repository.findById(isFromId);
-		customer = isFrom == null ? null : isFrom.getBooking().getCustomer();
-		status = isFrom != null && super.getRequest().getPrincipal().hasRealm(customer);
+		else if (super.getRequest().getMethod().equals("POST")) {
+			int passengerId = super.getRequest().getData("passenger", int.class);
+			Passenger passenger = this.repository.findPassengerFromId(passengerId);
+			Collection<Passenger> inThisBooking = this.repository.findPassengersFromBooking(booking);
+
+			if (passenger == null && passengerId != 0 || passenger != null && !inThisBooking.contains(passenger))
+				status = false;
+		}
 
 		super.getResponse().setAuthorised(status);
 	}
@@ -38,11 +45,14 @@ public class CustomerIsFromDeleteService extends AbstractGuiService<Customer, Is
 	@Override
 	public void load() {
 		IsFrom isFrom;
-		int isFromId;
+		int bookingId;
+		Booking booking;
 
-		isFromId = super.getRequest().getData("id", int.class);
-		isFrom = this.repository.findById(isFromId);
+		bookingId = super.getRequest().getData("bookingId", int.class);
+		booking = this.repository.findBookingFromId(bookingId);
 
+		isFrom = new IsFrom();
+		isFrom.setBooking(booking);
 		super.getBuffer().addData(isFrom);
 	}
 
@@ -58,21 +68,32 @@ public class CustomerIsFromDeleteService extends AbstractGuiService<Customer, Is
 
 	@Override
 	public void perform(final IsFrom isFrom) {
-		this.repository.delete(isFrom);
+		int passengerId = super.getRequest().getData("passenger", int.class);
+
+		Passenger passenger = this.repository.findPassengerFromId(passengerId);
+		Booking booking = isFrom.getBooking();
+
+		this.repository.delete(this.repository.findIsFromByBookingAndPassenger(booking, passenger));
 	}
 
 	@Override
 	public void unbind(final IsFrom isFrom) {
 		Collection<Passenger> passengers;
-		SelectChoices passs;
+		int bookingId;
+		Booking booking;
+		SelectChoices choices;
 		Dataset dataset;
-		int customerId = super.getRequest().getPrincipal().getActiveRealm().getId();
 
-		passengers = this.repository.restOfPassengers(isFrom.getBooking().getId(), customerId);
-		passs = SelectChoices.from(passengers, "passport", isFrom.getPassenger());
-		dataset = super.unbindObject(isFrom);
-		dataset.put("passenger", passs.getSelected().getKey());
-		dataset.put("passengers", passs);
+		bookingId = super.getRequest().getData("bookingId", int.class);
+		booking = this.repository.findBookingFromId(bookingId);
+
+		passengers = this.repository.findPassengersFromBooking(booking);
+		choices = SelectChoices.from(passengers, "passport", isFrom.getPassenger());
+
+		dataset = super.unbindObject(isFrom, "booking");
+		dataset.put("bookingId", isFrom.getBooking().getId());
+		dataset.put("passenger", choices.getSelected().getKey());
+		dataset.put("passengers", choices);
 
 		super.getResponse().addData(dataset);
 

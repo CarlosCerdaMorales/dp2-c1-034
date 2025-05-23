@@ -12,7 +12,6 @@ technician.involves.form.title = Lista de tareas asociadas
 
 technician.involves.form.label.aircraft = Avión asociado
 technician.involves.form.label.task = Tarea
-technician.maintenance-record.form.show.involves = Associated tasks
 
 technician.involves.form.button.link = Asociar tareas
 technician.involves.form.button.unlink = Desasociar tareas

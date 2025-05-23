@@ -18,10 +18,9 @@ technician.maintenance-record.list.label.aircraft = Aircraft
 
 technician.maintenance-record.list.button.create = Create
 
-technician.maintenance-record.list.label.status = Status
-technician.maintenance-record.list.label.maintenanceMoment = Maintenance Moment
-technician.maintenance-record.list.label.nextInspectionDue = Next Inspection
-
+technician.maintenance-record.form.label.status = Status
+technician.maintenance-record.form.label.maintenanceMoment = Maintenance Moment
+technician.maintenance-record.form.label.nextInspectionDue = Next Inspection
 technician.maintenance-record.form.label.estimatedCost = Estimated Cost
 technician.maintenance-record.form.label.notes = Notes
 technician.maintenance-record.form.label.aircraft = Aircraft
@@ -31,9 +30,5 @@ technician.maintenance-record.form.button.create = Create
 technician.maintenance-record.form.button.update = Update
 technician.maintenance-record.form.button.delete = Delete
 technician.maintenance-record.form.button.publish = Publish
-
-technician.maintenance-record.form.error.not-all-tasks-published = All taks must be published 
-
-
-
 technician.maintenance-record.form.show.involves = Associated tasks
+technician.maintenance-record.form.error.not-all-tasks-published = All taks must be published 

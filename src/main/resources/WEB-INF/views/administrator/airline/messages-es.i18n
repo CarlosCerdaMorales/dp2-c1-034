@@ -8,14 +8,11 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
-
-
 administrator.airline.list.title = Listado de aerolineas
 
 administrator.airline.list.label.name = Nombre
 administrator.airline.list.label.iata = Iata
 administrator.airline.list.label.phoneNumber = Número de teléfono
-
 
 administrator.airline.list.button.create = Crear
 
@@ -33,9 +30,7 @@ administrator.airline.form.button.create = Crear
 
 administrator.airline.form.label.confirmation = Confirme que la información de la areolinea es correcta
 
-administrator.airline.form.button.duties = Deberes
 administrator.airline.form.button.update = Actualizar
-administrator.airline.form.button.delete = Eliminar
 
 
 

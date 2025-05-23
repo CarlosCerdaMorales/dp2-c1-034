@@ -41,4 +41,10 @@ public interface CustomerIsFromRepository extends AbstractRepository {
 	@Query("select p from Passenger p where p.id= :id")
 	Passenger findPassengerFromId(int id);
 
+	@Query("select i from IsFrom i where i.booking = :booking and i.passenger = :passenger")
+	IsFrom findIsFromByBookingAndPassenger(Booking booking, Passenger passenger);
+
+	@Query("select p from Passenger p where p in (select i.passenger from IsFrom i where i.booking = :booking)")
+	Collection<Passenger> findPassengersFromBooking(Booking booking);
+
 }

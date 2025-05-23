@@ -12,14 +12,15 @@ technician.task.list.title = Task List
 technician.task.form.title = Task Details
 
 technician.task.list.label.type = Type
-technician.task.list.label.description = Description
+technician.task.list.label.priority = Priority
 technician.task.list.label.estimatedDuration = Estimated Duration
 
 technician.task.list.button.create = Create
+technician.task.list.button.delete = Delete
 
-technician.task.list.label.type = Type
-technician.task.list.label.description = Description
-technician.task.list.label.priority = Priority
+technician.task.form.label.type = Type
+technician.task.form.label.priority = Priority
+technician.task.form.label.description = Description
 technician.task.form.label.estimatedDuration = Estimated Duration
 
 technician.task.form.button.create = Create
