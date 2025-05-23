@@ -5,15 +5,9 @@ administrator.passenger.list.passport = Passport
 administrator.passenger.list.dateOfBirth = Date of Birth
 administrator.passenger.list.specialNeeds = Special Needs
 
-administrator.passenger.list.button.create = Create passenger
-
 administrator.passenger.form.title = Passenger Information
 administrator.passenger.form.fullName = Full Name
 administrator.passenger.form.email = Email
 administrator.passenger.form.passport = Passport (pattern = ^[A-Z0-9]{6,9}$)
 administrator.passenger.form.dateOfBirth = Date Of Birth
 administrator.passenger.form.specialNeeds = Special Needs
-
-administrator.passenger.form.button.create = Create
-administrator.passenger.form.button.update = Update information
-administrator.passenger.form.button.publish = Publish 

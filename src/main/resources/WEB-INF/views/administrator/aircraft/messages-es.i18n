@@ -32,7 +32,5 @@ administrator.aircraft.form.label.airline = Aerolínea
 administrator.aircraft.form.label.confirmation = Confirma que el avión está correcto.
 administrator.aircraft.form.button.create = Crear
 
-administrator.aircraft.form.button.duties = Deberes
 administrator.aircraft.form.button.update = Actualizar
-administrator.aircraft.form.button.delete = Eliminar
 

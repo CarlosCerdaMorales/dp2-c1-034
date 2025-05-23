@@ -8,25 +8,14 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
-technician.involves.list.title = Detalles de tareas asociadas
 technician.involves.form.title = Lista de tareas asociadas
-
-technician.involves.list.label.maintenanceRecord-aircraft = Avión registrado
-technician.involves.list.label.maintenanceRecord-maintenanceMoment = Fecha de mantenimiento
-technician.involves.list.label.task.type = Tipo de tarea
-
-technician.involves.list.button.create = Crear
 
 technician.involves.form.label.aircraft = Avión asociado
 technician.involves.form.label.task = Tarea
 technician.maintenance-record.form.show.involves = Associated tasks
 
-
-technician.involves.form.button.create = Añadir tareas		
-technician.involves.form.button.update = Actualizar
-technician.involves.form.button.delete = Eliminar tareas
-technician.involves.form.button.link = Asociar
-technician.involves.form.button.unlink = Desasociar
+technician.involves.form.button.link = Asociar tareas
+technician.involves.form.button.unlink = Desasociar tareas
 
 technician.involves.form.task = Tareas
 
