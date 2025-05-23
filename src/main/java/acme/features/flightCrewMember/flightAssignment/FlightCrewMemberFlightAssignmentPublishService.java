@@ -51,7 +51,7 @@ public class FlightCrewMemberFlightAssignmentPublishService extends AbstractGuiS
 
 	@Override
 	public void bind(final FlightAssignment flightAssignment) {
-		super.bindObject(flightAssignment, "flightCrewDuty", "assignmentStatus", "remarks", "leg", "flightCrewMember");
+		super.bindObject(flightAssignment, "flightCrewDuty", "assignmentStatus", "remarks", "leg");
 
 	}
 
