@@ -19,8 +19,6 @@ administrator.aircraft.list.label.status = Estatus
 
 administrator.aircraft.list.button.create = Crear
 
-administrator.aircraft.form.title = Información del avión
-
 administrator.aircraft.form.label.model = Modelo
 administrator.aircraft.form.label.registrationNumber = Número de registro
 administrator.aircraft.form.label.capacity = Capacidad
