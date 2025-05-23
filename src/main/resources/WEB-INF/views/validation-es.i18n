@@ -80,6 +80,7 @@ acme.validation.airline.duplicated-iata.message = Ya existe un aerolinea con est
 ### Aircraft ###
 
 acme.validation.aircraft.invalid-registration-number = Ya existe un avion con este numero de registro.
+acme.validation.aircraft.cant-disable = No puede deshabilitar un avión en uso.
 
 ### Passenger ###
 
