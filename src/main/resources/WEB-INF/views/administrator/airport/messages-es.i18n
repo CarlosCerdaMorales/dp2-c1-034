@@ -23,7 +23,6 @@ administrator.airport.list.label.phoneNumber = Número de teléfono de contacto
 
 administrator.airport.list.button.create = Crear
 
-
 administrator.airport.form.label.airportName = Nombre del Aeropuerto
 administrator.airport.form.label.IATACode = Código IATA
 administrator.airport.form.label.operationalScope = Alcance operacional
@@ -36,6 +35,4 @@ administrator.airport.form.label.contactPhoneNumber = Número de teléfono de co
 administrator.airport.form.label.confirmation = Confirma que el aeropuerto es correcto.
 administrator.airport.form.button.create = Crear
 
-administrator.airport.form.button.duties = Deberes
 administrator.airport.form.button.update = Actualizar
-administrator.airport.form.button.delete = Eliminar

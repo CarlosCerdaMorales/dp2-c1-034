@@ -32,6 +32,4 @@ administrator.airport.form.label.contactPhoneNumber = Phone Number
 administrator.airport.form.label.confirmation = Confirm that the airport is correct.
 administrator.airport.form.button.create = Create
 
-administrator.airport.form.button.duties = Duties
 administrator.airport.form.button.update = Update
-administrator.airport.form.button.delete = Delete

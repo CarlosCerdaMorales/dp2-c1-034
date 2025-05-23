@@ -18,7 +18,15 @@ public class CustomerPassengerCreateService extends AbstractGuiService<Customer,
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		String metodo = super.getRequest().getMethod();
+		boolean authorised = true;
+		if (metodo.equals("POST")) {
+			int passengerId = super.getRequest().getData("id", int.class);
+			if (passengerId != 0)
+				authorised = false;
+
+		}
+		super.getResponse().setAuthorised(authorised);
 	}
 
 	@Override

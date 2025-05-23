@@ -16,6 +16,8 @@ technician.maintenance-record.form.show.involves = Associated tasks
 
 technician.involves.form.button.link = Link tasks
 technician.involves.form.button.unlink = Unlink tasks
+technician.involves.form.button.link = Link taks
+technician.involves.form.button.unlink = Unlink taks
 technician.involves.form.task = Tasks
 
 

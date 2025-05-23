@@ -32,12 +32,14 @@ public class CustomerBookingCreateService extends AbstractGuiService<Customer, B
 		boolean authorised = true;
 		if (metodo.equals("POST")) {
 			int flightId = super.getRequest().getData("flight", int.class);
+			int bookingId = super.getRequest().getData("id", int.class);
 
 			Flight flight = this.repository.findFlightById(flightId);
 			Collection<Flight> allFlights = this.repository.findAllFlights();
 
-			if (flight == null && flightId != 0 || flight != null && !allFlights.contains(flight))
+			if (flight == null && flightId != 0 || flight != null && !allFlights.contains(flight) || bookingId != 0)
 				authorised = false;
+
 		}
 		super.getResponse().setAuthorised(authorised);
 	}

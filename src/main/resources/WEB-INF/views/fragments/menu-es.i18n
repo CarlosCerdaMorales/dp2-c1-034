@@ -8,7 +8,6 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
-
 # master.menu.anonymous #######################################################
 
 master.menu.anonymous = Anónimo
@@ -78,7 +77,7 @@ master.menu.technician.alltask = Todas las tareas
 master.menu.technician.allmaintenance-record = Todos los informes de mantenimiento
 master.menu.user-account.become-technician = Hazte técnico
 master.menu.user-account.technician-profile = Perfil de técnico
-master.menu.technician.show-dashboard = Panel princial
+
 # master.menu.user-account ####################################################
 
 master.menu.user-account = Cuenta

@@ -34,3 +34,4 @@ booking-26,ABC423,2012/07/02 0:00,ECONOMY,1239,false,customer-02,flight-02
 booking-27,ABC523,2012/07/02 0:00,ECONOMY,5437,false,customer-01,flight-02
 booking-28,ABC623,2012/07/02 0:00,ECONOMY,1293,false,customer-02,flight-02
 booking-29,ABC723,2012/07/02 0:00,ECONOMY,,true,customer-01,flight-02
+booking-30,ABC72123,2012/07/02 0:00,ECONOMY,,true,customer-02,flight-02

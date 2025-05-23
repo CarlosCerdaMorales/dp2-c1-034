@@ -1,11 +1,6 @@
 administrator.passenger.list.title = Pasajeros
-administrator.passenger.list.fullName = Nombre completo
-administrator.passenger.list.email = Email
 administrator.passenger.list.passport = Pasaporte
 administrator.passenger.list.dateOfBirth = Fecha de nacimiento
-administrator.passenger.list.specialNeeds = Necesidades especiales
-
-administrator.passenger.list.button.create = Crear pasajero
 
 administrator.passenger.form.title = Información del pasajero
 administrator.passenger.form.fullName = Nombre Completo
@@ -13,8 +8,4 @@ administrator.passenger.form.email = Correo electrónico
 administrator.passenger.form.passport = Pasaporte (patrón = ^[A-Z0-9]{6,9}$)
 administrator.passenger.form.dateOfBirth = Fecha de nacimiento
 administrator.passenger.form.specialNeeds = Necesidades especiales
-
-administrator.passenger.form.button.create = Crear
-administrator.passenger.form.button.update = Actualizar información
-administrator.passenger.form.button.publish = Publicar
  
