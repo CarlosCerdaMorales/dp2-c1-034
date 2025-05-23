@@ -8,8 +8,6 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
-
-
 # master.menu.anonymous #######################################################
 
 master.menu.anonymous = Anonymous
@@ -60,8 +58,8 @@ master.menu.customer = Customer
 master.menu.customer.dashboard = Dashboard
 master.menu.customer.booking = My bookings
 master.menu.customer.passenger = My passengers
-master.menu.user-account.become-technician = Become a customer
-master.menu.user-account.technician-profile = Customer profile
+master.menu.user-account.become-customer = Become a customer
+master.menu.user-account.customer-profile = Customer profile
 
 # master.menu.manager ##########################################################
 
@@ -72,14 +70,14 @@ master.menu.manager.legs = Legs list
 # master.menu.technician ##########################################################
 
 master.menu.technician = Technician
-master.menu.technician.dashboard = Panel principal
+master.menu.technician.dashboard = Dashboard
 master.menu.technician.task = My tasks
 master.menu.technician.maintenance-record = My Maintenance records
 master.menu.technician.alltask = All tasks
 master.menu.technician.allmaintenance-record = All maintenance records
 master.menu.user-account.become-technician = Become a technician
 master.menu.user-account.technician-profile = Technician profile
-master.menu.technician.show-dashboard = Dashboard
+
 # master.menu.user-account ####################################################
 
 master.menu.user-account = Account

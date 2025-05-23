@@ -1,7 +1,5 @@
 customer.is-from.list.title = Choose the passenger to delete from the booking
 customer.is-from.form.title = Booking
 customer.is-from.list.button.create = Add passengers 
-customer.is-from.form.update = Update data
-customer.is-from.form.publish = Publish
 customer.is-from.list.button.delete = Delete passengers
 customer.is-from.form.delete = Delete 

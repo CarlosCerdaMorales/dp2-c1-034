@@ -24,7 +24,6 @@ technician.maintenance-record.list.label.nextInspectionDue = Próxima inspecció
 technician.maintenance-record.form.label.estimatedCost = Coste estimado
 technician.maintenance-record.form.label.notes = Notas
 technician.maintenance-record.form.label.aircraft = Avión
-technician.maintenance-record.form.label.confirmation = Confimación
 
 technician.maintenance-record.form.button.create = Crear
 
@@ -33,6 +32,3 @@ technician.maintenance-record.form.button.delete = Eliminar
 technician.maintenance-record.form.button.publish = Publicar
 technician.maintenance-record.form.show.involves = Tareas asociadas
 technician.maintenance-record.form.error.not-all-tasks-published = Todas las tareas deben estar publicadas 
-
-
-

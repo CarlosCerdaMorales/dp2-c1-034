@@ -32,9 +32,7 @@ administrator.aircraft.form.label.airline = Airline
 administrator.aircraft.form.label.confirmation = Confirm that the aircraft is correct.
 administrator.aircraft.form.button.create = Create
 
-administrator.aircraft.form.button.duties = Duties
 administrator.aircraft.form.button.update = Update
-administrator.aircraft.form.button.delete = Delete
 
 
 

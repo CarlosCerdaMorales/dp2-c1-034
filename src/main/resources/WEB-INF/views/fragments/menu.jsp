@@ -75,7 +75,7 @@
 			<acme:menu-suboption code="master.menu.technician.alltask" action="/technician/task/list"/>
 			<acme:menu-suboption code="master.menu.technician.allmaintenance-record" action="/technician/maintenance-record/list"/>
 		
-			<acme:menu-suboption code="master.menu.technician.show-dashboard" action="/technician/dashboard/show" />
+			<acme:menu-suboption code="master.menu.technician.dashboard" action="/technician/dashboard/show" />
 		</acme:menu-option>
 		
 	</acme:menu-left>

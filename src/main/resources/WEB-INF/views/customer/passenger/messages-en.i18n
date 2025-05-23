@@ -1,9 +1,6 @@
 customer.passenger.list.title = My passengers
-customer.passenger.list.fullName = Full name
-customer.passenger.list.email = Email
 customer.passenger.list.passport = Passport
 customer.passenger.list.dateOfBirth = Date of Birth
-customer.passenger.list.specialNeeds = Special Needs
 
 customer.passenger.list.button.create = Create passenger
 
