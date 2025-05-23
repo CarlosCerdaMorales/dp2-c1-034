@@ -26,17 +26,16 @@ public class TechnicianTaskListService extends AbstractGuiService<Technician, Ta
 		int mrId;
 		MaintenanceRecord mr;
 		Technician technician;
-		boolean status;
+		boolean status = true;
 
-		mrId = super.getRequest().getData("maintenanceRecordId", int.class);
-		if (mrId == -1)
-			super.getResponse().setAuthorised(true);
-		else {
+		if (!super.getRequest().getData().isEmpty()) {
+			mrId = super.getRequest().getData("maintenanceRecordId", int.class);
 			mr = this.repository.findMaintenanceRecordById(mrId);
 			technician = mr == null ? null : mr.getTechnician();
 			status = mr != null && technician != null && super.getRequest().getPrincipal().hasRealm(technician);
-			super.getResponse().setAuthorised(status);
+
 		}
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
@@ -53,7 +52,6 @@ public class TechnicianTaskListService extends AbstractGuiService<Technician, Ta
 			super.getResponse().addGlobal("maintenanceRecordId", maintenanceRecordId);
 
 			maintenanceRecord = this.repository.findMaintenanceRecordById(maintenanceRecordId);
-			super.getResponse().addGlobal("maintenanceRecordId", maintenanceRecordId);
 			if (maintenanceRecord != null) {
 				draftMode = maintenanceRecord.isDraftMode();
 				super.getResponse().addGlobal("draftMode", draftMode);
