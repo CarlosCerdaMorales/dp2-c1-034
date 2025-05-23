@@ -39,9 +39,7 @@ public class TechnicianInvolvesDeleteService extends AbstractGuiService<Technici
 			Task task = this.repository.findTaskById(taskId);
 			Collection<Task> available = this.repository.findValidTasksToUnlink(mr);
 
-			if (task == null && taskId != 0)
-				status = false;
-			else if (task != null && !available.contains(task))
+			if (task == null && taskId != 0 || task != null && !available.contains(task))
 				status = false;
 		}
 
@@ -74,7 +72,7 @@ public class TechnicianInvolvesDeleteService extends AbstractGuiService<Technici
 
 		int taskId = super.getRequest().getData("task", int.class);
 		Task task = this.repository.findTaskById(taskId);
-		super.state(task != null && tasks.contains(task), "task", "technician.involves.form.error.no-task-to-unlink");
+		super.state(task != null && tasks.contains(task), "task", "acme.validation.involves.no-task-to-unlink");
 	}
 
 	@Override

@@ -25,7 +25,6 @@ technician.maintenance-record.list.label.nextInspectionDue = Next Inspection
 technician.maintenance-record.form.label.estimatedCost = Estimated Cost
 technician.maintenance-record.form.label.notes = Notes
 technician.maintenance-record.form.label.aircraft = Aircraft
-technician.maintenance-record.form.label.confirmation = Confirmation
 
 technician.maintenance-record.form.button.create = Create
 

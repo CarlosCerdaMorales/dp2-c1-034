@@ -9,7 +9,6 @@ import org.springframework.stereotype.Repository;
 import acme.client.repositories.AbstractRepository;
 import acme.entities.maintenancerecord.MaintenanceRecord;
 import acme.entities.task.Task;
-import acme.realms.Technician;
 import acme.relationships.Involves;
 
 @Repository
@@ -24,8 +23,8 @@ public interface TechnicianInvolvesRepository extends AbstractRepository {
 	@Query("select t from Task t where t.id = :taskId")
 	Task findTaskById(int taskId);
 
-	@Query("select t from Task t where t not in (select i.task from Involves i where i.maintenanceRecord = :maintenanceRecord) and (t.draftMode = false or t.technician = :technician)")
-	Collection<Task> findValidTasksToLink(MaintenanceRecord maintenanceRecord, Technician technician);
+	@Query("select t from Task t where t not in (select i.task from Involves i where i.maintenanceRecord = :maintenanceRecord) and t.draftMode = false")
+	Collection<Task> findValidTasksToLink(MaintenanceRecord maintenanceRecord);
 
 	@Query("select t from Task t where t in (select i.task from Involves i where i.maintenanceRecord = :maintenanceRecord)")
 	Collection<Task> findValidTasksToUnlink(MaintenanceRecord maintenanceRecord);

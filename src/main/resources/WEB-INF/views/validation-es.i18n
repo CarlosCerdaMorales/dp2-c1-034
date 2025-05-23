@@ -8,8 +8,15 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
-### Customer ###
+### Global ###
+acme.validation.text.length.255 = El texto tiene que tener un máximo de 255 caracteres
+acme.validation.text.length.1-255 = El texto tiene que tener un mínimo de 1 carácter y un máximo de 255 caracteres
+acme.validation.text.length.1-50 = El texto debe tener entre 1 y 50 caracteres
 
+acme.validation.number.range.1-255 = El número debe estar entre 1 y 255
+acme.validation.number.range.2000-5000 = El número debe estar entre 2000 y 5000
+
+### Customer ###
 acme.validation.customer.invalid-identifier-pattern.message  = Patrón de identificador no válido
 acme.validation.customer.invalid-identifier-initials.message = Las iniciales del cliente no se ven reflejadas en el identificador
 acme.validation.customer.invalid-phone-pattern.message = Patrón de teléfono no válido
@@ -17,17 +24,14 @@ acme.validation.customer.duplicated-identifier.message Ya existe un cliente con 
 acme.validation.customer.invalid-namesurnameorphone.message = El nombre, apellido o teléfono del cliente no pueden ser nulos
 
 ### Assistance Agent ###
-
 acme.validation.assistanceagent.invalid-employeecode-pattern.message = Código de empleado no válido ya que no va de acuerdo al patrón establecido.
 acme.validation.assistanceagent.invalid-employeeCode-initials.message = Las iniciales del cliente no se ven reflejadas en el código de empleado.
 
 ### Service ###
-
 acme.validation.service.invalid-promotionCode-year.message = Los dos últimos digitos no coinciden con el año actual.
 acme.validation.service.duplicated-promocode.message = El código promocional no es único
 
 ### Tracking Log ###
-
 acme.validation.trackinglog.invalid-status-notresolute.message = El estado debe de ser pending ya que el porcentaje de resolución es menor a 100
 acme.validation.trackinglog.invalid-status.message = El estado no debe de ser 'pendiente' si el porcentaje de resolución es 100.
 acme.validation.trackinglog.invalid-resolution.message = La resolución no puede ser nula si el estado es aceptado o rechazado.
@@ -43,27 +47,31 @@ acme.validation.claim.invalid-leg-draftmode.message = El tramo debe de estar pub
 acme.validation.claim.invalid-draftmode.message = La reclamación esta publicada
 
 ### Technician ###
-
 acme.validation.technician = Ha ocurrido un erro durante la validacion del tecnico. Revise su numero de licencia y/o numero de telefono.
 acme.validation.technician.invalid-license-number-pattern.message = Patrón de numero de licencia no válido.
 acme.validation.technician.invalid-identifier-initials.message = Las iniciales del tecnico no se ven reflejadas en el identificador.
 acme.validation.technician.invalid-phone-pattern = Patrón de teléfono no válido.
 acme.validation.technician.duplicated-identifier.message = Ya existe un tecnico con este numero de licencia.
+acme.validation.technician.invalid-namesurnameorphone.message = El nombre, apellido o teléfono del técnico no pueden ser nulos.
 
 ### Maintenance Record ###
-
+acme.validation.maintenanceRecord.money.min = El precio estimado ha de ser como mínimo 0
 acme.validation.maintenancerecord = Maintenance record invalido.
 acme.validation.nextInspection.invalid-future-date = Fecha de proxima inspeccion invalida debido a que no ocurre después de la fecha de mantenimiento.
 acme.validation.nextInspection.invalid-must-be-future = La fecha de próxima inspección debe ser futura.
 acme.validation.maintenanceMoment.invalid-date = La fecha de mantenimiento no puede ser futura.
 
-### Airport ###
+### Task and involves ###
+acme.validation.task.priority = La prioridad ha de ser un entero entre 0 y 10
+acme.validation.task.duration = La duración ha de estar entre 0 y 1000
+acme.validation.involves.invalid-involves-publish.message = No se pueden añadir tareas a un registro ya publicado
+acme.validation.involves.no-task-to-unlink = No hay tareas asociadas a este record
 
+### Airport ###
 acme.validation.airport.duplicated-iata.message = Ya existe un aeropuerto con este código IATA.
 acme.validation.validiatacode = Este código IATA no es válido
 
 ### Booking ###
-
 acme.validation.booking.duplicated-locator-code.message = Ya existe una reserva con este código de localización
 acme.validation.booking.invalid-nibble.message = En caso de indicar los últimos dígitos, han de ser los cuatro últimos
 acme.validation.booking.duplicated-flight.message = Ya existe una reserva relacionada a este vuelo
@@ -74,27 +82,22 @@ acme.validation.booking.invalid-booking-flight-null.message = Debe especificar u
 acme.validation.booking.invalid-passenger-number-publish.message = No podrá publicar una reserva sin pasajeros
 
 ### Airline ###
-
 acme.validation.airline.duplicated-iata.message = Ya existe un aerolinea con este código IATA.
 
 ### Aircraft ###
-
 acme.validation.aircraft.invalid-registration-number = Ya existe un avion con este numero de registro.
 
 ### Passenger ###
-
 acme.validation.passenger.duplicated-passport.message = Ya existe un pasajero con este pasaporte
 acme.validation.passenger.invalid-passport-pattern.message = El patrón del pasaporte no coincide con el exigido
 
 
 ### FlightCrewMember ###
-
 acme.validation.flightcrewmember.duplicated-employeecode.message = Ya existe un miembro del staff de vuelo con este código de empleado.
 acme.validation.flightcrewmember.invalid-employeecode-pattern.message = El código de empleado tiene una estructura inválida.
 acme.validation.flightcrewmember.invalid-employeecode-initials.message = Las dos primeras letras del código de empleado debe coincidir con las iniciales del empleado.
 
 ### IsFrom ###
-
 acme.validation.booking.duplicated-is-from.message = Ya existe esta reserva asociada a este pasajero
 acme.validation.booking.invalid-isFrom-passenger-null.message = Debe seleccionar un pasajero
 acme.validation.booking.invalid-isFrom-booking-null.message = Debe seleccionar una reserva
@@ -102,8 +105,7 @@ acme.validation.booking.invalid-booking-isFrom-publish.message = No podrá publi
 acme.validation.booking.invalid-passenger-isFrom-publish.message = No podrá publicar hasta que este pasajero esté publicado
 acme.validation.isfrom.invalid-passenger-create.message = No podrá elegir un pasajero que no sea suyo y que no esté publicado
 
-### leg
-
+### Leg ###
 acme.validation.leg.NotNull.message = No puede ser nulo
 acme.validation.leg.duplicated-flight-number.message = Número de vuelo en uso
 acme.validation.leg.invalid-date.message = Fecha invalida
@@ -116,7 +118,6 @@ acme.validation.leg.not-same-airport.message = Areopuerto de llegada e ida no pu
 acme.validation.leg.past-date.message = Fecha debe ser futura
 
 ### Flight Crew member ###
-
 acme.validation.leg-complete.message = Esta escala ya ha sido completada
 acme.validation.member-available.message = Este miembro no esta disponible
 acme.validation.pilot.message = La escala seleccionada ya tiene un piloto
@@ -124,26 +125,9 @@ acme.validation.co-pilot.message = La escala seleccionada ya tiene un co-piloto
 acme.validation.overlapping.message = Ya se está realizando una asignación en las fechas de esta escala
 
 ### Flight ###
-
 acme.validation.flight.cant-be-publish.message = Todas las escalas deben estar publicadas
 acme.validation.invalid-currency.message = Divisa invalida
 acme.validation.flight.zero-legs.message = Al menos una escala para poder publicar
-
-### Task and MaintenanceRecord
-
-acme.validation.money.min = El precio estimado ha de ser como mínimo 0
-acme.validation.text.length.255 = El texto tiene que tener un máximo de 255 caracteres
-acme.validation.text.length.1-255 = El texto tiene que tener un mínimo de 1 carácter y un máximo de 255 caracteres
-acme.validation.task.priority = La prioridad ha de ser un entero entre 0 y 10
-acme.validation.task.duration = La duración ha de estar entre 0 y 1000
-acme.validation.involves.invalid-involves-publish.message = No se pueden añadir tareas a un registro ya publicado
-
-### Aircraft
-acme.validation.text.length.1-50 = El texto debe tener entre 1 y 50 caracteres
-acme.validation.text.length.1-255 = El texto debe estar entre 1 y 255
-acme.validation.number.range.1-255 = El número debe estar entre 1 y 255
-acme.validation.number.range.2000-5000 = El número debe estar entre 2000 y 5000
-acme.validation.text.length.255 = El texto debe tener como máximo 255 caracteres
 
 
  
