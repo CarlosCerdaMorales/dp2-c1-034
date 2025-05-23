@@ -8,8 +8,15 @@
 # purposes.  The copyright owner does not offer any warranties or representations, nor do
 # they accept any liabilities with respect to them.
 
-### Customer ###
+### Global  ###
+acme.validation.text.length.255 = The text must have at most 255 characteres
+acme.validation.text.length.1-255 = The text must have at least one character and at most 255
+acme.validation.text.length.1-50 = The text must have at least one character and at most 50
 
+acme.validation.number.range.1-255 = The number must be between 1 and 255
+acme.validation.number.range.2000-5000 = The number must be between 2000 and 5000
+
+### Customer ###
 acme.validation.customer.invalid-identifier-pattern.message = Invalid identifier's pattern
 acme.validation.customer.invalid-identifier-initials.message = Customer's initals are not reflected in its identifier
 acme.validation.customer.invalid-phone-pattern.message = Invalid phone's pattern
@@ -17,17 +24,14 @@ acme.validation.customer.duplicated-identifier.message = There is an existing cu
 acme.validation.customer.invalid-namesurnameorphone.message = Customer's name, surname or phone may not be null
 
 ### Assistance Agent ###
-
 acme.validation.assistanceagent.invalid-employeecode-pattern.message = Invalid employee code as it does not conform to the established pattern.
 acme.validation.assistanceagent.invalid-employeeCode-initials.message = The client's initials are not reflected in the employee code.
 
 ### Service ###
-
 acme.validation.service.invalid-promotionCode-year.message = The last two digits do not match the current year.
 acme.validation.service.duplicated-promocode.message = The promotional code is not unique
 
 ### Tracking Log ###
-
 acme.validation.trackinglog.invalid-status-notresolute.message = The status must be "pending" since the resolution percentage is less than 100
 acme.validation.trackinglog.invalid-status.message = The status can't be "pending" if resolution percentage is 100
 acme.validation.trackinglog.invalid-resolution.message = Resolution can't be null if the status is accepted or rejected
@@ -43,28 +47,32 @@ acme.validation.claim.invalid-leg-draftmode.message = Leg must be published
 acme.validation.claim.invalid-draftmode.message = Claim is already published
 
 ### Technician ###
-
 acme.validation.technician = There is an error while Validating the technician. Check the license number and/or phone number.
 acme.validation.technician.invalid-license-number-pattern.message = Invalid license number's pattern.
 acme.validation.technician.invalid-identifier-initials.message = Technician's initals are not reflected in its identifier.
 acme.validation.technician.invalid-phone-pattern = Invalid phone's pattern.
 acme.validation.technician.duplicated-identifier.message = There already is a technician with this license number.
+acme.validation.technician.invalid-namesurnameorphone.message = Technician's name, surname or phone may not be null.
 
 ### Maintenance Record ###
-
+acme.validation.maintenanceRecord.money.min = The minimun cost is 0
 acme.validation.maintenancerecord = Invalid maintenance record.
 acme.validation.nextInspection.invalid-future-date = Invalid next inspection date as it is not after maintenance moment.
 acme.validation.nextInspection.invalid-must-be-future = Next inspection date must be a future date.
 acme.validation.maintenanceMoment.invalid-date = Maintenance moment can not be a future date.
 
-### Airport ###
+### Task and Involves ###
+acme.validation.task.priority = The priority must be a whole number between 0 and 10
+acme.validation.task.duration = The duration must be between 0 and 1000
+acme.validation.involves.invalid-involves-publish.message = You can't add tasks to an already published record
+acme.validation.involves.no-task-to-unlink = There are no associated tasks
 
+### Airport ###
 acme.validation.airport.duplicated-iata.message = There is an existing airport with this IATA Code.
 acme.validation.validiatacode = This is not a valid IATA code
 
 
 ### Booking ###
-
 acme.validation.booking.duplicated-locator-code.message = There is an existing booking with this locator code
 acme.validation.booking.invalid-nibble.message = Last nibble must be formed by 4 digits
 acme.validation.booking.duplicated-flight.message = There is an existing booking related to this flight
@@ -80,7 +88,6 @@ acme.validation.booking.invalid-passenger-number-publish.message = You can't pub
 acme.validation.airline.duplicated-iata.message = There is an existing airline with this IATA Code.
 
 ### Aircraft ###
-
 acme.validation.aircraft.invalid-registration-number = There is an existing aircraft with this registration number.
 acme.validation.aircraft.cant-disable = You can't disable an aircraft in use.
 
@@ -96,7 +103,6 @@ acme.validation.flightcrewmember.invalid-employeecode-pattern.message = Employee
 acme.validation.flightcrewmember.invalid-employeecode-initials.message = Employee code first 2 letters must match the employee's initials.
 
 ### IsFrom ###
-
 acme.validation.booking.duplicated-is-from.message = This booking is already related to this passenger
 acme.validation.booking.invalid-isFrom-passenger-null.message = You must choose a passenger
 acme.validation.booking.invalid-isFrom-booking-null.message = You must choose a booking
@@ -104,8 +110,7 @@ acme.validation.booking.invalid-booking-isFrom-publish.message = You can't publi
 acme.validation.booking.invalid-passenger-isFrom-publish.message = You can't publish unless this passenger is published
 acme.validation.isfrom.invalid-passenger-create.message = You can't add a passenger which is not yours and is not published
 
-### LEG
-
+### Leg ###
 acme.validation.leg.overlapping-legs.message = This leg overlapps other legs
 acme.validation.flight.aircraft-under-maintenance.message = Aircraft under maintenance
 acme.validation.leg.NotNull.message = May not be null
@@ -118,7 +123,6 @@ acme.validation.leg.not-same-airport.message = Arrival and departure airports ca
 acme.validation.leg.past-date.message = Date must be in the future 
 
 ### Flight Crew Member ###
-
 acme.validation.leg-complete.message = This leg has already been completed
 acme.validation.member-available.message = This member is not available
 acme.validation.pilot.message = The leg selected already has a pilot
@@ -126,24 +130,6 @@ acme.validation.co-pilot.message = The leg selected already has a co-pilot
 acme.validation.overlapping.message = This leg overlaps with other assignments
 
 ## Flight ###
-
 acme.validation.flight.cant-be-publish.message= All legs must be publish
 acme.validation.invalid-currency.message = Invalid currency
 acme.validation.flight.zero-legs.message = For publishing must have at least one leg 
-
-### Task and MaintenanceRecord
-
-acme.validation.money.min = The minimun cost is 0
-acme.validation.text.length.255 = The text must have less than 256 characters
-acme.validation.text.length.1-255 = The text must have at least one character and at most 255
-acme.validation.task.priority = The priority must be a whole number between 0 and 10
-acme.validation.task.duration = The duration must be between 0 and 1000
-acme.validation.involves.invalid-involves-publish.message = You can't add tasks to an already published record
-
-
-### Aircraft
-acme.validation.text.length.1-50 = The text must have at least one character and at most 50
-acme.validation.text.length.1-255 = The text must have at least one character and at most 50
-acme.validation.number.range.1-255 = The number must be between 1 and 255
-acme.validation.number.range.2000-5000 = The number must be between 2000 and 5000
-acme.validation.text.length.255 = The text must have at most 255 characteres

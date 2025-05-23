@@ -14,10 +14,11 @@ technician.involves.form.label.aircraft = Associated aircraft
 technician.involves.form.label.task = Task
 technician.maintenance-record.form.show.involves = Associated tasks
 
+technician.involves.form.button.link = Link tasks
+technician.involves.form.button.unlink = Unlink tasks
 technician.involves.form.button.link = Link taks
 technician.involves.form.button.unlink = Unlink taks
 technician.involves.form.task = Tasks
 
-technician.involves.form.error.no-task-to-unlink = There are no associated tasks
 
 

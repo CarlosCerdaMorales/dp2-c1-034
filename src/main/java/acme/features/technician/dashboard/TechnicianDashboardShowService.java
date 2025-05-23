@@ -18,14 +18,14 @@ import acme.client.services.GuiService;
 import acme.entities.aircraft.Aircraft;
 import acme.entities.maintenancerecord.MaintenanceRecord;
 import acme.entities.maintenancerecord.MaintenanceStatus;
-import acme.forms.technician.Dashboard;
+import acme.forms.technician.TechnicianDashboard;
 import acme.forms.technician.MaintenanceByStatus;
 import acme.forms.technician.MaintenanceRecordCostStatistics;
 import acme.forms.technician.MaintenanceRecordDurationStatistics;
 import acme.realms.Technician;
 
 @GuiService
-public class TechnicianDashboardShowService extends AbstractGuiService<Technician, Dashboard> {
+public class TechnicianDashboardShowService extends AbstractGuiService<Technician, TechnicianDashboard> {
 
 	@Autowired
 	private TechnicianDashboardRepository repository;
@@ -39,7 +39,7 @@ public class TechnicianDashboardShowService extends AbstractGuiService<Technicia
 	@Override
 	public void load() {
 
-		Dashboard dashboard;
+		TechnicianDashboard dashboard;
 		List<MaintenanceByStatus> numberOfMaintenanceByStatus;
 		List<MaintenanceRecord> nnIs;
 		MaintenanceRecord nearestNextInspection;
@@ -61,7 +61,7 @@ public class TechnicianDashboardShowService extends AbstractGuiService<Technicia
 		costStatistics = this.repository.findCostStatistics(deadline, technicianId).orElse(null);
 		durationStatistics = this.repository.findDurationStatistics(technicianId).orElse(null);
 
-		dashboard = new Dashboard();
+		dashboard = new TechnicianDashboard();
 		dashboard.setNumberOfMaintenanceByStatus(numberOfMaintenanceByStatus);
 		dashboard.setNearestNextInspection(nearestNextInspection);
 		dashboard.setMostTasksAircrafts(mostTasksAircrafts);
@@ -72,7 +72,7 @@ public class TechnicianDashboardShowService extends AbstractGuiService<Technicia
 	}
 
 	@Override
-	public void unbind(final Dashboard dashboard) {
+	public void unbind(final TechnicianDashboard dashboard) {
 		Dataset dataset;
 
 		dataset = super.unbindObject(dashboard);

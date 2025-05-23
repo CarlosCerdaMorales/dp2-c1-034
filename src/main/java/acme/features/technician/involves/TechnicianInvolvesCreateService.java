@@ -43,11 +43,9 @@ public class TechnicianInvolvesCreateService extends AbstractGuiService<Technici
 		if (method.equals("POST")) {
 			int taskId = super.getRequest().getData("task", int.class);
 			Task task = this.repository.findTaskById(taskId);
-			Collection<Task> available = this.repository.findValidTasksToLink(mr, technician);
+			Collection<Task> available = this.repository.findValidTasksToLink(mr);
 
-			if (task == null && taskId != 0)
-				status = false;
-			else if (task != null && !available.contains(task))
+			if (task == null && taskId != 0 || task != null && !available.contains(task))
 				status = false;
 		}
 
@@ -108,12 +106,10 @@ public class TechnicianInvolvesCreateService extends AbstractGuiService<Technici
 		int maintenanceRecordId;
 		MaintenanceRecord maintenanceRecord;
 
-		Technician technician = (Technician) super.getRequest().getPrincipal().getActiveRealm();
-
 		maintenanceRecordId = super.getRequest().getData("maintenanceRecordId", int.class);
 		maintenanceRecord = this.repository.findMaintenanceRecordById(maintenanceRecordId);
 
-		tasks = this.repository.findValidTasksToLink(maintenanceRecord, technician);
+		tasks = this.repository.findValidTasksToLink(maintenanceRecord);
 		choices = SelectChoices.from(tasks, "description", involves.getTask());
 
 		dataset = super.unbindObject(involves);
