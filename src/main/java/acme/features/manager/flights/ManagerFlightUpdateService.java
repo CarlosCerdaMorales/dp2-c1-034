@@ -79,8 +79,8 @@ public class ManagerFlightUpdateService extends AbstractGuiService<Manager, Flig
 		Dataset dataset;
 
 		dataset = super.unbindObject(flight, "flightTag", "isSelfTransfer", "flightCost", "flightDescription", "draftMode");
-		dataset.put("origin", flight.getDeparture() != null ? flight.getDeparture().getAirportName() : flight.getDeparture());
-		dataset.put("destination", flight.getArrival() != null ? flight.getArrival().getAirportName() : flight.getArrival());
+		dataset.put("origin", flight.getDeparture());
+		dataset.put("destination", flight.getArrival());
 		dataset.put("scheduledDeparture", flight.getFlightDeparture());
 		dataset.put("scheduledArrival", flight.getFlightArrival());
 		dataset.put("layovers", flight.getLayovers());

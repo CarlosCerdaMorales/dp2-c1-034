@@ -31,7 +31,7 @@ public class ManagerFlightShowService extends AbstractGuiService<Manager, Flight
 
 			if (flight != null) {
 				if (flight.getDraftMode())
-					status = flight.getManager().equals(super.getRequest().getPrincipal().getActiveRealm()) && flight != null;
+					status = flight.getManager().equals(super.getRequest().getPrincipal().getActiveRealm());
 				else if (!flight.getDraftMode())
 					status = true;
 			} else
