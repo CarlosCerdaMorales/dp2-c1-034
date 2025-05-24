@@ -110,7 +110,7 @@ public class AssistanceAgentClaimCreateService extends AbstractGuiService<Assist
 		boolean confirmation;
 		boolean invalidLegDate = true;
 
-		if (claim.getRegistrationMoment().before(claim.getLeg().getScheduledArrival()))
+		if (claim.getLeg() != null && claim.getRegistrationMoment().before(claim.getLeg().getScheduledArrival()))
 			invalidLegDate = false;
 
 		confirmation = super.getRequest().getData("confirmation", boolean.class);
