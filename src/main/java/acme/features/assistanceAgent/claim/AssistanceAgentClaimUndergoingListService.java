@@ -10,7 +10,6 @@ import acme.client.components.models.Dataset;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.claim.Claim;
-import acme.entities.claim.ClaimStatus;
 import acme.entities.leg.Leg;
 import acme.realms.AssistanceAgent;
 
@@ -37,13 +36,9 @@ public class AssistanceAgentClaimUndergoingListService extends AbstractGuiServic
 
 		userAccountId = super.getRequest().getPrincipal().getAccountId();
 		assistanceAgentId = this.repository.findAssistanceAgentIdByUserAccountId(userAccountId);
-		claims = this.repository.findClaimsByAssistanceAgentId(assistanceAgentId);
+		claims = this.repository.findClaimsUndergoing(assistanceAgentId);
 
-		for (Claim claim : claims)
-			if (claim.getAccepted() == ClaimStatus.PENDING)
-				undergoingClaims.add(claim);
-
-		super.getBuffer().addData(undergoingClaims);
+		super.getBuffer().addData(claims);
 
 	}
 

@@ -59,10 +59,11 @@ public class AssistanceAgentTrackingLogListService extends AbstractGuiService<As
 		int masterId;
 		boolean claimCompleted = true;
 
-		super.getResponse().addGlobal("claimCompleted", claimCompleted);
 		masterId = super.getRequest().getData("masterId", int.class);
 		if (this.repository.findTrackingLogs100PercentageByMasterId(masterId).size() >= 2)
 			claimCompleted = false;
+
+		super.getResponse().addGlobal("claimCompleted", claimCompleted);
 		super.getResponse().addGlobal("masterId", masterId);
 	}
 

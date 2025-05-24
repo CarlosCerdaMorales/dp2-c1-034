@@ -10,7 +10,6 @@ import acme.client.components.models.Dataset;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.claim.Claim;
-import acme.entities.claim.ClaimStatus;
 import acme.realms.AssistanceAgent;
 
 @GuiService
@@ -36,13 +35,8 @@ public class AssistanceAgentClaimCompletedListService extends AbstractGuiService
 
 		userAccountId = super.getRequest().getPrincipal().getAccountId();
 		assistanceAgentId = this.repository.findAssistanceAgentIdByUserAccountId(userAccountId);
-		claims = this.repository.findClaimsByAssistanceAgentId(assistanceAgentId);
 
-		for (Claim claim : claims) {
-			ClaimStatus status = claim.getAccepted();
-			if (status == ClaimStatus.ACCEPTED || status == ClaimStatus.REJECTED)
-				completedClaims.add(claim);
-		}
+		completedClaims = this.repository.findClaimsCompleted(assistanceAgentId);
 
 		super.getBuffer().addData(completedClaims);
 

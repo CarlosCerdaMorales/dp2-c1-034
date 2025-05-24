@@ -28,22 +28,25 @@ public class AssistanceAgentTrackingLogDeleteService extends AbstractGuiService<
 		int userAccountId;
 		int assistanceAgentId;
 		int ownerId;
-		boolean isTrackingLogCreator;
+		boolean isTrackingLogCreator = false;
 		boolean res;
 		boolean isAssistanceAgent;
+		if (!super.getRequest().hasData("id"))
+			res = false;
+		else {
+			trId = super.getRequest().getData("id", int.class);
+			tr = this.repository.findTrackingLogById(trId);
 
-		trId = super.getRequest().getData("id", int.class);
-		tr = this.repository.findTrackingLogById(trId);
+			isAssistanceAgent = super.getRequest().getPrincipal().hasRealmOfType(AssistanceAgent.class);
+			userAccountId = super.getRequest().getPrincipal().getAccountId();
+			assistanceAgentId = this.repository.findAssistanceAgentIdByUserAccountId(userAccountId).getId();
+			if (tr != null) {
+				ownerId = this.repository.findAssistanceAgentIdByTrackingLogId(trId).getId();
+				isTrackingLogCreator = assistanceAgentId == ownerId;
+			}
 
-		isAssistanceAgent = super.getRequest().getPrincipal().hasRealmOfType(AssistanceAgent.class);
-		userAccountId = super.getRequest().getPrincipal().getAccountId();
-		assistanceAgentId = this.repository.findAssistanceAgentIdByUserAccountId(userAccountId);
-
-		ownerId = this.repository.findAssistanceAgentIdByTrackingLogId(trId);
-		isTrackingLogCreator = assistanceAgentId == ownerId;
-
-		res = tr != null && isAssistanceAgent && isTrackingLogCreator && tr.getDraftMode();
-
+			res = tr != null && isAssistanceAgent && isTrackingLogCreator && tr.getDraftMode();
+		}
 		super.getResponse().setAuthorised(res);
 
 	}

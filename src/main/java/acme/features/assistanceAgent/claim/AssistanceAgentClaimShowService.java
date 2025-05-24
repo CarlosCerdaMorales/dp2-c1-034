@@ -30,18 +30,25 @@ public class AssistanceAgentClaimShowService extends AbstractGuiService<Assistan
 		int assistanceAgentId;
 		int ownerId;
 		boolean res;
-		boolean isClaimCreator;
+		boolean isClaimCreator = false;
 		boolean isAssistanceAgent;
+		if (!super.getRequest().hasData("id"))
+			res = false;
+		else {
+			isAssistanceAgent = super.getRequest().getPrincipal().hasRealmOfType(AssistanceAgent.class);
+			claimId = super.getRequest().getData("id", int.class);
+			userAccountId = super.getRequest().getPrincipal().getAccountId();
+			assistanceAgentId = this.repository.findAssistanceAgentIdByUserAccountId(userAccountId);
 
-		isAssistanceAgent = super.getRequest().getPrincipal().hasRealmOfType(AssistanceAgent.class);
-		claimId = super.getRequest().getData("id", int.class);
-		userAccountId = super.getRequest().getPrincipal().getAccountId();
-		assistanceAgentId = this.repository.findAssistanceAgentIdByUserAccountId(userAccountId);
-		ownerId = this.repository.findAssistanceAgentIdByClaimId(claimId);
-		claim = this.repository.findClaimById(claimId);
-		isClaimCreator = assistanceAgentId == ownerId;
+			claim = this.repository.findClaimById(claimId);
 
-		res = claim != null && isAssistanceAgent && isClaimCreator;
+			if (claim != null) {
+				ownerId = this.repository.findAssistanceAgentIdByClaimId(claimId);
+				isClaimCreator = assistanceAgentId == ownerId;
+			}
+
+			res = claim != null && isAssistanceAgent && isClaimCreator;
+		}
 		super.getResponse().setAuthorised(res);
 	}
 

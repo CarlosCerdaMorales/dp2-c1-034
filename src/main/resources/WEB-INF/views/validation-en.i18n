@@ -39,7 +39,11 @@ acme.validation.trackinglog.invalid-resolutionpercentage.message = The resolutio
 acme.validation.trackinglog.invalid-resolutionpercentage-two100.message = Already exist two tracking logs with 100 resolution percentage
 acme.validation.trackinglog.invalid-resolution-percentage2.message = Resolution percentage must be 100
 acme.validation.trackinglog.invalid-resolution-percentage3.message = Status must the same as the previous tracking log
-acme.validation.trackingLog-draftmode.message = Claim must be published
+acme.validation.trackingLog-draftmode.message = Claim must be published 
+acme.validation.trackinglog.invalid-allpublished.message = You must publish all tracking logs if you want to publish a tracking log with 100 of resolution percentage
+acme.validation.trackinglog.invalid-allpublished2.message = You must publish the final tracking log (the one with 100 resolution percentage) if you want to create the exceptional one
+
+
 
 ### Claim ###
 acme.validation.claim.invalid-leg-date.message = Claim must be created after the leg's scheduled arrival
