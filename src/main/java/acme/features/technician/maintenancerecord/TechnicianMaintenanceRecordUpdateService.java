@@ -1,6 +1,7 @@
 
 package acme.features.technician.maintenancerecord;
 
+import java.util.Arrays;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,29 +27,41 @@ public class TechnicianMaintenanceRecordUpdateService extends AbstractGuiService
 	// AbstractGuiService interface -------------------------------------------
 	@Override
 	public void authorise() {
-		boolean status;
+		boolean authorised;
 		int mrId;
 		MaintenanceRecord mr;
 		Technician technician;
 
-		mrId = super.getRequest().getData("id", int.class);
-		mr = this.repository.findMaintenanceRecordById(mrId);
+		if (!super.getRequest().hasData("id"))
+			authorised = false;
 
-		technician = mr == null ? null : mr.getTechnician();
-		status = mr != null && mr.isDraftMode() && this.getRequest().getPrincipal().hasRealm(technician);
+		else {
 
-		if (super.getRequest().hasData("aircraft")) {
-			int aircraftId = super.getRequest().getData("aircraft", int.class);
-			Aircraft aircraft = this.repository.findAircraftById(aircraftId);
-			Collection<Aircraft> available = this.repository.findAllAircrafts();
+			mrId = super.getRequest().getData("id", int.class);
+			mr = this.repository.findMaintenanceRecordById(mrId);
 
-			if (aircraft == null && aircraftId != 0)
-				status = false;
-			else if (aircraft != null && !available.contains(aircraft))
-				status = false;
+			technician = mr == null ? null : mr.getTechnician();
+			authorised = mr != null && mr.isDraftMode() && this.getRequest().getPrincipal().hasRealm(technician);
+
+			if (super.getRequest().hasData("aircraft")) {
+				int aircraftId = super.getRequest().getData("aircraft", int.class);
+				Aircraft aircraft = this.repository.findAircraftById(aircraftId);
+				Collection<Aircraft> available = this.repository.findAllAircrafts();
+
+				if (aircraft == null && aircraftId != 0)
+					authorised = false;
+				else if (aircraft != null && !available.contains(aircraft))
+					authorised = false;
+			}
+			String method = super.getRequest().getMethod();
+			if (method.equals("POST")) {
+				String status = super.getRequest().getData("status", String.class);
+				if (status == null || status.trim().isEmpty() || Arrays.stream(MaintenanceStatus.values()).noneMatch(s -> s.name().equals(status)) && !status.equals("0"))
+					authorised = false;
+			}
 		}
 
-		super.getResponse().setAuthorised(status);
+		super.getResponse().setAuthorised(authorised);
 	}
 
 	@Override
@@ -103,7 +116,7 @@ public class TechnicianMaintenanceRecordUpdateService extends AbstractGuiService
 		dataset.put("aircrafts", selectedAircrafts);
 		dataset.put("status", choices.getSelected().getKey());
 		dataset.put("statuses", choices);
-
+		dataset.put("maintenanceRecordId", maintenanceRecord.getId());
 		dataset.put("readonly", false);
 
 		super.getResponse().addData(dataset);
