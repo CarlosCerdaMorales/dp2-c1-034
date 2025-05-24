@@ -17,11 +17,10 @@ import acme.realms.Manager;
 public class ManagerFlightDeleteService extends AbstractGuiService<Manager, Flight> {
 
 	@Autowired
-	private ManagerFlightRepository	repository;
+	private ManagerFlightRepository repository;
 
 	@Autowired
-	private ManagerLegDeleteService	legsDeleteService;
-
+	private ManagerLegDeleteService legsDeleteService;
 
 	@Override
 	public void authorise() {
@@ -59,8 +58,6 @@ public class ManagerFlightDeleteService extends AbstractGuiService<Manager, Flig
 
 	@Override
 	public void validate(final Flight flight) {
-<<<<<<< Updated upstream
-=======
 		boolean isPublished;
 		isPublished = true;
 		if (this.repository.findLegsByFlightId(flight.getId()).size() > 0) {
@@ -70,7 +67,6 @@ public class ManagerFlightDeleteService extends AbstractGuiService<Manager, Flig
 					isPublished = leg.isDraftMode();
 		}
 		super.state(isPublished, "flightTag", "acme.validation.flight.unable-to-delete-flight-published-leg.message");
->>>>>>> Stashed changes
 		;
 	}
 
@@ -87,7 +83,8 @@ public class ManagerFlightDeleteService extends AbstractGuiService<Manager, Flig
 	public void unbind(final Flight flight) {
 		Dataset dataset;
 
-		dataset = super.unbindObject(flight, "flightTag", "isSelfTransfer", "flightCost", "flightDescription", "drafMode");
+		dataset = super.unbindObject(flight, "flightTag", "isSelfTransfer", "flightCost", "flightDescription",
+				"drafMode");
 
 		dataset.put("departure", flight.getDeparture());
 		dataset.put("arrival", flight.getArrival());
