@@ -24,9 +24,9 @@ public class ClaimValidator extends AbstractValidator<ValidClaim, Claim> {
 			super.state(context, false, "*", "javax.validation.constraints.NotNull.message");
 		else {
 			if (claim.getRegistrationMoment() == null)
-				super.state(context, false, "registrationMoment", "acme.validation.claim.invalid-leg.message");
+				super.state(context, false, "registrationMoment", "javax.validation.constraints.NotNull.message");
 			if (claim.getLeg() == null)
-				super.state(context, false, "leg", "acme.validation.claim.invalid-leg.message");
+				super.state(context, false, "leg", "javax.validation.constraints.NotNull.message");
 
 		}
 		result = !super.hasErrors(context);

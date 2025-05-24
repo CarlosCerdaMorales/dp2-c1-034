@@ -47,15 +47,6 @@ public class Service extends AbstractEntity {
 	@Automapped
 	private Integer				averageDwellTime;
 
-	/*
-	 * TODO
-	 * Validador de entidad para el promotionCode del Service. RECOMIENDAN VALIDADORES DE ENTIDAD, NO DE ATRIBUTO.
-	 * Comprobar que los dos últimos dígitos sean los del año.
-	 * Para el validator, hay una clase MomentHelper que proporciona métodos que diferencian entre la plataforma
-	 * en la que se ejecuta el código, y devuelven la hora dia mes año del reloj simulado o el real.
-	 * En application.properties tenemos para cambiar el base-moment, con la fecha a la que el sistema arranca.
-	 */
-
 	@Optional
 	@ValidString(pattern = "^[A-Z]{4}-[0-9]{2}$")
 	@Column(unique = true)
