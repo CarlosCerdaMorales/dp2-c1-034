@@ -22,16 +22,20 @@ public class FlightCrewMemberActivityLogPublishService extends AbstractGuiServic
 
 	@Override
 	public void authorise() {
-		boolean status;
+		boolean status = false;
 		ActivityLog log;
 		int logId;
+		FlightCrewMember member;
 
 		logId = super.getRequest().getData("id", int.class);
 		log = this.repository.findActivityLogById(logId);
-		status = log.isDraftMode();
+		member = log == null ? null : log.getFlightAssignment().getFlightCrewMember();
+		if (log != null && log.isDraftMode() && super.getRequest().getPrincipal().hasRealm(member))
+			status = true;
+		else if (log != null && !log.isDraftMode())
+			status = false;
 		super.getResponse().setAuthorised(status);
 	}
-
 	@Override
 	public void load() {
 		ActivityLog log;
@@ -45,7 +49,7 @@ public class FlightCrewMemberActivityLogPublishService extends AbstractGuiServic
 
 	@Override
 	public void bind(final ActivityLog activityLog) {
-		super.bindObject(activityLog, "registrationMoment", "incidentType", "description", "severityLevel", "flightAssignment");
+		super.bindObject(activityLog, "incidentType", "description", "severityLevel");
 	}
 
 	@Override
