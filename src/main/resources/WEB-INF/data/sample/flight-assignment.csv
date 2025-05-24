@@ -28,3 +28,5 @@ flight-assignment-21,PILOT,2012/07/02 0:00,CONFIRMED,لوريم إيبسوم,leg
 flight-assignment-22,PILOT,2012/07/02 0:00,CONFIRMED,โลเร็ม อิปซัม,leg-00,flight-crew-member-01,true
 flight-assignment-23,PILOT,2012/07/02 0:00,CONFIRMED,' or 'A' = 'A ,leg-00,flight-crew-member-01,true
 flight-assignment-24,PILOT,2012/07/02 0:00,CONFIRMED,' or 'A' = 'A ,leg-18,flight-crew-member-01,true
+flight-assignment-25,PILOT,2025/01/01 00:00,CONFIRMED,' or 'A' = 'A ,leg-20,flight-crew-member-01,false
+flight-assignment-26,PILOT,2025/01/01 00:00,CONFIRMED,' or 'A' = 'A ,leg-21,flight-crew-member-01,false
