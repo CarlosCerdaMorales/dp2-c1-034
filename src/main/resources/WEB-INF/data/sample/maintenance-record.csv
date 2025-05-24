@@ -2,7 +2,7 @@ key,maintenance_moment,status,next_inspection_due,estimated_cost,notes,draftMode
 # Base entity
 maintenance-record-01,2012/07/02 0:00,COMPLETED,2026/09/01 10:00,EUR 500000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",true,aircraft-01,technician-01
 # Maintenance moment variations
-maintenance-record-02,2000/01/01 0:00,COMPLETED,2026/09/01 10:00,EUR 500000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",true,aircraft-01,technician-01
+maintenance-record-02,2000/01/01 0:00,COMPLETED,2026/09/01 10:00,EUR 500000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",true,aircraft-01,technician-02
 maintenance-record-03,2000/01/01 0:01,COMPLETED,2026/09/01 10:00,EUR 500000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",true,aircraft-01,technician-01
 maintenance-record-04,2024/12/31 23:59,COMPLETED,2026/09/01 10:00,EUR 500000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",false,aircraft-01,technician-01
 maintenance-record-05,2025/01/01 0:00,COMPLETED,2026/09/01 10:00,EUR 500000.00,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",false,aircraft-01,technician-01
@@ -28,6 +28,6 @@ maintenance-record-20,2012/07/02 0:00,PENDING,2026/09/01 10:00,EUR 500000.00,"Lo
 maintenance-record-21,2012/07/02 0:00,COMPLETED,2026/09/01 10:00,EUR 500000.00,โลเร็ม อิปซัม,false,aircraft-01,technician-01
 maintenance-record-22,2012/07/02 0:00,IN_PROGRESS,2026/09/01 10:00,EUR 500000.00,لوريم إيبسوم,false,aircraft-01,technician-01
 maintenance-record-23,2012/07/02 0:00,COMPLETED,2026/09/01 10:00,EUR 01.00,洛伦·伊普森,false,aircraft-01,technician-01
-maintenance-record-24,2012/07/02 0:00,IN_PROGRESS,2026/09/01 10:00,EUR 0.01,<marquee>Hacked</marquee>,false,aircraft-01,technician-01
-maintenance-record-25,2012/07/02 0:00,COMPLETED,2026/09/01 10:00,EUR 01.00,<script>alert(‘Hacked!’);</script>,false,aircraft-01,technician-02
-maintenance-record-26,2012/07/02 0:00,IN_PROGRESS,2026/09/01 10:00,EUR 0.01,' or 'A' = 'A,false,aircraft-01,technician-02
+maintenance-record-24,2012/07/02 0:00,IN_PROGRESS,2026/09/01 10:00,EUR 0.01,<marquee>Hacked</marquee>,false,aircraft-01,technician-02
+maintenance-record-25,2012/07/02 0:00,COMPLETED,2026/09/01 10:00,EUR 01.00,<script>alert(‘Hacked!’);</script>,true,aircraft-01,technician-01
+maintenance-record-26,2012/07/02 0:00,IN_PROGRESS,2026/09/01 10:00,EUR 0.01,' or 'A' = 'A,true,aircraft-01,technician-02
