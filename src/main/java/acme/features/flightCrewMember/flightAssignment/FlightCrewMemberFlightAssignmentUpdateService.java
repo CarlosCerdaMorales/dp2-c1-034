@@ -37,6 +37,7 @@ public class FlightCrewMemberFlightAssignmentUpdateService extends AbstractGuiSe
 			flightId = super.getRequest().getData("id", int.class);
 			flightAssignment = this.repository.findFlightAssignmentById(flightId);
 			memberId = super.getRequest().getPrincipal().getActiveRealm().getId();
+			Optional<FlightCrewMember> memberOpt = this.repository.findFlightCrewMemberById(memberId);
 
 			status = flightAssignment.isPresent();
 
@@ -45,7 +46,7 @@ public class FlightCrewMemberFlightAssignmentUpdateService extends AbstractGuiSe
 			if (flightAssignment.isPresent() && super.getRequest().hasData("leg")) {
 				int legId = super.getRequest().getData("leg", int.class);
 				Optional<Leg> leg = this.repository.findLegById(legId);
-				if (leg.isEmpty() || leg.isPresent() && leg.get().isDraftMode())
+				if (leg.isEmpty() || leg.isPresent() && leg.get().isDraftMode() || memberOpt.isPresent() && !leg.get().getAircraft().getAirline().equals(memberOpt.get().getWorkingFor()))
 					status = false;
 			}
 

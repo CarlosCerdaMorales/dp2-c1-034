@@ -38,6 +38,7 @@ public class FlightCrewMemberFlightAssignmentDeleteService extends AbstractGuiSe
 			flightId = super.getRequest().getData("id", int.class);
 			flightAssignment = this.repository.findFlightAssignmentById(flightId);
 			memberId = super.getRequest().getPrincipal().getActiveRealm().getId();
+			Optional<FlightCrewMember> memberOpt = this.repository.findFlightCrewMemberById(memberId);
 
 			status = flightAssignment.isPresent();
 
@@ -46,9 +47,10 @@ public class FlightCrewMemberFlightAssignmentDeleteService extends AbstractGuiSe
 			if (flightAssignment.isPresent() && super.getRequest().hasData("leg")) {
 				int legId = super.getRequest().getData("leg", int.class);
 				Optional<Leg> leg = this.repository.findLegById(legId);
-				if (leg.isEmpty() || leg.isPresent() && leg.get().isDraftMode())
+				if (leg.isEmpty() || leg.isPresent() && leg.get().isDraftMode() || memberOpt.isPresent() && !leg.get().getAircraft().getAirline().equals(memberOpt.get().getWorkingFor()))
 					status = false;
 			}
+
 			String duty = super.getRequest().getData("flightCrewDuty", String.class);
 			if (duty == null || duty.trim().isEmpty() || Arrays.stream(FlightCrewDuty.values()).noneMatch(s -> s.name().equals(duty)) && !duty.equals("0"))
 				status = false;
@@ -101,20 +103,16 @@ public class FlightCrewMemberFlightAssignmentDeleteService extends AbstractGuiSe
 		SelectChoices choices;
 		SelectChoices dutiesChoices;
 		List<Leg> legs = this.repository.findAllAirlinePublishedLegs(flightAssignment.getFlightCrewMember().getWorkingFor());
-		List<FlightCrewMember> flightCrewMembers = this.repository.findAllFlightCrewMembers();
 
 		SelectChoices legChoices;
-		SelectChoices flightCrewMemberChoices;
 
 		choices = SelectChoices.from(AssignmentStatus.class, flightAssignment.getAssignmentStatus());
 		dutiesChoices = SelectChoices.from(FlightCrewDuty.class, flightAssignment.getFlightCrewDuty());
 		legChoices = SelectChoices.from(legs, "flightNumber", flightAssignment.getLeg());
-		flightCrewMemberChoices = SelectChoices.from(flightCrewMembers, "identity.fullName", flightAssignment.getFlightCrewMember());
 
 		dataset = super.unbindObject(flightAssignment, "flightCrewDuty", "lastUpdate", "assignmentStatus", "draftMode", "remarks", "leg", "flightCrewMember");
 		dataset.put("statuses", choices);
 		dataset.put("duties", dutiesChoices);
-		dataset.put("members", flightCrewMemberChoices);
 		dataset.put("legs", legChoices);
 		super.getResponse().addData(dataset);
 	}

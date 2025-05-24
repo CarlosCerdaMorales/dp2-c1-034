@@ -31,11 +31,14 @@ public class FlightCrewMemberFlightAssignmentPublishService extends AbstractGuiS
 		boolean status;
 		int flightId;
 		int memberId;
-		Optional<FlightAssignment> flightAssignment;
 		if (super.getRequest().hasData("id")) {
+
+			Optional<FlightAssignment> flightAssignment;
+
 			flightId = super.getRequest().getData("id", int.class);
 			flightAssignment = this.repository.findFlightAssignmentById(flightId);
 			memberId = super.getRequest().getPrincipal().getActiveRealm().getId();
+			Optional<FlightCrewMember> memberOpt = this.repository.findFlightCrewMemberById(memberId);
 
 			status = flightAssignment.isPresent();
 
@@ -44,9 +47,10 @@ public class FlightCrewMemberFlightAssignmentPublishService extends AbstractGuiS
 			if (flightAssignment.isPresent() && super.getRequest().hasData("leg")) {
 				int legId = super.getRequest().getData("leg", int.class);
 				Optional<Leg> leg = this.repository.findLegById(legId);
-				if (leg.isEmpty() || leg.isPresent() && leg.get().isDraftMode())
+				if (leg.isEmpty() || leg.isPresent() && leg.get().isDraftMode() || memberOpt.isPresent() && !leg.get().getAircraft().getAirline().equals(memberOpt.get().getWorkingFor()))
 					status = false;
 			}
+
 			String duty = super.getRequest().getData("flightCrewDuty", String.class);
 			if (duty == null || duty.trim().isEmpty() || Arrays.stream(FlightCrewDuty.values()).noneMatch(s -> s.name().equals(duty)) && !duty.equals("0"))
 				status = false;
@@ -54,6 +58,7 @@ public class FlightCrewMemberFlightAssignmentPublishService extends AbstractGuiS
 			String status1 = super.getRequest().getData("assignmentStatus", String.class);
 			if (status1 == null || status1.trim().isEmpty() || Arrays.stream(AssignmentStatus.values()).noneMatch(s -> s.name().equals(status1)) && !status1.equals("0"))
 				status = false;
+
 		} else
 			status = false;
 		super.getResponse().setAuthorised(status);
@@ -122,19 +127,16 @@ public class FlightCrewMemberFlightAssignmentPublishService extends AbstractGuiS
 		SelectChoices choices;
 		SelectChoices dutiesChoices;
 		List<Leg> legs = this.repository.findAllAirlinePublishedLegs(flightAssignment.getFlightCrewMember().getWorkingFor());
-		List<FlightCrewMember> flightCrewMembers = this.repository.findAllFlightCrewMembers();
 
 		SelectChoices legChoices;
-		SelectChoices flightCrewMemberChoices;
 
 		choices = SelectChoices.from(AssignmentStatus.class, flightAssignment.getAssignmentStatus());
 		dutiesChoices = SelectChoices.from(FlightCrewDuty.class, flightAssignment.getFlightCrewDuty());
 		legChoices = SelectChoices.from(legs, "flightNumber", flightAssignment.getLeg());
-		flightCrewMemberChoices = SelectChoices.from(flightCrewMembers, "identity.fullName", flightAssignment.getFlightCrewMember());
-		dataset = super.unbindObject(flightAssignment, "flightCrewDuty", "assignmentStatus", "draftMode", "remarks", "leg", "flightCrewMember");
+
+		dataset = super.unbindObject(flightAssignment, "flightCrewDuty", "lastUpdate", "assignmentStatus", "draftMode", "remarks", "leg", "flightCrewMember");
 		dataset.put("statuses", choices);
 		dataset.put("duties", dutiesChoices);
-		dataset.put("members", flightCrewMemberChoices);
 		dataset.put("legs", legChoices);
 		super.getResponse().addData(dataset);
 	}
