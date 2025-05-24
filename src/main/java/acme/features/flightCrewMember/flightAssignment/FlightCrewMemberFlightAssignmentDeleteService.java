@@ -1,6 +1,7 @@
 
 package acme.features.flightCrewMember.flightAssignment;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -48,6 +49,13 @@ public class FlightCrewMemberFlightAssignmentDeleteService extends AbstractGuiSe
 				if (leg.isEmpty() || leg.isPresent() && leg.get().isDraftMode())
 					status = false;
 			}
+			String duty = super.getRequest().getData("flightCrewDuty", String.class);
+			if (duty == null || duty.trim().isEmpty() || Arrays.stream(FlightCrewDuty.values()).noneMatch(s -> s.name().equals(duty)) && !duty.equals("0"))
+				status = false;
+
+			String status1 = super.getRequest().getData("assignmentStatus", String.class);
+			if (status1 == null || status1.trim().isEmpty() || Arrays.stream(AssignmentStatus.values()).noneMatch(s -> s.name().equals(status1)) && !status1.equals("0"))
+				status = false;
 
 		} else
 			status = false;

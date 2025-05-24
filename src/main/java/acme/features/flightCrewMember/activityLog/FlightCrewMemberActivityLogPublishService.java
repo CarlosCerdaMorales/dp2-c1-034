@@ -11,6 +11,7 @@ import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.activitylog.ActivityLog;
 import acme.entities.flightassignment.FlightAssignment;
+import acme.entities.leg.FlightStatus;
 import acme.realms.flightcrewmember.FlightCrewMember;
 
 @GuiService
@@ -58,7 +59,9 @@ public class FlightCrewMemberActivityLogPublishService extends AbstractGuiServic
 
 	@Override
 	public void validate(final ActivityLog activityLog) {
-		;
+		boolean isLegLanded;
+		isLegLanded = activityLog.getFlightAssignment().getLeg().getFlightStatus().equals(FlightStatus.LANDED);
+		super.state(isLegLanded, "*", "acme.validation.landed-leg.message");
 	}
 
 	@Override

@@ -40,6 +40,8 @@ public class FlightCrewMemberFlightAssignmentShowService extends AbstractGuiServ
 
 			if (flightAssignment.isPresent() && flightAssignment.get().isDraftMode() && flightAssignment.get().getFlightCrewMember().getId() != memberId)
 				status = false;
+			else if (flightAssignment.isPresent() && flightAssignment.get().isDraftMode())
+				status = true;
 		} else
 			status = false;
 		super.getResponse().setAuthorised(status);

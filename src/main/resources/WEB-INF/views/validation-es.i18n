@@ -94,10 +94,10 @@ acme.validation.passenger.invalid-passport-pattern.message = El patrón del pasa
 
 
 ### FlightCrewMember ###
-acme.validation.flightcrewmember.duplicated-employeecode.message = Ya existe un miembro del staff de vuelo con este código de empleado.
-acme.validation.flightcrewmember.invalid-employeecode-pattern.message = El código de empleado tiene una estructura inválida.
-acme.validation.flightcrewmember.invalid-employeecode-initials.message = Las dos primeras letras del código de empleado debe coincidir con las iniciales del empleado.
-
+acme.validation.flightcrewmember.duplicated-employeecode.message = Ya existe un miembro del staff de vuelo con este código de empleado
+acme.validation.flightcrewmember.invalid-employeecode-pattern.message = El código de empleado tiene una estructura inválida
+acme.validation.flightcrewmember.invalid-employeecode-initials.message = Las dos primeras letras del código de empleado debe coincidir con las iniciales del empleado
+acme.validation.landed-leg.message = No puedes publicar el registro de actividad si la escala no ha aterrizado
 ### IsFrom ###
 acme.validation.booking.duplicated-is-from.message = Ya existe esta reserva asociada a este pasajero
 acme.validation.booking.invalid-isFrom-passenger-null.message = Debe seleccionar un pasajero

@@ -1,6 +1,7 @@
 
 package acme.features.flightCrewMember.flightAssignment;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -46,6 +47,13 @@ public class FlightCrewMemberFlightAssignmentPublishService extends AbstractGuiS
 				if (leg.isEmpty() || leg.isPresent() && leg.get().isDraftMode())
 					status = false;
 			}
+			String duty = super.getRequest().getData("flightCrewDuty", String.class);
+			if (duty == null || duty.trim().isEmpty() || Arrays.stream(FlightCrewDuty.values()).noneMatch(s -> s.name().equals(duty)) && !duty.equals("0"))
+				status = false;
+
+			String status1 = super.getRequest().getData("assignmentStatus", String.class);
+			if (status1 == null || status1.trim().isEmpty() || Arrays.stream(AssignmentStatus.values()).noneMatch(s -> s.name().equals(status1)) && !status1.equals("0"))
+				status = false;
 		} else
 			status = false;
 		super.getResponse().setAuthorised(status);
@@ -91,8 +99,8 @@ public class FlightCrewMemberFlightAssignmentPublishService extends AbstractGuiS
 		isCompleted = leg.getScheduledDeparture().after(MomentHelper.getCurrentMoment());
 		alreadyOccupied = OverlappingFlightAssignments.isEmpty();
 		availableMember = member.getAvailabilityStatus().equals(AvailabilityStatus.AVAILABLE);
-		alreadyHasPilot = flightsWithPilots.isEmpty() && duty.equals(FlightCrewDuty.PILOT);
-		alreadyHasCoPilot = flightsWithCoPilots.isEmpty() && duty.equals(FlightCrewDuty.CO_PILOT);
+		alreadyHasPilot = !flightsWithPilots.isEmpty() && duty.equals(FlightCrewDuty.PILOT);
+		alreadyHasCoPilot = !flightsWithCoPilots.isEmpty() && duty.equals(FlightCrewDuty.CO_PILOT);
 
 		super.state(!alreadyHasPilot, "flightCrewDuty", "acme.validation.pilot.message");
 		super.state(!alreadyHasCoPilot, "flightCrewDuty", "acme.validation.co-pilot.message");
