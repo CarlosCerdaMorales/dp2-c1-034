@@ -63,7 +63,7 @@ public class ManagerLegUpdateService extends AbstractGuiService<Manager, Leg> {
 					if (flight.isEmpty())
 						status = false;
 
-					if (!super.getRequest().hasData("aircraft")) {
+					if (super.getRequest().hasData("aircraft")) {
 						aircraftId = super.getRequest().getData("aircraft", int.class);
 						aircraft = this.repository.findAircraftByAircraftId(aircraftId);
 						aircrafts = this.repository.findAllAircraftsByManagerId(managerId);
@@ -77,7 +77,7 @@ public class ManagerLegUpdateService extends AbstractGuiService<Manager, Leg> {
 
 					airports = this.repository.findAllAirports();
 
-					if (!super.getRequest().hasData("airportDeparture")) {
+					if (super.getRequest().hasData("airportDeparture")) {
 						departureId = super.getRequest().getData("airportDeparture", int.class);
 						departure = this.repository.findAirportByAirportId(departureId);
 
@@ -88,7 +88,7 @@ public class ManagerLegUpdateService extends AbstractGuiService<Manager, Leg> {
 							status = false;
 					}
 
-					if (!super.getRequest().hasData("airportArrival")) {
+					if (super.getRequest().hasData("airportArrival")) {
 						arrivalId = super.getRequest().getData("airportArrival", int.class);
 						arrival = this.repository.findAirportByAirportId(arrivalId);
 

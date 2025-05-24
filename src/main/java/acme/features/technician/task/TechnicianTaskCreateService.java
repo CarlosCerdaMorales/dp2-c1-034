@@ -22,7 +22,12 @@ public class TechnicianTaskCreateService extends AbstractGuiService<Technician, 
 	// AbstractGuiService interface -------------------------------------------
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean authorised = true;
+		if (super.getRequest().hasData("id", boolean.class)) {
+			int taskId = super.getRequest().getData("id", int.class);
+			authorised &= taskId == 0;
+		}
+		super.getResponse().setAuthorised(authorised);
 	}
 
 	@Override

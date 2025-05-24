@@ -110,7 +110,7 @@ acme.validation.booking.invalid-passenger-isFrom-publish.message = You can't pub
 acme.validation.isfrom.invalid-passenger-create.message = You can't add a passenger which is not yours and is not published
 
 ### Leg ###
-acme.validation.leg.overlapping-legs.message = This leg overlapps other legs
+acme.validation.leg.overlapping-legs.message = This leg overlaps other legs
 acme.validation.flight.aircraft-under-maintenance.message = Aircraft under maintenance
 acme.validation.leg.NotNull.message = May not be null
 acme.validation.leg.duplicated-flight-number.message = Flight number already in use
@@ -132,3 +132,4 @@ acme.validation.overlapping.message = This leg overlaps with other assignments
 acme.validation.flight.cant-be-publish.message= All legs must be publish
 acme.validation.invalid-currency.message = Invalid currency
 acme.validation.flight.zero-legs.message = For publishing must have at least one leg 
+acme.validation.flight.unable-to-delete-flight-published-leg.message = Flights with published legs cannot be deleted

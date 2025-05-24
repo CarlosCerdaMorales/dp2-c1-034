@@ -60,6 +60,11 @@ public class ManagerFlightDeleteService extends AbstractGuiService<Manager, Flig
 
 	@Override
 	public void validate(final Flight flight) {
+		List<Leg> legs = this.repository.findLegsByFlightId(flight.getId());
+		for (Leg leg : legs) {
+			boolean isPublished = leg.isDraftMode();
+			super.state(isPublished, "flightTag", "acme.validation.flight.unable-to-delete-flight-published-leg.message");
+		}
 		;
 	}
 
@@ -81,7 +86,7 @@ public class ManagerFlightDeleteService extends AbstractGuiService<Manager, Flig
 	public void unbind(final Flight flight) {
 		Dataset dataset;
 
-		dataset = super.unbindObject(flight, "flightTag", "isSelfTransfer", "flightCost", "flightDescription", "drafMode");
+		dataset = super.unbindObject(flight, "flightTag", "isSelfTransfer", "flightCost", "flightDescription", "draftMode");
 
 		dataset.put("departure", flight.getDeparture() != null ? flight.getDeparture().getAirportName() : flight.getDeparture());
 		dataset.put("arrival", flight.getArrival() != null ? flight.getArrival().getAirportName() : flight.getArrival());
