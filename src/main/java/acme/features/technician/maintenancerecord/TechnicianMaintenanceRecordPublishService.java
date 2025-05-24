@@ -122,6 +122,7 @@ public class TechnicianMaintenanceRecordPublishService extends AbstractGuiServic
 		dataset.put("aircrafts", selectedAircrafts);
 		dataset.put("status", choices.getSelected().getKey());
 		dataset.put("statuses", choices);
+		dataset.put("maintenanceRecordId", maintenanceRecord.getId());
 
 		super.getResponse().addData(dataset);
 

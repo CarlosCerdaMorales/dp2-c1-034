@@ -116,7 +116,7 @@ public class TechnicianMaintenanceRecordUpdateService extends AbstractGuiService
 		dataset.put("aircrafts", selectedAircrafts);
 		dataset.put("status", choices.getSelected().getKey());
 		dataset.put("statuses", choices);
-
+		dataset.put("maintenanceRecordId", maintenanceRecord.getId());
 		dataset.put("readonly", false);
 
 		super.getResponse().addData(dataset);

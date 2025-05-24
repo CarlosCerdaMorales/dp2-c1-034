@@ -1,6 +1,6 @@
 # messages-es.i18n
 
-technician.dashboard.form.title = Panel de indicadores de technician
+technician.technician-dashboard.form.title = Panel de indicadores de technician
 
 technician.dashboard.form.title.general-indicators = Indicadores generales
 
