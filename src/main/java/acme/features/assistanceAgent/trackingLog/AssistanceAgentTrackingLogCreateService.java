@@ -1,9 +1,10 @@
 
 package acme.features.assistanceAgent.trackingLog;
 
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -30,18 +31,47 @@ public class AssistanceAgentTrackingLogCreateService extends AbstractGuiService<
 		boolean isAssistanceAgent;
 		String metodo = super.getRequest().getMethod();
 		boolean correctEnum = true;
+		boolean claimAlreadyCompleted;
 		String status;
+		boolean isClaimCreator = false;
+		int userAccountId;
+		int assistanceAgentId;
+		int ownerId;
+		int masterId;
+		masterId = super.getRequest().getData("masterId", int.class);
+		userAccountId = super.getRequest().getPrincipal().getAccountId();
+		assistanceAgentId = this.repository.findAssistanceAgentIdByUserAccountId(userAccountId).getId();
+		Claim claim;
+		AssistanceAgent assistanceAgent;
+		assistanceAgent = this.repository.findAssistanceAgentIdByClaimId(masterId);
 
-		if (metodo.equals("GET")) {
-			isAssistanceAgent = super.getRequest().getPrincipal().hasRealmOfType(AssistanceAgent.class);
+		isAssistanceAgent = super.getRequest().getPrincipal().hasRealmOfType(AssistanceAgent.class);
+		if (assistanceAgent != null) {
+			ownerId = assistanceAgent.getId();
+			isClaimCreator = assistanceAgentId == ownerId;
+		}
 
-			res = isAssistanceAgent;
+		claimAlreadyCompleted = true;
+		List<TrackingLog> list100TrackingLogs = new ArrayList<>(this.repository.findTrackingLogs100PercentageByMasterId(masterId));
+		if (list100TrackingLogs.size() >= 2)
+			claimAlreadyCompleted = false;
 
-		} else {
+		boolean fakeUpdate = true;
+
+		if (super.getRequest().hasData("id")) {
+			Integer id = super.getRequest().getData("id", Integer.class);
+			if (id != 0)
+				fakeUpdate = false;
+		}
+
+		claim = this.repository.findClaimByMasterId(masterId);
+		res = isAssistanceAgent && isClaimCreator && claim != null && fakeUpdate && claimAlreadyCompleted;
+
+		if (metodo.equals("POST")) {
 			status = super.getRequest().getData("status", String.class);
 			if (!Arrays.toString(TrackingLogStatus.values()).concat("0").contains(status))
 				correctEnum = false;
-			res = correctEnum;
+			res = correctEnum && fakeUpdate && claimAlreadyCompleted;
 		}
 
 		super.getResponse().setAuthorised(res);
@@ -81,25 +111,41 @@ public class AssistanceAgentTrackingLogCreateService extends AbstractGuiService<
 		Claim claim;
 		int masterId;
 		masterId = super.getRequest().getData("masterId", int.class);
-
-		Collection<TrackingLog> trackingLogs100percentage;
-
+		double trMaxPercentage = 0.0;
+		List<TrackingLog> trackingLogs100percentage;
+		List<TrackingLog> trackingLogMaxList;
+		TrackingLog trMaxResolutionPercentage;
 		claim = this.repository.findClaimByMasterId(masterId);
-		trackingLogs100percentage = this.repository.findTrackingLogs100PercentageByMasterId(claim.getId());
-		TrackingLog trMaxPercentage = this.repository.findTopByClaimIdOrderByResolutionPercentageDesc(tr.getClaim().getId()).stream().toList().get(0);
+		trackingLogs100percentage = new ArrayList<>(this.repository.findTrackingLogs100PercentageByMasterId(claim.getId()));
+		boolean repetido = false;
 
-		if (tr.getResolutionPercentage() <= trMaxPercentage.getResolutionPercentage() && trackingLogs100percentage.isEmpty())
-			super.state(false, "resolutionPercentage", "acme.validation.trackinglog.invalid-resolutionpercentage.message");
-		if (claim.getDraftMode())
-			super.state(false, "*", "acme.validation.trackingLog-draftmode.message");
+		trackingLogMaxList = new ArrayList<>(this.repository.findTopByClaimIdOrderByResolutionPercentageDesc(tr.getClaim().getId()));
+		if (!trackingLogMaxList.isEmpty()) {
+			trMaxResolutionPercentage = trackingLogMaxList.get(0);
+			trMaxPercentage = trMaxResolutionPercentage.getResolutionPercentage();
 
-		if (trackingLogs100percentage.size() >= 2)
-			super.state(false, "resolutionPercentage", "acme.validation.trackinglog.invalid-resolutionpercentage-two100.message");
+			if (tr.getResolutionPercentage() <= trMaxPercentage && trackingLogs100percentage.isEmpty())
+				super.state(false, "resolutionPercentage", "acme.validation.trackinglog.invalid-resolutionpercentage.message");
+			if (claim.getDraftMode())
+				super.state(false, "*", "acme.validation.trackingLog-draftmode.message");
 
-		if (!trackingLogs100percentage.isEmpty() && tr.getResolutionPercentage() < 100)
-			super.state(false, "resolutionPercentage", "acme.validation.trackinglog.invalid-resolution-percentage2.message");
-		if (!trackingLogs100percentage.isEmpty() && trackingLogs100percentage.stream().toList().get(0).getStatus() != tr.getStatus())
-			super.state(false, "status", "acme.validation.trackinglog.invalid-resolution-percentage3.message");
+			if (trackingLogs100percentage.size() >= 2)
+				super.state(false, "resolutionPercentage", "acme.validation.trackinglog.invalid-resolutionpercentage-two100.message");
+
+			if (!trackingLogs100percentage.isEmpty() && tr.getResolutionPercentage() < 100)
+				super.state(false, "resolutionPercentage", "acme.validation.trackinglog.invalid-resolution-percentage2.message");
+			if (!trackingLogs100percentage.isEmpty() && trackingLogs100percentage.get(0).getStatus() != tr.getStatus()) {
+				super.state(false, "status", "acme.validation.trackinglog.invalid-resolution-percentage3.message");
+				repetido = true;
+			}
+
+			if (!trackingLogs100percentage.isEmpty() && trMaxResolutionPercentage.getDraftMode())
+				super.state(false, "*", "acme.validation.trackinglog.invalid-allpublished2.message");
+
+			if (tr.getStatus() != trMaxResolutionPercentage.getStatus() && !trackingLogs100percentage.isEmpty() && tr.getResolutionPercentage() < 100 && !repetido)
+				super.state(false, "status", "acme.validation.trackinglog.invalid-resolution-percentage3.message");
+		}
+
 		confirmation = super.getRequest().getData("confirmation", boolean.class);
 		super.state(confirmation, "confirmation", "acme.validation.confirmation.message");
 	}

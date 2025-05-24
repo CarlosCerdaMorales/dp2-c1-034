@@ -38,6 +38,14 @@ public class AssistanceAgentClaimCreateService extends AbstractGuiService<Assist
 		boolean correctLeg = true;
 		boolean alreadyExists = true;
 
+		boolean fakeUpdate = true;
+
+		if (super.getRequest().hasData("id")) {
+			Integer id = super.getRequest().getData("id", Integer.class);
+			if (id != 0)
+				fakeUpdate = false;
+		}
+
 		isAssistanceAgent = super.getRequest().getPrincipal().hasRealmOfType(AssistanceAgent.class);
 		if (metodo.equals("POST")) {
 			type = super.getRequest().getData("claimType", String.class);
@@ -49,9 +57,9 @@ public class AssistanceAgentClaimCreateService extends AbstractGuiService<Assist
 			if (!publishedLegs.contains(leg) && legId != 0)
 				correctLeg = false;
 
-			res = correctEnum && correctLeg && alreadyExists;
+			res = correctEnum && correctLeg && alreadyExists && fakeUpdate;
 		} else
-			res = isAssistanceAgent && alreadyExists;
+			res = isAssistanceAgent && alreadyExists && fakeUpdate;
 
 		super.getResponse().setAuthorised(res);
 	}

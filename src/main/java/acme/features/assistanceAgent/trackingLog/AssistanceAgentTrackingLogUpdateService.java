@@ -1,8 +1,9 @@
 
 package acme.features.assistanceAgent.trackingLog;
 
-import java.util.Collection;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -29,33 +30,42 @@ public class AssistanceAgentTrackingLogUpdateService extends AbstractGuiService<
 		int userAccountId;
 		int assistanceAgentId;
 		int ownerId;
-		boolean isTrackingLogCreator;
+		boolean isTrackingLogCreator = false;
 		boolean res;
 		boolean isAssistanceAgent;
 		String metodo = super.getRequest().getMethod();
 		boolean correctEnum = false;
 		String status;
 
-		trId = super.getRequest().getData("id", int.class);
-		tr = this.repository.findTrackingLogById(trId);
+		if (!super.getRequest().hasData("id"))
+			res = false;
+		else {
+			trId = super.getRequest().getData("id", int.class);
+			tr = this.repository.findTrackingLogById(trId);
 
-		if (metodo.equals("GET")) {
-			isAssistanceAgent = super.getRequest().getPrincipal().hasRealmOfType(AssistanceAgent.class);
 			userAccountId = super.getRequest().getPrincipal().getAccountId();
-			assistanceAgentId = this.repository.findAssistanceAgentIdByUserAccountId(userAccountId);
 
-			ownerId = this.repository.findAssistanceAgentIdByTrackingLogId(trId);
-			isTrackingLogCreator = assistanceAgentId == ownerId;
+			assistanceAgentId = this.repository.findAssistanceAgentIdByUserAccountId(userAccountId).getId();
+
+			if (tr != null) {
+				ownerId = this.repository.findAssistanceAgentIdByTrackingLogId(trId).getId();
+				isTrackingLogCreator = assistanceAgentId == ownerId;
+			}
+
+			isAssistanceAgent = super.getRequest().getPrincipal().hasRealmOfType(AssistanceAgent.class);
 
 			res = tr != null && isAssistanceAgent && isTrackingLogCreator && tr.getDraftMode();
 
-		} else {
-			status = super.getRequest().getData("status", String.class);
-			correctEnum = false;
-			for (TrackingLogStatus s : TrackingLogStatus.values())
-				if (s.name().equals(status))
-					correctEnum = true;
-			res = correctEnum && tr.getDraftMode();
+			if (metodo.equals("POST")) {
+				status = super.getRequest().getData("status", String.class);
+				correctEnum = false;
+				for (TrackingLogStatus s : TrackingLogStatus.values())
+					if (s.name().equals(status))
+						correctEnum = true;
+				res = false;
+				if (tr != null)
+					res = correctEnum && tr.getDraftMode();
+			}
 		}
 		super.getResponse().setAuthorised(res);
 
@@ -88,22 +98,44 @@ public class AssistanceAgentTrackingLogUpdateService extends AbstractGuiService<
 	public void validate(final TrackingLog tr) {
 		boolean confirmation;
 		boolean wrongResolutionPercentage = true;
-
-		Collection<TrackingLog> trackingLogs100percentage;
+		Double maxPercentage;
+		Double minPercentage;
+		List<TrackingLog> trackingLogs100percentage;
 		TrackingLog trWithoutUpdate = this.repository.findTrackingLogById(tr.getId());
-		trackingLogs100percentage = this.repository.findTrackingLogs100PercentageByMasterId(tr.getClaim().getId());
+		trackingLogs100percentage = new ArrayList<>(this.repository.findTrackingLogs100PercentageByMasterId(tr.getClaim().getId()));
+		List<TrackingLog> maxPercentageList = new ArrayList<>(this.repository.findTopByClaimIdOrderByResolutionPercentageDesc(tr.getClaim().getId()));
+		Integer myTrackingLogInListIndex;
 
 		if (!trWithoutUpdate.getResolutionPercentage().equals(tr.getResolutionPercentage())) {
-			TrackingLog trMaxPercentage = this.repository.findTopByClaimIdOrderByResolutionPercentageDesc(tr.getClaim().getId()).stream().toList().get(0);
-			if (tr.getResolutionPercentage() <= trMaxPercentage.getResolutionPercentage())
+			if (maxPercentageList.isEmpty() || maxPercentageList.size() == 1) {
+				maxPercentage = 1000.0;
+				minPercentage = -1.00;
+			} else {
+				myTrackingLogInListIndex = maxPercentageList.indexOf(tr);
+				if (myTrackingLogInListIndex == 0) {
+					maxPercentage = 1000.0;
+					minPercentage = maxPercentageList.get(myTrackingLogInListIndex + 1).getResolutionPercentage();
+
+				} else if (myTrackingLogInListIndex == maxPercentageList.size() - 1) {
+
+					maxPercentage = maxPercentageList.get(myTrackingLogInListIndex - 1).getResolutionPercentage();
+					minPercentage = -1.00;
+					System.out.println(maxPercentage);
+				} else {
+
+					maxPercentage = maxPercentageList.get(myTrackingLogInListIndex - 1).getResolutionPercentage();
+					minPercentage = maxPercentageList.get(myTrackingLogInListIndex + 1).getResolutionPercentage();
+				}
+			}
+
+			if (tr.getResolutionPercentage() >= maxPercentage || tr.getResolutionPercentage() <= minPercentage)
 				wrongResolutionPercentage = false;
-			if (!trackingLogs100percentage.isEmpty() && tr.getResolutionPercentage() < 100)
-				super.state(false, "resolutionPercentage", "acme.validation.trackinglog.invalid-resolution-percentage2.message");
-			if (trackingLogs100percentage.size() >= 2)
+
+			if (trackingLogs100percentage.size() >= 2 && tr.getResolutionPercentage() >= 100)
 				super.state(false, "resolutionPercentage", "acme.validation.trackinglog.invalid-resolutionpercentage-two100.message");
 
 		}
-		if (!trackingLogs100percentage.isEmpty() && trackingLogs100percentage.stream().toList().get(0).getStatus() != tr.getStatus())
+		if (!trackingLogs100percentage.isEmpty() && trackingLogs100percentage.get(0).getStatus() != tr.getStatus() && tr.getResolutionPercentage() >= 100)
 			super.state(false, "status", "acme.validation.trackinglog.invalid-resolution-percentage3.message");
 
 		confirmation = super.getRequest().getData("confirmation", boolean.class);

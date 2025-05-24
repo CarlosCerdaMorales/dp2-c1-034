@@ -16,7 +16,7 @@ assistance-agent.claim.list.label.draft-mode = Draft Mode
 assistance-agent.list.label.leg = Segment
 
 # assistance-agent.claim.form
-assistance-agent.claim.form.title = Create a Claim
+assistance-agent.claim.form.title = Claim
 assistance-agent.form.label.registration-moment = Registration Moment
 assistance-agent.form.label.description = Description
 assistance-agent.form.label.passenger-email = Passenger Email

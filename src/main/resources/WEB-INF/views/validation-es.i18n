@@ -36,6 +36,8 @@ acme.validation.trackinglog.invalid-resolutionpercentage-two100.message = Ya exi
 acme.validation.trackinglog.resolution-percentage2.message = El porcentaje debe de ser 100
 acme.validation.trackinglog.resolution-percentage3.message = El estado debe de ser el mismo que el del anterior registro de seguimiento
 acme.validation.trackingLog-draftmode.message = La reclamación debe de estar publicada
+acme.validation.trackinglog.invalid-allpublished.message = Deber publicar todos los registros de seguimiento si quieres crear el registro con porcentaje a 100.
+acme.validation.trackinglog.invalid-allpublished2.message = Si quieres crear el registro de seguimiento excepcional debes de publicar todos los demas.
 
 ### Claim ###
 acme.validation.claim.invalid-leg-date.message = La fecha de llegada del tramo debe de ser anterior a la fecha de creacion de la reclamación

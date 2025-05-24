@@ -25,20 +25,30 @@ public class AssistanceAgentTrackingLogShowService extends AbstractGuiService<As
 		int userAccountId;
 		int assistanceAgentId;
 		int ownerId;
-		boolean isTrackingLogCreator;
+		boolean isTrackingLogCreator = false;
 		boolean res;
 		boolean isAssistanceAgent;
 
-		isAssistanceAgent = super.getRequest().getPrincipal().hasRealmOfType(AssistanceAgent.class);
-		userAccountId = super.getRequest().getPrincipal().getAccountId();
-		assistanceAgentId = this.repository.findAssistanceAgentIdByUserAccountId(userAccountId);
-		trId = super.getRequest().getData("id", int.class);
-		tr = this.repository.findTrackingLogById(trId);
-		ownerId = this.repository.findAssistanceAgentIdByTrackingLogId(trId);
-		isTrackingLogCreator = assistanceAgentId == ownerId;
+		if (!super.getRequest().hasData("id"))
+			res = false;
+		else {
+			trId = super.getRequest().getData("id", int.class);
+			tr = this.repository.findTrackingLogById(trId);
 
-		res = tr != null && isAssistanceAgent && isTrackingLogCreator;
+			userAccountId = super.getRequest().getPrincipal().getAccountId();
 
+			assistanceAgentId = this.repository.findAssistanceAgentIdByUserAccountId(userAccountId).getId();
+
+			if (tr != null) {
+				ownerId = this.repository.findAssistanceAgentIdByTrackingLogId(trId).getId();
+				isTrackingLogCreator = assistanceAgentId == ownerId;
+			}
+
+			isAssistanceAgent = super.getRequest().getPrincipal().hasRealmOfType(AssistanceAgent.class);
+
+			res = tr != null && isAssistanceAgent && isTrackingLogCreator;
+
+		}
 		super.getResponse().setAuthorised(res);
 
 	}
