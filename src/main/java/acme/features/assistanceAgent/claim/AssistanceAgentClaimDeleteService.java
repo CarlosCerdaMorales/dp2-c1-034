@@ -31,7 +31,7 @@ public class AssistanceAgentClaimDeleteService extends AbstractGuiService<Assist
 		int assistanceAgentId;
 		int ownerId;
 		boolean res = true;
-		boolean isClaimCreator;
+		boolean isClaimCreator = false;
 		boolean isAssistanceAgent;
 		int legId;
 		Leg leg;
@@ -40,32 +40,45 @@ public class AssistanceAgentClaimDeleteService extends AbstractGuiService<Assist
 		String metodo = super.getRequest().getMethod();
 		boolean correctEnum = false;
 		boolean correctLeg = true;
+		AssistanceAgent assistanceAgent;
+		int agentId;
+		agentId = super.getRequest().getPrincipal().getActiveRealm().getId();
+		assistanceAgent = this.repository.findAssistanceAgentById(agentId);
 
-		claimId = super.getRequest().getData("id", int.class);
-		claim = this.repository.findClaimById(claimId);
-
-		if (metodo.equals("GET")) {
-			isAssistanceAgent = super.getRequest().getPrincipal().hasRealmOfType(AssistanceAgent.class);
+		if (!super.getRequest().hasData("id"))
+			res = false;
+		else {
 			claimId = super.getRequest().getData("id", int.class);
-			userAccountId = super.getRequest().getPrincipal().getAccountId();
-			assistanceAgentId = this.repository.findAssistanceAgentIdByUserAccountId(userAccountId);
-			ownerId = this.repository.findAssistanceAgentIdByClaimId(claimId);
 			claim = this.repository.findClaimById(claimId);
-			isClaimCreator = assistanceAgentId == ownerId;
 
-			res = claim != null && isAssistanceAgent && isClaimCreator && claim.getDraftMode();
-		} else {
-			type = super.getRequest().getData("claimType", String.class);
-			legId = super.getRequest().getData("leg", int.class);
-			leg = this.repository.findLegById(legId);
-			publishedLegs = this.repository.findAllPublishedLegs();
-			for (ClaimType t : ClaimType.values())
-				if (t.name().equals(type))
-					correctEnum = true;
-			if (!publishedLegs.contains(leg))
-				correctLeg = false;
+			if (metodo.equals("GET")) {
+				isAssistanceAgent = super.getRequest().getPrincipal().hasRealmOfType(AssistanceAgent.class);
+				claimId = super.getRequest().getData("id", int.class);
+				userAccountId = super.getRequest().getPrincipal().getAccountId();
+				assistanceAgentId = this.repository.findAssistanceAgentIdByUserAccountId(userAccountId);
 
-			res = correctEnum && correctLeg && claim.getDraftMode();
+				claim = this.repository.findClaimById(claimId);
+
+				if (claim != null) {
+					ownerId = this.repository.findAssistanceAgentIdByClaimId(claimId);
+					isClaimCreator = assistanceAgentId == ownerId;
+				}
+
+				res = claim != null && isAssistanceAgent && isClaimCreator && claim.getDraftMode();
+			} else {
+				type = super.getRequest().getData("claimType", String.class);
+				legId = super.getRequest().getData("leg", int.class);
+				leg = this.repository.findLegById(legId);
+				publishedLegs = this.repository.findAllPublishedLegs(assistanceAgent.getAirline().getId());
+				for (ClaimType t : ClaimType.values())
+					if (t.name().equals(type))
+						correctEnum = true;
+				if (!publishedLegs.contains(leg))
+					correctLeg = false;
+				res = false;
+				if (claim != null)
+					res = correctEnum && correctLeg && claim.getDraftMode();
+			}
 		}
 		super.getResponse().setAuthorised(res);
 	}
@@ -122,9 +135,13 @@ public class AssistanceAgentClaimDeleteService extends AbstractGuiService<Assist
 		SelectChoices selectedLeg;
 		Collection<Leg> legs;
 		SelectChoices choicesType;
+		AssistanceAgent assistanceAgent;
+		int agentId;
+		agentId = super.getRequest().getPrincipal().getActiveRealm().getId();
+		assistanceAgent = this.repository.findAssistanceAgentById(agentId);
 
 		choicesType = SelectChoices.from(ClaimType.class, claim.getClaimType());
-		legs = this.repository.findAllPublishedLegs();
+		legs = this.repository.findAllPublishedLegs(assistanceAgent.getAirline().getId());
 		selectedLeg = SelectChoices.from(legs, "flightNumber", claim.getLeg());
 		dataset = super.unbindObject(claim, "registrationMoment", "passengerEmail", "description", "claimType");
 		dataset.put("legs", selectedLeg);

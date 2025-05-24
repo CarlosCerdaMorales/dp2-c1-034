@@ -1,6 +1,8 @@
 
 package acme.features.assistanceAgent.trackingLog;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
@@ -25,33 +27,42 @@ public class AssistanceAgentTrackingLogPublishService extends AbstractGuiService
 		int userAccountId;
 		int assistanceAgentId;
 		int ownerId;
-		boolean isTrackingLogCreator;
+		boolean isTrackingLogCreator = false;
 		boolean res;
 		boolean isAssistanceAgent;
 		String metodo = super.getRequest().getMethod();
 		boolean correctEnum = false;
 		String status;
 
-		trId = super.getRequest().getData("id", int.class);
-		tr = this.repository.findTrackingLogById(trId);
+		if (!super.getRequest().hasData("id"))
+			res = false;
+		else {
+			trId = super.getRequest().getData("id", int.class);
+			tr = this.repository.findTrackingLogById(trId);
 
-		if (metodo.equals("GET")) {
-			isAssistanceAgent = super.getRequest().getPrincipal().hasRealmOfType(AssistanceAgent.class);
 			userAccountId = super.getRequest().getPrincipal().getAccountId();
-			assistanceAgentId = this.repository.findAssistanceAgentIdByUserAccountId(userAccountId);
 
-			ownerId = this.repository.findAssistanceAgentIdByTrackingLogId(trId);
-			isTrackingLogCreator = assistanceAgentId == ownerId;
+			assistanceAgentId = this.repository.findAssistanceAgentIdByUserAccountId(userAccountId).getId();
+
+			if (tr != null) {
+				ownerId = this.repository.findAssistanceAgentIdByTrackingLogId(trId).getId();
+				isTrackingLogCreator = assistanceAgentId == ownerId;
+			}
+
+			isAssistanceAgent = super.getRequest().getPrincipal().hasRealmOfType(AssistanceAgent.class);
 
 			res = tr != null && isAssistanceAgent && isTrackingLogCreator && tr.getDraftMode();
 
-		} else {
-			status = super.getRequest().getData("status", String.class);
-			correctEnum = false;
-			for (TrackingLogStatus s : TrackingLogStatus.values())
-				if (s.name().equals(status))
-					correctEnum = true;
-			res = correctEnum && tr.getDraftMode();
+			if (metodo.equals("POST")) {
+				status = super.getRequest().getData("status", String.class);
+				correctEnum = false;
+				for (TrackingLogStatus s : TrackingLogStatus.values())
+					if (s.name().equals(status))
+						correctEnum = true;
+				res = false;
+				if (tr != null)
+					res = correctEnum && tr.getDraftMode();
+			}
 		}
 		super.getResponse().setAuthorised(res);
 
@@ -83,7 +94,23 @@ public class AssistanceAgentTrackingLogPublishService extends AbstractGuiService
 	@Override
 	public void validate(final TrackingLog tr) {
 		boolean confirmation;
+		Collection<TrackingLog> claimsPublishedTrackingLog;
+		Collection<TrackingLog> claimsWithout100TrackingLog;
+		Collection<TrackingLog> claims100PercentageTrackingLog;
+		Collection<TrackingLog> claimsTrackingLog;
 
+		int masterId;
+		masterId = tr.getClaim().getId();
+
+		claimsPublishedTrackingLog = this.repository.findPublishedTrackingLogsByMasterId(masterId);
+		claimsWithout100TrackingLog = this.repository.findTrackingLogsWithout100PercentageByMasterId(masterId);
+		claims100PercentageTrackingLog = this.repository.findTrackingLogs100PercentageByMasterId(masterId);
+		claimsTrackingLog = this.repository.findTrackingLogsByMasterId(masterId);
+		if (!(claimsPublishedTrackingLog.isEmpty() && claimsWithout100TrackingLog.isEmpty()) && tr.getResolutionPercentage() == 100 && claimsPublishedTrackingLog.size() != claimsWithout100TrackingLog.size() && claims100PercentageTrackingLog.isEmpty())
+			super.state(false, "*", "acme.validation.trackinglog.invalid-allpublished2.message");
+		if (claims100PercentageTrackingLog.size() == 1 && tr.getResolutionPercentage() == 100)
+			if (claimsPublishedTrackingLog.size() != claimsTrackingLog.size() - 1)
+				super.state(false, "*", "acme.validation.trackinglog.invalid-allpublished.message");
 		confirmation = super.getRequest().getData("confirmation", boolean.class);
 		super.state(confirmation, "confirmation", "acme.validation.confirmation.message");
 	}

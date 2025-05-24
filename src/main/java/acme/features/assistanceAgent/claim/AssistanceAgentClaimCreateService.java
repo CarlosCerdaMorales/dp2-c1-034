@@ -37,21 +37,32 @@ public class AssistanceAgentClaimCreateService extends AbstractGuiService<Assist
 		boolean correctEnum = true;
 		boolean correctLeg = true;
 		boolean alreadyExists = true;
+		AssistanceAgent assistanceAgent;
+		int agentId;
+		agentId = super.getRequest().getPrincipal().getActiveRealm().getId();
+		assistanceAgent = this.repository.findAssistanceAgentById(agentId);
+		boolean fakeUpdate = true;
+
+		if (super.getRequest().hasData("id")) {
+			Integer id = super.getRequest().getData("id", Integer.class);
+			if (id != 0)
+				fakeUpdate = false;
+		}
 
 		isAssistanceAgent = super.getRequest().getPrincipal().hasRealmOfType(AssistanceAgent.class);
 		if (metodo.equals("POST")) {
 			type = super.getRequest().getData("claimType", String.class);
 			legId = super.getRequest().getData("leg", int.class);
 			leg = this.repository.findLegById(legId);
-			publishedLegs = this.repository.findAllPublishedLegs();
+			publishedLegs = this.repository.findAllPublishedLegs(assistanceAgent.getAirline().getId());
 			if (!Arrays.toString(ClaimType.values()).concat("0").contains(type))
 				correctEnum = false;
 			if (!publishedLegs.contains(leg) && legId != 0)
 				correctLeg = false;
 
-			res = correctEnum && correctLeg && alreadyExists;
+			res = correctEnum && correctLeg && alreadyExists && fakeUpdate;
 		} else
-			res = isAssistanceAgent && alreadyExists;
+			res = isAssistanceAgent && alreadyExists && fakeUpdate;
 
 		super.getResponse().setAuthorised(res);
 	}
@@ -114,7 +125,11 @@ public class AssistanceAgentClaimCreateService extends AbstractGuiService<Assist
 		SelectChoices selectedLeg;
 		Collection<Leg> legs;
 		choicesType = SelectChoices.from(ClaimType.class, claim.getClaimType());
-		legs = this.repository.findAllPublishedLegs();
+		AssistanceAgent assistanceAgent;
+		int agentId;
+		agentId = super.getRequest().getPrincipal().getActiveRealm().getId();
+		assistanceAgent = this.repository.findAssistanceAgentById(agentId);
+		legs = this.repository.findAllPublishedLegs(assistanceAgent.getAirline().getId());
 		selectedLeg = SelectChoices.from(legs, "flightNumber", claim.getLeg());
 		dataset = super.unbindObject(claim, "passengerEmail", "description", "claimType");
 		dataset.put("legs", selectedLeg);

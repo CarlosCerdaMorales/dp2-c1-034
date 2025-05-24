@@ -16,7 +16,7 @@ assistance-agent.tracking-log.label.resolution-percentage = Resolution Percentag
 assistance-agent.tracking-log.list.button.create = Create a Tracking Log  
 
 # assistance-agent.tracking-log.form  
-assistance-agent.tracking-log.form.title = Create a Tracking Log  
+assistance-agent.tracking-log.form.title = Tracking Log  
 assistance-agent.tracking-log.form.last-update-moment = Last Update Moment
 assistance-agent.tracking-log.form.resolution-percentage = Resolution Percentage  
 assistance-agent.tracking-log.form.label.status = Status  

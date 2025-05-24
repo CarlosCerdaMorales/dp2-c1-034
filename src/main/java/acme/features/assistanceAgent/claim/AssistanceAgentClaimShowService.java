@@ -30,18 +30,31 @@ public class AssistanceAgentClaimShowService extends AbstractGuiService<Assistan
 		int assistanceAgentId;
 		int ownerId;
 		boolean res;
-		boolean isClaimCreator;
+		boolean isClaimCreator = false;
 		boolean isAssistanceAgent;
 
-		isAssistanceAgent = super.getRequest().getPrincipal().hasRealmOfType(AssistanceAgent.class);
-		claimId = super.getRequest().getData("id", int.class);
-		userAccountId = super.getRequest().getPrincipal().getAccountId();
-		assistanceAgentId = this.repository.findAssistanceAgentIdByUserAccountId(userAccountId);
-		ownerId = this.repository.findAssistanceAgentIdByClaimId(claimId);
-		claim = this.repository.findClaimById(claimId);
-		isClaimCreator = assistanceAgentId == ownerId;
+		AssistanceAgent assistanceAgent;
+		int agentId;
+		agentId = super.getRequest().getPrincipal().getActiveRealm().getId();
+		assistanceAgent = this.repository.findAssistanceAgentById(agentId);
 
-		res = claim != null && isAssistanceAgent && isClaimCreator;
+		if (!super.getRequest().hasData("id"))
+			res = false;
+		else {
+			isAssistanceAgent = super.getRequest().getPrincipal().hasRealmOfType(AssistanceAgent.class);
+			claimId = super.getRequest().getData("id", int.class);
+			userAccountId = super.getRequest().getPrincipal().getAccountId();
+			assistanceAgentId = this.repository.findAssistanceAgentIdByUserAccountId(userAccountId);
+
+			claim = this.repository.findClaimById(claimId);
+
+			if (claim != null) {
+				ownerId = this.repository.findAssistanceAgentIdByClaimId(claimId);
+				isClaimCreator = assistanceAgentId == ownerId;
+			}
+
+			res = claim != null && isAssistanceAgent && isClaimCreator;
+		}
 		super.getResponse().setAuthorised(res);
 	}
 
@@ -64,8 +77,13 @@ public class AssistanceAgentClaimShowService extends AbstractGuiService<Assistan
 		SelectChoices choicesType;
 		Collection<Leg> legs;
 
+		AssistanceAgent assistanceAgent;
+		int agentId;
+		agentId = super.getRequest().getPrincipal().getActiveRealm().getId();
+		assistanceAgent = this.repository.findAssistanceAgentById(agentId);
+
 		choicesType = SelectChoices.from(ClaimType.class, claim.getClaimType());
-		legs = this.repository.findAllPublishedLegs();
+		legs = this.repository.findAllPublishedLegs(assistanceAgent.getAirline().getId());
 		selectedLeg = SelectChoices.from(legs, "flightNumber", claim.getLeg());
 		dataset = super.unbindObject(claim, "registrationMoment", "passengerEmail", "description", "claimType", "draftMode");
 		dataset.put("legs", selectedLeg);
