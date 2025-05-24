@@ -32,21 +32,27 @@ public class TechnicianMaintenanceRecordDeleteService extends AbstractGuiService
 		MaintenanceRecord mr;
 		Technician technician;
 
-		mrId = super.getRequest().getData("id", int.class);
-		mr = this.repository.findMaintenanceRecordById(mrId);
+		if (!super.getRequest().hasData("id"))
+			status = false;
 
-		technician = mr == null ? null : mr.getTechnician();
-		status = mr != null && mr.isDraftMode() && this.getRequest().getPrincipal().hasRealm(technician);
+		else {
 
-		if (super.getRequest().hasData("aircraft")) {
-			int aircraftId = super.getRequest().getData("aircraft", int.class);
-			Aircraft aircraft = this.repository.findAircraftById(aircraftId);
-			Collection<Aircraft> available = this.repository.findAllAircrafts();
+			mrId = super.getRequest().getData("id", int.class);
+			mr = this.repository.findMaintenanceRecordById(mrId);
 
-			if (aircraft == null && aircraftId != 0)
-				status = false;
-			else if (aircraft != null && !available.contains(aircraft))
-				status = false;
+			technician = mr == null ? null : mr.getTechnician();
+			status = mr != null && mr.isDraftMode() && this.getRequest().getPrincipal().hasRealm(technician);
+
+			if (super.getRequest().hasData("aircraft")) {
+				int aircraftId = super.getRequest().getData("aircraft", int.class);
+				Aircraft aircraft = this.repository.findAircraftById(aircraftId);
+				Collection<Aircraft> available = this.repository.findAllAircrafts();
+
+				if (aircraft == null && aircraftId != 0)
+					status = false;
+				else if (aircraft != null && !available.contains(aircraft))
+					status = false;
+			}
 		}
 
 		super.getResponse().setAuthorised(status);

@@ -1,6 +1,8 @@
 
 package acme.features.technician.task;
 
+import java.util.Arrays;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
@@ -28,12 +30,24 @@ public class TechnicianTaskUpdateService extends AbstractGuiService<Technician, 
 		Task task;
 		Technician technician;
 
-		taskId = super.getRequest().getData("id", int.class);
-		task = this.repository.findTaskById(taskId);
+		if (!super.getRequest().hasData("id"))
+			status = false;
 
-		technician = task == null ? null : task.getTechnician();
-		status = task != null && task.isDraftMode() && super.getRequest().getPrincipal().hasRealm(technician);
+		else {
 
+			taskId = super.getRequest().getData("id", int.class);
+			task = this.repository.findTaskById(taskId);
+
+			technician = task == null ? null : task.getTechnician();
+			status = task != null && task.isDraftMode() && super.getRequest().getPrincipal().hasRealm(technician);
+
+			String method = super.getRequest().getMethod();
+			if (method.equals("POST")) {
+				String type = super.getRequest().getData("type", String.class);
+				if (type == null || type.trim().isEmpty() || Arrays.stream(TaskType.values()).noneMatch(s -> s.name().equals(type)) && !type.equals("0"))
+					status = false;
+			}
+		}
 		super.getResponse().setAuthorised(status);
 	}
 

@@ -1,6 +1,7 @@
 
 package acme.features.technician.maintenancerecord;
 
+import java.util.Arrays;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +40,11 @@ public class TechnicianMaintenanceRecordCreateService extends AbstractGuiService
 
 			if (aircraft == null && aircraftId != 0 || aircraft != null && !available.contains(aircraft))
 				authorised = false;
+
+			String status = super.getRequest().getData("status", String.class);
+			if (status == null || status.trim().isEmpty() || Arrays.stream(MaintenanceStatus.values()).noneMatch(s -> s.name().equals(status)) && !status.equals("0"))
+				authorised = false;
+
 		}
 
 		super.getResponse().setAuthorised(authorised);
