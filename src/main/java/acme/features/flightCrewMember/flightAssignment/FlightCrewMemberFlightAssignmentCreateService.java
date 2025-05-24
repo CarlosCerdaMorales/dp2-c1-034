@@ -2,6 +2,7 @@
 package acme.features.flightCrewMember.flightAssignment;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -28,16 +29,19 @@ public class FlightCrewMemberFlightAssignmentCreateService extends AbstractGuiSe
 		String metodo = super.getRequest().getMethod();
 		boolean authorised = true;
 		int memberId = super.getRequest().getPrincipal().getActiveRealm().getId();
-		int assignmentId = super.getRequest().getData("id", int.class);
-		FlightAssignment assignment = this.repository.findFlightAssignmentById(assignmentId).get();
+
 		if (metodo.equals("POST")) {
+			int assignmentId = super.getRequest().getData("id", int.class);
+			FlightAssignment assignment = this.repository.findFlightAssignmentById(assignmentId).get();
 			int legId = super.getRequest().getData("leg", int.class);
 
-			Leg leg = this.repository.findLegById(legId).isPresent() ? this.repository.findLegById(legId).get() : null;
+			Optional<Leg> legOpt = this.repository.findLegById(legId);
 			List<Leg> allLegs = this.repository.findAllLegs();
-
-			if (leg == null && legId != 0 || leg != null && !allLegs.contains(leg) || leg.isDraftMode() || assignment.getFlightCrewMember().getId() != memberId)
-				authorised = false;
+			if (legOpt.isPresent()) {
+				Leg leg = legOpt.get();
+				if (leg == null && legId != 0 || leg != null && !allLegs.contains(leg) || leg.isDraftMode() || assignment.getFlightCrewMember().getId() != memberId)
+					authorised = false;
+			}
 		}
 		super.getResponse().setAuthorised(authorised);
 
