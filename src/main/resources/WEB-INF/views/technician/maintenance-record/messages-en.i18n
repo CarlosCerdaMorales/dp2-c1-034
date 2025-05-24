@@ -31,4 +31,5 @@ technician.maintenance-record.form.button.update = Update
 technician.maintenance-record.form.button.delete = Delete
 technician.maintenance-record.form.button.publish = Publish
 technician.maintenance-record.form.show.involves = Associated tasks
+technician.maintenance-record.form.error.zero-tasks = Cannot publish a maintenance record with no taks
 technician.maintenance-record.form.error.not-all-tasks-published = All taks must be published 
