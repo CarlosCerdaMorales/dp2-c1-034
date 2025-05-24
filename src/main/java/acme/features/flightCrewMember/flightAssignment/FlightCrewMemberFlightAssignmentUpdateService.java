@@ -43,26 +43,29 @@ public class FlightCrewMemberFlightAssignmentUpdateService extends AbstractGuiSe
 
 			if (flightAssignment.isPresent() && flightAssignment.get().isDraftMode() && flightAssignment.get().getFlightCrewMember().getId() != memberId)
 				status = false;
+			else if (flightAssignment.isPresent() && !flightAssignment.get().isDraftMode())
+				status = false;
 			if (flightAssignment.isPresent() && super.getRequest().hasData("leg")) {
 				int legId = super.getRequest().getData("leg", int.class);
 				Optional<Leg> leg = this.repository.findLegById(legId);
 				if (leg.isEmpty() || leg.isPresent() && leg.get().isDraftMode() || memberOpt.isPresent() && !leg.get().getAircraft().getAirline().equals(memberOpt.get().getWorkingFor()))
 					status = false;
 			}
-
-			String duty = super.getRequest().getData("flightCrewDuty", String.class);
-			if (duty == null || duty.trim().isEmpty() || Arrays.stream(FlightCrewDuty.values()).noneMatch(s -> s.name().equals(duty)) && !duty.equals("0"))
-				status = false;
-
-			String status1 = super.getRequest().getData("assignmentStatus", String.class);
-			if (status1 == null || status1.trim().isEmpty() || Arrays.stream(AssignmentStatus.values()).noneMatch(s -> s.name().equals(status1)) && !status1.equals("0"))
-				status = false;
+			if (super.getRequest().hasData("flightCrewDuty")) {
+				String duty = super.getRequest().getData("flightCrewDuty", String.class);
+				if (duty == null || duty.trim().isEmpty() || Arrays.stream(FlightCrewDuty.values()).noneMatch(s -> s.name().equals(duty)) && !duty.equals("0"))
+					status = false;
+			}
+			if (super.getRequest().hasData("assignmentStatus")) {
+				String status1 = super.getRequest().getData("assignmentStatus", String.class);
+				if (status1 == null || status1.trim().isEmpty() || Arrays.stream(AssignmentStatus.values()).noneMatch(s -> s.name().equals(status1)) && !status1.equals("0"))
+					status = false;
+			}
 
 		} else
 			status = false;
 		super.getResponse().setAuthorised(status);
 	}
-
 	@Override
 	public void load() {
 		FlightAssignment flightAssignment;
