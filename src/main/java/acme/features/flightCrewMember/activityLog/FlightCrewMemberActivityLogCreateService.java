@@ -24,9 +24,7 @@ public class FlightCrewMemberActivityLogCreateService extends AbstractGuiService
 	public void authorise() {
 		boolean authorised = true;
 
-		if (super.getRequest().hasData("id"))
-			authorised = false;
-		else if (super.getRequest().getMethod().equals("POST")) {
+		if (super.getRequest().getMethod().equals("POST")) {
 			int id = super.getRequest().getData("id", int.class);
 			int assignmentId = super.getRequest().getData("masterId", int.class);
 
@@ -37,7 +35,8 @@ public class FlightCrewMemberActivityLogCreateService extends AbstractGuiService
 
 			if (assignment == null && assignmentId != 0 || assignment != null && !allAssignments.contains(assignment) || assignment != null && assignment.getFlightCrewMember().getId() != memberId || id != 0)
 				authorised = false;
-		}
+		} else if (super.getRequest().hasData("id"))
+			authorised = false;
 		super.getResponse().setAuthorised(authorised);
 
 	}
