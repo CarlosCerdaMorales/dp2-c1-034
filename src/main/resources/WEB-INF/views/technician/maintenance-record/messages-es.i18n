@@ -31,4 +31,5 @@ technician.maintenance-record.form.button.update = Actualizar
 technician.maintenance-record.form.button.delete = Eliminar
 technician.maintenance-record.form.button.publish = Publicar
 technician.maintenance-record.form.show.involves = Tareas asociadas
-technician.maintenance-record.form.error.not-all-tasks-published = Todas las tareas deben estar publicadas 
+technician.maintenance-record.form.error.not-all-tasks-published = Todas las tareas deben estar publicadas
+technician.maintenance-record.form.error.zero-tasks = No es posible publicar un maintenance record sin tareas
