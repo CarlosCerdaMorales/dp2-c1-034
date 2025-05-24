@@ -30,22 +30,27 @@ public class FlightCrewMemberFlightAssignmentDeleteService extends AbstractGuiSe
 		boolean status;
 		int flightId;
 		int memberId;
-		Optional<FlightAssignment> flightAssignment;
+		if (super.getRequest().hasData("id")) {
 
-		flightId = super.getRequest().getData("id", int.class);
-		flightAssignment = this.repository.findFlightAssignmentById(flightId);
-		memberId = super.getRequest().getPrincipal().getActiveRealm().getId();
+			Optional<FlightAssignment> flightAssignment;
 
-		status = flightAssignment.isPresent();
+			flightId = super.getRequest().getData("id", int.class);
+			flightAssignment = this.repository.findFlightAssignmentById(flightId);
+			memberId = super.getRequest().getPrincipal().getActiveRealm().getId();
 
-		if (flightAssignment.isPresent() && flightAssignment.get().isDraftMode() && flightAssignment.get().getFlightCrewMember().getId() != memberId)
-			status = false;
-		if (flightAssignment.isPresent() && super.getRequest().hasData("leg")) {
-			int legId = super.getRequest().getData("leg", int.class);
-			Optional<Leg> leg = this.repository.findLegById(legId);
-			if (leg.isEmpty() || leg.isPresent() && leg.get().isDraftMode())
+			status = flightAssignment.isPresent();
+
+			if (flightAssignment.isPresent() && flightAssignment.get().isDraftMode() && flightAssignment.get().getFlightCrewMember().getId() != memberId)
 				status = false;
-		}
+			if (flightAssignment.isPresent() && super.getRequest().hasData("leg")) {
+				int legId = super.getRequest().getData("leg", int.class);
+				Optional<Leg> leg = this.repository.findLegById(legId);
+				if (leg.isEmpty() || leg.isPresent() && leg.get().isDraftMode())
+					status = false;
+			}
+
+		} else
+			status = false;
 		super.getResponse().setAuthorised(status);
 	}
 

@@ -1,6 +1,6 @@
 key,flightNumber,scheduledDeparture,scheduledArrival,flightStatus,draftMode,key:airportDeparture,key:airportArrival,key:aircraft,key:flight
 # Base entity
-leg-00,ABX2345,2000/01/01 00:01,2000/01/02 00:01,ON_TIME,FALSE,airport-00,airport-01,aircraft-01,flight-01
+leg-00,ABX2345,2000/01/01 00:01,2000/01/02 00:01,LANDED,FALSE,airport-00,airport-01,aircraft-01,flight-01
 # Variations
 leg-01,ACX2346,2000/01/02 08:01,2000/01/03 00:01,DELAYED,FALSE,airport-00,airport-01,aircraft-02,flight-01
 leg-02,AEX2347,2000/01/04 00:01,2000/01/05 00:01,CANCELLED,FALSE,airport-00,airport-01,aircraft-03,flight-01
