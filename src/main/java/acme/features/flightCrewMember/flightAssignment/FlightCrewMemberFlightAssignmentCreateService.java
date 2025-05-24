@@ -1,6 +1,7 @@
 
 package acme.features.flightCrewMember.flightAssignment;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -28,18 +29,38 @@ public class FlightCrewMemberFlightAssignmentCreateService extends AbstractGuiSe
 	public void authorise() {
 		String metodo = super.getRequest().getMethod();
 		boolean authorised = true;
+		boolean isMember = false;
+		Leg leg = null;
+		FlightAssignment assignment = null;
 		int memberId = super.getRequest().getPrincipal().getActiveRealm().getId();
+		FlightCrewMember member = this.repository.findFlightCrewMemberById(memberId).get();
 
-		if (metodo.equals("POST")) {
+		if (super.getRequest().hasData("id") && super.getRequest().getData("id", int.class) != 0)
+			authorised = false;
+		else if (metodo.equals("POST")) {
 			int assignmentId = super.getRequest().getData("id", int.class);
-			FlightAssignment assignment = this.repository.findFlightAssignmentById(assignmentId).get();
+			Optional<FlightAssignment> assignmentOpt = this.repository.findFlightAssignmentById(assignmentId);
+			if (assignmentOpt.isPresent()) {
+				assignment = assignmentOpt.get();
+				int assignmentMemberId = assignment.getFlightCrewMember().getId();
+				isMember = assignmentMemberId == memberId;
+
+			}
 			int legId = super.getRequest().getData("leg", int.class);
+
+			String duty = super.getRequest().getData("flightCrewDuty", String.class);
+			if (duty == null || duty.trim().isEmpty() || Arrays.stream(FlightCrewDuty.values()).noneMatch(s -> s.name().equals(duty)) && !duty.equals("0"))
+				authorised = false;
+
+			String status = super.getRequest().getData("assignmentStatus", String.class);
+			if (status == null || status.trim().isEmpty() || Arrays.stream(AssignmentStatus.values()).noneMatch(s -> s.name().equals(status)) && !status.equals("0"))
+				authorised = false;
 
 			Optional<Leg> legOpt = this.repository.findLegById(legId);
 			List<Leg> allLegs = this.repository.findAllLegs();
 			if (legOpt.isPresent()) {
-				Leg leg = legOpt.get();
-				if (leg == null && legId != 0 || leg != null && !allLegs.contains(leg) || leg.isDraftMode() || assignment.getFlightCrewMember().getId() != memberId)
+				leg = legOpt.get();
+				if (leg == null && legId != 0 || leg != null && !allLegs.contains(leg) || leg.isDraftMode() || isMember || !leg.getAircraft().getAirline().equals(member.getWorkingFor()))
 					authorised = false;
 			}
 		}

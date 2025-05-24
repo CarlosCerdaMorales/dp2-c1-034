@@ -100,6 +100,7 @@ acme.validation.passenger.invalid-passport-pattern.message = This passenger's pa
 acme.validation.flightcrewmember.duplicated-employeecode.message = There is an existing flight crew member with this employee code.
 acme.validation.flightcrewmember.invalid-employeecode-pattern.message = Employee code does not follow the expected pattern.
 acme.validation.flightcrewmember.invalid-employeecode-initials.message = Employee code first 2 letters must match the employee's initials.
+acme.validation.landed-leg.message = Cannot publish activity log if the leg has not landed
 
 ### IsFrom ###
 acme.validation.booking.duplicated-is-from.message = This booking is already related to this passenger
