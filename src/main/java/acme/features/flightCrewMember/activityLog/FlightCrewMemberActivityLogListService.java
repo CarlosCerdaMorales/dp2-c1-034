@@ -24,12 +24,14 @@ public class FlightCrewMemberActivityLogListService extends AbstractGuiService<F
 	public void authorise() {
 		boolean status = false;
 		FlightAssignment flightAssignment;
-		int masterId = super.getRequest().getData("masterId", int.class);
 
-		flightAssignment = this.repository.findFlightAssignmentById(masterId);
-		if (flightAssignment != null && !flightAssignment.isDraftMode())
-			status = true;
-
+		if (super.getRequest().hasData("masterId")) {
+			int masterId = super.getRequest().getData("masterId", int.class);
+			flightAssignment = this.repository.findFlightAssignmentById(masterId);
+			if (flightAssignment != null && !flightAssignment.isDraftMode())
+				status = true;
+		} else
+			status = false;
 		super.getResponse().setAuthorised(status);
 	}
 
@@ -40,7 +42,6 @@ public class FlightCrewMemberActivityLogListService extends AbstractGuiService<F
 		List<ActivityLog> publishedLogs;
 		int masterId = super.getRequest().getData("masterId", int.class);
 		int memberId = super.getRequest().getPrincipal().getActiveRealm().getId();
-		;
 		FlightAssignment assignment = this.repository.findFlightAssignmentById(masterId);
 		boolean myAssignment = false;
 		if (assignment.getFlightCrewMember().getId() == memberId)

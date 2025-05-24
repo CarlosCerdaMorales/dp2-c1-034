@@ -33,8 +33,7 @@ public class FlightCrewMemberActivityLogDeleteService extends AbstractGuiService
 			else if (log != null && !log.isDraftMode())
 				status = false;
 		} else
-			status = false;
-		super.getResponse().setAuthorised(status);
+			super.getResponse().setAuthorised(status);
 	}
 
 	@Override
