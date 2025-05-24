@@ -38,6 +38,10 @@ public class AssistanceAgentClaimPublishService extends AbstractGuiService<Assis
 		String metodo = super.getRequest().getMethod();
 		boolean correctEnum = false;
 		boolean correctLeg = true;
+		AssistanceAgent assistanceAgent;
+		int agentId;
+		agentId = super.getRequest().getPrincipal().getActiveRealm().getId();
+		assistanceAgent = this.repository.findAssistanceAgentById(agentId);
 
 		claimId = super.getRequest().getData("id", int.class);
 		claim = this.repository.findClaimById(claimId);
@@ -60,7 +64,7 @@ public class AssistanceAgentClaimPublishService extends AbstractGuiService<Assis
 				type = super.getRequest().getData("claimType", String.class);
 				legId = super.getRequest().getData("leg", int.class);
 				leg = this.repository.findLegById(legId);
-				publishedLegs = this.repository.findAllPublishedLegs();
+				publishedLegs = this.repository.findAllPublishedLegs(assistanceAgent.getAirline().getId());
 				for (ClaimType t : ClaimType.values())
 					if (t.name().equals(type))
 						correctEnum = true;
@@ -122,8 +126,13 @@ public class AssistanceAgentClaimPublishService extends AbstractGuiService<Assis
 		Collection<Leg> legs;
 		SelectChoices choicesType;
 
+		AssistanceAgent assistanceAgent;
+		int agentId;
+		agentId = super.getRequest().getPrincipal().getActiveRealm().getId();
+		assistanceAgent = this.repository.findAssistanceAgentById(agentId);
+
 		choicesType = SelectChoices.from(ClaimType.class, claim.getClaimType());
-		legs = this.repository.findAllPublishedLegs();
+		legs = this.repository.findAllPublishedLegs(assistanceAgent.getAirline().getId());
 		selectedLeg = SelectChoices.from(legs, "flightNumber", claim.getLeg());
 		dataset = super.unbindObject(claim, "registrationMoment", "passengerEmail", "description", "claimType");
 		dataset.put("draftMode", claim.getDraftMode());

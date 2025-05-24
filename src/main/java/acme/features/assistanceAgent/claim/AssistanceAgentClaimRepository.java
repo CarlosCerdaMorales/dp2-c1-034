@@ -22,6 +22,9 @@ public interface AssistanceAgentClaimRepository extends AbstractRepository {
 	@Query("select a.id from AssistanceAgent a where a.userAccount.id = :userAccountId")
 	int findAssistanceAgentIdByUserAccountId(int userAccountId);
 
+	@Query("select a from AssistanceAgent a where a.id = :id")
+	AssistanceAgent findAssistanceAgentById(int id);
+
 	@Query("select c from Claim c where c.assistanceAgent.id = :assistanceAgentId")
 	Collection<Claim> findClaimsByAssistanceAgentId(int assistanceAgentId);
 
@@ -31,8 +34,8 @@ public interface AssistanceAgentClaimRepository extends AbstractRepository {
 	@Query("select a from AssistanceAgent a where a.userAccount.id = :userAccountId")
 	AssistanceAgent findAssistanceAgentByUserAccountId(int userAccountId);
 
-	@Query("select l from Leg l where l.draftMode = false")
-	Collection<Leg> findAllPublishedLegs();
+	@Query("select l from Leg l where l.draftMode = false and l.aircraft.airline.id = :airlineId")
+	Collection<Leg> findAllPublishedLegs(int airlineId);
 
 	@Query("select l from Leg l where l.id = :legId")
 	Leg findLegById(int legId);
