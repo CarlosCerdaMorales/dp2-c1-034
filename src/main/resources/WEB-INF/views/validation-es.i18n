@@ -129,6 +129,7 @@ acme.validation.overlapping.message = Ya se está realizando una asignación en 
 acme.validation.flight.cant-be-publish.message = Todas las escalas deben estar publicadas
 acme.validation.invalid-currency.message = Divisa invalida
 acme.validation.flight.zero-legs.message = Al menos una escala para poder publicar
+acme.validation.flight.unable-to-delete-flight-published-leg.message = Vuelos con escalas publicadas no pueden ser borrados
 
 
  

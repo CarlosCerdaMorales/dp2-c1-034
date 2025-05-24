@@ -47,19 +47,18 @@ public class ManagerLegCreateService extends AbstractGuiService<Manager, Leg> {
 		Integer flightId = super.getRequest().getData("flightId", int.class);
 
 		if (this.flightRepository.findFlightById(flightId) == null)
-			throw new RuntimeException("No flight with id: " + flightId);
-
-		Flight flight = this.flightRepository.findFlightById(flightId);
-		if (!flight.getDraftMode())
 			authorized = false;
 
+		Flight flight = this.flightRepository.findFlightById(flightId);
+		if (this.flightRepository.findFlightById(flightId) != null)
+			if (!flight.getDraftMode())
+				authorized = false;
 		Integer managerId = super.getRequest().getPrincipal().getActiveRealm().getId();
 		Optional<Flight> optionalFlight = this.repository.findByIdAndManagerId(flightId, managerId);
 
 		if (optionalFlight.isEmpty())
 			authorized = false;
-
-		if (metodo.equals("POST")) {
+		else if (metodo.equals("POST")) {
 			aircraftId = super.getRequest().getData("aircraft", int.class);
 			aircraft = this.repository.findAircraftByAircraftId(aircraftId);
 			aircrafts = this.repository.findAllAircraftsByManagerId(managerId);
