@@ -35,7 +35,7 @@ public class FlightCrewMemberActivityLogShowService extends AbstractGuiService<F
 			if (log != null && log.isDraftMode() && super.getRequest().getPrincipal().hasRealm(member))
 				status = true;
 			else if (log != null && !log.isDraftMode())
-				status = false;
+				status = true;
 		} else
 			status = false;
 		super.getResponse().setAuthorised(status);
