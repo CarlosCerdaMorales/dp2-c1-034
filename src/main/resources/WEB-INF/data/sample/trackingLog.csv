@@ -29,8 +29,8 @@ trackinglog-22,2023/08/15 13:07,"Lorem ipsum dolor sit ame",22,PENDING,"洛伦·
 trackinglog-23,2023/08/15 13:08,"Lorem ipsum dolor sit ame",24,PENDING,"<marquee>Hacked</marquee>",false,claim-03
 trackinglog-24,2023/08/15 13:09,"Lorem ipsum dolor sit ame",26,PENDING,"<script>alert(‘Hacked!’);</script>",false,claim-03
 trackinglog-26,2023/08/15 13:10,"Lorem ipsum dolor sit ame",28,PENDING,"' or 'A' = 'A ",false,claim-03
-trackinglog-27,2023/08/15 13:11,"Lorem ipsum dolor sit ame",100,REJECTED,"L",true,claim-03
-#lastUpdateMoment - variations
+trackinglog-27,2023/08/15 13:11,"Lorem ipsum dolor sit ame",100,REJECTED,"L",false,claim-03
+#lastUpdateMoment -variations
 trackinglog-28,2012/07/02 0:00,"Lorem ipsum dolor sit ame",10,PENDING,"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do: eiusmod tempor incididunt ut labore et dolore magna aliqua! Ut*",false,claim-12
 trackinglog-29,2000/01/01 0:00,"Lorem ipsum dolor sit ame",12,PENDING,"L",false,claim-12
 trackinglog-30,2000/01/01 0:01,"Lorem ipsum dolor sit ame",14,PENDING,"Lo",false,claim-12
