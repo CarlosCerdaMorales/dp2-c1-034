@@ -109,6 +109,7 @@ acme.validation.booking.invalid-isFrom-booking-null.message = You must choose a 
 acme.validation.booking.invalid-booking-isFrom-publish.message = You can't publish unless this booking is published
 acme.validation.booking.invalid-passenger-isFrom-publish.message = You can't publish unless this passenger is published
 acme.validation.isfrom.invalid-passenger-create.message = You can't add a passenger which is not yours and is not published
+acme.validation.isfrom.empty-delete = May not be null
 
 ### Leg ###
 acme.validation.leg.overlapping-legs.message = This leg overlaps other legs
