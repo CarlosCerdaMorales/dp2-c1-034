@@ -56,6 +56,12 @@ public class ManagerLegCreateService extends AbstractGuiService<Manager, Leg> {
 		Integer managerId = super.getRequest().getPrincipal().getActiveRealm().getId();
 		Optional<Flight> optionalFlight = this.repository.findByIdAndManagerId(flightId, managerId);
 
+		if (super.getRequest().hasData("id", boolean.class)) {
+			int legId = super.getRequest().getData("id", int.class);
+			authorized &= legId == 0;
+		}
+		super.getResponse().setAuthorised(authorized);
+
 		if (optionalFlight.isEmpty())
 			authorized = false;
 		else if (metodo.equals("POST")) {
