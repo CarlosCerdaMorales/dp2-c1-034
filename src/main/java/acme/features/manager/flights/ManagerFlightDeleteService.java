@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import acme.client.components.models.Dataset;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
-import acme.entities.booking.Booking;
 import acme.entities.flight.Flight;
 import acme.entities.leg.Leg;
 import acme.features.manager.legs.ManagerLegDeleteService;
@@ -18,11 +17,10 @@ import acme.realms.Manager;
 public class ManagerFlightDeleteService extends AbstractGuiService<Manager, Flight> {
 
 	@Autowired
-	private ManagerFlightRepository	repository;
+	private ManagerFlightRepository repository;
 
 	@Autowired
-	private ManagerLegDeleteService	legsDeleteService;
-
+	private ManagerLegDeleteService legsDeleteService;
 
 	@Override
 	public void authorise() {
@@ -60,22 +58,21 @@ public class ManagerFlightDeleteService extends AbstractGuiService<Manager, Flig
 
 	@Override
 	public void validate(final Flight flight) {
-		List<Leg> legs = this.repository.findLegsByFlightId(flight.getId());
-		for (Leg leg : legs) {
-			boolean isPublished = leg.isDraftMode();
-			super.state(isPublished, "flightTag", "acme.validation.flight.unable-to-delete-flight-published-leg.message");
+		boolean isPublished;
+		isPublished = true;
+		if (this.repository.findLegsByFlightId(flight.getId()).size() > 0) {
+			List<Leg> legs = this.repository.findLegsByFlightId(flight.getId());
+			for (Leg leg : legs)
+				if (!leg.isDraftMode())
+					isPublished = leg.isDraftMode();
 		}
+		super.state(isPublished, "flightTag", "acme.validation.flight.unable-to-delete-flight-published-leg.message");
 		;
 	}
 
 	@Override
 	public void perform(final Flight flight) {
-		List<Booking> bookings;
 		List<Leg> legs;
-
-		bookings = this.repository.findBookingsByFlightId(flight.getId());
-		bookings.stream().forEach(b -> this.repository.deleteAll(this.repository.findIsFromsByBookingId(b.getId())));
-		this.repository.deleteAll(bookings);
 
 		legs = this.repository.findLegsByFlightId(flight.getId());
 		legs.stream().forEach(l -> this.legsDeleteService.perform(l));
@@ -86,10 +83,11 @@ public class ManagerFlightDeleteService extends AbstractGuiService<Manager, Flig
 	public void unbind(final Flight flight) {
 		Dataset dataset;
 
-		dataset = super.unbindObject(flight, "flightTag", "isSelfTransfer", "flightCost", "flightDescription", "draftMode");
+		dataset = super.unbindObject(flight, "flightTag", "isSelfTransfer", "flightCost", "flightDescription",
+				"drafMode");
 
-		dataset.put("departure", flight.getDeparture() != null ? flight.getDeparture().getAirportName() : flight.getDeparture());
-		dataset.put("arrival", flight.getArrival() != null ? flight.getArrival().getAirportName() : flight.getArrival());
+		dataset.put("departure", flight.getDeparture());
+		dataset.put("arrival", flight.getArrival());
 		dataset.put("scheduledDeparture", flight.getFlightDeparture());
 		dataset.put("scheduledArrival", flight.getFlightArrival());
 		dataset.put("layovers", flight.getLayovers());

@@ -56,12 +56,15 @@ public class ManagerFlightCreateService extends AbstractGuiService<Manager, Flig
 		String currency;
 		String currencyName;
 		currency = super.getRequest().getData("flightCost", String.class);
-		if (currency.length() >= 3) {
-			currencyName = currency.length() >= 3 ? currency.substring(0, 3).toUpperCase() : currency;
-			availableCurrency = currencies.contains(currencyName);
-		}
+		if (currency.length() >= 3)
+			currencyName = currency.substring(0, 3).toUpperCase();
+		else
+			currencyName = currency;
+
+		availableCurrency = currencies.contains(currencyName);
 
 		super.state(availableCurrency, "flightCost", "acme.validation.invalid-currency.message");
+
 	}
 
 	@Override
@@ -75,8 +78,8 @@ public class ManagerFlightCreateService extends AbstractGuiService<Manager, Flig
 
 		dataset = super.unbindObject(flight, "flightTag", "isSelfTransfer", "flightCost", "flightDescription", "draftMode");
 
-		dataset.put("origin", flight.getDeparture() != null ? flight.getDeparture().getAirportName() : flight.getDeparture());
-		dataset.put("destination", flight.getArrival() != null ? flight.getArrival().getAirportName() : flight.getArrival());
+		dataset.put("origin", flight.getDeparture());
+		dataset.put("destination", flight.getArrival());
 		dataset.put("scheduledDeparture", flight.getFlightDeparture());
 		dataset.put("scheduledArrival", flight.getFlightArrival());
 		dataset.put("layovers", flight.getLayovers());
