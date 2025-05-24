@@ -25,17 +25,15 @@ public class TrackingLogValidator extends AbstractValidator<ValidTrackingLog, Tr
 		assert context != null;
 		boolean result;
 		TrackingLogRepository repository = SpringHelper.getBean(TrackingLogRepository.class);
-		Collection<TrackingLog> maxTrackingLog = repository.findTrackingLogs100PercentageByMasterId(trLog.getClaim().getId());
 
-		if (trLog == null || trLog.getResolutionPercentage() == null)
-			super.state(context, false, "resolutionPercentage", "javax.validation.constraints.NotNull.message");
-
+		if (trLog == null)
+			super.state(context, false, "*", "javax.validation.constraints.NotNull.message");
 		else {
 			Double resolutionPercentage = trLog.getResolutionPercentage();
 			TrackingLogStatus status = trLog.getStatus();
 			String resolution = trLog.getResolution();
-
-			{
+			Collection<TrackingLog> maxTrackingLog = repository.findTrackingLogs100PercentageByMasterId(trLog.getClaim().getId());
+			if (trLog.getResolutionPercentage() != null) {
 				if (resolutionPercentage < 100) {
 					if (status == TrackingLogStatus.ACCEPTED || status == TrackingLogStatus.REJECTED)
 						super.state(context, false, "status", "acme.validation.trackinglog.invalid-status-notresolute.message");
@@ -47,7 +45,6 @@ public class TrackingLogValidator extends AbstractValidator<ValidTrackingLog, Tr
 						super.state(context, false, "resolution", "acme.validation.trackinglog.invalid-resolution.message");
 				}
 			}
-
 		}
 
 		result = !super.hasErrors(context);
