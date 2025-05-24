@@ -2,6 +2,7 @@
 package acme.features.flightCrewMember.flightAssignment;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -27,19 +28,27 @@ public class FlightCrewMemberFlightAssignmentDeleteService extends AbstractGuiSe
 	@Override
 	public void authorise() {
 		boolean status;
-		FlightAssignment assignment;
-		int id;
-		FlightCrewMember member;
+		int flightId;
+		int memberId;
+		Optional<FlightAssignment> flightAssignment;
 
-		id = super.getRequest().getData("id", int.class);
-		int legId = super.getRequest().getData("leg", int.class);
+		flightId = super.getRequest().getData("id", int.class);
+		flightAssignment = this.repository.findFlightAssignmentById(flightId);
+		memberId = super.getRequest().getPrincipal().getActiveRealm().getId();
 
-		Leg leg = this.repository.findLegById(legId).isPresent() ? this.repository.findLegById(legId).get() : null;
-		assignment = this.repository.findFlightAssignmentById(id).get();
-		member = assignment == null ? null : assignment.getFlightCrewMember();
-		status = assignment.isDraftMode() && assignment != null && super.getRequest().getPrincipal().hasRealm(member) && leg != null && !leg.isDraftMode();
+		status = flightAssignment.isPresent();
+
+		if (flightAssignment.isPresent() && flightAssignment.get().isDraftMode() && flightAssignment.get().getFlightCrewMember().getId() != memberId)
+			status = false;
+		if (flightAssignment.isPresent() && super.getRequest().hasData("leg")) {
+			int legId = super.getRequest().getData("leg", int.class);
+			Optional<Leg> leg = this.repository.findLegById(legId);
+			if (leg.isEmpty() || leg.isPresent() && leg.get().isDraftMode())
+				status = false;
+		}
 		super.getResponse().setAuthorised(status);
 	}
+
 	@Override
 	public void load() {
 		FlightAssignment flightAssignment;
