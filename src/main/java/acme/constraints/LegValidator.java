@@ -34,9 +34,6 @@ public class LegValidator extends AbstractValidator<ValidLeg, Leg> {
 
 		boolean result = true;
 
-		if (leg == null)
-			return true;
-
 		if (leg.getFlightNumber() != null) {
 			boolean uniqueLeg;
 			Leg existingLeg;

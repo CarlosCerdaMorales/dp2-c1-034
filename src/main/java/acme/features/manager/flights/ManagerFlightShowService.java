@@ -22,14 +22,12 @@ public class ManagerFlightShowService extends AbstractGuiService<Manager, Flight
 		status = false;
 		int flightId;
 		Flight flight;
-		Manager manager;
 		if (!super.getRequest().hasData("id"))
 			status = false;
 		else {
 
 			flightId = super.getRequest().getData("id", int.class);
 			flight = this.repository.findFlightById(flightId);
-			manager = flight == null ? null : flight.getManager();
 
 			if (flight != null) {
 				if (flight.getDraftMode())

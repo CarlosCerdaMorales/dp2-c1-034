@@ -34,9 +34,6 @@ public class FlightValidator extends AbstractValidator<ValidFlight, Flight> {
 
 		boolean result = true;
 
-		if (flight == null)
-			return true;
-
 		boolean atLeastOneLeg = flight.getLayovers() > 0;
 		if (flight.getDraftMode() != null) {
 			if (!flight.getDraftMode())

@@ -27,6 +27,11 @@ public class TechnicianMaintenanceRecordCreateService extends AbstractGuiService
 	public void authorise() {
 		boolean authorised = true;
 
+		if (super.getRequest().hasData("id", boolean.class)) {
+			int manteinanceRecordId = super.getRequest().getData("id", int.class);
+			authorised &= manteinanceRecordId == 0;
+		}
+
 		if (super.getRequest().getMethod().equals("POST")) {
 			int aircraftId = super.getRequest().getData("aircraft", int.class);
 			Aircraft aircraft = this.repository.findAircraftById(aircraftId);
