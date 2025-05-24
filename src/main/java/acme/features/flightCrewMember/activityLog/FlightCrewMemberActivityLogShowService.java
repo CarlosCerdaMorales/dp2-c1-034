@@ -22,7 +22,19 @@ public class FlightCrewMemberActivityLogShowService extends AbstractGuiService<F
 
 	@Override
 	public void authorise() {
-		super.getResponse().setAuthorised(true);
+		boolean status = false;
+		ActivityLog log;
+		int logId;
+		FlightCrewMember member;
+
+		logId = super.getRequest().getData("id", int.class);
+		log = this.repository.findActivityLogById(logId);
+		member = log == null ? null : log.getFlightAssignment().getFlightCrewMember();
+		if (log != null && log.isDraftMode() && super.getRequest().getPrincipal().hasRealm(member))
+			status = true;
+		else if (log != null && !log.isDraftMode())
+			status = true;
+		super.getResponse().setAuthorised(status);
 	}
 
 	@Override
