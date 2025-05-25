@@ -47,7 +47,7 @@ public class CustomerBookingPublishService extends AbstractGuiService<Customer, 
 				Collection<Flight> allFlights = this.repository.findAllFlights();
 
 				String travelClass = super.getRequest().getData("travelClass", String.class);
-				if (travelClass == null || travelClass.trim().isEmpty() || Arrays.stream(TravelClass.values()).noneMatch(s -> s.name().equals(travelClass)) && !travelClass.equals("0"))
+				if (travelClass.trim().isEmpty() || Arrays.stream(TravelClass.values()).noneMatch(s -> s.name().equals(travelClass)) && !travelClass.equals("0"))
 					status = false;
 
 				if (flight == null && flightId != 0 || flight != null && !allFlights.contains(flight))

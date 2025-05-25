@@ -36,7 +36,7 @@ public class CustomerBookingCreateService extends AbstractGuiService<Customer, B
 			int bookingId = super.getRequest().getData("id", int.class);
 
 			String travelClass = super.getRequest().getData("travelClass", String.class);
-			if (travelClass == null || travelClass.trim().isEmpty() || Arrays.stream(TravelClass.values()).noneMatch(s -> s.name().equals(travelClass)) && !travelClass.equals("0"))
+			if (travelClass.trim().isEmpty() || Arrays.stream(TravelClass.values()).noneMatch(s -> s.name().equals(travelClass)) && !travelClass.equals("0"))
 				authorised = false;
 
 			Flight flight = this.repository.findFlightById(flightId);
