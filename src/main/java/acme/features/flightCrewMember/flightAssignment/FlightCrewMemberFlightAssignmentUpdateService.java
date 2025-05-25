@@ -48,7 +48,7 @@ public class FlightCrewMemberFlightAssignmentUpdateService extends AbstractGuiSe
 			if (flightAssignment.isPresent() && super.getRequest().hasData("leg")) {
 				int legId = super.getRequest().getData("leg", int.class);
 				Optional<Leg> leg = this.repository.findLegById(legId);
-				if (leg.isEmpty() || leg.isPresent() && leg.get().isDraftMode() || memberOpt.isPresent() && !leg.get().getAircraft().getAirline().equals(memberOpt.get().getWorkingFor()))
+				if (leg.isEmpty() && legId != 0 || leg.isPresent() && leg.get().isDraftMode() || leg.isPresent() && memberOpt.isPresent() && !leg.get().getAircraft().getAirline().equals(memberOpt.get().getWorkingFor()))
 					status = false;
 			}
 			if (super.getRequest().hasData("flightCrewDuty")) {
