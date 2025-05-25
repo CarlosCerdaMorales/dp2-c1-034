@@ -50,13 +50,11 @@ public class TechnicianMaintenanceRecordUpdateService extends AbstractGuiService
 
 				if (aircraft == null && aircraftId != 0)
 					authorised = false;
-				else if (aircraft != null && !available.contains(aircraft))
-					authorised = false;
 			}
 			String method = super.getRequest().getMethod();
 			if (method.equals("POST")) {
 				String status = super.getRequest().getData("status", String.class);
-				if (status == null || Arrays.stream(MaintenanceStatus.values()).noneMatch(s -> s.name().equals(status)) && !status.equals("0"))
+				if (Arrays.stream(MaintenanceStatus.values()).noneMatch(s -> s.name().equals(status)) && !status.equals("0"))
 					authorised = false;
 			}
 		}

@@ -36,13 +36,12 @@ public class TechnicianMaintenanceRecordCreateService extends AbstractGuiService
 		if (super.getRequest().getMethod().equals("POST")) {
 			int aircraftId = super.getRequest().getData("aircraft", int.class);
 			Aircraft aircraft = this.repository.findAircraftById(aircraftId);
-			Collection<Aircraft> available = this.repository.findAllAircrafts();
 
-			if (aircraft == null && aircraftId != 0 || aircraft != null && !available.contains(aircraft))
+			if (aircraft == null && aircraftId != 0)
 				authorised = false;
 
 			String status = super.getRequest().getData("status", String.class);
-			if (status == null || Arrays.stream(MaintenanceStatus.values()).noneMatch(s -> s.name().equals(status)) && !status.equals("0"))
+			if (Arrays.stream(MaintenanceStatus.values()).noneMatch(s -> s.name().equals(status)) && !status.equals("0"))
 				authorised = false;
 
 		}
