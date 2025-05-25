@@ -30,7 +30,7 @@ public class FlightCrewMemberActivityLogUpdateService extends AbstractGuiService
 			member = log == null ? null : log.getFlightAssignment().getFlightCrewMember();
 			if (log != null && log.isDraftMode() && super.getRequest().getPrincipal().hasRealm(member))
 				status = true;
-			else if (log != null && !log.isDraftMode())
+			else if (log != null && !log.isDraftMode() || log != null && log.getFlightAssignment().isDraftMode())
 				status = false;
 		} else
 			status = false;
@@ -62,7 +62,7 @@ public class FlightCrewMemberActivityLogUpdateService extends AbstractGuiService
 	public void perform(final ActivityLog activityLog) {
 		this.repository.save(activityLog);
 	}
-	
+
 	@Override
 	public void unbind(final ActivityLog activityLog) {
 		Dataset dataset;
