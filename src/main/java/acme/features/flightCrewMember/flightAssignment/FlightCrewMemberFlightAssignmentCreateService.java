@@ -38,26 +38,22 @@ public class FlightCrewMemberFlightAssignmentCreateService extends AbstractGuiSe
 		else if (metodo.equals("POST")) {
 
 			String duty = super.getRequest().getData("flightCrewDuty", String.class);
-			if (duty == null || duty.trim().isEmpty() || Arrays.stream(FlightCrewDuty.values()).noneMatch(s -> s.name().equals(duty)) && !duty.equals("0"))
+			if (Arrays.stream(FlightCrewDuty.values()).noneMatch(s -> s.name().equals(duty)) && !duty.equals("0"))
 				authorised = false;
 
 			String status = super.getRequest().getData("assignmentStatus", String.class);
-			if (status == null || status.trim().isEmpty() || Arrays.stream(AssignmentStatus.values()).noneMatch(s -> s.name().equals(status)) && !status.equals("0"))
+			if (Arrays.stream(AssignmentStatus.values()).noneMatch(s -> s.name().equals(status)) && !status.equals("0"))
 				authorised = false;
 		}
 		if (super.getRequest().hasData("leg")) {
 			int legId = super.getRequest().getData("leg", int.class);
 			Optional<Leg> legOpt = this.repository.findLegById(legId);
-			List<Leg> allLegs = this.repository.findAllLegs();
-
-			int assignmentId = super.getRequest().getData("id", int.class);
-			Optional<FlightAssignment> assignment = this.repository.findFlightAssignmentById(assignmentId);
 
 			if (legOpt.isPresent()) {
 				leg = legOpt.get();
-				if (leg != null && !allLegs.contains(leg) || leg.isDraftMode() || assignment.isPresent() && assignment.get().getFlightCrewMember().getId() == memberId || !leg.getAircraft().getAirline().equals(member.getWorkingFor()))
+				if (leg != null && leg.isDraftMode() || !leg.getAircraft().getAirline().equals(member.getWorkingFor()))
 					authorised = false;
-			} else if (legOpt.isEmpty() && legId != 0)
+			} else if (legId != 0)
 				authorised = false;
 		}
 		super.getResponse().setAuthorised(authorised);
