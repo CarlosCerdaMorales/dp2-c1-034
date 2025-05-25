@@ -17,10 +17,11 @@ import acme.realms.Manager;
 public class ManagerFlightDeleteService extends AbstractGuiService<Manager, Flight> {
 
 	@Autowired
-	private ManagerFlightRepository repository;
+	private ManagerFlightRepository	repository;
 
 	@Autowired
-	private ManagerLegDeleteService legsDeleteService;
+	private ManagerLegDeleteService	legsDeleteService;
+
 
 	@Override
 	public void authorise() {
@@ -83,8 +84,7 @@ public class ManagerFlightDeleteService extends AbstractGuiService<Manager, Flig
 	public void unbind(final Flight flight) {
 		Dataset dataset;
 
-		dataset = super.unbindObject(flight, "flightTag", "isSelfTransfer", "flightCost", "flightDescription",
-				"drafMode");
+		dataset = super.unbindObject(flight, "flightTag", "isSelfTransfer", "flightCost", "flightDescription", "draftMode");
 
 		dataset.put("departure", flight.getDeparture());
 		dataset.put("arrival", flight.getArrival());

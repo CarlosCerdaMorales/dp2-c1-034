@@ -1,6 +1,7 @@
 
 package acme.features.manager.legs;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -8,12 +9,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
 import acme.client.components.views.SelectChoices;
+import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.aircraft.Aircraft;
 import acme.entities.aircraft.AircraftStatus;
 import acme.entities.airport.Airport;
-import acme.entities.flight.Flight;
 import acme.entities.leg.FlightStatus;
 import acme.entities.leg.Leg;
 import acme.realms.Manager;
@@ -59,9 +60,6 @@ public class ManagerLegUpdateService extends AbstractGuiService<Manager, Leg> {
 				if (!leg.isDraftMode())
 					status = false;
 				else {
-					Optional<Flight> flight = this.repository.findByIdAndManagerId(leg.getFlight().getId(), managerId);
-					if (flight.isEmpty())
-						status = false;
 
 					if (super.getRequest().hasData("aircraft")) {
 						aircraftId = super.getRequest().getData("aircraft", int.class);
@@ -84,8 +82,6 @@ public class ManagerLegUpdateService extends AbstractGuiService<Manager, Leg> {
 						if (departure == null && departureId != 0)
 							status = false;
 
-						if (departure != null && !airports.contains(departure))
-							status = false;
 					}
 
 					if (super.getRequest().hasData("airportArrival")) {
@@ -95,8 +91,6 @@ public class ManagerLegUpdateService extends AbstractGuiService<Manager, Leg> {
 						if (arrival == null && arrivalId != 0)
 							status = false;
 
-						if (arrival != null && !airports.contains(arrival))
-							status = false;
 					}
 				}
 			}
@@ -144,6 +138,11 @@ public class ManagerLegUpdateService extends AbstractGuiService<Manager, Leg> {
 		if (leg.getAircraft() != null) {
 			boolean isAircraftActive = leg.getAircraft().getStatus().equals(AircraftStatus.ACTIVE);
 			super.state(isAircraftActive, "aircraft", "acme.validation.flight.aircraft-under-maintenance.message");
+		}
+		if (leg.getScheduledArrival() != null && leg.getScheduledDeparture() != null) {
+			Date currentDate = MomentHelper.getCurrentMoment();
+			super.state(currentDate.before(leg.getScheduledDeparture()), "scheduledDeparture", "acme.validation.leg.past-date.message");
+			super.state(currentDate.before(leg.getScheduledArrival()), "scheduledArrival", "acme.validation.leg.past-date.message");
 		}
 	}
 

@@ -25,10 +25,11 @@ import acme.realms.Manager;
 public class ManagerLegCreateService extends AbstractGuiService<Manager, Leg> {
 
 	@Autowired
-	private ManagerLegRepository repository;
+	private ManagerLegRepository	repository;
 
 	@Autowired
-	private ManagerFlightRepository flightRepository;
+	private ManagerFlightRepository	flightRepository;
+
 
 	@Override
 	public void authorise() {
@@ -85,13 +86,7 @@ public class ManagerLegCreateService extends AbstractGuiService<Manager, Leg> {
 				if (departure == null && departureId != 0)
 					authorized = false;
 
-				if (departure != null && !airports.contains(departure))
-					authorized = false;
-
 				if (arrival == null && arrivalId != 0)
-					authorized = false;
-
-				if (arrival != null && !airports.contains(arrival))
 					authorized = false;
 
 			}
@@ -148,10 +143,8 @@ public class ManagerLegCreateService extends AbstractGuiService<Manager, Leg> {
 
 		if (leg.getScheduledArrival() != null && leg.getScheduledDeparture() != null) {
 			Date currentDate = MomentHelper.getCurrentMoment();
-			super.state(currentDate.before(leg.getScheduledDeparture()), "scheduledDeparture",
-					"acme.validation.leg.past-date.message");
-			super.state(currentDate.before(leg.getScheduledArrival()), "scheduledArrival",
-					"acme.validation.leg.past-date.message");
+			super.state(currentDate.before(leg.getScheduledDeparture()), "scheduledDeparture", "acme.validation.leg.past-date.message");
+			super.state(currentDate.before(leg.getScheduledArrival()), "scheduledArrival", "acme.validation.leg.past-date.message");
 		}
 	}
 
@@ -179,8 +172,7 @@ public class ManagerLegCreateService extends AbstractGuiService<Manager, Leg> {
 		departureChoices = SelectChoices.from(airports, "airportName", leg.getAirportDeparture());
 		arrivalChoices = SelectChoices.from(airports, "airportName", leg.getAirportArrival());
 
-		dataset = super.unbindObject(leg, "flightNumber", "scheduledDeparture", "scheduledArrival", "flightStatus",
-				"draftMode");
+		dataset = super.unbindObject(leg, "flightNumber", "scheduledDeparture", "scheduledArrival", "flightStatus", "draftMode");
 		dataset.put("statuses", statusChoices);
 		dataset.put("aircraft", aircraftChoices.getSelected().getKey());
 		dataset.put("aircrafts", aircraftChoices);
