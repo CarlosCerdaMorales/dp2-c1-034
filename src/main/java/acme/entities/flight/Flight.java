@@ -28,6 +28,9 @@ import lombok.Setter;
 @Getter
 @Setter
 @ValidFlight
+//@Table(indexes = {
+//	@Index(columnList = "draftMode")
+//})
 public class Flight extends AbstractEntity {
 
 	// Serialisation identifier -----------------------------------------------
