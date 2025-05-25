@@ -62,12 +62,8 @@ public class ManagerLegShowService extends AbstractGuiService<Manager, Leg> {
 	public void load() {
 		Leg leg;
 		int id;
-
 		id = super.getRequest().getData("id", int.class);
-		if (!this.repository.findByLegId(id).isPresent())
-			throw new RuntimeException("No leg with id: " + id);
 		leg = this.repository.findLegByLegId(id);
-
 		super.getBuffer().addData(leg);
 	}
 
