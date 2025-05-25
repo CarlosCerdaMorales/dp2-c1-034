@@ -19,7 +19,6 @@
 	<acme:list-column code="flight-crew-member.flight-assignment.list.label.flightCrewDuty" path="flightCrewDuty" width="20%"/>
 	<acme:list-column code="flight-crew-member.flight-assignment.list.label.lastUpdate" path="lastUpdate" width="20%"/>
 	<acme:list-column code="flight-crew-member.flight-assignment.list.label.assignmentStatus" path="assignmentStatus" width="20%"/>
-	<acme:list-payload path="payload"/>	
 </acme:list>
 
 <jstl:if test="${_command == 'list-completed'}">

@@ -19,7 +19,6 @@
 <acme:list-column code="flight-crew-member.activity-log.list.label.severityLevel" path="severityLevel" width="20%"/>
 	<acme:list-column code="flight-crew-member.activity-log.list.label.incidentType" path="incidentType" width="20%"/>
 	<acme:list-column code="flight-crew-member.activity-log.list.label.description" path="description" width="20%"/>
-	<acme:list-payload path="payload"/>	
 </acme:list>
 
 <jstl:if test="${_command == 'list' && myAssignment == true}">
