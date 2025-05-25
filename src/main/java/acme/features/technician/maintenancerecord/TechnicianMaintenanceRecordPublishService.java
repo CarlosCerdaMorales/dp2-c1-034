@@ -94,8 +94,6 @@ public class TechnicianMaintenanceRecordPublishService extends AbstractGuiServic
 
 		super.state(!tasks.isEmpty(), "*", "technician.maintenance-record.form.error.zero-tasks");
 
-		boolean hasUnpublishedTask = tasks.stream().anyMatch(Task::isDraftMode);
-		super.state(!hasUnpublishedTask, "*", "technician.maintenance-record.form.error.not-all-tasks-published");
 	}
 
 	@Override
