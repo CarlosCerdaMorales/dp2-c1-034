@@ -33,7 +33,7 @@ public class TechnicianTaskCreateService extends AbstractGuiService<Technician, 
 
 		if (method.equals("POST")) {
 			String type = super.getRequest().getData("type", String.class);
-			if (type == null || type.trim().isEmpty() || Arrays.stream(TaskType.values()).noneMatch(s -> s.name().equals(type)) && !type.equals("0"))
+			if (type == null || Arrays.stream(TaskType.values()).noneMatch(s -> s.name().equals(type)) && !type.equals("0"))
 				authorised = false;
 		}
 		super.getResponse().setAuthorised(authorised);

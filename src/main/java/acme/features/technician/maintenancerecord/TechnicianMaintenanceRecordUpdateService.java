@@ -56,7 +56,7 @@ public class TechnicianMaintenanceRecordUpdateService extends AbstractGuiService
 			String method = super.getRequest().getMethod();
 			if (method.equals("POST")) {
 				String status = super.getRequest().getData("status", String.class);
-				if (status == null || status.trim().isEmpty() || Arrays.stream(MaintenanceStatus.values()).noneMatch(s -> s.name().equals(status)) && !status.equals("0"))
+				if (status == null || Arrays.stream(MaintenanceStatus.values()).noneMatch(s -> s.name().equals(status)) && !status.equals("0"))
 					authorised = false;
 			}
 		}

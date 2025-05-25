@@ -42,7 +42,7 @@ public class TechnicianMaintenanceRecordCreateService extends AbstractGuiService
 				authorised = false;
 
 			String status = super.getRequest().getData("status", String.class);
-			if (status == null || status.trim().isEmpty() || Arrays.stream(MaintenanceStatus.values()).noneMatch(s -> s.name().equals(status)) && !status.equals("0"))
+			if (status == null || Arrays.stream(MaintenanceStatus.values()).noneMatch(s -> s.name().equals(status)) && !status.equals("0"))
 				authorised = false;
 
 		}
