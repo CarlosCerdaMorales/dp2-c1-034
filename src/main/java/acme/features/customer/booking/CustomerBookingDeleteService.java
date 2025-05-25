@@ -12,7 +12,6 @@ import acme.client.services.GuiService;
 import acme.entities.booking.Booking;
 import acme.entities.booking.TravelClass;
 import acme.entities.flight.Flight;
-import acme.features.customer.isFrom.CustomerIsFromDeleteService;
 import acme.realms.Customer;
 import acme.relationships.IsFrom;
 
@@ -20,10 +19,7 @@ import acme.relationships.IsFrom;
 public class CustomerBookingDeleteService extends AbstractGuiService<Customer, Booking> {
 
 	@Autowired
-	private CustomerBookingRepository	repository;
-
-	@Autowired
-	private CustomerIsFromDeleteService	service;
+	private CustomerBookingRepository repository;
 
 
 	@Override
@@ -72,8 +68,8 @@ public class CustomerBookingDeleteService extends AbstractGuiService<Customer, B
 		Collection<IsFrom> isFroms;
 
 		isFroms = this.repository.getIsFromBookingId(booking.getId());
-		isFroms.stream().forEach(i -> this.service.perform(i));
 
+		this.repository.deleteAll(isFroms);
 		this.repository.delete(booking);
 	}
 
