@@ -30,9 +30,9 @@ import lombok.Setter;
 @Getter
 @Setter
 @ValidBooking
-//@Table(indexes = {
-//	@Index(columnList = "draftMode")
-//})
+@Table(indexes = {
+	@Index(columnList = "draftMode")
+})
 public class Booking extends AbstractEntity {
 
 	// Serialisation identifier -----------------------------------------------
