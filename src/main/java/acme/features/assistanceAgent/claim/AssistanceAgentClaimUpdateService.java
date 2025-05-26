@@ -1,12 +1,14 @@
 
 package acme.features.assistanceAgent.claim;
 
+import java.util.Arrays;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
 import acme.client.components.views.SelectChoices;
+import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.claim.Claim;
@@ -36,7 +38,7 @@ public class AssistanceAgentClaimUpdateService extends AbstractGuiService<Assist
 		Collection<Leg> publishedLegs;
 		String type;
 		String metodo = super.getRequest().getMethod();
-		boolean correctEnum = false;
+		boolean correctEnum = true;
 		boolean correctLeg = true;
 		AssistanceAgent assistanceAgent;
 		int agentId;
@@ -65,13 +67,11 @@ public class AssistanceAgentClaimUpdateService extends AbstractGuiService<Assist
 				type = super.getRequest().getData("claimType", String.class);
 				legId = super.getRequest().getData("leg", int.class);
 				leg = this.repository.findLegById(legId);
-				publishedLegs = this.repository.findAllPublishedLegs(assistanceAgent.getAirline().getId());
-				for (ClaimType t : ClaimType.values())
-					if (t.name().equals(type))
-						correctEnum = true;
-				if (!publishedLegs.contains(leg))
+				publishedLegs = this.repository.findAllPublishedLegs(MomentHelper.getCurrentMoment(), assistanceAgent.getAirline().getId());
+				if (!Arrays.toString(ClaimType.values()).concat("0").contains(type))
+					correctEnum = false;
+				if (!publishedLegs.contains(leg) && legId != 0)
 					correctLeg = false;
-				res = false;
 				if (claim != null)
 					res = correctEnum && correctLeg && claim.getDraftMode();
 			}
@@ -119,9 +119,6 @@ public class AssistanceAgentClaimUpdateService extends AbstractGuiService<Assist
 		boolean confirmation;
 		boolean invalidLegDate = true;
 
-		if (claim.getRegistrationMoment().before(claim.getLeg().getScheduledArrival()))
-			invalidLegDate = false;
-
 		confirmation = super.getRequest().getData("confirmation", boolean.class);
 		super.state(confirmation, "confirmation", "acme.validation.confirmation.message");
 		super.state(invalidLegDate, "leg", "acme.validation.claim.invalid-leg-date.message");
@@ -141,7 +138,7 @@ public class AssistanceAgentClaimUpdateService extends AbstractGuiService<Assist
 		assistanceAgent = this.repository.findAssistanceAgentById(agentId);
 
 		choicesType = SelectChoices.from(ClaimType.class, claim.getClaimType());
-		legs = this.repository.findAllPublishedLegs(assistanceAgent.getAirline().getId());
+		legs = this.repository.findAllPublishedLegs(MomentHelper.getCurrentMoment(), assistanceAgent.getAirline().getId());
 		selectedLeg = SelectChoices.from(legs, "flightNumber", claim.getLeg());
 		dataset = super.unbindObject(claim, "registrationMoment", "passengerEmail", "description", "claimType");
 		dataset.put("draftMode", claim.getDraftMode());
@@ -149,7 +146,7 @@ public class AssistanceAgentClaimUpdateService extends AbstractGuiService<Assist
 		dataset.put("leg", selectedLeg.getSelected().getKey());
 		dataset.put("claimTypes", choicesType);
 		dataset.put("claimType", choicesType.getSelected().getKey());
-
+		dataset.put("status", claim.getAccepted());
 		super.getResponse().addData(dataset);
 	}
 

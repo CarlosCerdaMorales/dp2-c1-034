@@ -19,7 +19,6 @@
 	<acme:list-column code="assistance-agent.claim.list.label.registration-moment" path="registrationMoment"/>
  	<acme:list-column code="assistance-agent.claim.list.label.description" path="description"/>
 	<acme:list-column code="assistance-agent.claim.list.label.draft-mode" path="draftMode"/>
-	<acme:list-payload path="payload"/>
 </acme:list>
 
 <acme:button code="assistance-agent.claim.form.button.create" action="/assistance-agent/claim/create"/>

@@ -1,12 +1,14 @@
 
 package acme.features.assistanceAgent.claim;
 
+import java.util.Arrays;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
 import acme.client.components.views.SelectChoices;
+import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.claim.Claim;
@@ -36,24 +38,23 @@ public class AssistanceAgentClaimPublishService extends AbstractGuiService<Assis
 		Collection<Leg> publishedLegs;
 		String type;
 		String metodo = super.getRequest().getMethod();
-		boolean correctEnum = false;
+		boolean correctEnum = true;
 		boolean correctLeg = true;
 		AssistanceAgent assistanceAgent;
 		int agentId;
 		agentId = super.getRequest().getPrincipal().getActiveRealm().getId();
 		assistanceAgent = this.repository.findAssistanceAgentById(agentId);
 
-		claimId = super.getRequest().getData("id", int.class);
-		claim = this.repository.findClaimById(claimId);
-
 		isAssistanceAgent = super.getRequest().getPrincipal().hasRealmOfType(AssistanceAgent.class);
-		claimId = super.getRequest().getData("id", int.class);
 		userAccountId = super.getRequest().getPrincipal().getAccountId();
 		assistanceAgentId = this.repository.findAssistanceAgentIdByUserAccountId(userAccountId);
-		claim = this.repository.findClaimById(claimId);
+
 		if (!super.getRequest().hasData("id"))
 			res = false;
 		else {
+
+			claimId = super.getRequest().getData("id", int.class);
+			claim = this.repository.findClaimById(claimId);
 			if (claim != null) {
 				ownerId = this.repository.findAssistanceAgentIdByClaimId(claimId);
 				isClaimCreator = assistanceAgentId == ownerId;
@@ -64,11 +65,10 @@ public class AssistanceAgentClaimPublishService extends AbstractGuiService<Assis
 				type = super.getRequest().getData("claimType", String.class);
 				legId = super.getRequest().getData("leg", int.class);
 				leg = this.repository.findLegById(legId);
-				publishedLegs = this.repository.findAllPublishedLegs(assistanceAgent.getAirline().getId());
-				for (ClaimType t : ClaimType.values())
-					if (t.name().equals(type))
-						correctEnum = true;
-				if (!publishedLegs.contains(leg))
+				publishedLegs = this.repository.findAllPublishedLegs(MomentHelper.getCurrentMoment(), assistanceAgent.getAirline().getId());
+				if (!Arrays.toString(ClaimType.values()).concat("0").contains(type))
+					correctEnum = false;
+				if (!publishedLegs.contains(leg) && legId != 0)
 					correctLeg = false;
 				res = false;
 				if (claim != null)
@@ -93,12 +93,18 @@ public class AssistanceAgentClaimPublishService extends AbstractGuiService<Assis
 	public void bind(final Claim claim) {
 		int userAccountId;
 		AssistanceAgent assistanceAgent;
+		Integer legId;
+		Leg leg;
+
+		legId = super.getRequest().getData("leg", int.class);
+		leg = this.repository.findLegById(legId);
 
 		userAccountId = super.getRequest().getPrincipal().getAccountId();
 		assistanceAgent = this.repository.findAssistanceAgentByUserAccountId(userAccountId);
 		super.bindObject(claim, "passengerEmail", "description", "claimType");
 
 		claim.setAssistanceAgent(assistanceAgent);
+		claim.setLeg(leg);
 
 	}
 
@@ -132,7 +138,7 @@ public class AssistanceAgentClaimPublishService extends AbstractGuiService<Assis
 		assistanceAgent = this.repository.findAssistanceAgentById(agentId);
 
 		choicesType = SelectChoices.from(ClaimType.class, claim.getClaimType());
-		legs = this.repository.findAllPublishedLegs(assistanceAgent.getAirline().getId());
+		legs = this.repository.findAllPublishedLegs(MomentHelper.getCurrentMoment(), assistanceAgent.getAirline().getId());
 		selectedLeg = SelectChoices.from(legs, "flightNumber", claim.getLeg());
 		dataset = super.unbindObject(claim, "registrationMoment", "passengerEmail", "description", "claimType");
 		dataset.put("draftMode", claim.getDraftMode());
@@ -140,7 +146,7 @@ public class AssistanceAgentClaimPublishService extends AbstractGuiService<Assis
 		dataset.put("leg", selectedLeg.getSelected().getKey());
 		dataset.put("claimTypes", choicesType);
 		dataset.put("claimType", choicesType.getSelected().getKey());
-
+		dataset.put("status", claim.getAccepted());
 		super.getResponse().addData(dataset);
 	}
 
