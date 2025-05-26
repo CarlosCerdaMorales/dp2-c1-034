@@ -32,7 +32,7 @@ public class AdministratorAirportUpdateService extends AbstractGuiService<Admini
 				status = false;
 			if (super.getRequest().getMethod().equals("POST")) {
 				String scope = super.getRequest().getData("operationalScope", String.class);
-				if (scope == null || scope.trim().isEmpty() || Arrays.stream(Scope.values()).noneMatch(s -> s.name().equals(scope)) && !scope.equals("0"))
+				if (scope.trim().isEmpty() || Arrays.stream(Scope.values()).noneMatch(s -> s.name().equals(scope)) && !scope.equals("0"))
 					status = false;
 			}
 		}
