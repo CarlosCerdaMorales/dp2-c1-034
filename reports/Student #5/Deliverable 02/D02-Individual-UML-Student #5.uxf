@@ -4,8 +4,8 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>776</x>
-      <y>496</y>
+      <x>784</x>
+      <y>608</y>
       <w>520</w>
       <h>120</h>
     </coordinates>
@@ -16,7 +16,7 @@ Technician
 + phoneNumber: String {Mandatory, ValidString, Automapped}
 + specialisation: String {Mandatory, ValidString(min=1,max=50), Automapped}
 + annualHealthTestPassed: boolean {Mandatory, Automapped}
-+ yearsExperience: Integer {Mandatory, ValidNumber(min=0, max=120), Automapped}
++ yearsExperience: Integer {Mandatory, ValidNumber(min=0, max=120, integer=3), Automapped}
 + certifications: String {Optional, ValidString, Automapped}
 bg=PINK</panel_attributes>
     <additional_attributes/>
@@ -24,8 +24,8 @@ bg=PINK</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>152</x>
-      <y>176</y>
+      <x>160</x>
+      <y>288</y>
       <w>520</w>
       <h>104</h>
     </coordinates>
@@ -43,8 +43,8 @@ bg=GREEN</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>664</x>
-      <y>208</y>
+      <x>672</x>
+      <y>320</y>
       <w>400</w>
       <h>304</h>
     </coordinates>
@@ -58,8 +58,8 @@ m2=1
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>32</x>
-      <y>176</y>
+      <x>40</x>
+      <y>288</y>
       <w>104</w>
       <h>88</h>
     </coordinates>
@@ -76,10 +76,10 @@ bg=YELLOW</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>160</x>
-      <y>512</y>
+      <x>168</x>
+      <y>624</y>
       <w>472</w>
-      <h>104</h>
+      <h>120</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Entity&gt;&gt;
 MaintenanceRecord
@@ -97,8 +97,8 @@ bg=GREEN</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>40</x>
-      <y>496</y>
+      <x>48</x>
+      <y>608</y>
       <w>104</w>
       <h>72</h>
     </coordinates>
@@ -114,8 +114,8 @@ bg=YELLOW</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>624</x>
-      <y>568</y>
+      <x>632</x>
+      <y>680</y>
       <w>168</w>
       <h>40</h>
     </coordinates>
@@ -129,8 +129,8 @@ m2=1
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>160</x>
-      <y>352</y>
+      <x>168</x>
+      <y>464</y>
       <w>472</w>
       <h>48</h>
     </coordinates>
@@ -144,8 +144,8 @@ bg=MAGENTA</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>392</x>
-      <y>272</y>
+      <x>400</x>
+      <y>384</y>
       <w>64</w>
       <h>96</h>
     </coordinates>
@@ -160,8 +160,8 @@ m2=*
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>392</x>
-      <y>392</y>
+      <x>400</x>
+      <y>504</y>
       <w>80</w>
       <h>136</h>
     </coordinates>
@@ -176,8 +176,8 @@ m2=*
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>8</x>
-      <y>72</y>
+      <x>16</x>
+      <y>184</y>
       <w>168</w>
       <h>528</h>
     </coordinates>
@@ -191,8 +191,8 @@ m2=1
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>0</x>
-      <y>0</y>
+      <x>8</x>
+      <y>112</y>
       <w>136</w>
       <h>64</h>
     </coordinates>
@@ -207,8 +207,8 @@ bg=YELLOW</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>144</x>
-      <y>16</y>
+      <x>152</x>
+      <y>128</y>
       <w>536</w>
       <h>112</h>
     </coordinates>
@@ -220,7 +220,7 @@ Aircraft
 + capacity: Integer {Mandatory, ValidNumber(min=1, max=255), Automapped}
 + cargoWeight: Integer {Mandatory, ValidNumber(min=2000, max=5000, integer=5), Automapped}
 + status: AircraftStatus {Mandatory, Valid, Automapped}
-+ details: String {Optional, ValidString(max=255), Automapped}
++ details: String {Optional, ValidString(), Automapped}
 
 
 
