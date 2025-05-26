@@ -33,7 +33,7 @@ public class TechnicianTaskCreateService extends AbstractGuiService<Technician, 
 
 		if (method.equals("POST")) {
 			String type = super.getRequest().getData("type", String.class);
-			if (type == null || type.trim().isEmpty() || Arrays.stream(TaskType.values()).noneMatch(s -> s.name().equals(type)) && !type.equals("0"))
+			if (Arrays.stream(TaskType.values()).noneMatch(s -> s.name().equals(type)) && !type.equals("0"))
 				authorised = false;
 		}
 		super.getResponse().setAuthorised(authorised);
@@ -55,8 +55,6 @@ public class TechnicianTaskCreateService extends AbstractGuiService<Technician, 
 
 	@Override
 	public void bind(final Task task) {
-
-		assert task != null;
 
 		Technician technician = (Technician) super.getRequest().getPrincipal().getActiveRealm();
 		super.bindObject(task, "type", "description", "priority", "estimatedDuration");

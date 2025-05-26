@@ -30,17 +30,21 @@ public class TechnicianInvolvesDeleteService extends AbstractGuiService<Technici
 		int mrId;
 		MaintenanceRecord mr;
 
-		mrId = super.getRequest().getData("maintenanceRecordId", int.class);
-		mr = this.repository.findMaintenanceRecordById(mrId);
-		status = mr != null && super.getRequest().getPrincipal().hasRealm(mr.getTechnician());
+		if (!super.getRequest().hasData("maintenanceRecordId"))
+			status = false;
+		else {
+			mrId = super.getRequest().getData("maintenanceRecordId", int.class);
+			mr = this.repository.findMaintenanceRecordById(mrId);
+			status = mr != null && mr.isDraftMode() && super.getRequest().getPrincipal().hasRealm(mr.getTechnician());
 
-		if (super.getRequest().hasData("task")) {
-			int taskId = super.getRequest().getData("task", int.class);
-			Task task = this.repository.findTaskById(taskId);
-			Collection<Task> available = this.repository.findValidTasksToUnlink(mr);
+			if (super.getRequest().hasData("task")) {
+				int taskId = super.getRequest().getData("task", int.class);
+				Task task = this.repository.findTaskById(taskId);
+				Collection<Task> available = this.repository.findValidTasksToUnlink(mr);
 
-			if (task == null && taskId != 0 || task != null && !available.contains(task))
-				status = false;
+				if (task == null && taskId != 0 || task != null && !available.contains(task))
+					status = false;
+			}
 		}
 
 		super.getResponse().setAuthorised(status);

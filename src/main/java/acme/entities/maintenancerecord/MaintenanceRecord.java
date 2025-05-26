@@ -4,7 +4,9 @@ package acme.entities.maintenancerecord;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.Index;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
@@ -27,6 +29,9 @@ import lombok.Setter;
 @Getter
 @Setter
 @ValidMaintenanceRecord
+@Table(indexes = {
+	@Index(columnList = "draftMode")
+})
 public class MaintenanceRecord extends AbstractEntity {
 
 	// Serialisation identifier -----------------------------------------------
@@ -51,12 +56,12 @@ public class MaintenanceRecord extends AbstractEntity {
 	private Date				nextInspectionDue;
 
 	@Mandatory
-	@ValidMoney(min = 0, message = "{acme.validation.maintenanceRecord.money.min}")
+	@ValidMoney()
 	@Automapped
 	private Money				estimatedCost;
 
 	@Optional
-	@ValidString(max = 255, message = "{acme.validation.text.length.255}")
+	@ValidString()
 	@Automapped
 	private String				notes;
 

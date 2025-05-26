@@ -49,13 +49,11 @@ public class TechnicianMaintenanceRecordPublishService extends AbstractGuiServic
 
 				if (aircraft == null && aircraftId != 0)
 					authorised = false;
-				else if (aircraft != null && !available.contains(aircraft))
-					authorised = false;
 			}
 			String method = super.getRequest().getMethod();
 			if (method.equals("POST")) {
 				String status = super.getRequest().getData("status", String.class);
-				if (status == null || status.trim().isEmpty() || Arrays.stream(MaintenanceStatus.values()).noneMatch(s -> s.name().equals(status)) && !status.equals("0"))
+				if (Arrays.stream(MaintenanceStatus.values()).noneMatch(s -> s.name().equals(status)) && !status.equals("0"))
 					authorised = false;
 			}
 		}
@@ -94,8 +92,6 @@ public class TechnicianMaintenanceRecordPublishService extends AbstractGuiServic
 
 		super.state(!tasks.isEmpty(), "*", "technician.maintenance-record.form.error.zero-tasks");
 
-		boolean hasUnpublishedTask = tasks.stream().anyMatch(Task::isDraftMode);
-		super.state(!hasUnpublishedTask, "*", "technician.maintenance-record.form.error.not-all-tasks-published");
 	}
 
 	@Override

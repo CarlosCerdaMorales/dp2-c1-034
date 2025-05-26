@@ -8,6 +8,5 @@
 	<acme:list-column code="administrator.maintenance-record.list.label.maintenanceStatus" path="status" width="25%"/>
 	<acme:list-column code="administrator.maintenance-record.list.label.nextInspection" path="nextInspectionDue" width="25%"/>
 	<acme:list-column code="administrator.maintenance-record.list.label.aircraft" path="aircraft" width="25%"/>
-	
-	<acme:list-payload path="payload"/>
+
 </acme:list>

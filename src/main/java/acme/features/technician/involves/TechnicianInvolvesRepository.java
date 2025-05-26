@@ -14,9 +14,6 @@ import acme.relationships.Involves;
 @Repository
 public interface TechnicianInvolvesRepository extends AbstractRepository {
 
-	@Query("select i from Involves i where i.maintenanceRecord.technician.id =: id ")
-	Collection<Involves> findInvolvesByTechnicianId(int id);
-
 	@Query("select mr from MaintenanceRecord mr where mr.id = :maintenanceRecordId")
 	MaintenanceRecord findMaintenanceRecordById(int maintenanceRecordId);
 
@@ -34,11 +31,5 @@ public interface TechnicianInvolvesRepository extends AbstractRepository {
 
 	@Query("select i from Involves i where i.maintenanceRecord = :maintenanceRecord and i.task = :task")
 	Involves findInvolvesByMaintenanceRecordAndTask(MaintenanceRecord maintenanceRecord, Task task);
-
-	@Query("select mr from MaintenanceRecord mr where mr.technician=: id")
-	Collection<MaintenanceRecord> findMaintenanceRecordByTechnicianId(int id);
-
-	@Query("select i from Involves i where i.id=:id")
-	Involves findInvolvesById(int id);
 
 }
