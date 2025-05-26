@@ -1,8 +1,6 @@
 
 package acme.features.flightCrewMember.activityLog;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
@@ -23,23 +21,22 @@ public class FlightCrewMemberActivityLogCreateService extends AbstractGuiService
 	@Override
 	public void authorise() {
 		boolean authorised = true;
-
-		if (super.getRequest().getMethod().equals("POST")) {
-			int id = super.getRequest().getData("id", int.class);
+		if (super.getRequest().hasData("id") && super.getRequest().getData("id", int.class) != 0 || !super.getRequest().hasData("masterId"))
+			authorised = false;
+		else {
 			int assignmentId = super.getRequest().getData("masterId", int.class);
 
 			int memberId = super.getRequest().getPrincipal().getActiveRealm().getId();
 
 			FlightAssignment assignment = this.repository.findFlightAssignmentById(assignmentId);
-			List<FlightAssignment> allAssignments = this.repository.findAllFlightAssignments();
 
-			if (assignment == null && assignmentId != 0 || assignment != null && !allAssignments.contains(assignment) || assignment != null && assignment.getFlightCrewMember().getId() != memberId || id != 0)
+			if (assignment == null && assignmentId != 0 || assignment != null && assignment.getFlightCrewMember().getId() != memberId || assignment != null && assignment.isDraftMode())
 				authorised = false;
-		} else if (super.getRequest().hasData("id"))
-			authorised = false;
+		}
 		super.getResponse().setAuthorised(authorised);
 
 	}
+
 	@Override
 	public void load() {
 		ActivityLog activityLog;
@@ -64,7 +61,6 @@ public class FlightCrewMemberActivityLogCreateService extends AbstractGuiService
 	@Override
 	public void validate(final ActivityLog activityLog) {
 		boolean confirmation;
-
 		confirmation = super.getRequest().getData("confirmation", boolean.class);
 		super.state(confirmation, "confirmation", "acme.validation.confirmation.message");
 	}

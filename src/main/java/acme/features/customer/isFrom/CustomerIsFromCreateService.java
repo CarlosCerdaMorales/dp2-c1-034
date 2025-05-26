@@ -29,18 +29,23 @@ public class CustomerIsFromCreateService extends AbstractGuiService<Customer, Is
 	public void authorise() {
 		boolean authorised = true;
 		int customerId = this.getRequest().getPrincipal().getActiveRealm().getId();
-		int bookingId = super.getRequest().getData("bookingId", int.class);
-		Booking booking = this.repository.findBookingFromId(bookingId);
-		if (booking == null || booking.getCustomer().getId() != customerId || !booking.isDraftMode())
+		if (!super.getRequest().hasData("bookingId"))
 			authorised = false;
-		else if (super.getRequest().getMethod().equals("POST")) {
-			int pId = super.getRequest().getData("passenger", int.class);
-			Passenger passenger = this.repository.findPassengerFromId(pId);
-			Collection<Passenger> myPassengers = this.repository.findPublishedPassengersFromCustomerId(customerId);
-			Collection<Passenger> fromBooking = this.repository.restOfPassengers(bookingId, customerId);
-
-			if (passenger == null && pId != 0 || passenger != null && !myPassengers.contains(passenger) || passenger != null && !fromBooking.contains(passenger))
+		else {
+			int bookingId = super.getRequest().getData("bookingId", int.class);
+			Booking booking = this.repository.findBookingFromId(bookingId);
+			if (booking == null || booking.getCustomer().getId() != customerId || !booking.isDraftMode())
 				authorised = false;
+			else if (super.getRequest().getMethod().equals("POST")) {
+				int pId = super.getRequest().getData("passenger", int.class);
+				int id = super.getRequest().getData("id", int.class);
+				Passenger passenger = this.repository.findPassengerFromId(pId);
+				Collection<Passenger> myPassengers = this.repository.findPublishedPassengersFromCustomerId(customerId);
+				Collection<Passenger> fromBooking = this.repository.restOfPassengers(bookingId, customerId);
+
+				if (passenger == null && pId != 0 || passenger != null && !myPassengers.contains(passenger) || passenger != null && !fromBooking.contains(passenger) || id != 0)
+					authorised = false;
+			}
 		}
 		super.getResponse().setAuthorised(authorised);
 	}
@@ -71,11 +76,7 @@ public class CustomerIsFromCreateService extends AbstractGuiService<Customer, Is
 
 	@Override
 	public void validate(final IsFrom isFrom) {
-		boolean notPublished = true;
-		Booking booking = isFrom.getBooking();
-		if (booking != null && !booking.isDraftMode())
-			notPublished = false;
-		super.state(notPublished, "booking", "acme.validation.booking.invalid-booking-publish.message");
+		;
 	}
 
 	@Override

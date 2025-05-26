@@ -31,7 +31,7 @@ public class FlightCrewMemberActivityLogPublishService extends AbstractGuiServic
 			member = log == null ? null : log.getFlightAssignment().getFlightCrewMember();
 			if (log != null && log.isDraftMode() && super.getRequest().getPrincipal().hasRealm(member))
 				status = true;
-			else if (log != null && !log.isDraftMode())
+			else if (log != null && !log.isDraftMode() || log != null && log.getFlightAssignment().isDraftMode())
 				status = false;
 		} else
 			status = false;
