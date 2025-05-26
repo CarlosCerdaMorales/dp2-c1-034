@@ -30,7 +30,7 @@ public class TechnicianInvolvesDeleteService extends AbstractGuiService<Technici
 		int mrId;
 		MaintenanceRecord mr;
 
-		if (!super.getRequest().hasData("id"))
+		if (!super.getRequest().hasData("maintenanceRecordId"))
 			status = false;
 		else {
 			mrId = super.getRequest().getData("maintenanceRecordId", int.class);
