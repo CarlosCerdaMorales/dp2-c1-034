@@ -4,7 +4,7 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>510</x>
+      <x>516</x>
       <y>234</y>
       <w>348</w>
       <h>78</h>
@@ -24,7 +24,7 @@ bg=GREEN</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>876</x>
+      <x>882</x>
       <y>240</y>
       <w>96</w>
       <h>66</h>
@@ -42,8 +42,8 @@ bg=YELLOW</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>510</x>
-      <y>60</y>
+      <x>516</x>
+      <y>66</y>
       <w>372</w>
       <h>90</h>
     </coordinates>
@@ -62,7 +62,7 @@ bg=PINK</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>90</x>
+      <x>96</x>
       <y>234</y>
       <w>354</w>
       <h>78</h>
@@ -81,8 +81,8 @@ bg=GREEN</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>96</x>
-      <y>156</y>
+      <x>102</x>
+      <y>330</y>
       <w>96</w>
       <h>66</h>
     </coordinates>
@@ -98,7 +98,7 @@ bg=YELLOW</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>438</x>
+      <x>444</x>
       <y>264</y>
       <w>84</w>
       <h>30</h>
@@ -113,7 +113,7 @@ m2=1
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>678</x>
+      <x>684</x>
       <y>306</y>
       <w>42</w>
       <h>126</h>
@@ -130,7 +130,7 @@ m2=1
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>504</x>
+      <x>510</x>
       <y>420</y>
       <w>366</w>
       <h>90</h>
@@ -151,10 +151,10 @@ bg=GREEN</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>678</x>
-      <y>144</y>
+      <x>684</x>
+      <y>150</y>
       <w>66</w>
-      <h>102</h>
+      <h>96</h>
     </coordinates>
     <panel_attributes>lt=-&gt;
 m1=*
@@ -162,12 +162,12 @@ m2=1
  ^
  registeredBy
  </panel_attributes>
-    <additional_attributes>10.0;150.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;140.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>396</x>
+      <x>402</x>
       <y>438</y>
       <w>102</w>
       <h>66</h>
@@ -181,5 +181,42 @@ CANCELLED
 LANDED
 bg=YELLOW</panel_attributes>
     <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>18</x>
+      <y>66</y>
+      <w>402</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Entity&gt;&gt;
+Airline
+--
++ name: String {Mandatory, ValidString(min=1, max=50), Automapped}
++ IATACode: String {Mandatory, ValidIataCode, Automapped}
++ webSite: String {Mandatory, ValidUrl, Automapped}
++ type: AirlineType {Mandatory, Valid, Automapped}
++ foundationMoment: Date {Mandatory, ValidMoment(past=true), Temporal(TemporalType.TIMESTAMP)}
++ email: String {Optional, ValidEmail, Automapped}
++ phoneNumber: String {Optional, ValidString(pattern="^\\+?\\d{6,15}$"), Automapped}
+bg=GREEN</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>414</x>
+      <y>114</y>
+      <w>114</w>
+      <h>36</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+m1=*
+m2=1
+ ^
+ belongsTo
+ </panel_attributes>
+    <additional_attributes>170.0;20.0;10.0;20.0</additional_attributes>
   </element>
 </diagram>
