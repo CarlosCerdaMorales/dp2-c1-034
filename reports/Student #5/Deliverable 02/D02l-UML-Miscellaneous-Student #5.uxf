@@ -5,30 +5,16 @@
     <id>UMLClass</id>
     <coordinates>
       <x>40</x>
-      <y>390</y>
-      <w>350</w>
-      <h>70</h>
-    </coordinates>
-    <panel_attributes>&lt;&lt;Constraint&gt;&gt;
-ValidIataCode
---
-+ Pattern(regexp="^[A-Z]{3}")
-bg=RED</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>40</x>
       <y>270</y>
       <w>350</w>
-      <h>100</h>
+      <h>120</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Constraint&gt;&gt;
 ValidTechnician
 --
 + license number must reflect person's initials in first 
 two characters
++ license number must be unique
 + phone must follow given pattern
 bg=RED</panel_attributes>
     <additional_attributes/>
@@ -44,11 +30,11 @@ bg=RED</panel_attributes>
     <panel_attributes>&lt;&lt;Form&gt;&gt;
 TechnicianDashboard
 --
-+ maintenanceRecordsGroupByStatus: Map&lt;String, Integer&gt;
-+ maintenanceRecordWithNearestInspectionDate: Double
-+ topFiveAircraftsWithMoreTaksInTheirMaintenanceRecords: List&lt;String&gt;
-+ lastYearEstimatedCostStats : StatsTechnician		
-+ lastYearEstimatedDurationStats : StatsTechnician		
++ numberOfMaintenanceByStatus: List&lt;MaintenanceByStatus&gt;
++ nearestNextInspection: MaintenanceRecord
++ mostTasksAircrafts: List&lt;Aircaft&gt;
++ costStatistics : MaintenanceRecordCostStatistics		
++ durationStatistics : MaintenanceRecordDurationStatistics		
 bg=cyan</panel_attributes>
     <additional_attributes/>
   </element>
@@ -58,15 +44,47 @@ bg=cyan</panel_attributes>
       <x>940</x>
       <y>270</y>
       <w>390</w>
-      <h>110</h>
+      <h>240</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Class&gt;&gt;
-StatsTechnician
+MaintenanceRecordCostStatistics
 --
-+ average: Double
-+ minimum: Integer
-+ maximum: Integer
-+ standardDeviation: Double
++ getCountRecords: Ineteger
++ getAverage: Double
++ getMinimum: Integer
++ getMaximum: Integer
++ getStandardDeviation: Double
+-----------------------------------------------------------------------------------
+- setCount(Integer count)
+- setAverage(Double average)
+- setMinimum(Integer minimum)
+- setMaximum(Integer maximum)
+- setStandardDeviation(Double standardDeviation)
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>940</x>
+      <y>540</y>
+      <w>390</w>
+      <h>240</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Class&gt;&gt;
+MaintenanceRecordDurationStatistics
+--
++ getCountTasks: Ineteger
++ getAverage: Double
++ getMinimum: Integer
++ getMaximum: Integer
++ getStandardDeviation: Double
+-----------------------------------------------------------------------------------
+- setCount(Integer count)
+- setAverage(Double average)
+- setMinimum(Integer minimum)
+- setMaximum(Integer maximum)
+- setStandardDeviation(Double standardDeviation)
 bg=green</panel_attributes>
     <additional_attributes/>
   </element>
