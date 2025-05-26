@@ -66,7 +66,6 @@ public class AssistanceAgentTrackingLogUpdateService extends AbstractGuiService<
 					res = correctEnum && tr.getDraftMode();
 			}
 		}
-		System.out.println(res);
 		super.getResponse().setAuthorised(res);
 
 	}
@@ -120,7 +119,6 @@ public class AssistanceAgentTrackingLogUpdateService extends AbstractGuiService<
 
 						maxPercentage = maxPercentageList.get(myTrackingLogInListIndex - 1).getResolutionPercentage();
 						minPercentage = -1.00;
-						System.out.println(maxPercentage);
 					} else {
 
 						maxPercentage = maxPercentageList.get(myTrackingLogInListIndex - 1).getResolutionPercentage();
