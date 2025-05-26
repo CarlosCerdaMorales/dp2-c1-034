@@ -38,42 +38,47 @@ public class AssistanceAgentTrackingLogCreateService extends AbstractGuiService<
 		int assistanceAgentId;
 		int ownerId;
 		int masterId;
-		masterId = super.getRequest().getData("masterId", int.class);
+
 		userAccountId = super.getRequest().getPrincipal().getAccountId();
 		assistanceAgentId = this.repository.findAssistanceAgentIdByUserAccountId(userAccountId).getId();
 		Claim claim;
 		AssistanceAgent assistanceAgent;
-		assistanceAgent = this.repository.findAssistanceAgentIdByClaimId(masterId);
 
 		isAssistanceAgent = super.getRequest().getPrincipal().hasRealmOfType(AssistanceAgent.class);
-		if (assistanceAgent != null) {
-			ownerId = assistanceAgent.getId();
-			isClaimCreator = assistanceAgentId == ownerId;
+
+		if (!super.getRequest().hasData("masterId"))
+			res = false;
+		else {
+			masterId = super.getRequest().getData("masterId", int.class);
+			assistanceAgent = this.repository.findAssistanceAgentIdByClaimId(masterId);
+			if (assistanceAgent != null) {
+				ownerId = assistanceAgent.getId();
+				isClaimCreator = assistanceAgentId == ownerId;
+			}
+
+			claimAlreadyCompleted = true;
+			List<TrackingLog> list100TrackingLogs = new ArrayList<>(this.repository.findTrackingLogs100PercentageByMasterId(masterId));
+			if (list100TrackingLogs.size() >= 2)
+				claimAlreadyCompleted = false;
+
+			boolean fakeUpdate = true;
+
+			if (super.getRequest().hasData("id")) {
+				Integer id = super.getRequest().getData("id", Integer.class);
+				if (id != 0)
+					fakeUpdate = false;
+			}
+
+			claim = this.repository.findClaimByMasterId(masterId);
+			res = isAssistanceAgent && isClaimCreator && claim != null && fakeUpdate && claimAlreadyCompleted && !claim.getDraftMode();
+
+			if (metodo.equals("POST")) {
+				status = super.getRequest().getData("status", String.class);
+				if (!Arrays.toString(TrackingLogStatus.values()).concat("0").contains(status))
+					correctEnum = false;
+				res = correctEnum && claimAlreadyCompleted && !claim.getDraftMode() && fakeUpdate;
+			}
 		}
-
-		claimAlreadyCompleted = true;
-		List<TrackingLog> list100TrackingLogs = new ArrayList<>(this.repository.findTrackingLogs100PercentageByMasterId(masterId));
-		if (list100TrackingLogs.size() >= 2)
-			claimAlreadyCompleted = false;
-
-		boolean fakeUpdate = true;
-
-		if (super.getRequest().hasData("id")) {
-			Integer id = super.getRequest().getData("id", Integer.class);
-			if (id != 0)
-				fakeUpdate = false;
-		}
-
-		claim = this.repository.findClaimByMasterId(masterId);
-		res = isAssistanceAgent && isClaimCreator && claim != null && fakeUpdate && claimAlreadyCompleted;
-
-		if (metodo.equals("POST")) {
-			status = super.getRequest().getData("status", String.class);
-			if (!Arrays.toString(TrackingLogStatus.values()).concat("0").contains(status))
-				correctEnum = false;
-			res = correctEnum && fakeUpdate && claimAlreadyCompleted;
-		}
-
 		super.getResponse().setAuthorised(res);
 
 	}
@@ -120,17 +125,12 @@ public class AssistanceAgentTrackingLogCreateService extends AbstractGuiService<
 		boolean repetido = false;
 
 		trackingLogMaxList = new ArrayList<>(this.repository.findTopByClaimIdOrderByResolutionPercentageDesc(tr.getClaim().getId()));
-		if (!trackingLogMaxList.isEmpty()) {
+		if (!trackingLogMaxList.isEmpty() && tr.getResolutionPercentage() != null) {
 			trMaxResolutionPercentage = trackingLogMaxList.get(0);
 			trMaxPercentage = trMaxResolutionPercentage.getResolutionPercentage();
 
 			if (tr.getResolutionPercentage() <= trMaxPercentage && trackingLogs100percentage.isEmpty())
 				super.state(false, "resolutionPercentage", "acme.validation.trackinglog.invalid-resolutionpercentage.message");
-			if (claim.getDraftMode())
-				super.state(false, "*", "acme.validation.trackingLog-draftmode.message");
-
-			if (trackingLogs100percentage.size() >= 2)
-				super.state(false, "resolutionPercentage", "acme.validation.trackinglog.invalid-resolutionpercentage-two100.message");
 
 			if (!trackingLogs100percentage.isEmpty() && tr.getResolutionPercentage() < 100)
 				super.state(false, "resolutionPercentage", "acme.validation.trackinglog.invalid-resolution-percentage2.message");
@@ -142,8 +142,6 @@ public class AssistanceAgentTrackingLogCreateService extends AbstractGuiService<
 			if (!trackingLogs100percentage.isEmpty() && trMaxResolutionPercentage.getDraftMode())
 				super.state(false, "*", "acme.validation.trackinglog.invalid-allpublished2.message");
 
-			if (tr.getStatus() != trMaxResolutionPercentage.getStatus() && !trackingLogs100percentage.isEmpty() && tr.getResolutionPercentage() < 100 && !repetido)
-				super.state(false, "status", "acme.validation.trackinglog.invalid-resolution-percentage3.message");
 		}
 
 		confirmation = super.getRequest().getData("confirmation", boolean.class);

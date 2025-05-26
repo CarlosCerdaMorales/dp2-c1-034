@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="15.1">
-  <zoom_level>7</zoom_level>
+  <zoom_level>14</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>259</x>
-      <y>266</y>
-      <w>245</w>
-      <h>70</h>
+      <x>112</x>
+      <y>210</y>
+      <w>490</w>
+      <h>140</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Constraint&gt;&gt;
 ValidCustomer
@@ -21,38 +21,20 @@ bg=RED</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>518</x>
-      <y>266</y>
-      <w>357</w>
-      <h>91</h>
+      <x>630</x>
+      <y>210</y>
+      <w>714</w>
+      <h>182</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Form&gt;&gt;
 CustomerDashboard
 --
 + lastFiveDestinations: List&lt;String&gt;
 + moneySpentInBookingsLastYear: Double
-+ bookingsGroupedByTravelClass: Map&lt;String, Integer&gt;
-+ costOfBookingsLastFiveYears: StatsCustomer
-+ numberOfPassengersInBookings: StatsCustomer		
++ bookingsGroupedByTravelClass: String
++ costOfBookingsLastFiveYears: String
++ numberOfPassengersInBookings: String
 bg=cyan</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLClass</id>
-    <coordinates>
-      <x>889</x>
-      <y>266</y>
-      <w>273</w>
-      <h>77</h>
-    </coordinates>
-    <panel_attributes>&lt;&lt;Class&gt;&gt;
-StatsCustomer
---
-+ average: Double
-+ minimum: Integer
-+ maximum: Integer
-+ standardDeviation: Double
-bg=green</panel_attributes>
     <additional_attributes/>
   </element>
 </diagram>

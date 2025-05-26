@@ -90,7 +90,7 @@ public class AssistanceAgentTrackingLogDeleteService extends AbstractGuiService<
 
 		choicesStatus = SelectChoices.from(TrackingLogStatus.class, trackingLog.getStatus());
 		masterId = trackingLog.getClaim().getId();
-		dataset = super.unbindObject(trackingLog, "stepUndergoing", "resolutionPercentage", "status", "resolution");
+		dataset = super.unbindObject(trackingLog, "stepUndergoing", "resolutionPercentage", "status", "resolution", "lastUpdateMoment");
 		dataset.put("masterId", masterId);
 		dataset.put("draftMode", trackingLog.getDraftMode());
 		dataset.put("statuses", choicesStatus);
