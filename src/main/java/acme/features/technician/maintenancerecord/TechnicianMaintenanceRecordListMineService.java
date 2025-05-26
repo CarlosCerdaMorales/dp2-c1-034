@@ -41,7 +41,6 @@ public class TechnicianMaintenanceRecordListMineService extends AbstractGuiServi
 		Dataset dataset;
 
 		dataset = super.unbindObject(maintenanceRecord, "aircraft", "status", "maintenanceMoment", "nextInspectionDue");
-		super.addPayload(dataset, maintenanceRecord, "aircraft.model", "aircraft.registrationNumber");
 
 		super.getResponse().addData(dataset);
 	}

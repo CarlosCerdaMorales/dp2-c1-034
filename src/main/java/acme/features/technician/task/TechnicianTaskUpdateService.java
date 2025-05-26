@@ -44,7 +44,7 @@ public class TechnicianTaskUpdateService extends AbstractGuiService<Technician, 
 			String method = super.getRequest().getMethod();
 			if (method.equals("POST")) {
 				String type = super.getRequest().getData("type", String.class);
-				if (type == null || type.trim().isEmpty() || Arrays.stream(TaskType.values()).noneMatch(s -> s.name().equals(type)) && !type.equals("0"))
+				if (Arrays.stream(TaskType.values()).noneMatch(s -> s.name().equals(type)) && !type.equals("0"))
 					status = false;
 			}
 		}

@@ -3,6 +3,7 @@ package acme.features.flightCrewMember.activityLog;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import acme.client.components.models.Dataset;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.activitylog.ActivityLog;
@@ -17,22 +18,22 @@ public class FlightCrewMemberActivityLogDeleteService extends AbstractGuiService
 
 	@Override
 	public void authorise() {
-		boolean status = false;
+		boolean status = true;
 		ActivityLog log;
 		int logId;
 		FlightCrewMember member;
+		if (!super.getRequest().getMethod().equals("POST"))
+			if (super.getRequest().hasData("id")) {
 
-		if (super.getRequest().hasData("id")) {
-
-			logId = super.getRequest().getData("id", int.class);
-			log = this.repository.findActivityLogById(logId);
-			member = log == null ? null : log.getFlightAssignment().getFlightCrewMember();
-			if (log != null && log.isDraftMode() && super.getRequest().getPrincipal().hasRealm(member))
-				status = true;
-			else if (log != null && !log.isDraftMode())
+				logId = super.getRequest().getData("id", int.class);
+				log = this.repository.findActivityLogById(logId);
+				member = log == null ? null : log.getFlightAssignment().getFlightCrewMember();
+				if (log != null && log.isDraftMode() && !super.getRequest().getPrincipal().hasRealm(member) || log != null && log.getFlightAssignment().isDraftMode())
+					status = false;
+				else if (log != null && !log.isDraftMode() || log == null)
+					status = false;
+			} else
 				status = false;
-		} else
-			status = false;
 		super.getResponse().setAuthorised(status);
 	}
 
@@ -62,4 +63,14 @@ public class FlightCrewMemberActivityLogDeleteService extends AbstractGuiService
 		this.repository.delete(activityLog);
 	}
 
+	@Override
+	public void unbind(final ActivityLog activityLog) {
+		Dataset dataset;
+
+		dataset = super.unbindObject(activityLog, "registrationMoment", "incidentType", "description", "severityLevel", "draftMode", "flightAssignment");
+		dataset.put("masterId", activityLog.getFlightAssignment().getId());
+		dataset.put("masterDraftMode", activityLog.getFlightAssignment().isDraftMode());
+
+		super.getResponse().addData(dataset);
+	}
 }

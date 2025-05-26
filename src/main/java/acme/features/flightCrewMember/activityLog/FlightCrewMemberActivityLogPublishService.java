@@ -1,16 +1,12 @@
 
 package acme.features.flightCrewMember.activityLog;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
-import acme.client.components.views.SelectChoices;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.activitylog.ActivityLog;
-import acme.entities.flightassignment.FlightAssignment;
 import acme.entities.leg.FlightStatus;
 import acme.realms.flightcrewmember.FlightCrewMember;
 
@@ -35,7 +31,7 @@ public class FlightCrewMemberActivityLogPublishService extends AbstractGuiServic
 			member = log == null ? null : log.getFlightAssignment().getFlightCrewMember();
 			if (log != null && log.isDraftMode() && super.getRequest().getPrincipal().hasRealm(member))
 				status = true;
-			else if (log != null && !log.isDraftMode())
+			else if (log != null && !log.isDraftMode() || log != null && log.getFlightAssignment().isDraftMode())
 				status = false;
 		} else
 			status = false;
@@ -73,14 +69,8 @@ public class FlightCrewMemberActivityLogPublishService extends AbstractGuiServic
 	@Override
 	public void unbind(final ActivityLog activityLog) {
 		Dataset dataset;
-		List<FlightAssignment> assignments;
-		assignments = this.repository.findAllFlightAssignments();
-
-		SelectChoices assignmentChoices;
-		assignmentChoices = SelectChoices.from(assignments, "leg.flightNumber", activityLog.getFlightAssignment());
 
 		dataset = super.unbindObject(activityLog, "registrationMoment", "incidentType", "description", "severityLevel", "draftMode", "flightAssignment");
-		dataset.put("assignmentChoices", assignmentChoices);
 		dataset.put("masterId", activityLog.getFlightAssignment().getId());
 		dataset.put("masterDraftMode", activityLog.getFlightAssignment().isDraftMode());
 

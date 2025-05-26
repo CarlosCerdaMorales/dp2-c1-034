@@ -25,21 +25,24 @@ public class CustomerIsFromDeleteService extends AbstractGuiService<Customer, Is
 	public void authorise() {
 		boolean status = true;
 		int customerId = this.getRequest().getPrincipal().getActiveRealm().getId();
-		int bookingId = super.getRequest().getData("bookingId", int.class);
-		Booking booking = this.repository.findBookingFromId(bookingId);
-		if (booking == null || booking.getCustomer().getId() != customerId || !booking.isDraftMode())
+		if (!super.getRequest().hasData("bookingId"))
 			status = false;
-
-		else if (super.getRequest().getMethod().equals("POST")) {
-			int passengerId = super.getRequest().getData("passenger", int.class);
-			Passenger passenger = this.repository.findPassengerFromId(passengerId);
-			Collection<Passenger> inThisBooking = this.repository.findPassengersFromBooking(booking);
-
-			if (passenger == null && passengerId != 0 || passenger != null && !inThisBooking.contains(passenger))
+		else {
+			int bookingId = super.getRequest().getData("bookingId", int.class);
+			Booking booking = this.repository.findBookingFromId(bookingId);
+			if (booking == null || booking.getCustomer().getId() != customerId || !booking.isDraftMode())
 				status = false;
-		}
+			if (super.getRequest().getMethod().equals("POST")) {
+				int passengerId = super.getRequest().getData("passenger", int.class);
+				Passenger passenger = this.repository.findPassengerFromId(passengerId);
+				Collection<Passenger> inThisBooking = this.repository.findPassengersFromBooking(booking);
 
+				if (passenger == null && passengerId != 0 || passenger != null && !inThisBooking.contains(passenger))
+					status = false;
+			}
+		}
 		super.getResponse().setAuthorised(status);
+
 	}
 
 	@Override
@@ -68,12 +71,18 @@ public class CustomerIsFromDeleteService extends AbstractGuiService<Customer, Is
 
 	@Override
 	public void perform(final IsFrom isFrom) {
+		boolean canPerform = true;
 		int passengerId = super.getRequest().getData("passenger", int.class);
 
 		Passenger passenger = this.repository.findPassengerFromId(passengerId);
-		Booking booking = isFrom.getBooking();
+		if (passenger == null) {
+			canPerform = false;
+			super.state(canPerform, "passenger", "acme.validation.isfrom.empty-delete");
+		} else {
+			Booking booking = isFrom.getBooking();
 
-		this.repository.delete(this.repository.findIsFromByBookingAndPassenger(booking, passenger));
+			this.repository.delete(this.repository.findIsFromByBookingAndPassenger(booking, passenger));
+		}
 	}
 
 	@Override

@@ -32,21 +32,25 @@ public class TechnicianInvolvesCreateService extends AbstractGuiService<Technici
 		MaintenanceRecord mr;
 		Technician technician;
 
-		String method = super.getRequest().getMethod();
+		if (!super.getRequest().hasData("maintenanceRecordId"))
+			status = false;
+		else {
+			String method = super.getRequest().getMethod();
 
-		mrId = super.getRequest().getData("maintenanceRecordId", int.class);
-		mr = this.repository.findMaintenanceRecordById(mrId);
+			mrId = super.getRequest().getData("maintenanceRecordId", int.class);
+			mr = this.repository.findMaintenanceRecordById(mrId);
 
-		technician = mr == null ? null : mr.getTechnician();
-		status = mr != null && mr.isDraftMode() && super.getRequest().getPrincipal().hasRealm(technician);
+			technician = mr == null ? null : mr.getTechnician();
+			status = mr != null && mr.isDraftMode() && super.getRequest().getPrincipal().hasRealm(technician);
 
-		if (method.equals("POST")) {
-			int taskId = super.getRequest().getData("task", int.class);
-			Task task = this.repository.findTaskById(taskId);
-			Collection<Task> available = this.repository.findValidTasksToLink(mr);
+			if (method.equals("POST")) {
+				int taskId = super.getRequest().getData("task", int.class);
+				Task task = this.repository.findTaskById(taskId);
+				Collection<Task> available = this.repository.findValidTasksToLink(mr);
 
-			if (task == null && taskId != 0 || task != null && !available.contains(task))
-				status = false;
+				if (task == null && taskId != 0 || task != null && !available.contains(task))
+					status = false;
+			}
 		}
 
 		super.getResponse().setAuthorised(status);
@@ -84,11 +88,7 @@ public class TechnicianInvolvesCreateService extends AbstractGuiService<Technici
 
 	@Override
 	public void validate(final Involves involves) {
-		boolean notPublished = true;
-		MaintenanceRecord mr = involves.getMaintenanceRecord();
-		if (mr != null && !mr.isDraftMode())
-			notPublished = false;
-		super.state(notPublished, "maintenanceRecord", "acme.validation.involves.invalid-involves-publish.message");
+		;
 	}
 
 	@Override

@@ -1,6 +1,7 @@
 
 package acme.features.customer.booking;
 
+import java.util.Arrays;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +44,10 @@ public class CustomerBookingUpdateService extends AbstractGuiService<Customer, B
 
 				Flight flight = this.repository.findFlightById(flightId);
 				Collection<Flight> allFlights = this.repository.findAllFlights();
+
+				String travelClass = super.getRequest().getData("travelClass", String.class);
+				if (travelClass.trim().isEmpty() || Arrays.stream(TravelClass.values()).noneMatch(s -> s.name().equals(travelClass)) && !travelClass.equals("0"))
+					status = false;
 
 				if (flight == null && flightId != 0 || flight != null && !allFlights.contains(flight))
 					status = false;

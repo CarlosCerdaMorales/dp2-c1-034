@@ -46,11 +46,8 @@ public class TechnicianMaintenanceRecordDeleteService extends AbstractGuiService
 			if (super.getRequest().hasData("aircraft")) {
 				int aircraftId = super.getRequest().getData("aircraft", int.class);
 				Aircraft aircraft = this.repository.findAircraftById(aircraftId);
-				Collection<Aircraft> available = this.repository.findAllAircrafts();
 
 				if (aircraft == null && aircraftId != 0)
-					status = false;
-				else if (aircraft != null && !available.contains(aircraft))
 					status = false;
 			}
 		}

@@ -21,3 +21,5 @@ leg-16,AEX2348,2028/02/04 00:01,2028/02/05 00:01,CANCELLED,FALSE,airport-00,airp
 leg-17,AFX2349,2028/02/06 00:01,2028/02/12 00:01,LANDED,FALSE,airport-02,airport-05,aircraft-04,flight-03
 leg-18,ABX2347,2028/01/29 00:01,2028/02/01 00:01,CANCELLED,FALSE,airport-00,airport-01,aircraft-01,flight-18
 leg-19,ABX1345,2025/01/01 00:01,2025/01/01 00:02,ON_TIME,FALSE,airport-00,airport-01,aircraft-01,flight-25
+leg-20,ABX2445,2024/01/01 00:01,2024/01/01 00:02,LANDED,FALSE,airport-00,airport-01,aircraft-01,flight-01
+leg-21,ABX3445,2023/01/01 00:01,2024/01/01 00:00,LANDED,FALSE,airport-00,airport-01,aircraft-01,flight-01

@@ -19,7 +19,6 @@
 	<acme:list-column code="technician.task.list.label.type" path="type" width="40%"/>
 	<acme:list-column code="technician.task.list.label.priority" path="priority" width="30%"/>
 	<acme:list-column code="technician.task.list.label.estimatedDuration" path="estimatedDuration" width="30%"/>
-	<acme:list-payload path="payload"/>	
 </acme:list>
 
 <jstl:if test="${empty maintenanceRecordId}">

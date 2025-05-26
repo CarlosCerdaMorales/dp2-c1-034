@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import acme.client.components.models.Dataset;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
-import acme.entities.maintenancerecord.MaintenanceRecord;
 import acme.entities.task.Task;
 import acme.realms.Technician;
 
@@ -29,26 +28,9 @@ public class TechnicianTaskListMineService extends AbstractGuiService<Technician
 	@Override
 	public void load() {
 		Collection<Task> tasks;
-		int maintenanceRecordId;
-		boolean draftMode;
-		MaintenanceRecord maintenanceRecord;
 		int technicianId = super.getRequest().getPrincipal().getActiveRealm().getId();
 
-		if (super.getRequest().getData().isEmpty())
-			tasks = this.repository.findTasksByTechnicianId(technicianId);
-		else {
-			maintenanceRecordId = super.getRequest().getData("maintenanceRecordId", int.class);
-			super.getResponse().addGlobal("maintenanceRecordId", maintenanceRecordId);
-
-			maintenanceRecord = this.repository.findMaintenanceRecordById(maintenanceRecordId);
-
-			if (maintenanceRecord != null) {
-				draftMode = maintenanceRecord.isDraftMode();
-				super.getResponse().addGlobal("draftMode", draftMode);
-			}
-			tasks = this.repository.findInvolvesByMaintenanceRecord(maintenanceRecord);
-
-		}
+		tasks = this.repository.findTasksByTechnicianId(technicianId);
 		super.getBuffer().addData(tasks);
 	}
 

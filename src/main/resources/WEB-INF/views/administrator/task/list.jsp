@@ -7,7 +7,5 @@
 	<acme:list-column code="administrator.task.list.label.type" path="type" width="33%"/>
 	<acme:list-column code="administrator.task.list.label.priority" path="priority" width="33%"/>
 	<acme:list-column code="administrator.task.list.label.estimatedDuration" path="estimatedDuration" width="33%"/>
-	
-	
-	<acme:list-payload path="payload"/>
+
 </acme:list>
