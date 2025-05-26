@@ -36,7 +36,6 @@ public class AssistanceAgentClaimCreateService extends AbstractGuiService<Assist
 		boolean isAssistanceAgent;
 		boolean correctEnum = true;
 		boolean correctLeg = true;
-		boolean alreadyExists = true;
 		AssistanceAgent assistanceAgent;
 		int agentId;
 		agentId = super.getRequest().getPrincipal().getActiveRealm().getId();
@@ -54,15 +53,15 @@ public class AssistanceAgentClaimCreateService extends AbstractGuiService<Assist
 			type = super.getRequest().getData("claimType", String.class);
 			legId = super.getRequest().getData("leg", int.class);
 			leg = this.repository.findLegById(legId);
-			publishedLegs = this.repository.findAllPublishedLegs(assistanceAgent.getAirline().getId());
+			publishedLegs = this.repository.findAllPublishedLegs(MomentHelper.getCurrentMoment(), assistanceAgent.getAirline().getId());
 			if (!Arrays.toString(ClaimType.values()).concat("0").contains(type))
 				correctEnum = false;
 			if (!publishedLegs.contains(leg) && legId != 0)
 				correctLeg = false;
 
-			res = correctEnum && correctLeg && alreadyExists && fakeUpdate;
+			res = correctEnum && correctLeg && fakeUpdate;
 		} else
-			res = isAssistanceAgent && alreadyExists && fakeUpdate;
+			res = isAssistanceAgent;
 
 		super.getResponse().setAuthorised(res);
 	}
@@ -96,7 +95,6 @@ public class AssistanceAgentClaimCreateService extends AbstractGuiService<Assist
 		claim.setAssistanceAgent(assistanceAgent);
 		claim.setDraftMode(true);
 		claim.setLeg(leg);
-
 	}
 
 	@Override
@@ -108,14 +106,9 @@ public class AssistanceAgentClaimCreateService extends AbstractGuiService<Assist
 	@Override
 	public void validate(final Claim claim) {
 		boolean confirmation;
-		boolean invalidLegDate = true;
-
-		if (claim.getLeg() != null && claim.getRegistrationMoment().before(claim.getLeg().getScheduledArrival()))
-			invalidLegDate = false;
 
 		confirmation = super.getRequest().getData("confirmation", boolean.class);
 		super.state(confirmation, "confirmation", "acme.validation.confirmation.message");
-		super.state(invalidLegDate, "leg", "acme.validation.claim.invalid-leg-date.message");
 	}
 
 	@Override
@@ -129,7 +122,7 @@ public class AssistanceAgentClaimCreateService extends AbstractGuiService<Assist
 		int agentId;
 		agentId = super.getRequest().getPrincipal().getActiveRealm().getId();
 		assistanceAgent = this.repository.findAssistanceAgentById(agentId);
-		legs = this.repository.findAllPublishedLegs(assistanceAgent.getAirline().getId());
+		legs = this.repository.findAllPublishedLegs(MomentHelper.getCurrentMoment(), assistanceAgent.getAirline().getId());
 		selectedLeg = SelectChoices.from(legs, "flightNumber", claim.getLeg());
 		dataset = super.unbindObject(claim, "passengerEmail", "description", "claimType");
 		dataset.put("legs", selectedLeg);

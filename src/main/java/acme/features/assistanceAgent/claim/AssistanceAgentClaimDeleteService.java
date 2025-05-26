@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import acme.client.components.models.Dataset;
 import acme.client.components.views.SelectChoices;
+import acme.client.helpers.MomentHelper;
 import acme.client.services.AbstractGuiService;
 import acme.client.services.GuiService;
 import acme.entities.claim.Claim;
@@ -33,51 +34,28 @@ public class AssistanceAgentClaimDeleteService extends AbstractGuiService<Assist
 		boolean res = true;
 		boolean isClaimCreator = false;
 		boolean isAssistanceAgent;
-		int legId;
-		Leg leg;
-		Collection<Leg> publishedLegs;
-		String type;
 		String metodo = super.getRequest().getMethod();
-		boolean correctEnum = false;
-		boolean correctLeg = true;
-		AssistanceAgent assistanceAgent;
-		int agentId;
-		agentId = super.getRequest().getPrincipal().getActiveRealm().getId();
-		assistanceAgent = this.repository.findAssistanceAgentById(agentId);
+
+		isAssistanceAgent = super.getRequest().getPrincipal().hasRealmOfType(AssistanceAgent.class);
+		userAccountId = super.getRequest().getPrincipal().getAccountId();
+		assistanceAgentId = this.repository.findAssistanceAgentIdByUserAccountId(userAccountId);
 
 		if (!super.getRequest().hasData("id"))
 			res = false;
 		else {
+
 			claimId = super.getRequest().getData("id", int.class);
 			claim = this.repository.findClaimById(claimId);
+			if (claim != null) {
+				ownerId = this.repository.findAssistanceAgentIdByClaimId(claimId);
+				isClaimCreator = assistanceAgentId == ownerId;
+			}
 
-			if (metodo.equals("GET")) {
-				isAssistanceAgent = super.getRequest().getPrincipal().hasRealmOfType(AssistanceAgent.class);
-				claimId = super.getRequest().getData("id", int.class);
-				userAccountId = super.getRequest().getPrincipal().getAccountId();
-				assistanceAgentId = this.repository.findAssistanceAgentIdByUserAccountId(userAccountId);
-
-				claim = this.repository.findClaimById(claimId);
-
-				if (claim != null) {
-					ownerId = this.repository.findAssistanceAgentIdByClaimId(claimId);
-					isClaimCreator = assistanceAgentId == ownerId;
-				}
-
-				res = claim != null && isAssistanceAgent && isClaimCreator && claim.getDraftMode();
-			} else {
-				type = super.getRequest().getData("claimType", String.class);
-				legId = super.getRequest().getData("leg", int.class);
-				leg = this.repository.findLegById(legId);
-				publishedLegs = this.repository.findAllPublishedLegs(assistanceAgent.getAirline().getId());
-				for (ClaimType t : ClaimType.values())
-					if (t.name().equals(type))
-						correctEnum = true;
-				if (!publishedLegs.contains(leg))
-					correctLeg = false;
+			res = claim != null && isAssistanceAgent && isClaimCreator && claim.getDraftMode();
+			if (metodo.equals("POST")) {
 				res = false;
 				if (claim != null)
-					res = correctEnum && correctLeg && claim.getDraftMode();
+					res = claim.getDraftMode();
 			}
 		}
 		super.getResponse().setAuthorised(res);
@@ -141,14 +119,14 @@ public class AssistanceAgentClaimDeleteService extends AbstractGuiService<Assist
 		assistanceAgent = this.repository.findAssistanceAgentById(agentId);
 
 		choicesType = SelectChoices.from(ClaimType.class, claim.getClaimType());
-		legs = this.repository.findAllPublishedLegs(assistanceAgent.getAirline().getId());
+		legs = this.repository.findAllPublishedLegs(MomentHelper.getCurrentMoment(), assistanceAgent.getAirline().getId());
 		selectedLeg = SelectChoices.from(legs, "flightNumber", claim.getLeg());
 		dataset = super.unbindObject(claim, "registrationMoment", "passengerEmail", "description", "claimType");
 		dataset.put("legs", selectedLeg);
 		dataset.put("draftMode", claim.getDraftMode());
 		dataset.put("leg", selectedLeg.getSelected().getKey());
 		dataset.put("claimTypes", choicesType);
-
+		dataset.put("status", claim.getAccepted());
 		super.getResponse().addData(dataset);
 	}
 
