@@ -90,6 +90,9 @@ acme.validation.airline.duplicated-iata.message = Ya existe un aerolinea con est
 acme.validation.aircraft.invalid-registration-number = Ya existe un avion con este numero de registro.
 acme.validation.aircraft.cant-disable = No puede deshabilitar un avión en uso.
 
+### Manager ###
+acme.validation.manager.invalid-pattern.message = Patrón invalido
+
 ### Passenger ###
 acme.validation.passenger.duplicated-passport.message = Ya existe un pasajero con este pasaporte
 acme.validation.passenger.invalid-passport-pattern.message = El patrón del pasaporte no coincide con el exigido
@@ -111,6 +114,7 @@ acme.validation.isfrom.empty-delete = No puede ser nulo
 
 ### Leg ###
 acme.validation.leg.NotNull.message = No puede ser nulo
+acme.validation.leg.invalid-pattern.message = Patrón invalido
 acme.validation.leg.duplicated-flight-number.message = Número de vuelo en uso
 acme.validation.leg.invalid-date.message = Fecha invalida
 acme.validation.leg.flight_number.blank.message = Número de vuelo incompleto

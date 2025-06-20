@@ -106,6 +106,9 @@ acme.validation.flightcrewmember.invalid-employeecode-pattern.message = Employee
 acme.validation.flightcrewmember.invalid-employeecode-initials.message = Employee code first 2 letters must match the employee's initials.
 acme.validation.landed-leg.message = Cannot publish activity log if the leg has not landed
 
+### Manager ###
+acme.validation.manager.invalid-pattern.message = Invalid pattern
+
 ### IsFrom ###
 acme.validation.booking.duplicated-is-from.message = This booking is already related to this passenger
 acme.validation.booking.invalid-isFrom-passenger-null.message = You must choose a passenger
@@ -117,6 +120,7 @@ acme.validation.isfrom.empty-delete = May not be null
 
 ### Leg ###
 acme.validation.leg.overlapping-legs.message = This leg overlaps other legs
+acme.validation.leg.invalid-pattern.message = Invalid pattern
 acme.validation.flight.aircraft-under-maintenance.message = Aircraft under maintenance
 acme.validation.leg.NotNull.message = May not be null
 acme.validation.leg.duplicated-flight-number.message = Flight number already in use
