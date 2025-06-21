@@ -30,6 +30,7 @@ acme.validation.assistanceagent.invalid-employeeCode-initials.message = Las inic
 ### Service ###
 acme.validation.service.invalid-promotionCode-year.message = Los dos últimos digitos no coinciden con el año actual.
 acme.validation.service.duplicated-promocode.message = El código promocional no es único
+acme.validation.service.invalid-pattern.message = Código invalido
 
 ### Tracking Log ###
 acme.validation.trackinglog.invalid-status-notresolute.message = El estado debe de ser pending ya que el porcentaje de resolución es menor a 100
@@ -72,7 +73,7 @@ acme.validation.involves.no-task-to-unlink = No hay tareas asociadas a este reco
 ### Airport ###
 acme.validation.airport.duplicated-iata.message = Ya existe un aeropuerto con este código IATA.
 acme.validation.validiatacode = Este código IATA no es válido
-
+acme.validation.airport.invalid-pattern.message = Número de teléfono invalido
 ### Booking ###
 acme.validation.booking.duplicated-locator-code.message = Ya existe una reserva con este código de localización
 acme.validation.booking.invalid-nibble.message = En caso de indicar los últimos dígitos, han de ser los cuatro últimos
@@ -85,6 +86,7 @@ acme.validation.booking.invalid-passenger-number-publish.message = No podrá pub
 
 ### Airline ###
 acme.validation.airline.duplicated-iata.message = Ya existe un aerolinea con este código IATA.
+acme.validation.airline.invalid-pattern.message = Número de teléfono invalido
 
 ### Aircraft ###
 acme.validation.aircraft.invalid-registration-number = Ya existe un avion con este numero de registro.

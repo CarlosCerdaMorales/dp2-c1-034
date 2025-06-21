@@ -30,6 +30,7 @@ acme.validation.assistanceagent.invalid-employeeCode-initials.message = The clie
 ### Service ###
 acme.validation.service.invalid-promotionCode-year.message = The last two digits do not match the current year.
 acme.validation.service.duplicated-promocode.message = The promotional code is not unique
+acme.validation.service.invalid-pattern.message = Invalid code
 
 ### Tracking Log ###
 acme.validation.trackinglog.invalid-status-notresolute.message = The status must be "pending" since the resolution percentage is less than 100
@@ -74,7 +75,7 @@ acme.validation.involves.no-task-to-unlink = There are no associated tasks
 ### Airport ###
 acme.validation.airport.duplicated-iata.message = There is an existing airport with this IATA Code.
 acme.validation.validiatacode = This is not a valid IATA code
-
+acme.validation.airport.invalid-pattern.message = Invalid phone number
 
 ### Booking ###
 acme.validation.booking.duplicated-locator-code.message = There is an existing booking with this locator code
@@ -89,6 +90,7 @@ acme.validation.booking.invalid-passenger-number-publish.message = You can't pub
 ### Airline ###
 
 acme.validation.airline.duplicated-iata.message = There is an existing airline with this IATA Code.
+acme.validation.airline.invalid-pattern.message = Invalid phonenumber
 
 ### Aircraft ###
 acme.validation.aircraft.invalid-registration-number = There is an existing aircraft with this registration number.

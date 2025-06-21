@@ -21,7 +21,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @ValidAircraft
-public class Aircraft extends AbstractEntity { // Ok follow up
+public class Aircraft extends AbstractEntity {
 
 	// Serialisation identifier -----------------------------------------------
 
@@ -30,22 +30,22 @@ public class Aircraft extends AbstractEntity { // Ok follow up
 	// Attributes -----------------------------------------------
 
 	@Mandatory
-	@ValidString(min = 1, max = 50, message = "{acme.validation.text.length.1-50}")
+	@ValidString(min = 1, max = 50)
 	@Automapped
 	private String				model;
 
 	@Mandatory
-	@ValidString(min = 1, max = 50, message = "{acme.validation.text.length.1-255}")
+	@ValidString(min = 1, max = 50)
 	@Column(unique = true)
 	private String				registrationNumber;
 
 	@Mandatory
-	@ValidNumber(min = 1, max = 255, message = "{acme.validation.number.range.1-255}")
+	@ValidNumber(min = 1, max = 255)
 	@Automapped
 	private Integer				capacity;
 
 	@Mandatory
-	@ValidNumber(min = 2000, max = 50000, message = "{acme.validation.number.range.2000-5000}")
+	@ValidNumber(min = 2000, max = 50000)
 	@Automapped
 	private Integer				cargoWeight;
 
@@ -55,7 +55,7 @@ public class Aircraft extends AbstractEntity { // Ok follow up
 	private AircraftStatus		status;
 
 	@Optional
-	@ValidString(max = 255, message = "{acme.validation.text.length.255}")
+	@ValidString(max = 255)
 	@Automapped
 	private String				details;
 
