@@ -72,9 +72,6 @@ public class ManagerLegCreateService extends AbstractGuiService<Manager, Leg> {
 				if (aircraft == null && aircraftId != 0)
 					authorized = false;
 
-				if (aircraft != null && !aircrafts.contains(aircraft))
-					authorized = false;
-
 				departureId = super.getRequest().getData("airportDeparture", int.class);
 				departure = this.repository.findAirportByAirportId(departureId);
 

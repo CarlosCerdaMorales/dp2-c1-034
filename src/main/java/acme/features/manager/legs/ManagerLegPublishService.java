@@ -65,9 +65,6 @@ public class ManagerLegPublishService extends AbstractGuiService<Manager, Leg> {
 
 						if (aircraft == null && aircraftId != 0)
 							status = false;
-
-						if (aircraft != null && !aircrafts.contains(aircraft))
-							status = false;
 					}
 
 					airports = this.repository.findAllAirports();
