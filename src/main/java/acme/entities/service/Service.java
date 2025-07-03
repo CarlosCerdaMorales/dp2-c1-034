@@ -48,7 +48,7 @@ public class Service extends AbstractEntity {
 	private Integer				averageDwellTime;
 
 	@Optional
-	@ValidString(pattern = "^[A-Z]{4}-[0-9]{2}$")
+	@ValidString(pattern = "^[A-Z]{4}-[0-9]{2}$", message = "{acme.validation.service.invalid-pattern.message}")
 	@Column(unique = true)
 	private String				promotionCode;
 

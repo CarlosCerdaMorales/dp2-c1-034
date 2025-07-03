@@ -67,12 +67,9 @@ public class ManagerLegCreateService extends AbstractGuiService<Manager, Leg> {
 			else if (metodo.equals("POST")) {
 				aircraftId = super.getRequest().getData("aircraft", int.class);
 				aircraft = this.repository.findAircraftByAircraftId(aircraftId);
-				aircrafts = this.repository.findAllAircraftsByManagerId(managerId);
+				aircrafts = this.repository.findAllAircrafts();
 
 				if (aircraft == null && aircraftId != 0)
-					authorized = false;
-
-				if (aircraft != null && !aircrafts.contains(aircraft))
 					authorized = false;
 
 				departureId = super.getRequest().getData("airportDeparture", int.class);
@@ -162,11 +159,9 @@ public class ManagerLegCreateService extends AbstractGuiService<Manager, Leg> {
 		Dataset dataset;
 		List<Aircraft> aircrafts;
 		List<Airport> airports;
-		int managerId;
 
 		statusChoices = SelectChoices.from(FlightStatus.class, leg.getFlightStatus());
-		managerId = super.getRequest().getPrincipal().getActiveRealm().getId();
-		aircrafts = this.repository.findAllAircraftsByManagerId(managerId);
+		aircrafts = this.repository.findAllAircrafts();
 		aircraftChoices = SelectChoices.from(aircrafts, "registrationNumber", leg.getAircraft());
 		airports = this.repository.findAllAirports();
 		departureChoices = SelectChoices.from(airports, "airportName", leg.getAirportDeparture());

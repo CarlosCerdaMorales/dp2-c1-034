@@ -7,7 +7,9 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Index;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
@@ -29,6 +31,9 @@ import lombok.Setter;
 @Getter
 @Setter
 @ValidLeg
+@Table(indexes = {
+	@Index(columnList = "flight_id")
+})
 public class Leg extends AbstractEntity {
 
 	// Serialisation identifier -----------------------------------------------
@@ -38,7 +43,7 @@ public class Leg extends AbstractEntity {
 	// Attributes -----------------------------------------------
 
 	@Mandatory
-	@ValidString(pattern = "^[A-Z]{3}\\d{4}$")
+	@ValidString(pattern = "^[A-Z]{3}\\d{4}$", message = "{acme.validation.leg.invalid-pattern.message}")
 	@Column(unique = true)
 	private String				flightNumber;
 

@@ -50,21 +50,18 @@ public class ManagerFlightCreateService extends AbstractGuiService<Manager, Flig
 
 	@Override
 	public void validate(final Flight flight) {
-		boolean availableCurrency = true;
-		List<String> currencies;
-		currencies = this.repository.findAllCurrencies();
-		String currency;
-		String currencyName;
-		currency = super.getRequest().getData("flightCost", String.class);
-		if (currency.length() >= 3)
-			currencyName = currency.substring(0, 3).toUpperCase();
-		else
-			currencyName = currency;
+		boolean availableCurrency = false;
+		List<String> currencies = this.repository.findAllCurrencies();
+		String flightCost = super.getRequest().getData("flightCost", String.class);
 
-		availableCurrency = currencies.contains(currencyName);
+		if (flightCost != null && !flightCost.isBlank()) {
+			String currencyCode = flightCost.replaceAll("[^A-Za-z]", "").toUpperCase();
+
+			if (!currencyCode.isBlank())
+				availableCurrency = currencies.contains(currencyCode);
+		}
 
 		super.state(availableCurrency, "flightCost", "acme.validation.invalid-currency.message");
-
 	}
 
 	@Override
@@ -86,5 +83,4 @@ public class ManagerFlightCreateService extends AbstractGuiService<Manager, Flig
 
 		super.getResponse().addData(dataset);
 	}
-
 }

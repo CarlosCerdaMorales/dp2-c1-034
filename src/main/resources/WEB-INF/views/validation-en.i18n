@@ -30,6 +30,7 @@ acme.validation.assistanceagent.invalid-employeeCode-initials.message = The clie
 ### Service ###
 acme.validation.service.invalid-promotionCode-year.message = The last two digits do not match the current year.
 acme.validation.service.duplicated-promocode.message = The promotional code is not unique
+acme.validation.service.invalid-pattern.message = Invalid code
 
 ### Tracking Log ###
 acme.validation.trackinglog.invalid-status-notresolute.message = The status must be "pending" since the resolution percentage is less than 100
@@ -74,7 +75,7 @@ acme.validation.involves.no-task-to-unlink = There are no associated tasks
 ### Airport ###
 acme.validation.airport.duplicated-iata.message = There is an existing airport with this IATA Code.
 acme.validation.validiatacode = This is not a valid IATA code
-
+acme.validation.airport.invalid-pattern.message = Invalid phone number
 
 ### Booking ###
 acme.validation.booking.duplicated-locator-code.message = There is an existing booking with this locator code
@@ -89,6 +90,7 @@ acme.validation.booking.invalid-passenger-number-publish.message = You can't pub
 ### Airline ###
 
 acme.validation.airline.duplicated-iata.message = There is an existing airline with this IATA Code.
+acme.validation.airline.invalid-pattern.message = Invalid phonenumber
 
 ### Aircraft ###
 acme.validation.aircraft.invalid-registration-number = There is an existing aircraft with this registration number.
@@ -106,6 +108,9 @@ acme.validation.flightcrewmember.invalid-employeecode-pattern.message = Employee
 acme.validation.flightcrewmember.invalid-employeecode-initials.message = Employee code first 2 letters must match the employee's initials.
 acme.validation.landed-leg.message = Cannot publish activity log if the leg has not landed
 
+### Manager ###
+acme.validation.manager.invalid-pattern.message = Invalid pattern
+
 ### IsFrom ###
 acme.validation.booking.duplicated-is-from.message = This booking is already related to this passenger
 acme.validation.booking.invalid-isFrom-passenger-null.message = You must choose a passenger
@@ -117,6 +122,7 @@ acme.validation.isfrom.empty-delete = May not be null
 
 ### Leg ###
 acme.validation.leg.overlapping-legs.message = This leg overlaps other legs
+acme.validation.leg.invalid-pattern.message = Invalid pattern
 acme.validation.flight.aircraft-under-maintenance.message = Aircraft under maintenance
 acme.validation.leg.NotNull.message = May not be null
 acme.validation.leg.duplicated-flight-number.message = Flight number already in use
